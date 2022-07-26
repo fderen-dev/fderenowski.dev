@@ -1,1 +1,52 @@
+@use "sass:map";
 @import "reset";
+@import "variables";
+@import "mixins";
+
+body {
+  font-size: $fs-mobile-body;
+  min-width: map.get($media, "min");
+  display: flex;
+  justify-content: center;
+  font-family: Mitr, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: Mitr, sans-serif;
+}
+
+h1 {
+  font-size: $fs-mobile-h1;
+}
+
+h2 {
+  font-size: $fs-mobile-h2;
+  font-weight: $fw-normal;
+}
+
+h3 {
+  font-size: $fs-mobile-h3;
+  font-weight: $fw-normal;
+}
+
+@include min-width(map.get($media, "laptop")) {
+  body {
+    font-size: $fs-desktop-body;
+  }
+
+  h1 {
+    font-size: $fs-desktop-h1;
+  }
+
+  h2 {
+    font-size: $fs-desktop-h2;
+    font-weight: $fw-bold;
+  }
+
+  h3 {
+    font-size: $fs-desktop-h3;
+    font-weight: $fw-bold;
+  }
+}

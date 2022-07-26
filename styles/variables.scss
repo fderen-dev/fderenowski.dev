@@ -1,0 +1,38 @@
+// breakpoints
+$min-width: 275px;
+$max-width: 1920px;
+$media: (
+  min: $min-width,
+  tablet: 768px,
+  laptop: 992px,
+  large-screen: 1200px,
+  max: $max-width,
+);
+
+// z-index
+$z-index-background: 0;
+$z-index-foreground: 1;
+$z-index-modal: 999;
+
+/* font */
+// weight
+$fw-light: 300;
+$fw-normal: 400;
+$fw-medium: 500;
+$fw-bold: 600;
+
+// size desktop
+$fs-desktop-body: 18px;
+$fs-desktop-secondary: 16px;
+$fs-desktop-input: 18px;
+$fs-desktop-h1: 35px;
+$fs-desktop-h2: 30px;
+$fs-desktop-h3: 25px;
+
+// size mobile
+$fs-mobile-body: 16px;
+$fs-mobile-secondary: 14px;
+$fs-mobile-input: 16px;
+$fs-mobile-h1: 21px;
+$fs-mobile-h2: 18px;
+$fs-mobile-h3: 16px;
