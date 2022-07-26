@@ -1,13 +1,14 @@
-import Head from 'next/head'
-import { NextPage } from 'next'
+import Head from "next/head";
+import { NextPage } from "next";
+import { Layout } from "components/Layout/Layout";
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>fderenowski.dev - Home</title>
       </Head>
-      <main>
+      <Layout>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
           risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -22,9 +23,8 @@ const Home: NextPage = () => {
           justo aliquam. Suspendisse vel vestibulum lacus, non bibendum nisl.
           Nulla ut hendrerit dolor. Praesent tristique vel lectus non dictum.
         </p>
-      </main>
-      <footer>Footer</footer>
-    </div>
+      </Layout>
+    </>
   );
 };
 

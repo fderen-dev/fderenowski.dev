@@ -1,3 +1,4 @@
+/* stylelint-disable selector-id-pattern */
 @use "sass:map";
 @import "reset";
 @import "variables";
@@ -6,9 +7,12 @@
 body {
   font-size: $fs-mobile-body;
   min-width: map.get($media, "min");
-  display: flex;
-  justify-content: center;
+  min-height: 100vh;
   font-family: Mitr, sans-serif;
+}
+
+#__next {
+  height: 100%;
 }
 
 h1,

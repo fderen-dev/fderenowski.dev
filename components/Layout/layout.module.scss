@@ -1,0 +1,11 @@
+@use "sass:map";
+@use "styles/variables.scss" as vars;
+
+.root {
+  height: 100%;
+}
+
+.main {
+  margin: 0 auto;
+  max-width: map.get(vars.$media, "max");
+}
