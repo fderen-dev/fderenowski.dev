@@ -7,7 +7,9 @@ import styles from "./layout.module.scss";
 export const Layout = ({ children }: { children: ReactNode }) => (
   <div className={styles.root}>
     <Header />
-    <main className={styles.main}>{children}</main>
-    <footer style={{ position: "fixed", bottom: 0 }}>Footer</footer>
+    <main className={styles.main}>
+      <div className={styles.transition} />
+      <div className={styles.content}>{children}</div>
+    </main>
   </div>
 );
