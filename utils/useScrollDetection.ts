@@ -2,26 +2,42 @@ import { useEffect, useRef, useState } from "react";
 
 import { TimeoutHandle } from "./types";
 
+interface ScrollData {
+  isScrolling: boolean;
+  scrollDirection: ScrollDirection;
+}
+
 export enum ScrollDirection {
   Up = "Up",
   Down = "Down",
 }
 
 export const useScrollDetection = (
-  wait: number = 300,
+  wait: number = 200,
   treshold: number = 0
 ) => {
-  const [isScrolling, setIsScrolling] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<ScrollDirection>(
-    ScrollDirection.Down
-  );
-  const isBlocking = useRef(false);
+  const [scrollData, setScrollData] = useState<ScrollData>({
+    isScrolling: false,
+    scrollDirection: ScrollDirection.Down,
+  });
   const prevScrollY = useRef(0);
+  const prevDirection = useRef(ScrollDirection.Down);
   const timeoutHandle = useRef<TimeoutHandle | null>(null);
-  const animationFrameHandle = useRef<number | null>(null);
+  const isBlocked = useRef(false);
 
   useEffect(() => {
     prevScrollY.current = window.pageYOffset;
+
+    const doSetTimeout = (): void => {
+      timeoutHandle.current = setTimeout(() => {
+        setScrollData({
+          isScrolling: false,
+          scrollDirection: getScrollDirection(),
+        });
+        doClearTimeout();
+        isBlocked.current = false;
+      }, wait);
+    };
 
     const doClearTimeout = (): void => {
       if (timeoutHandle.current) {
@@ -30,35 +46,32 @@ export const useScrollDetection = (
       }
     };
 
-    const updateScrollDirection = (): void => {
+    const getScrollDirection = (): ScrollDirection => {
+      let newScrollDirection = ScrollDirection.Down;
       const scrollY = window.pageYOffset;
 
       if (Math.abs(scrollY - prevScrollY.current) >= treshold) {
-        const newScrollDirection =
+        newScrollDirection =
           scrollY > prevScrollY.current
             ? ScrollDirection.Down
             : ScrollDirection.Up;
 
-        setScrollDirection(newScrollDirection);
         prevScrollY.current = scrollY > 0 ? scrollY : 0;
       }
 
-      isBlocking.current = false;
+      return newScrollDirection;
     };
 
     const onScroll = (): void => {
-      setIsScrolling(true);
-      doClearTimeout();
-      timeoutHandle.current = setTimeout(() => {
-        setIsScrolling(false);
-        timeoutHandle.current = null;
-      }, wait);
+      const scrollDirection = getScrollDirection();
 
-      if (!isBlocking.current) {
-        isBlocking.current = true;
-        animationFrameHandle.current = window.requestAnimationFrame(
-          updateScrollDirection
-        );
+      if (isBlocked.current) {
+        doClearTimeout();
+        doSetTimeout();
+      } else if (!isBlocked.current) {
+        isBlocked.current = true;
+        setScrollData({ isScrolling: true, scrollDirection });
+        doSetTimeout();
       }
     };
 
@@ -66,14 +79,9 @@ export const useScrollDetection = (
 
     return () => {
       doClearTimeout();
-
-      if (animationFrameHandle.current !== null) {
-        window.cancelAnimationFrame(animationFrameHandle.current);
-        animationFrameHandle.current = null;
-      }
       window.removeEventListener("scroll", onScroll);
     };
   }, [wait, treshold]);
 
-  return { isScrolling, scrollDirection };
+  return scrollData;
 };
