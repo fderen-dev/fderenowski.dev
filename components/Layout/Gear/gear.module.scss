@@ -1,0 +1,34 @@
+.gear {
+  position: fixed;
+  animation-timing-function: linear;
+  animation-duration: 4s;
+  animation-fill-mode: forwards;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+.running {
+  animation-play-state: running;
+}
+
+.up {
+  animation-name: spin-up;
+}
+
+.down {
+  animation-name: spin-down;
+}
+
+@keyframes spin-up {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-down {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
