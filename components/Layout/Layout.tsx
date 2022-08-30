@@ -11,7 +11,9 @@ export const Layout = ({ children }: { children: ReactNode }) => (
     <Gear />
     <main className={styles.main}>
       <div className={styles.transition} />
-      <div className={styles.content}>{children}</div>
+      <div className={styles.contentWrapper}>
+        <div className={styles.content}>{children}</div>
+      </div>
     </main>
   </div>
 );

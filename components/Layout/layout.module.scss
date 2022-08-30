@@ -8,9 +8,11 @@
 .main {
   position: relative;
   z-index: vars.$z-index-foreground;
-  margin: 0 auto;
-  max-width: map.get(vars.$media, "max");
   height: inherit;
+
+  * {
+    z-index: vars.$z-index-content;
+  }
 }
 
 .transition {
@@ -22,8 +24,14 @@
   );
 }
 
-.content {
+.contentWrapper {
   background-color: vars.$c-moth-gray;
-  margin-top: -20px;
   height: inherit;
+  margin: -20px auto 0;
+}
+
+.content {
+  margin: 0 20px;
+  height: inherit;
+  max-width: map.get(vars.$media, "max");
 }
