@@ -1,8 +1,11 @@
+@use "styles/variables.scss" as vars;
+
 .gear {
   position: fixed;
   animation-timing-function: linear;
   animation-duration: 4s;
   animation-fill-mode: forwards;
+  z-index: vars.$z-index-gear;
 }
 
 .paused {
