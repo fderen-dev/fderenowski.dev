@@ -8,11 +8,13 @@ import styles from "./layout.module.scss";
 export const Layout = ({ children }: { children: ReactNode }) => (
   <div className={styles.root}>
     <Header />
-    <Gear />
     <main className={styles.main}>
       <div className={styles.transition} />
       <div className={styles.contentWrapper}>
-        <div className={styles.content}>{children}</div>
+        <div className={styles.content}>
+          <Gear />
+          {children}
+        </div>
       </div>
     </main>
   </div>

@@ -9,10 +9,6 @@
   position: relative;
   z-index: vars.$z-index-foreground;
   height: inherit;
-
-  * {
-    z-index: vars.$z-index-content;
-  }
 }
 
 .transition {
@@ -27,11 +23,22 @@
 .contentWrapper {
   background-color: vars.$c-moth-gray;
   height: inherit;
-  margin: -20px auto 0;
+
+  // hide thin line
+  margin-top: -1px;
+  display: flex;
+  justify-content: center;
 }
 
 .content {
+  z-index: vars.$z-index-foreground;
+  position: relative;
   margin: 0 20px;
   height: inherit;
   max-width: map.get(vars.$media, "max");
+
+  section p {
+    position: relative;
+    z-index: vars.$z-index-content;
+  }
 }
