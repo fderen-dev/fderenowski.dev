@@ -1,13 +1,19 @@
+@use "sass:map";
 @use "styles/variables.scss" as vars;
 @use "styles/animations.scss" as anims;
 
 $fs-heading: 9rem;
 $fs-subheading: 4.5rem;
 
+.container {
+  background-color: vars.$c-warm-yellow;
+}
+
 .header {
   position: relative;
-  width: 100%;
-  height: 50vh;
+  max-width: map.get(vars.$media, "max");
+  margin: 0 auto;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
