@@ -4,6 +4,10 @@
 @use "styles/mixins.scss";
 @import "reset";
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   font-size: vars.$fs-mobile-body;
   min-width: map.get(vars.$media, "min");

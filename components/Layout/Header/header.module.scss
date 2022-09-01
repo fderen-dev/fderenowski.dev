@@ -1,6 +1,9 @@
 @use "styles/variables.scss" as vars;
 @use "styles/animations.scss" as anims;
 
+$fs-heading: 9rem;
+$fs-subheading: 4.5rem;
+
 .header {
   position: relative;
   width: 100%;
@@ -20,13 +23,13 @@
 
 .heading {
   font-family: Teko, sans-serif;
-  font-size: 7rem;
+  font-size: $fs-heading;
   line-height: 1.2;
   margin: 0;
 }
 
 .subheading {
   font-family: Exo, sans-serif;
-  font-size: 3.5rem;
+  font-size: $fs-subheading;
   @include anims.typewriter;
 }
