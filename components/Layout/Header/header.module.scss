@@ -10,7 +10,6 @@ $fs-subheading: 4.5rem;
 }
 
 .header {
-  position: relative;
   max-width: map.get(vars.$media, "max");
   margin: 0 auto;
   height: 40vh;

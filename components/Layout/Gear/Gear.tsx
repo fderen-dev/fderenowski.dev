@@ -10,26 +10,26 @@ import styles from "./gear.module.scss";
 const cx = classNames.bind(styles);
 
 interface GearProps {
-  width?: string;
-  height?: string;
+  maxSize?: string;
+  minSize?: string;
   top?: string;
   left?: string;
   className?: string;
 }
 
 export const Gear: FC<GearProps> = ({
-  top = "10%",
+  top = "10vh",
   left = "60%",
-  width = "20vw",
-  height = "20vw",
+  maxSize = "20%",
+  minSize = "150px",
   className,
 }) => {
   const { isScrolling, scrollDirection } = useScrollDetection(100);
 
   return (
     <GearImage
-      width={width}
-      height={height}
+      width="100%"
+      height="100%"
       alt="Spinning gear"
       className={cx(styles.gear, className, {
         paused: !isScrolling,
@@ -37,7 +37,14 @@ export const Gear: FC<GearProps> = ({
         up: scrollDirection === ScrollDirection.Up,
         down: scrollDirection === ScrollDirection.Down,
       })}
-      style={{ top, left }}
+      style={{
+        top,
+        left,
+        minWidth: minSize,
+        minHeight: minSize,
+        maxWidth: maxSize,
+        maxHeight: maxSize,
+      }}
     />
   );
 };

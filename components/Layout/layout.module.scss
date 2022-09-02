@@ -3,6 +3,7 @@
 
 .root {
   background-color: vars.$c-warm-yellow;
+  z-index: vars.$z-index-background;
 }
 
 .main {
