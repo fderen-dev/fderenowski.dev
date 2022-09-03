@@ -1,7 +1,10 @@
 {
+  "plugins": ["stylelint-order"],
   "extends": [
     "stylelint-config-standard-scss",
-    "stylelint-config-prettier-scss"
+    "stylelint-config-prettier-scss",
+    "stylelint-config-idiomatic-order",
+    "stylelint-config-css-modules"
   ],
   "rules": {
     "selector-class-pattern": "^[a-z][a-zA-Z0-9]+$"

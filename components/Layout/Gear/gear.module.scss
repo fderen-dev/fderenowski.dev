@@ -2,10 +2,10 @@
 
 .gear {
   position: fixed;
-  animation-timing-function: linear;
+  z-index: vars.$z-index-gear;
   animation-duration: 4s;
   animation-fill-mode: forwards;
-  z-index: vars.$z-index-gear;
+  animation-timing-function: linear;
   fill: white;
 }
 

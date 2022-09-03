@@ -5,13 +5,13 @@
   $textAnimationSteps: 29,
   $cursorAnimationDuration: 600ms
 ) {
-  width: auto;
   overflow: hidden;
+  width: auto;
+  border-right: solid 3px vars.$c-pitch-black;
   animation: animated-text $textAnimationDuration
       steps($textAnimationSteps, end) 1s 1 normal both,
     animated-cursor $cursorAnimationDuration steps(29, end) infinite;
   letter-spacing: 0.18rem;
-  border-right: solid 3px vars.$c-pitch-black;
   white-space: nowrap;
 
   @keyframes animated-text {

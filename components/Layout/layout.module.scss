@@ -2,8 +2,8 @@
 @use "styles/variables.scss" as vars;
 
 .root {
-  background-color: vars.$c-warm-yellow;
   z-index: vars.$z-index-background;
+  background-color: vars.$c-warm-yellow;
 }
 
 .main {
@@ -22,21 +22,21 @@
 }
 
 .contentWrapper {
-  background-color: vars.$c-moth-gray;
+  display: flex;
   height: inherit;
+  justify-content: center;
 
   // hide thin line
   margin-top: -1px;
-  display: flex;
-  justify-content: center;
+  background-color: vars.$c-moth-gray;
 }
 
 .content {
-  z-index: vars.$z-index-foreground;
   position: relative;
-  margin: 0 20px;
-  height: inherit;
+  z-index: vars.$z-index-foreground;
   max-width: map.get(vars.$media, "max");
+  height: inherit;
+  margin: 0 20px;
 
   section p {
     position: relative;

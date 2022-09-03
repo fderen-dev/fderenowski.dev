@@ -9,11 +9,11 @@ html {
 }
 
 body {
-  font-size: vars.$fs-mobile-body;
   min-width: map.get(vars.$media, "min");
   min-height: 100vh;
-  font-family: Mitr, sans-serif;
   background-color: vars.$c-warm-yellow;
+  font-family: Mitr, sans-serif;
+  font-size: vars.$fs-mobile-body;
   overflow-x: hidden;
 }
 

@@ -1,4 +1,5 @@
 const path = require("path");
+const StylelintPlugin = require("stylelint-webpack-plugin");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -11,6 +12,7 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")],
   },
   webpack(config) {
+    config.plugins.push(new StylelintPlugin());
     config.module.rules.push({
       test: /\.svg$/i,
       issuer: { and: [/\.(js|ts|md)x?$/] },
