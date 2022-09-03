@@ -2,9 +2,6 @@
 @use "styles/variables.scss" as vars;
 @use "styles/animations.scss" as anims;
 
-$fs-heading: 9rem;
-$fs-subheading: 4.5rem;
-
 .container {
   background-color: vars.$c-warm-yellow;
 }
@@ -21,20 +18,21 @@ $fs-subheading: 4.5rem;
 
 .headingContainer {
   position: fixed;
+  max-width: 80%;
   z-index: vars.$z-index-heading;
-  margin-left: 10%;
+  margin: 0 10%;
   user-select: none;
 }
 
 .heading {
   font-family: Teko, sans-serif;
-  font-size: $fs-heading;
+  font-size: clamp(5rem, 4.3313rem + 2.4316vw, 9rem);
   line-height: 1.2;
   margin: 0;
 }
 
 .subheading {
   font-family: Exo, sans-serif;
-  font-size: $fs-subheading;
+  font-size: clamp(2rem, 1.5821rem + 1.5198vw, 4.5rem);
   @include anims.typewriter;
 }
