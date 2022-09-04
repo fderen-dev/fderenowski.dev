@@ -1,0 +1,59 @@
+@use "sass:map";
+@use "styles/mixins.scss";
+@use "styles/variables.scss" as vars;
+
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: vars.$c-moth-gray;
+  background-image: linear-gradient(
+    180deg,
+    rgb(0 0 0 / 0%) 0%,
+    rgb(255 202 30 / 100%) 95%
+  );
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  max-width: map.get(vars.$media, "max");
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: vars.$spacing-mobile 0;
+  margin: 0 vars.$spacing-mobile;
+  gap: vars.$spacing-mobile;
+}
+
+.right {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  row-gap: vars.$spacing-small;
+}
+
+.links {
+  display: inline-flex;
+  column-gap: vars.$spacing-mobile;
+}
+
+@include mixins.min-width(map.get(vars.$media, "laptop")) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: vars.$spacing-desktop 0;
+    margin: 0 vars.$spacing-desktop;
+    gap: vars.$spacing-desktop;
+  }
+
+  .right {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .links {
+    column-gap: vars.$spacing-desktop;
+  }
+}

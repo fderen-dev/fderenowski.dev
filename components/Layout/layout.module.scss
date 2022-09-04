@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "styles/mixins.scss";
 @use "styles/variables.scss" as vars;
 
 .root {
@@ -36,10 +37,16 @@
   z-index: vars.$z-index-foreground;
   max-width: map.get(vars.$media, "max");
   height: inherit;
-  margin: 0 20px;
+  margin: 0 vars.$spacing-mobile;
 
   section p {
     position: relative;
     z-index: vars.$z-index-content;
+  }
+}
+
+@include mixins.min-width(map.get(vars.$media, "laptop")) {
+  .content {
+    margin: 0 vars.$spacing-desktop;
   }
 }
