@@ -61,3 +61,30 @@ h3 {
     font-weight: vars.$fw-bold;
   }
 }
+
+a {
+  position: relative;
+  font-weight: vars.$fw-medium;
+  transition: color ease-in 0.3s;
+
+  &::after {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: vars.$c-dirty-brown;
+    content: "";
+    transition: width ease-in 0.3s;
+  }
+
+  &:hover,
+  &:focus {
+    color: vars.$c-dirty-brown;
+    cursor: pointer;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}

@@ -38,6 +38,10 @@
   column-gap: vars.$spacing-mobile;
 }
 
+.copyright {
+  user-select: none;
+}
+
 @include mixins.min-width(map.get(vars.$media, "laptop")) {
   .footer {
     flex-direction: row;
