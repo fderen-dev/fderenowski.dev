@@ -2,6 +2,11 @@
 @use "styles/mixins.scss";
 @use "styles/variables.scss" as vars;
 
+$logo-size: 60px;
+$desktop-logo-size: 75px;
+$icon-size: 24px;
+$desktop-icon-size: 32px;
+
 .container {
   display: flex;
   justify-content: center;
@@ -33,13 +38,32 @@
   row-gap: vars.$spacing-small;
 }
 
+.logo {
+  width: $logo-size;
+  height: $logo-size;
+}
+
 .links {
   display: inline-flex;
   column-gap: vars.$spacing-mobile;
 }
 
 .copyright {
+  display: block;
   user-select: none;
+}
+
+.link {
+  .icon {
+    width: $icon-size;
+    height: $icon-size;
+    @include mixins.link-transition(fill);
+
+    &:hover,
+    &:focus {
+      fill: vars.$c-dirty-brown;
+    }
+  }
 }
 
 @include mixins.min-width(map.get(vars.$media, "laptop")) {
@@ -57,7 +81,19 @@
     justify-content: space-between;
   }
 
+  .logo {
+    width: $desktop-logo-size;
+    height: $desktop-logo-size;
+  }
+
   .links {
     column-gap: vars.$spacing-desktop;
+  }
+
+  .link {
+    .icon {
+      width: $desktop-icon-size;
+      height: $desktop-icon-size;
+    }
   }
 }

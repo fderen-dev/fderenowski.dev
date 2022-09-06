@@ -3,3 +3,29 @@
     @content;
   }
 }
+
+@mixin underline-on-hover($underline-color: vars.$c-dirty-brown) {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: $underline-color;
+    content: "";
+    transition: width ease-in 0.3s;
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+@mixin link-transition($transition-property: color) {
+  transition: $transition-property ease-in 0.3s;
+}
