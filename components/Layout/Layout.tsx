@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 
+import { Footer } from "./Footer/Footer";
 import { Gear, Placement, ResponsivePlacement } from "./Gear/Gear";
 import { Header } from "./Header/Header";
 
@@ -26,5 +27,6 @@ export const Layout = ({ children }: { children: ReactNode }) => (
         </div>
       </div>
     </main>
+    <Footer />
   </div>
 );
