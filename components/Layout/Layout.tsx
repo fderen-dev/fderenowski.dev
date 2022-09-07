@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import { Footer } from "./Footer/Footer";
 import { Gear, Placement, ResponsivePlacement } from "./Gear/Gear";
 import { Header } from "./Header/Header";
+import { Navbar } from "./Navbar/Navbar";
 
 import styles from "./layout.module.scss";
 
@@ -14,6 +15,7 @@ const RESPONSIVE_GEAR_PLACEMENT: ResponsivePlacement = {
 
 export const Layout = ({ children }: { children: ReactNode }) => (
   <div className={styles.root}>
+    <Navbar />
     <Header />
     <main className={styles.main}>
       <div className={styles.transition} />

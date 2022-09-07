@@ -1,0 +1,11 @@
+@use "styles/variables.scss" as vars;
+
+.navbar {
+  position: fixed;
+  z-index: vars.$z-index-navbar;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: vars.$navbar-height;
+  background-color: vars.$c-background-yellow;
+}
