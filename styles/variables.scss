@@ -15,6 +15,7 @@ $z-index-heading: 1;
 $z-index-foreground: 2;
 $z-index-gear: 3;
 $z-index-content: 4;
+$z-index-navbar: 5;
 $z-index-modal: 999;
 
 /* font */
@@ -48,6 +49,8 @@ $c-warm-yellow: #ffca1e;
 $c-vanilla-yellow: #ffeb54;
 $c-pitch-black: #000;
 $c-dirty-brown: #6c4317;
+$c-background-yellow: $c-warm-yellow;
+$c-background-gray: $c-moth-gray;
 
 // spacings
 $spacing-small: 8px;
@@ -55,3 +58,6 @@ $spacing-medium: 16px;
 $spacing-large: 32px;
 $spacing-mobile: $spacing-medium;
 $spacing-desktop: $spacing-large;
+
+// components
+$navbar-height: 64px;

@@ -4,7 +4,7 @@
 
 .root {
   z-index: vars.$z-index-background;
-  background-color: vars.$c-warm-yellow;
+  background-color: vars.$c-background-yellow;
 }
 
 .main {
@@ -29,7 +29,7 @@
 
   // hide thin line
   margin-top: -1px;
-  background-color: vars.$c-moth-gray;
+  background-color: vars.$c-background-gray;
 }
 
 .content {

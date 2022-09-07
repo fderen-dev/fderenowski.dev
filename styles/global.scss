@@ -11,7 +11,7 @@ html {
 body {
   min-width: map.get(vars.$media, "min");
   min-height: 100vh;
-  background-color: vars.$c-warm-yellow;
+  background-color: vars.$c-background-yellow;
   font-family: Mitr, sans-serif;
   font-size: vars.$fs-mobile-body;
   overflow-x: hidden;
@@ -19,7 +19,7 @@ body {
 
 #__next {
   height: 100%;
-  background-color: vars.$c-moth-gray;
+  background-color: vars.$c-background-gray;
 }
 
 h1,
