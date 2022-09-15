@@ -1,6 +1,6 @@
 import { FC } from "react";
 import classNames from "classnames/bind";
-import { useMediaQuery } from "react-responsive";
+import { useMediaQueriesContext } from "context/MediaQueries";
 
 import { ScrollDirection, useScrollDetection } from "utils/useScrollDetection";
 
@@ -36,7 +36,7 @@ export const Gear: FC<GearProps> = ({
   className,
 }) => {
   const { isScrolling, scrollDirection } = useScrollDetection(100);
-  const isDesktop = useMediaQuery({ query: "(min-width: 992px)" });
+  const { isDesktop } = useMediaQueriesContext();
   let { top, left } = placement;
 
   if (responsivePlacement) {
