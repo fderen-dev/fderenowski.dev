@@ -13,22 +13,30 @@ const RESPONSIVE_GEAR_PLACEMENT: ResponsivePlacement = {
   desktop: DESKTOP_GEAR_PLACEMENT,
 };
 
+interface MainProps {
+  children: React.ReactNode;
+}
+
+const Main = ({ children }: MainProps) => (
+  <main className={styles.main}>
+    <div className={styles.transition} />
+    <div className={styles.contentWrapper}>
+      <div className={styles.content}>
+        <Gear
+          placement={DESKTOP_GEAR_PLACEMENT}
+          responsivePlacement={RESPONSIVE_GEAR_PLACEMENT}
+        />
+        {children}
+      </div>
+    </div>
+  </main>
+);
+
 export const Layout = ({ children }: { children: ReactNode }) => (
   <div className={styles.root}>
     <Navbar />
     <Header />
-    <main className={styles.main}>
-      <div className={styles.transition} />
-      <div className={styles.contentWrapper}>
-        <div className={styles.content}>
-          <Gear
-            placement={DESKTOP_GEAR_PLACEMENT}
-            responsivePlacement={RESPONSIVE_GEAR_PLACEMENT}
-          />
-          {children}
-        </div>
-      </div>
-    </main>
+    <Main>{children}</Main>
     <Footer />
   </div>
 );
