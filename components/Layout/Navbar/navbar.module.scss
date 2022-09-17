@@ -9,3 +9,18 @@
   height: vars.$navbar-height;
   background-color: vars.$c-background-yellow;
 }
+
+.navList {
+  display: flex;
+  height: 100%;
+  list-style-type: none;
+
+  .horizontal {
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .vertical {
+    flex-direction: column;
+  }
+}
