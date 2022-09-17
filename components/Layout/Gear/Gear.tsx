@@ -1,7 +1,7 @@
 import { FC } from "react";
 import classNames from "classnames/bind";
-import { useMediaQueriesContext } from "context/MediaQueries";
 
+import { useMediaQueriesContext } from "context/MediaQueries";
 import { ScrollDirection, useScrollDetection } from "utils/useScrollDetection";
 
 import GearImage from "../../../public/static/gear.svg";
