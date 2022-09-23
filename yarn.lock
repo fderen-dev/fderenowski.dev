@@ -3457,6 +3457,13 @@ eslint-plugin-simple-import-sort@^8.0.0:
   resolved "https://registry.yarnpkg.com/eslint-plugin-simple-import-sort/-/eslint-plugin-simple-import-sort-8.0.0.tgz#9d9a2372b0606e999ea841b10458a370a6ccc160"
   integrity sha512-bXgJQ+lqhtQBCuWY/FUWdB27j4+lqcvXv5rUARkzbeWLwea+S5eBZEQrhnO+WgX3ZoJHVj0cn943iyXwByHHQw==
 
+eslint-plugin-validate-jsx-nesting@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-validate-jsx-nesting/-/eslint-plugin-validate-jsx-nesting-0.1.0.tgz#a7678264abdfb0d58dfed790ba3a57a2f5d1d4a8"
+  integrity sha512-cEFjl8bFBpWNP4hVyy3oRGKAyNH0WqxAVjjrfkvhD4ciqCrSvkDuYZqGZ7PkZb5XE76asHPxyuW2f9N2I1cSsg==
+  dependencies:
+    validate-html-nesting "^1.0.2"
+
 eslint-scope@^7.1.1:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/eslint-scope/-/eslint-scope-7.1.1.tgz#fff34894c2f65e5226d3041ac480b4513a163642"
@@ -7779,6 +7786,11 @@ v8-compile-cache@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
+
+validate-html-nesting@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/validate-html-nesting/-/validate-html-nesting-1.0.2.tgz#a9b602f5fc2deb7eab7fe3ba30e804dcdb2aaa2b"
+  integrity sha512-0eUJ1TJ8Pr5+/4E004blNnR5wqlnVYn5vJ7u0avl29kuU6KS2HTngJ0WpdyEEqeArHoizLu0iUA5zyJt/jB1RA==
 
 validate-npm-package-license@^3.0.1:
   version "3.0.4"
