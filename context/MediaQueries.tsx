@@ -1,5 +1,6 @@
-import { createContext, useContext, useMemo } from "react";
-import { useMediaQuery } from "react-responsive";
+import { createContext, useContext } from "react";
+
+import { useMinWidthMediaQuery } from "utils/useMinWidthMediaQuery";
 
 interface MediaQueriesValue {
   isDesktop: boolean;
@@ -14,16 +15,10 @@ interface MediaQueriesProviderProps {
 export const MediaQueriesProvider = ({
   children,
 }: MediaQueriesProviderProps) => {
-  const isDesktop = useMediaQuery({ query: "(min-width: 992px)" });
-  const state = useMemo(
-    () => ({
-      isDesktop,
-    }),
-    [isDesktop]
-  );
+  const isDesktop = useMinWidthMediaQuery(992);
 
   return (
-    <MediaQueriesContext.Provider value={state}>
+    <MediaQueriesContext.Provider value={{ isDesktop }}>
       {children}
     </MediaQueriesContext.Provider>
   );
