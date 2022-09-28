@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import ReactModal from "react-modal";
 
 import { useMediaQueriesContext } from "context/MediaQueries";
 import { ROUTES } from "utils/constants";
+import { useIsMounted } from "utils/useIsMounted";
 
 import styles from "./navbar.module.scss";
 
@@ -29,18 +30,40 @@ const NavList = ({ className }: NavListProps) => (
   </ul>
 );
 
+interface NavbarContentProps {
+  isDesktop: boolean;
+  toggleMobileNavigation: () => void;
+}
+
+const NavbarContent = ({
+  isDesktop,
+  toggleMobileNavigation,
+}: NavbarContentProps) => {
+  if (isDesktop) {
+    return <NavList className={styles.horizontal} />;
+  }
+
+  return <button onClick={toggleMobileNavigation}>Hamburger</button>;
+};
+
 export const Navbar = () => {
   const { isDesktop } = useMediaQueriesContext();
   const [isMobileNavigationOpen, setMobileNavigationOpen] = useState(false);
+  const isMounted = useIsMounted();
   const toggleMobileNavigation = () => setMobileNavigationOpen((prev) => !prev);
+
+  useEffect(() => {
+    setMobileNavigationOpen((prev) => (prev && isDesktop ? false : prev));
+  }, [isDesktop]);
 
   return (
     <>
       <nav className={styles.navbar}>
-        {isDesktop ? (
-          <NavList className={styles.horizontal} />
-        ) : (
-          <button onClick={toggleMobileNavigation}>Hamburger</button>
+        {isMounted && (
+          <NavbarContent
+            isDesktop={isDesktop}
+            toggleMobileNavigation={toggleMobileNavigation}
+          />
         )}
       </nav>
       <ReactModal isOpen={isMobileNavigationOpen}>

@@ -2,7 +2,9 @@ import { FC } from "react";
 import classNames from "classnames/bind";
 
 import { useMediaQueriesContext } from "context/MediaQueries";
-import { ScrollDirection, useScrollDetection } from "utils/useScrollDetection";
+import { useScrollDetectionContext } from "context/ScrollDetection";
+import { useIsMounted } from "utils/useIsMounted";
+import { ScrollDirection } from "utils/useScrollDetection";
 
 import GearImage from "../../../public/static/gear.svg";
 
@@ -35,8 +37,9 @@ export const Gear: FC<GearProps> = ({
   minSize = "150px",
   className,
 }) => {
-  const { isScrolling, scrollDirection } = useScrollDetection(100);
+  const { isScrolling, scrollDirection } = useScrollDetectionContext();
   const { isDesktop } = useMediaQueriesContext();
+  const isMounted = useIsMounted();
   let { top, left } = placement;
 
   if (responsivePlacement) {
@@ -50,7 +53,7 @@ export const Gear: FC<GearProps> = ({
     }
   }
 
-  return (
+  return isMounted ? (
     <GearImage
       width="100%"
       height="100%"
@@ -70,5 +73,5 @@ export const Gear: FC<GearProps> = ({
         maxHeight: maxSize,
       }}
     />
-  );
+  ) : null;
 };
