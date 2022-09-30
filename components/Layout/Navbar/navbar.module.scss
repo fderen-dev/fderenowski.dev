@@ -1,5 +1,7 @@
 @use "styles/variables.scss" as vars;
 
+$logo-height: calc(vars.$navbar-height - 2 * vars.$spacing-small);
+
 .navbar {
   position: fixed;
   z-index: vars.$z-index-navbar;
@@ -7,20 +9,35 @@
   left: 0;
   width: 100%;
   height: vars.$navbar-height;
+  padding: vars.$spacing-small;
   background-color: vars.$c-background-yellow;
 }
 
-.navList {
+.navbarContent {
   display: flex;
   height: 100%;
+  align-items: center;
+
+  .homeRoute {
+    .logo {
+      height: $logo-height;
+      max-height: 100%;
+    }
+  }
+}
+
+.navigationList {
+  display: flex;
+  height: 100%;
+  padding: 0;
   list-style-type: none;
 
-  .horizontal {
+  &.horizontal {
     align-items: center;
     justify-content: space-evenly;
   }
 
-  .vertical {
+  &.vertical {
     flex-direction: column;
   }
 }
