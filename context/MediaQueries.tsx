@@ -1,5 +1,6 @@
 import { createContext, useContext } from "react";
 
+import { WithChildren } from "utils/types";
 import { useMinWidthMediaQuery } from "utils/useMinWidthMediaQuery";
 
 interface MediaQueriesValue {
@@ -12,9 +13,7 @@ interface MediaQueriesProviderProps {
   children: React.ReactNode;
 }
 
-export const MediaQueriesProvider = ({
-  children,
-}: MediaQueriesProviderProps) => {
+const MediaQueriesProvider = ({ children }: MediaQueriesProviderProps) => {
   const isDesktop = useMinWidthMediaQuery(992);
 
   return (
@@ -22,6 +21,24 @@ export const MediaQueriesProvider = ({
       {children}
     </MediaQueriesContext.Provider>
   );
+};
+
+const ForDesktop = ({ children }: WithChildren) => {
+  const { isDesktop } = useMediaQueriesContext();
+
+  return <>{isDesktop ? children : null}</>;
+};
+
+const NotForDesktop = ({ children }: WithChildren) => {
+  const { isDesktop } = useMediaQueriesContext();
+
+  return <>{isDesktop ? null : children}</>;
+};
+
+export const MediaQueries = {
+  Provider: MediaQueriesProvider,
+  ForDesktop,
+  NotForDesktop,
 };
 
 export const useMediaQueriesContext = () => useContext(MediaQueriesContext);

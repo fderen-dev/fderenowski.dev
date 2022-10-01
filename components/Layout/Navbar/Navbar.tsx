@@ -3,9 +3,7 @@ import Link from "next/link";
 import classNames from "classnames";
 import ReactModal from "react-modal";
 
-import { ForDesktop, NotForDesktop } from "components/MediaQueriesComponents";
-
-import { useMediaQueriesContext } from "context/MediaQueries";
+import { MediaQueries, useMediaQueriesContext } from "context/MediaQueries";
 import { ROUTES } from "utils/constants";
 import { useIsMounted } from "utils/useIsMounted";
 
@@ -63,12 +61,12 @@ const NavbarContent = ({ toggleMobileNavigation }: NavbarContentProps) => {
   return (
     <div className={styles.navbarContent}>
       <HomeRoute />
-      <ForDesktop>
+      <MediaQueries.ForDesktop>
         <NavigationList className={styles.horizontal} />
-      </ForDesktop>
-      <NotForDesktop>
+      </MediaQueries.ForDesktop>
+      <MediaQueries.NotForDesktop>
         <button onClick={toggleMobileNavigation}>Hamburger</button>
-      </NotForDesktop>
+      </MediaQueries.NotForDesktop>
     </div>
   );
 };
