@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import classNames from "classnames";
+import classNames from "classnames/bind";
 import ReactModal from "react-modal";
 
 import { MediaQueries, useMediaQueriesContext } from "context/MediaQueries";
+import { useScrollDetectionContext } from "context/ScrollDetection";
 import { ROUTES } from "utils/constants";
 import { useIsMounted } from "utils/useIsMounted";
+import { ScrollDirection } from "utils/useScrollDetection";
 
 import GearImage from "../../../public/static/gear.svg";
 
 import styles from "./navbar.module.scss";
+
+const cx = classNames.bind(styles);
 
 interface NavigationItemProps {
   href: string;
@@ -26,11 +30,9 @@ const NavigationItem = ({
   containerClassName,
   linkClassName,
 }: NavigationItemProps) => (
-  <As className={classNames(styles.navigationItem, containerClassName)}>
+  <As className={cx(styles.navigationItem, containerClassName)}>
     <Link passHref href={href}>
-      <a className={classNames(styles.navigationItemLink, linkClassName)}>
-        {children}
-      </a>
+      <a className={cx(styles.navigationItemLink, linkClassName)}>{children}</a>
     </Link>
   </As>
 );
@@ -40,7 +42,7 @@ interface NavigationListProps {
 }
 
 const NavigationList = ({ className }: NavigationListProps) => (
-  <ul className={classNames(styles.navigationList, className)}></ul>
+  <ul className={cx(styles.navigationList, className)}></ul>
 );
 
 const HomeRoute = () => (
@@ -73,6 +75,8 @@ const NavbarContent = ({ toggleMobileNavigation }: NavbarContentProps) => {
 
 export const Navbar = () => {
   const { isDesktop } = useMediaQueriesContext();
+  const { prevIsScrolling, isScrolling, scrollDirection } =
+    useScrollDetectionContext();
   const [isMobileNavigationOpen, setMobileNavigationOpen] = useState(false);
   const isMounted = useIsMounted();
   const toggleMobileNavigation = () => setMobileNavigationOpen((prev) => !prev);
@@ -81,9 +85,15 @@ export const Navbar = () => {
     setMobileNavigationOpen((prev) => (prev && isDesktop ? false : prev));
   }, [isDesktop]);
 
+  const hidden =
+    (isScrolling && scrollDirection === ScrollDirection.Down) ||
+    (prevIsScrolling &&
+      !isScrolling &&
+      scrollDirection === ScrollDirection.Down);
+
   return (
     <>
-      <nav className={styles.navbar}>
+      <nav className={cx(styles.navbar, { hidden })}>
         {isMounted && (
           <NavbarContent toggleMobileNavigation={toggleMobileNavigation} />
         )}

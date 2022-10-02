@@ -1,15 +1,10 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 
 import {
+  initialScrollData,
   ScrollData,
-  ScrollDirection,
   useScrollDetection,
 } from "utils/useScrollDetection";
-
-const initialScrollData: ScrollData = {
-  scrollDirection: ScrollDirection.Down,
-  isScrolling: false,
-};
 
 const ScrollDetectionContext = createContext<ScrollData>(initialScrollData);
 
@@ -18,10 +13,21 @@ export const ScrollDetectionProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const scrollInfo = useScrollDetection(100);
+  const { prevIsScrolling, isScrolling, scrollDirection } =
+    useScrollDetection(100);
+
+  // FIXME: value consumer receives is different from one passed to provider
+  const value = useMemo(
+    () => ({
+      prevIsScrolling,
+      isScrolling,
+      scrollDirection,
+    }),
+    [prevIsScrolling, isScrolling, scrollDirection]
+  );
 
   return (
-    <ScrollDetectionContext.Provider value={scrollInfo}>
+    <ScrollDetectionContext.Provider value={value}>
       {children}
     </ScrollDetectionContext.Provider>
   );

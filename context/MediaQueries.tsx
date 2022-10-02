@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 
 import { WithChildren } from "utils/types";
 import { useMinWidthMediaQuery } from "utils/useMinWidthMediaQuery";
@@ -16,8 +16,15 @@ interface MediaQueriesProviderProps {
 const MediaQueriesProvider = ({ children }: MediaQueriesProviderProps) => {
   const isDesktop = useMinWidthMediaQuery(992);
 
+  const value = useMemo(
+    () => ({
+      isDesktop,
+    }),
+    [isDesktop]
+  );
+
   return (
-    <MediaQueriesContext.Provider value={{ isDesktop }}>
+    <MediaQueriesContext.Provider value={value}>
       {children}
     </MediaQueriesContext.Provider>
   );

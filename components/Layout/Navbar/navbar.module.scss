@@ -11,6 +11,11 @@ $logo-height: calc(vars.$navbar-height - 2 * vars.$spacing-small);
   height: vars.$navbar-height;
   padding: vars.$spacing-small;
   background-color: vars.$c-background-yellow;
+  transition: top ease-in 0.3s;
+
+  &.hidden {
+    top: calc(0px - vars.$navbar-height);
+  }
 }
 
 .navbarContent {
