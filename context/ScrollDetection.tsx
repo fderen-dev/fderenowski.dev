@@ -1,5 +1,6 @@
 import { createContext, useContext, useMemo } from "react";
 
+import { WithChildren } from "utils/types";
 import {
   initialScrollData,
   ScrollData,
@@ -8,15 +9,10 @@ import {
 
 const ScrollDetectionContext = createContext<ScrollData>(initialScrollData);
 
-export const ScrollDetectionProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const ScrollDetectionProvider = ({ children }: WithChildren) => {
   const { prevIsScrolling, isScrolling, scrollDirection } =
     useScrollDetection(100);
 
-  // FIXME: value consumer receives is different from one passed to provider
   const value = useMemo(
     () => ({
       prevIsScrolling,

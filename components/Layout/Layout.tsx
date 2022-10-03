@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import { WithChildren } from "utils/types";
+
 import { Footer } from "./Footer/Footer";
 import { Gear, Placement, ResponsivePlacement } from "./Gear/Gear";
 import { Header } from "./Header/Header";
@@ -13,11 +15,7 @@ const RESPONSIVE_GEAR_PLACEMENT: ResponsivePlacement = {
   desktop: DESKTOP_GEAR_PLACEMENT,
 };
 
-interface MainProps {
-  children: React.ReactNode;
-}
-
-const Main = ({ children }: MainProps) => (
+const Main = ({ children }: WithChildren) => (
   <main className={styles.main}>
     <div className={styles.transition} />
     <div className={styles.contentWrapper}>

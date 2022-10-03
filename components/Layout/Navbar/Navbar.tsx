@@ -6,6 +6,7 @@ import ReactModal from "react-modal";
 import { MediaQueries, useMediaQueriesContext } from "context/MediaQueries";
 import { useScrollDetectionContext } from "context/ScrollDetection";
 import { ROUTES } from "utils/constants";
+import { WithChildren } from "utils/types";
 import { useIsMounted } from "utils/useIsMounted";
 import { ScrollDirection } from "utils/useScrollDetection";
 
@@ -15,9 +16,8 @@ import styles from "./navbar.module.scss";
 
 const cx = classNames.bind(styles);
 
-interface NavigationItemProps {
+interface NavigationItemProps extends WithChildren {
   href: string;
-  children: React.ReactNode;
   As?: "li" | "div" | "span";
   containerClassName?: string;
   linkClassName?: string;
@@ -77,19 +77,20 @@ export const Navbar = () => {
   const { isDesktop } = useMediaQueriesContext();
   const { prevIsScrolling, isScrolling, scrollDirection } =
     useScrollDetectionContext();
-  const [isMobileNavigationOpen, setMobileNavigationOpen] = useState(false);
   const isMounted = useIsMounted();
-  const toggleMobileNavigation = () => setMobileNavigationOpen((prev) => !prev);
 
-  useEffect(() => {
-    setMobileNavigationOpen((prev) => (prev && isDesktop ? false : prev));
-  }, [isDesktop]);
+  const [isMobileNavigationOpen, setMobileNavigationOpen] = useState(false);
+  const toggleMobileNavigation = () => setMobileNavigationOpen((prev) => !prev);
 
   const hidden =
     (isScrolling && scrollDirection === ScrollDirection.Down) ||
     (prevIsScrolling &&
       !isScrolling &&
       scrollDirection === ScrollDirection.Down);
+
+  useEffect(() => {
+    setMobileNavigationOpen((prev) => (prev && isDesktop ? false : prev));
+  }, [isDesktop]);
 
   return (
     <>
