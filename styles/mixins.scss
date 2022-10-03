@@ -1,10 +1,12 @@
+@use "./variables.scss" as vars;
+
 @mixin min-width($size) {
   @media screen and (min-width: $size) {
     @content;
   }
 }
 
-@mixin underline-on-hover($underline-color: vars.$c-dirty-brown) {
+@mixin underline-on-hover($underline-color: vars.$c-link-active) {
   position: relative;
 
   &::after {
@@ -15,7 +17,7 @@
     height: 2px;
     background-color: $underline-color;
     content: "";
-    transition: width ease-in 0.3s;
+    @include link-transition(width);
   }
 
   &:hover,
@@ -28,4 +30,13 @@
 
 @mixin link-transition($transition-property: color) {
   transition: $transition-property ease-in 0.3s;
+}
+
+@mixin hoverable-icon($transition-property: fill, $value: vars.$c-link-active) {
+  @include link-transition($transition-property);
+
+  &:hover,
+  &:focus {
+    #{$transition-property}: $value;
+  }
 }
