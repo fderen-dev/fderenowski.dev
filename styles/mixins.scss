@@ -32,11 +32,28 @@
   transition: $transition-property ease-in 0.3s;
 }
 
-@mixin hoverable-icon($transition-property: fill, $value: vars.$c-link-active) {
-  @include link-transition($transition-property);
+@mixin hoverable-icon(
+  $transition-property: fill,
+  $transition-value: vars.$c-link-active,
+  $secondary-transition-property: null,
+  $secondary-transition-value: null
+) {
+  @if $secondary-transition-property and $secondary-transition-value {
+    transition: $transition-property, $secondary-transition-property;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
 
-  &:hover,
-  &:focus {
-    #{$transition-property}: $value;
+    &:hover,
+    &:focus {
+      #{$transition-property}: $transition-value;
+      #{$secondary-transition-property}: $secondary-transition-value;
+    }
+  } @else {
+    @include link-transition($transition-property);
+
+    &:hover,
+    &:focus {
+      #{$transition-property}: $transition-value;
+    }
   }
 }

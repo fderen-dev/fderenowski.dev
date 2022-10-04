@@ -28,7 +28,12 @@ $logo-height: calc(vars.$navbar-height - 2 * vars.$spacing-small);
     .logo {
       height: $logo-height;
       max-height: 100%;
-      @include mixins.hoverable-icon;
+      @include mixins.hoverable-icon(
+        fill,
+        vars.$c-link-active,
+        transform,
+        rotate(360deg)
+      );
     }
   }
 }
@@ -46,5 +51,11 @@ $logo-height: calc(vars.$navbar-height - 2 * vars.$spacing-small);
 
   &.vertical {
     flex-direction: column;
+  }
+}
+
+.navigationItemLink {
+  &.undelineOnHover {
+    @include mixins.underline-on-hover;
   }
 }

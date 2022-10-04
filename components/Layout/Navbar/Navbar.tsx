@@ -19,6 +19,7 @@ const cx = classNames.bind(styles);
 interface NavigationItemProps extends WithChildren {
   href: string;
   As?: "li" | "div" | "span";
+  disableUnderline?: boolean;
   containerClassName?: string;
   linkClassName?: string;
 }
@@ -27,12 +28,19 @@ const NavigationItem = ({
   href,
   children,
   As = "li",
+  disableUnderline,
   containerClassName,
   linkClassName,
 }: NavigationItemProps) => (
   <As className={cx(styles.navigationItem, containerClassName)}>
     <Link passHref href={href}>
-      <a className={cx(styles.navigationItemLink, linkClassName)}>{children}</a>
+      <a
+        className={cx(styles.navigationItemLink, linkClassName, {
+          undelineOnHover: !disableUnderline,
+        })}
+      >
+        {children}
+      </a>
     </Link>
   </As>
 );
@@ -42,11 +50,17 @@ interface NavigationListProps {
 }
 
 const NavigationList = ({ className }: NavigationListProps) => (
-  <ul className={cx(styles.navigationList, className)}></ul>
+  <ul className={cx(styles.navigationList, className)}>
+    <NavigationItem href="/about">About</NavigationItem>
+    <NavigationItem href="/blog">Blog</NavigationItem>
+    <NavigationItem href="/portfolio">Portfolio</NavigationItem>
+    <NavigationItem href="/contat">Contact</NavigationItem>
+  </ul>
 );
 
 const HomeRoute = () => (
   <NavigationItem
+    disableUnderline
     As="span"
     href={ROUTES.HOME}
     containerClassName={styles.homeRoute}

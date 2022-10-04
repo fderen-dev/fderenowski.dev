@@ -12,6 +12,7 @@ body {
   min-width: map.get(vars.$media, "min");
   min-height: 100vh;
   background-color: vars.$c-background-yellow;
+  color: vars.$c-font;
   font-family: Mitr, sans-serif;
   font-size: vars.$fs-mobile-body;
   overflow-x: hidden;
@@ -64,12 +65,14 @@ h3 {
 
 a {
   position: relative;
+  color: inherit;
   font-weight: vars.$fw-medium;
+  text-decoration: none;
   @include mixins.link-transition;
 
   &:hover,
   &:focus {
-    color: vars.$c-dirty-brown;
+    color: vars.$c-link-active;
     cursor: pointer;
   }
 }
