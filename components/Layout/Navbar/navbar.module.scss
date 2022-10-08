@@ -14,8 +14,7 @@ $horizontal-list-max-gap: 50px;
   width: 100%;
   height: vars.$navbar-height;
   justify-content: center;
-  padding: vars.$spacing-small;
-  margin: 0 vars.$spacing-mobile;
+  padding: vars.$spacing-small 0;
   background-color: vars.$c-background-yellow;
   transition: top ease-in 0.3s;
 
@@ -30,6 +29,8 @@ $horizontal-list-max-gap: 50px;
   max-width: map.get(vars.$media, "max");
   height: 100%;
   align-items: center;
+  justify-content: space-between;
+  margin: 0 vars.$spacing-mobile;
 
   .homeRoute {
     .logo {
@@ -45,10 +46,35 @@ $horizontal-list-max-gap: 50px;
   }
 }
 
+.mobileNavigation {
+  .mobileNavigationOverlay {
+    position: fixed;
+    top: vars.$navbar-height;
+    display: flex;
+    width: 100%;
+    height: calc(100% - vars.$navbar-height);
+    align-items: center;
+    justify-content: center;
+    background-color: vars.$c-background-yellow;
+  }
+
+  .mobileNavigationContent {
+    position: relative;
+    padding: 0;
+    border: none;
+    margin: 0;
+    margin-top: calc(0px - vars.$navbar-height);
+    background: unset;
+    border-radius: unset;
+    inset: unset;
+  }
+}
+
 .navigationList {
   display: flex;
   height: 100%;
   padding: 0;
+  margin: 0;
   list-style-type: none;
 
   &.horizontal {
@@ -59,13 +85,15 @@ $horizontal-list-max-gap: 50px;
   }
 
   &.vertical {
+    height: auto;
     flex-direction: column;
+    row-gap: clamp(vars.$spacing-small, 5vh, vars.$spacing-large);
   }
 }
 
 .navigationItemLink {
   font-family: Exo, sans-serif;
-  font-size: vars.$fs-desktop-navigation-item;
+  font-size: vars.$fs-mobile-navigation-item;
   font-weight: vars.$fw-bold;
   letter-spacing: 0.5rem;
   text-transform: uppercase;
@@ -76,7 +104,12 @@ $horizontal-list-max-gap: 50px;
 }
 
 @include mixins.min-width(map.get(vars.$media, "laptop")) {
-  .navbar {
+  .navbarContent {
+    justify-content: flex-start;
     margin: 0 vars.$spacing-desktop;
+  }
+
+  .navigationItemLink {
+    font-size: vars.$fs-desktop-navigation-item;
   }
 }

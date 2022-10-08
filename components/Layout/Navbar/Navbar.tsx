@@ -108,12 +108,23 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className={cx(styles.navbar, { hidden })}>
+      <nav
+        className={cx(styles.navbar, {
+          hidden: !isMobileNavigationOpen ? hidden : false,
+        })}
+      >
         {isMounted && (
           <NavbarContent toggleMobileNavigation={toggleMobileNavigation} />
         )}
       </nav>
-      <ReactModal isOpen={isMobileNavigationOpen}>
+      <ReactModal
+        preventScroll
+        isOpen={isMobileNavigationOpen}
+        onRequestClose={() => setMobileNavigationOpen(false)}
+        portalClassName={styles.mobileNavigation}
+        overlayClassName={styles.mobileNavigationOverlay}
+        className={styles.mobileNavigationContent}
+      >
         <NavigationList className={styles.vertical} />
       </ReactModal>
     </>
