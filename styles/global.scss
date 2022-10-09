@@ -1,8 +1,9 @@
 /* stylelint-disable selector-id-pattern */
 @use "sass:map";
-@use "styles/variables.scss" as vars;
-@use "styles/mixins.scss";
+@use "variables.scss" as vars;
+@use "mixins.scss";
 @import "reset";
+@import "hamburgers/hamburgers";
 
 html {
   font-size: 62.5%;

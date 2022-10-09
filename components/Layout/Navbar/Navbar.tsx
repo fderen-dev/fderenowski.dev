@@ -73,10 +73,14 @@ const HomeRoute = () => (
 );
 
 interface NavbarContentProps {
+  isMobileNavigationOpen: Boolean;
   toggleMobileNavigation: () => void;
 }
 
-const NavbarContent = ({ toggleMobileNavigation }: NavbarContentProps) => {
+const NavbarContent = ({
+  isMobileNavigationOpen,
+  toggleMobileNavigation,
+}: NavbarContentProps) => {
   return (
     <div className={styles.navbarContent}>
       <HomeRoute />
@@ -84,7 +88,17 @@ const NavbarContent = ({ toggleMobileNavigation }: NavbarContentProps) => {
         <NavigationList className={styles.horizontal} />
       </MediaQueries.ForDesktop>
       <MediaQueries.NotForDesktop>
-        <button onClick={toggleMobileNavigation}>Hamburger</button>
+        <button
+          onClick={toggleMobileNavigation}
+          className={cx("hamburger hamburger--spin", {
+            ["is-active"]: isMobileNavigationOpen,
+          })}
+          type="button"
+        >
+          <span className="hamburger-box">
+            <span className="hamburger-inner"></span>
+          </span>
+        </button>
       </MediaQueries.NotForDesktop>
     </div>
   );
@@ -117,7 +131,10 @@ export const Navbar = () => {
         })}
       >
         {isMounted && (
-          <NavbarContent toggleMobileNavigation={toggleMobileNavigation} />
+          <NavbarContent
+            isMobileNavigationOpen={isMobileNavigationOpen}
+            toggleMobileNavigation={toggleMobileNavigation}
+          />
         )}
       </nav>
       <ReactModal

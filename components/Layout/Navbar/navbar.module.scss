@@ -2,7 +2,7 @@
 @use "styles/mixins.scss";
 @use "styles/variables.scss" as vars;
 
-$logo-height: calc(vars.$navbar-height - 2 * vars.$spacing-small);
+$logo-height: 40px;
 $horizontal-list-max-gap: 50px;
 
 .navbar {
