@@ -1,7 +1,7 @@
-import GearImage from "../../../public/static/gear.svg";
-import GithubIcon from "../../../public/static/github.svg";
-import LinkedInIcon from "../../../public/static/linkedin.svg";
-import MailIcon from "../../../public/static/mail.svg";
+import GearImage from "public/static/gear.svg";
+import GithubIcon from "public/static/github.svg";
+import LinkedInIcon from "public/static/linkedin.svg";
+import MailIcon from "public/static/mail.svg";
 
 import styles from "./footer.module.scss";
 
