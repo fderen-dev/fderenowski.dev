@@ -56,6 +56,16 @@ $horizontal-list-max-gap: 50px;
     align-items: center;
     justify-content: center;
     background-color: vars.$c-background-yellow;
+    opacity: 0;
+    transition: opacity #{vars.$modal-close-timeout-ms}ms ease-in-out;
+  }
+
+  .overlayAfterOpen {
+    opacity: 1;
+  }
+
+  .overlayBeforeClose {
+    opacity: 0;
   }
 
   .mobileNavigationContent {
@@ -97,6 +107,7 @@ $horizontal-list-max-gap: 50px;
   font-weight: vars.$fw-bold;
   letter-spacing: 0.5rem;
   text-transform: uppercase;
+  user-select: none;
 
   &.undelineOnHover {
     @include mixins.underline-on-hover;

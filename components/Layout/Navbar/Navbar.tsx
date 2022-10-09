@@ -10,9 +10,12 @@ import { WithChildren } from "utils/types";
 import { useIsMounted } from "utils/useIsMounted";
 import { ScrollDirection } from "utils/useScrollDetection";
 
-import GearImage from "../../../public/static/gear.svg";
+import GearImage from "public/static/gear.svg";
 
 import styles from "./navbar.module.scss";
+import variables from "styles/exports.module.scss";
+
+const modalCloseTimeoutMs = parseInt(variables.MODAL_CLOSE_TIMEOUT_MS, 10);
 
 const cx = classNames.bind(styles);
 
@@ -119,10 +122,15 @@ export const Navbar = () => {
       </nav>
       <ReactModal
         preventScroll
-        isOpen={isMobileNavigationOpen}
+        isOpen={isMobileNavigationOpen && !isDesktop}
         onRequestClose={() => setMobileNavigationOpen(false)}
         portalClassName={styles.mobileNavigation}
-        overlayClassName={styles.mobileNavigationOverlay}
+        overlayClassName={{
+          base: styles.mobileNavigationOverlay,
+          afterOpen: styles.overlayAfterOpen,
+          beforeClose: styles.overlayBeforeClose,
+        }}
+        closeTimeoutMS={modalCloseTimeoutMs}
         className={styles.mobileNavigationContent}
       >
         <NavigationList className={styles.vertical} />
