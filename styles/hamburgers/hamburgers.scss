@@ -1,0 +1,31 @@
+@charset "UTF-8";
+@use "styles/variables.scss" as vars;
+
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+$hamburger-padding-x: 0 !default;
+$hamburger-padding-y: 0 !default;
+$hamburger-layer-width: 35px !default;
+$hamburger-layer-height: 4px !default;
+$hamburger-layer-spacing: 6px !default;
+$hamburger-layer-color: vars.$c-pitch-black !default;
+$hamburger-layer-border-radius: 4px !default;
+$hamburger-hover-opacity: 1 !default;
+$hamburger-active-layer-color: vars.$c-pitch-black !default;
+$hamburger-hover-color: vars.$c-link-active !default;
+$hamburger-active-hover-opacity: $hamburger-hover-opacity !default;
+
+// To use CSS filters as the hover effect instead of opacity,
+// set $hamburger-hover-use-filter as true and
+// change the value of $hamburger-hover-filter accordingly.
+$hamburger-hover-use-filter: false !default;
+$hamburger-hover-filter: opacity(50%) !default;
+$hamburger-active-hover-filter: $hamburger-hover-filter !default;
+$hamburger-types: (spin) !default;
+@import "base";
+@import "types/spin";

@@ -1,0 +1,127 @@
+@use "sass:map";
+@use "styles/mixins.scss";
+@use "styles/variables.scss" as vars;
+
+$logo-height: 40px;
+$horizontal-list-max-gap: 50px;
+
+.navbar {
+  position: fixed;
+  z-index: vars.$z-index-navbar;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: vars.$navbar-height;
+  justify-content: center;
+  padding: vars.$spacing-small 0;
+  background-color: vars.$c-background-yellow;
+  transition: top ease-in 0.3s;
+
+  &.hidden {
+    top: calc(0px - vars.$navbar-height);
+  }
+}
+
+.navbarContent {
+  display: flex;
+  width: 100%;
+  max-width: map.get(vars.$media, "max");
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 vars.$spacing-mobile;
+
+  .homeRoute {
+    .logo {
+      height: $logo-height;
+      max-height: 100%;
+      @include mixins.hoverable-icon(
+        fill,
+        vars.$c-link-active,
+        transform,
+        rotate(360deg)
+      );
+    }
+  }
+}
+
+.mobileNavigation {
+  .mobileNavigationOverlay {
+    position: fixed;
+    top: vars.$navbar-height;
+    display: flex;
+    width: 100%;
+    height: calc(100% - vars.$navbar-height);
+    align-items: center;
+    justify-content: center;
+    background-color: vars.$c-background-yellow;
+    opacity: 0;
+    transition: opacity #{vars.$modal-close-timeout-ms}ms ease-in-out;
+  }
+
+  .overlayAfterOpen {
+    opacity: 1;
+  }
+
+  .overlayBeforeClose {
+    opacity: 0;
+  }
+
+  .mobileNavigationContent {
+    position: relative;
+    padding: 0;
+    border: none;
+    margin: 0;
+    margin-top: calc(0px - vars.$navbar-height);
+    background: unset;
+    border-radius: unset;
+    inset: unset;
+    outline: none;
+  }
+}
+
+.navigationList {
+  display: flex;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+
+  &.horizontal {
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 2vw;
+    column-gap: clamp(1vw, 3vw, $horizontal-list-max-gap);
+  }
+
+  &.vertical {
+    height: auto;
+    flex-direction: column;
+    row-gap: clamp(vars.$spacing-small, 5vh, vars.$spacing-large);
+  }
+}
+
+.navigationItemLink {
+  font-family: Exo, sans-serif;
+  font-size: vars.$fs-mobile-navigation-item;
+  font-weight: vars.$fw-bold;
+  letter-spacing: 0.5rem;
+  text-transform: uppercase;
+  user-select: none;
+
+  &.undelineOnHover {
+    @include mixins.underline-on-hover;
+  }
+}
+
+@include mixins.min-width(map.get(vars.$media, "laptop")) {
+  .navbarContent {
+    justify-content: flex-start;
+    margin: 0 vars.$spacing-desktop;
+  }
+
+  .navigationItemLink {
+    font-size: vars.$fs-desktop-navigation-item;
+  }
+}

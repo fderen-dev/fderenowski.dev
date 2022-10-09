@@ -4,7 +4,6 @@ import Head from "next/head";
 import { Layout } from "components/Layout/Layout";
 
 const Home: NextPage = () => {
-  console.log("render");
   return (
     <>
       <Head>

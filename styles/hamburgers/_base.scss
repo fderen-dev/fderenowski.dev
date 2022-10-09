@@ -1,0 +1,96 @@
+/* stylelint-disable selector-class-pattern */
+@use "sass:math";
+
+.hamburger-inner {
+  top: 50%;
+  display: block;
+  margin-top: math.div($hamburger-layer-height, -2);
+
+  &,
+  &::before,
+  &::after {
+    position: absolute;
+    width: $hamburger-layer-width;
+    height: $hamburger-layer-height;
+    background-color: $hamburger-layer-color;
+    border-radius: $hamburger-layer-border-radius;
+    transition-duration: 0.15s;
+    transition-property: transform;
+    transition-timing-function: ease;
+  }
+
+  &::before,
+  &::after {
+    display: block;
+    content: "";
+  }
+
+  &::before {
+    top: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+  }
+
+  &::after {
+    bottom: ($hamburger-layer-spacing + $hamburger-layer-height) * -1;
+  }
+}
+
+.hamburger {
+  display: inline-block;
+  overflow: visible;
+  padding: $hamburger-padding-y $hamburger-padding-x;
+  border: 0;
+  margin: 0;
+  background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  // Normalize (<button>)
+  font: inherit;
+  text-transform: none;
+  transition-duration: 0.15s;
+  transition-property: opacity, filter;
+  transition-timing-function: linear;
+
+  &:hover {
+    @if $hamburger-hover-use-filter == true {
+      filter: $hamburger-hover-filter;
+    } @else {
+      opacity: $hamburger-hover-opacity;
+    }
+
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      background-color: $hamburger-hover-color;
+    }
+  }
+
+  &.is-active {
+    .hamburger-inner,
+    .hamburger-inner::before,
+    .hamburger-inner::after {
+      background-color: $hamburger-active-layer-color;
+    }
+
+    &:hover {
+      @if $hamburger-hover-use-filter == true {
+        filter: $hamburger-active-hover-filter;
+      } @else {
+        opacity: $hamburger-active-hover-opacity;
+      }
+
+      .hamburger-inner,
+      .hamburger-inner::before,
+      .hamburger-inner::after {
+        background-color: $hamburger-hover-color;
+      }
+    }
+  }
+}
+
+.hamburger-box {
+  position: relative;
+  display: inline-block;
+  width: $hamburger-layer-width;
+  height: $hamburger-layer-height * 3 + $hamburger-layer-spacing * 2;
+}

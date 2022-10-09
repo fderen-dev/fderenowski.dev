@@ -1,0 +1,5 @@
+@use "variables.scss" as vars;
+
+:export {
+  MODAL_CLOSE_TIMEOUT_MS: vars.$modal-close-timeout-ms;
+}

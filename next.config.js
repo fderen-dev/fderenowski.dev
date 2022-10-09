@@ -3,10 +3,10 @@ const StylelintPlugin = require("stylelint-webpack-plugin");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   eslint: {
-    dirs: ["pages/", "components/", "src/", "utils/"],
+    dirs: ["pages", "components", "context", "utils", "slices"],
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],

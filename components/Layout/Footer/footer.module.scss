@@ -57,12 +57,7 @@ $desktop-icon-size: 32px;
   .icon {
     width: $icon-size;
     height: $icon-size;
-    @include mixins.link-transition(fill);
-
-    &:hover,
-    &:focus {
-      fill: vars.$c-dirty-brown;
-    }
+    @include mixins.hoverable-icon;
   }
 }
 

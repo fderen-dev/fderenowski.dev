@@ -15,6 +15,7 @@ $z-index-heading: 1;
 $z-index-foreground: 2;
 $z-index-gear: 3;
 $z-index-content: 4;
+$z-index-navbar: 5;
 $z-index-modal: 999;
 
 /* font */
@@ -31,6 +32,7 @@ $fs-desktop-input: 1.8rem;
 $fs-desktop-h1: 3.5rem;
 $fs-desktop-h2: 3rem;
 $fs-desktop-h3: 2.5rem;
+$fs-desktop-navigation-item: 1.7rem;
 
 // size mobile
 $fs-mobile-body: 1.6rem;
@@ -39,6 +41,7 @@ $fs-mobile-input: 1.6rem;
 $fs-mobile-h1: 2.1rem;
 $fs-mobile-h2: 1.8rem;
 $fs-mobile-h3: 1.6rem;
+$fs-mobile-navigation-item: 2.5rem;
 
 // colors
 $c-area-51-gray: #515151;
@@ -48,6 +51,11 @@ $c-warm-yellow: #ffca1e;
 $c-vanilla-yellow: #ffeb54;
 $c-pitch-black: #000;
 $c-dirty-brown: #6c4317;
+$c-snow-white: #fff;
+$c-background-yellow: $c-warm-yellow;
+$c-background-gray: $c-moth-gray;
+$c-link-active: $c-snow-white;
+$c-font: $c-pitch-black;
 
 // spacings
 $spacing-small: 8px;
@@ -55,3 +63,9 @@ $spacing-medium: 16px;
 $spacing-large: 32px;
 $spacing-mobile: $spacing-medium;
 $spacing-desktop: $spacing-large;
+
+// components
+$navbar-height: 64px;
+
+// modal
+$modal-close-timeout-ms: 300;

@@ -1,8 +1,9 @@
 /* stylelint-disable selector-id-pattern */
 @use "sass:map";
-@use "styles/variables.scss" as vars;
-@use "styles/mixins.scss";
+@use "variables.scss" as vars;
+@use "mixins.scss";
 @import "reset";
+@import "hamburgers/hamburgers";
 
 html {
   font-size: 62.5%;
@@ -11,7 +12,8 @@ html {
 body {
   min-width: map.get(vars.$media, "min");
   min-height: 100vh;
-  background-color: vars.$c-warm-yellow;
+  background-color: vars.$c-background-yellow;
+  color: vars.$c-font;
   font-family: Mitr, sans-serif;
   font-size: vars.$fs-mobile-body;
   overflow-x: hidden;
@@ -19,7 +21,7 @@ body {
 
 #__next {
   height: 100%;
-  background-color: vars.$c-moth-gray;
+  background-color: vars.$c-background-gray;
 }
 
 h1,
@@ -64,12 +66,20 @@ h3 {
 
 a {
   position: relative;
+  color: inherit;
   font-weight: vars.$fw-medium;
+  text-decoration: none;
   @include mixins.link-transition;
 
   &:hover,
   &:focus {
-    color: vars.$c-dirty-brown;
+    color: vars.$c-link-active;
     cursor: pointer;
   }
 }
+
+/* stylelint-disable selector-class-pattern */
+.ReactModal__Body--open {
+  overflow: hidden;
+}
+/* stylelint-enable selector-class-pattern */

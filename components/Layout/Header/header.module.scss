@@ -3,7 +3,7 @@
 @use "styles/animations.scss" as anims;
 
 .container {
-  background-color: vars.$c-warm-yellow;
+  background-color: vars.$c-background-yellow;
 }
 
 .header {
@@ -13,7 +13,7 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  background-color: vars.$c-warm-yellow;
+  background-color: vars.$c-background-yellow;
 }
 
 .headingContainer {
