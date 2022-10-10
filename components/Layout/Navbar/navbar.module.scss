@@ -72,10 +72,10 @@ $horizontal-list-max-gap: 50px;
     position: relative;
     padding: 0;
     border: none;
+    border-radius: unset;
     margin: 0;
     margin-top: calc(0px - vars.$navbar-height);
     background: unset;
-    border-radius: unset;
     inset: unset;
     outline: none;
   }
