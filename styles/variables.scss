@@ -63,6 +63,10 @@ $spacing-medium: 16px;
 $spacing-large: 32px;
 $spacing-mobile: $spacing-medium;
 $spacing-desktop: $spacing-large;
+$spacing-gutters-desktop: $spacing-large;
+$spacing-gutters-mobile: $spacing-medium;
+$spacing-grid-gap-desktop: 20px;
+$spacing-grid-gap-mobile: 10px;
 
 // components
 $navbar-height: 64px;

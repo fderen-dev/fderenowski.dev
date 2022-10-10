@@ -1,0 +1,9 @@
+.section {
+  &.left {
+    grid-column: 1/5;
+  }
+
+  &.right {
+    grid-column: 6/10;
+  }
+}

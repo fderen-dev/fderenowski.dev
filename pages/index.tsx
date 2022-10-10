@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 
 import { Layout } from "components/Layout/Layout";
+import { Section } from "components/Layout/Section/Section";
 
 const Home: NextPage = () => {
   return (
@@ -10,7 +11,7 @@ const Home: NextPage = () => {
         <title>fderenowski.dev - Home</title>
       </Head>
       <Layout>
-        <section style={{ marginTop: "-1em" }}>
+        <Section left>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -26,6 +27,8 @@ const Home: NextPage = () => {
             nisl. Nulla ut hendrerit dolor. Praesent tristique vel lectus non
             dictum.
           </p>
+        </Section>
+        <Section right>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -41,6 +44,8 @@ const Home: NextPage = () => {
             nisl. Nulla ut hendrerit dolor. Praesent tristique vel lectus non
             dictum.
           </p>
+        </Section>
+        <Section left>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -56,6 +61,8 @@ const Home: NextPage = () => {
             nisl. Nulla ut hendrerit dolor. Praesent tristique vel lectus non
             dictum.
           </p>
+        </Section>
+        <Section right>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -71,7 +78,7 @@ const Home: NextPage = () => {
             nisl. Nulla ut hendrerit dolor. Praesent tristique vel lectus non
             dictum.
           </p>
-        </section>
+        </Section>
       </Layout>
     </>
   );
