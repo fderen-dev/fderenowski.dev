@@ -1,11 +1,10 @@
 // breakpoints
-$min-width: 275px;
+$min-width: 320px;
 $max-width: 1920px;
 $media: (
   min: $min-width,
   tablet: 768px,
-  laptop: 992px,
-  large-screen: 1200px,
+  desktop: 1366px,
   max: $max-width,
 );
 

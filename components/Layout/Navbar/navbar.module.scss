@@ -115,7 +115,7 @@ $horizontal-list-max-gap: 50px;
   }
 }
 
-@include mixins.min-width(map.get(vars.$media, "laptop")) {
+@include mixins.min-width(map.get(vars.$media, "tablet")) {
   .navbarContent {
     justify-content: flex-start;
     margin: 0 vars.$spacing-desktop;
