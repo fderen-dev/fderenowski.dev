@@ -3,8 +3,15 @@ import { createContext, useContext, useMemo } from "react";
 import { WithChildren } from "utils/types";
 import { useMinWidthMediaQuery } from "utils/useMinWidthMediaQuery";
 
+import variables from "styles/exports.module.scss";
+
+const minDesktopWidth = parseInt(variables.MIN_DESKTOP_WIDTH);
+const minTabletWidth = parseInt(variables.MIN_TABLET_WIDTH);
+
 interface MediaQueriesValue {
   isDesktop: boolean;
+  isTablet: boolean;
+  isTabletAndAbove: boolean;
 }
 
 const MediaQueriesContext = createContext<MediaQueriesValue>(undefined!);
@@ -14,13 +21,20 @@ interface MediaQueriesProviderProps {
 }
 
 const MediaQueriesProvider = ({ children }: MediaQueriesProviderProps) => {
-  const isDesktop = useMinWidthMediaQuery(992);
+  const isTablet = useMinWidthMediaQuery(
+    minTabletWidth,
+    minDesktopWidth - 0.01
+  );
+  const isTabletAndAbove = useMinWidthMediaQuery(minTabletWidth);
+  const isDesktop = useMinWidthMediaQuery(minDesktopWidth);
 
   const value = useMemo(
     () => ({
+      isTablet,
+      isTabletAndAbove,
       isDesktop,
     }),
-    [isDesktop]
+    [isTablet, isTabletAndAbove, isDesktop]
   );
 
   return (
@@ -28,6 +42,18 @@ const MediaQueriesProvider = ({ children }: MediaQueriesProviderProps) => {
       {children}
     </MediaQueriesContext.Provider>
   );
+};
+
+const ForMobile = ({ children }: WithChildren) => {
+  const { isTabletAndAbove } = useMediaQueriesContext();
+
+  return <>{isTabletAndAbove ? null : children}</>;
+};
+
+const ForTabletAndAbove = ({ children }: WithChildren) => {
+  const { isTabletAndAbove } = useMediaQueriesContext();
+
+  return <>{isTabletAndAbove ? children : null}</>;
 };
 
 const ForDesktop = ({ children }: WithChildren) => {
@@ -44,6 +70,8 @@ const NotForDesktop = ({ children }: WithChildren) => {
 
 export const MediaQueries = {
   Provider: MediaQueriesProvider,
+  ForMobile,
+  ForTabletAndAbove,
   ForDesktop,
   NotForDesktop,
 };

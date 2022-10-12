@@ -84,10 +84,7 @@ const NavbarContent = ({
   return (
     <div className={styles.navbarContent}>
       <HomeRoute />
-      <MediaQueries.ForDesktop>
-        <NavigationList className={styles.horizontal} />
-      </MediaQueries.ForDesktop>
-      <MediaQueries.NotForDesktop>
+      <MediaQueries.ForMobile>
         <button
           onClick={toggleMobileNavigation}
           className={cx("hamburger hamburger--spin", {
@@ -99,7 +96,10 @@ const NavbarContent = ({
             <span className="hamburger-inner"></span>
           </span>
         </button>
-      </MediaQueries.NotForDesktop>
+      </MediaQueries.ForMobile>
+      <MediaQueries.ForTabletAndAbove>
+        <NavigationList className={styles.horizontal} />
+      </MediaQueries.ForTabletAndAbove>
     </div>
   );
 };

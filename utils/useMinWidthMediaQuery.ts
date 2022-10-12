@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 
-export const useMinWidthMediaQuery = (minWidth: number) => {
+export const useMinWidthMediaQuery = (
+  minWidthPx: number,
+  maxWidthPx?: number
+) => {
   const [isMinWidthReached, setIsMinWidthReached] = useState(false);
 
   useEffect(() => {
     const updateIsMinWidthReached = (event: MediaQueryListEvent) => {
       setIsMinWidthReached(event.matches);
     };
-    const media = window.matchMedia(`(min-width:${minWidth}px)`);
+    const minWidthQuery = `(min-width:${minWidthPx}px)`;
+    const andMaxWidthQuery = maxWidthPx
+      ? `and (max-width:${maxWidthPx}px)`
+      : "";
+    const media = window.matchMedia(`${minWidthQuery}${andMaxWidthQuery}`);
     media.addEventListener("change", updateIsMinWidthReached);
 
     if (media.matches) {
@@ -15,7 +22,7 @@ export const useMinWidthMediaQuery = (minWidth: number) => {
     }
 
     return () => media.removeEventListener("change", updateIsMinWidthReached);
-  }, [minWidth]);
+  }, [minWidthPx, maxWidthPx]);
 
   return isMinWidthReached;
 };
