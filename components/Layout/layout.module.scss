@@ -33,13 +33,11 @@
 }
 
 .content {
+  @include mixins.grid-layout;
+
   position: relative;
   z-index: vars.$z-index-foreground;
-  max-width: map.get(vars.$media, "max");
   height: inherit;
-  margin: 0 vars.$spacing-gutters-mobile;
-  gap: vars.$spacing-grid-gap-mobile;
-  grid-template-columns: repeat(4, 1fr);
 
   section p {
     position: relative;
@@ -54,18 +52,4 @@
 
 .sideMenu {
   position: sticky;
-}
-
-@include mixins.min-width(map.get(vars.$media, "laptop")) {
-  .content {
-    display: grid;
-    margin: 0 vars.$spacing-gutters-desktop;
-    gap: vars.$spacing-grid-gap-desktop;
-    grid-auto-rows: min-content;
-    grid-template-columns: repeat(12, 1fr);
-  }
-
-  .sideMenu {
-    grid-area: side;
-  }
 }

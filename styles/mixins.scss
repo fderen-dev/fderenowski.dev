@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "./variables.scss" as vars;
 
 @mixin min-width($size) {
@@ -55,5 +56,23 @@
     &:focus {
       #{$transition-property}: $transition-value;
     }
+  }
+}
+
+@mixin grid-layout() {
+  display: grid;
+  max-width: map.get(vars.$media, "max");
+  margin: 0 vars.$spacing-gutters-mobile;
+  gap: vars.$spacing-grid-gap-mobile;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include min-width(map.get(vars.$media, "tablet")) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  @include min-width(map.get(vars.$media, "desktop")) {
+    margin: 0 vars.$spacing-gutters-desktop;
+    gap: vars.$spacing-grid-gap-desktop;
+    grid-template-columns: repeat(12, 1fr);
   }
 }
