@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 import { WithChildren } from "utils/types";
 import { useMinWidthMediaQuery } from "utils/useMinWidthMediaQuery";
@@ -68,8 +68,83 @@ const NotForDesktop = ({ children }: WithChildren) => {
   return <>{isDesktop ? null : children}</>;
 };
 
+const currentBreakpointIndicatorStyle: React.CSSProperties = {
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "fixed",
+  fontSize: "22px",
+  fontWeight: "700",
+  backgroundColor: "black",
+  color: "white",
+  textTransform: "uppercase",
+  zIndex: 999,
+  cursor: "pointer",
+  overflow: "hidden",
+  userSelect: "none",
+};
+
+enum Breakpoint {
+  MOBILE = "Mobile",
+  TABLET = "Tablet",
+  DESKTOP = "Desktop",
+}
+
+function getCurrentBreakpointLabel(
+  isTablet: boolean,
+  isDesktop: boolean
+): Breakpoint {
+  if (!isTablet && !isDesktop) {
+    return Breakpoint.MOBILE;
+  }
+
+  if (isTablet) {
+    return Breakpoint.TABLET;
+  }
+
+  return Breakpoint.DESKTOP;
+}
+
+interface CurrentBreakpointProps {
+  bottom?: string;
+  right?: string;
+  opacity?: number;
+}
+
+const CurrentBreakpoint = ({
+  bottom = "10px",
+  right = "10px",
+  opacity = 0.5,
+}) => {
+  const { isTablet, isDesktop } = useMediaQueriesContext();
+  const [isMinimized, setIsMinimized] = useState(false);
+  const toggleIsMinimized = () => setIsMinimized((prev) => !prev);
+  const label = getCurrentBreakpointLabel(isTablet, isDesktop);
+
+  return (
+    <div
+      onClick={toggleIsMinimized}
+      style={{
+        ...currentBreakpointIndicatorStyle,
+        bottom,
+        right,
+        opacity,
+        maxHeight: isMinimized ? "25px" : "1000px",
+        maxWidth: isMinimized ? "25px" : "1000px",
+        padding: isMinimized ? "0" : "25px 50px",
+        borderRadius: isMinimized ? "25px" : "0",
+        width: isMinimized ? "100%" : "unset",
+        height: isMinimized ? "100%" : "unset",
+      }}
+    >
+      {isMinimized ? label[0] : label}
+    </div>
+  );
+};
+
 export const MediaQueries = {
   Provider: MediaQueriesProvider,
+  CurrentBreakpoint,
   ForMobile,
   ForTabletAndAbove,
   ForDesktop,
