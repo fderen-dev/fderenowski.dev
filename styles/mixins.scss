@@ -67,7 +67,7 @@
   grid-template-columns: repeat(4, 1fr);
 
   @include min-width(map.get(vars.$media, "tablet")) {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(8, 1fr);
   }
 
   @include min-width(map.get(vars.$media, "desktop")) {

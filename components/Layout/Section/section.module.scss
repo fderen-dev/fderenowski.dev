@@ -1,9 +1,42 @@
+@use "sass:map";
+@use "styles/mixins";
+@use "styles/variables" as vars;
+
 .section {
+  display: flex;
+  min-height: 50vh;
+  align-items: center;
+  text-align: justify;
+
   &.left {
     grid-column: 1/5;
   }
 
   &.right {
-    grid-column: 6/10;
+    grid-column: 1/5;
+  }
+}
+
+@include mixins.min-width(map.get(vars.$media, "tablet")) {
+  .section {
+    &.left {
+      grid-column: 1/7;
+    }
+
+    &.right {
+      grid-column: 4/9;
+    }
+  }
+}
+
+@include mixins.min-width(map.get(vars.$media, "desktop")) {
+  .section {
+    &.left {
+      grid-column: 1/10;
+    }
+
+    &.right {
+      grid-column: 6/13;
+    }
   }
 }
