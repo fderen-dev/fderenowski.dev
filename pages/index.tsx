@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <title>fderenowski.dev - Home</title>
       </Head>
       <Layout>
-        <Section left>
+        <Section left withIntersection header="Lorem">
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -28,7 +28,11 @@ const Home: NextPage = () => {
             dictum.
           </p>
         </Section>
-        <Section right>
+        <Section
+          right
+          withIntersection
+          header="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        >
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -45,7 +49,7 @@ const Home: NextPage = () => {
             dictum.
           </p>
         </Section>
-        <Section left>
+        <Section left withIntersection>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -62,7 +66,7 @@ const Home: NextPage = () => {
             dictum.
           </p>
         </Section>
-        <Section right>
+        <Section right withIntersection>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur

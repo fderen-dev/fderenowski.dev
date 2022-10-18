@@ -2,11 +2,21 @@
 @use "styles/mixins";
 @use "styles/variables" as vars;
 
+.section,
+.header {
+  position: relative;
+  z-index: vars.$z-index-content;
+}
+
 .section {
   display: flex;
   min-height: 50vh;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   text-align: justify;
+  transition-duration: 0.6s;
+  transition-property: filter, opacity;
+  transition-timing-function: linear;
 
   &.left {
     grid-column: 1/5;
@@ -14,6 +24,28 @@
 
   &.right {
     grid-column: 1/5;
+  }
+
+  &.outOfViewport {
+    filter: blur(100px);
+    opacity: 0;
+  }
+
+  &.inViewport {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  width: 100%;
+
+  &.left {
+    text-align: left;
+  }
+
+  &.right {
+    text-align: right;
   }
 }
 
