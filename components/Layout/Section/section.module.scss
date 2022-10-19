@@ -10,7 +10,7 @@
 
 .section {
   display: flex;
-  min-height: 50vh;
+  min-height: 70vh;
   flex-direction: column;
   justify-content: center;
   text-align: justify;
@@ -18,12 +18,31 @@
   transition-property: filter, opacity;
   transition-timing-function: linear;
 
+  > :not(h2)::before {
+    position: absolute;
+    top: -22%;
+    width: 80%;
+    height: 150%;
+    box-sizing: content-box;
+    background-color: black;
+    content: "";
+    opacity: 0.2;
+  }
+
   &.left {
     grid-column: 1/5;
+
+    > :not(h2)::before {
+      left: -2%;
+    }
   }
 
   &.right {
     grid-column: 1/5;
+
+    > :not(h2)::before {
+      right: -2%;
+    }
   }
 
   &.outOfViewport {
@@ -40,12 +59,30 @@
 .header {
   width: 100%;
 
+  &::before {
+    position: absolute;
+    z-index: vars.$z-index-text-background;
+    top: -50%;
+    left: -5%;
+    display: block;
+    width: 50%;
+    height: clamp(50%, 200%, 75px);
+    background-color: #ffca1e;
+    content: "";
+    opacity: 0.4;
+  }
+
   &.left {
     text-align: left;
   }
 
   &.right {
     text-align: right;
+  }
+
+  .headerText {
+    position: relative;
+    z-index: vars.$z-index-content;
   }
 }
 
@@ -63,12 +100,27 @@
 
 @include mixins.min-width(map.get(vars.$media, "desktop")) {
   .section {
+    > :not(h2)::before {
+      top: -22%;
+      width: 80%;
+      height: 200%;
+    }
+
     &.left {
       grid-column: 1/10;
     }
 
     &.right {
       grid-column: 6/13;
+    }
+  }
+
+  .header {
+    &::before {
+      top: -50%;
+      left: -5%;
+      width: 50%;
+      height: clamp(50%, 200%, 150px);
     }
   }
 }

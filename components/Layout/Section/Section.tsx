@@ -47,9 +47,21 @@ export const Section = ({ children, header, right, left, withIntersection, class
     return () => {};
   }, [withIntersection]);
 
-  return(
-    <section ref={containerRef} className={cx(styles.section, className, { right, left, inViewport: withIntersection && isInViewport, outOfViewport: withIntersection && !isInViewport })}>
-      {header && <h2 className={cx(styles.header, headerClassName, { right, left })}>{header}</h2>}
+  return (
+    <section
+      ref={containerRef}
+      className={cx(styles.section, className, {
+        right,
+        left,
+        inViewport: withIntersection && isInViewport,
+        outOfViewport: withIntersection && !isInViewport,
+      })}
+    >
+      {header && (
+        <h2 className={cx(styles.header, headerClassName, { right, left })}>
+          <span className={styles.headerText}>{header}</span>
+        </h2>
+      )}
       {children}
     </section>
   );
