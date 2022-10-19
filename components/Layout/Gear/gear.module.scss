@@ -1,7 +1,7 @@
 @use "styles/variables.scss" as vars;
 
 .gear {
-  position: fixed;
+  position: absolute;
   z-index: vars.$z-index-gear;
   animation-duration: 4s;
   animation-fill-mode: forwards;
