@@ -3,6 +3,7 @@
 .gear {
   position: absolute;
   z-index: vars.$z-index-gear;
+  height: auto;
   animation-duration: 4s;
   animation-fill-mode: forwards;
   animation-timing-function: linear;

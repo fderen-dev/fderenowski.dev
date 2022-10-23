@@ -10,10 +10,11 @@ $media: (
 
 // z-index
 $z-index-background: 0;
-$z-index-heading: 1;
 $z-index-foreground: 2;
 $z-index-gear: 3;
+$z-index-heading: 4;
 $z-index-text-background: 4;
+$z-index-layout: 5;
 $z-index-content: 5;
 $z-index-navbar: 6;
 $z-index-modal: 999;

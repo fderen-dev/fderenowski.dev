@@ -7,6 +7,7 @@
 }
 
 .header {
+  position: relative;
   display: flex;
   max-width: map.get(vars.$media, "max");
   height: 40vh;

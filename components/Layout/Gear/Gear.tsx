@@ -15,17 +15,18 @@ const cx = classNames.bind(styles);
 export type Placement = {
   top: string;
   left: string;
+  right: string;
 };
 
 export type ResponsivePlacement = {
-  mobiles: Placement;
-  desktop: Placement;
+  mobiles: Partial<Placement>;
+  desktop: Partial<Placement>;
 };
 
 interface GearProps {
   maxSize?: string;
   minSize?: string;
-  placement: Placement;
+  placement: Partial<Placement>;
   responsivePlacement?: ResponsivePlacement;
   className?: string;
 }
@@ -40,23 +41,23 @@ export const Gear: FC<GearProps> = ({
   const { isScrolling, scrollDirection } = useScrollDetectionContext();
   const { isDesktop } = useMediaQueriesContext();
   const isMounted = useIsMounted();
-  let { top, left } = placement;
+  let { top, left, right } = placement;
 
   if (responsivePlacement) {
     const { desktop, mobiles } = responsivePlacement;
     if (isDesktop) {
       top = desktop.top;
       left = desktop.left;
+      right = desktop.right;
     } else {
       top = mobiles.top;
       left = mobiles.left;
+      right = mobiles.right;
     }
   }
 
   return isMounted ? (
     <GearImage
-      width="100%"
-      height="100%"
       alt="Spinning gear"
       className={cx(styles.gear, className, {
         paused: !isScrolling,
@@ -67,6 +68,7 @@ export const Gear: FC<GearProps> = ({
       style={{
         top,
         left,
+        right,
         minWidth: minSize,
         minHeight: minSize,
         maxWidth: maxSize,
