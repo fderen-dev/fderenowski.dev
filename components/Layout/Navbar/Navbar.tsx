@@ -36,14 +36,15 @@ const NavigationItem = ({
   linkClassName,
 }: NavigationItemProps) => (
   <As className={cx(styles.navigationItem, containerClassName)}>
-    <Link passHref href={href}>
-      <a
-        className={cx(styles.navigationItemLink, linkClassName, {
-          undelineOnHover: !disableUnderline,
-        })}
-      >
-        {children}
-      </a>
+    <Link
+      passHref
+      href={href}
+      className={cx(styles.navigationItemLink, linkClassName, {
+        undelineOnHover: !disableUnderline,
+      })}>
+
+      {children}
+
     </Link>
   </As>
 );
