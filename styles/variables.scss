@@ -45,18 +45,21 @@ $fs-mobile-h3: 1.6rem;
 $fs-mobile-navigation-item: 2.5rem;
 
 // colors
+$c-spider-gray: #222;
 $c-area-51-gray: #515151;
 $c-moth-gray: #848383;
 $c-gru-gray: #b5b5b5;
-$c-warm-yellow: #ffca1e;
+$c-warm-yellow: #deb204;
 $c-vanilla-yellow: #ffeb54;
 $c-pitch-black: #000;
 $c-dirty-brown: #6c4317;
 $c-snow-white: #fff;
 $c-background-yellow: $c-warm-yellow;
-$c-background-gray: $c-moth-gray;
+$c-background-gray: $c-spider-gray;
 $c-link-active: $c-snow-white;
-$c-font: $c-pitch-black;
+$c-font: $c-gru-gray;
+$c-heading-font: $c-pitch-black;
+$c-footer-font: $c-pitch-black;
 
 // spacings
 $spacing-small: 8px;

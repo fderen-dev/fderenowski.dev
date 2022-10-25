@@ -5,6 +5,11 @@
 $logo-height: 40px;
 $horizontal-list-max-gap: 50px;
 
+.navbarContent,
+.mobileNavigation {
+  color: vars.$c-heading-font;
+}
+
 .navbar {
   position: fixed;
   z-index: vars.$z-index-navbar;

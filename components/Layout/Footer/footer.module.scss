@@ -10,12 +10,7 @@ $desktop-icon-size: 32px;
 .container {
   display: flex;
   justify-content: center;
-  background-color: vars.$c-moth-gray;
-  background-image: linear-gradient(
-    180deg,
-    rgb(0 0 0 / 0%) 0%,
-    rgb(255 202 30 / 100%) 95%
-  );
+  background-color: vars.$c-warm-yellow;
 }
 
 .footer {
@@ -27,6 +22,7 @@ $desktop-icon-size: 32px;
   justify-content: center;
   padding: vars.$spacing-mobile 0;
   margin: 0 vars.$spacing-mobile;
+  color: vars.$c-footer-font;
   gap: vars.$spacing-mobile;
 }
 
