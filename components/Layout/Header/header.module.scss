@@ -22,7 +22,7 @@
   position: fixed;
   z-index: vars.$z-index-heading;
   max-width: 80%;
-  margin: 0 10%;
+  margin-inline-start: min(10%, 200px);
   user-select: none;
 }
 

@@ -21,10 +21,10 @@ $horizontal-list-max-gap: 50px;
   justify-content: center;
   padding: vars.$spacing-small 0;
   background-color: vars.$c-background-yellow;
-  transition: top ease-in 0.3s;
+  transition: transform ease-in 0.3s;
 
   &.hidden {
-    top: calc(0px - vars.$navbar-height);
+    transform: translateY(calc(0px - vars.$navbar-height));
   }
 }
 
