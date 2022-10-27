@@ -1,8 +1,8 @@
-import { Gear, Placement, ResponsivePlacement } from "../Gear/Gear";
+import { Gear, Placement } from "../Gear/Gear";
 
 import styles from "./header.module.scss";
 
-const DESKTOP_GEAR_PLACEMENT: Partial<Placement> = { top: "10vh", right: "10%" };
+const DESKTOP_GEAR_PLACEMENT: Partial<Placement> = { top: "15%", right: "5%" };
 
 export const Header = () => (
   <div className={styles.container}>
@@ -13,6 +13,8 @@ export const Header = () => (
       </div>
       <Gear
         placement={DESKTOP_GEAR_PLACEMENT}
+        maxSize="70%"
+        minSize="70%"
       />
     </header>
   </div>

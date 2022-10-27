@@ -75,7 +75,7 @@
     z-index: vars.$z-index-text-background;
     display: block;
 
-    &::before {
+    &::after {
       position: absolute;
       display: block;
       width: 50%;
@@ -86,7 +86,7 @@
         rgb(0 0 0 / 0%) 100%
       );
       content: "";
-      transform: translate(-5%, -25%);
+      transform: translate(-5%, -75%);
     }
   }
 }

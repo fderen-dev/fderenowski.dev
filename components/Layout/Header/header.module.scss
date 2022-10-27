@@ -9,6 +9,7 @@
 .header {
   position: relative;
   display: flex;
+  overflow: hidden;
   max-width: map.get(vars.$media, "max");
   height: 40vh;
   flex-direction: column;
