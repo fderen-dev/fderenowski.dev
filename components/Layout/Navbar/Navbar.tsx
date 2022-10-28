@@ -106,7 +106,7 @@ const NavbarContent = ({
 };
 
 export const Navbar = () => {
-  const { isDesktop } = useMediaQueriesContext();
+  const { isTablet } = useMediaQueriesContext();
   const { prevIsScrolling, isScrolling, scrollDirection } =
     useScrollDetectionContext();
   const isMounted = useIsMounted();
@@ -121,8 +121,8 @@ export const Navbar = () => {
       scrollDirection === ScrollDirection.Down);
 
   useEffect(() => {
-    setMobileNavigationOpen((prev) => (prev && isDesktop ? false : prev));
-  }, [isDesktop]);
+    setMobileNavigationOpen((prev) => (prev && isTablet ? false : prev));
+  }, [isTablet]);
 
   return (
     <>
@@ -140,7 +140,7 @@ export const Navbar = () => {
       </nav>
       <ReactModal
         preventScroll
-        isOpen={isMobileNavigationOpen && !isDesktop}
+        isOpen={isMobileNavigationOpen && !isTablet}
         onRequestClose={() => setMobileNavigationOpen(false)}
         portalClassName={styles.mobileNavigation}
         overlayClassName={{
