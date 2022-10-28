@@ -32,6 +32,12 @@
     transform: translateY(-15%);
   }
 
+  &.left,
+  &.center,
+  &.right {
+    grid-column: 1/5;
+  }
+
   &.left {
     grid-column: 1/5;
 
@@ -97,6 +103,10 @@
       grid-column: 1/7;
     }
 
+    &.center {
+      grid-column: 2 / 8;
+    }
+
     &.right {
       grid-column: 4/9;
     }
@@ -111,6 +121,10 @@
 
     &.left {
       grid-column: 1/10;
+    }
+
+    &.center {
+      grid-column: 2 / 12;
     }
 
     &.right {

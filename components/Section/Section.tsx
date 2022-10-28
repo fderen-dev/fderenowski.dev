@@ -9,14 +9,15 @@ const cx = classNames.bind(styles);
 
 interface SectionProps extends WithChildren {
   header?: string;
-  right?: boolean;
   left?: boolean;
+  center?: boolean;
+  right?: boolean;
   className?: string;
   headerClassName?: string;
   withIntersection?: boolean;
 }
 
-export const Section = ({ children, header, right, left, withIntersection, className, headerClassName }: SectionProps) => { 
+export const Section = ({ children, header, left, center, right, withIntersection, className, headerClassName }: SectionProps) => { 
   const containerRef = useRef(null);
   const [isInViewport, setIsInViewport] = useState(false);
 
@@ -51,14 +52,15 @@ export const Section = ({ children, header, right, left, withIntersection, class
     <section
       ref={containerRef}
       className={cx(styles.section, className, {
-        right,
         left,
+        center,
+        right,
         inViewport: withIntersection && isInViewport,
         outOfViewport: withIntersection && !isInViewport,
       })}
     >
       {header && (
-        <h2 className={cx(styles.header, headerClassName, { right, left })}>
+        <h2 className={cx(styles.header, headerClassName, { left, center, right })}>
           <span className={styles.headerText}>{header}</span>
         </h2>
       )}

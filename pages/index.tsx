@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 
 import { Layout } from "components/Layout/Layout";
-import { Section } from "components/Layout/Section/Section";
+import { Section } from "components/Section/Section";
 
 const Home: NextPage = () => {
   return (
