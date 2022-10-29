@@ -3,6 +3,7 @@
 @use "styles/variables.scss" as vars;
 
 .section {
+  grid-column: 1/5;
   margin-block-start: -3vh;
 }
 
@@ -11,8 +12,37 @@
   object-fit: contain;
 }
 
+.subheader {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: -5%;
+    width: 100%;
+    height: 150%;
+    background: vars.$g-yellow-subheader;
+    content: " ";
+    transform: translateY(-50%);
+  }
+
+  .subheaderText {
+    position: relative;
+  }
+}
+
 @include mixins.min-width(map.get(vars.$media, "tablet")) {
+  .section {
+    grid-column: 2 / 8;
+  }
+
   .portrait {
     max-height: 800px;
+  }
+}
+
+@include mixins.min-width(map.get(vars.$media, "desktop")) {
+  .section {
+    grid-column: 2 / 12;
   }
 }

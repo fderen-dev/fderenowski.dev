@@ -16,13 +16,16 @@ const About: NextPage = () => {
         <title>fderenowski.dev - About</title>
       </Head>
       <Layout>
-        <Section center className={styles.section}>
+        <section className={styles.section}>
           <Image
             src={portrait}
             alt="Picture of the author"
             sizes="(max-width: 1920px) 80vw, 800px"
             className={styles.portrait}
           />
+          <h2 className={styles.subheader}>
+            <span>About me</span>
+          </h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -38,7 +41,7 @@ const About: NextPage = () => {
             nisl. Nulla ut hendrerit dolor. Praesent tristique vel lectus non
             dictum.
           </p>
-        </Section>
+        </section>
       </Layout>
     </>
   );

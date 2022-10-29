@@ -61,6 +61,13 @@ $c-font: $c-gru-gray;
 $c-heading-font: $c-pitch-black;
 $c-footer-font: $c-pitch-black;
 
+// gradients
+$g-yellow-subheader: linear-gradient(
+  90deg,
+  rgb(255 202 30 / 50%) 35%,
+  rgb(0 0 0 / 0%) 100%
+);
+
 // spacings
 $spacing-small: 8px;
 $spacing-medium: 16px;
