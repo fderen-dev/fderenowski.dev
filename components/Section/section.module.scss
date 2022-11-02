@@ -88,7 +88,7 @@
   }
 }
 
-@include mixins.min-width(map.get(vars.$media, "tablet")) {
+@include mixins.min-width("tablet") {
   .section {
     &.left {
       grid-column: 1/7;
@@ -104,7 +104,7 @@
   }
 }
 
-@include mixins.min-width(map.get(vars.$media, "desktop")) {
+@include mixins.min-width("desktop") {
   .section {
     > :not(h2)::before {
       top: -22%;

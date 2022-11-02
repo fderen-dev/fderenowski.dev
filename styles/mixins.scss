@@ -2,7 +2,7 @@
 @use "./variables.scss" as vars;
 
 @mixin min-width($size) {
-  @media screen and (min-width: $size) {
+  @media screen and (min-width: map.get(vars.$media, $size)) {
     @content;
   }
 }
@@ -66,11 +66,11 @@
   gap: vars.$spacing-grid-gap-mobile;
   grid-template-columns: repeat(4, 1fr);
 
-  @include min-width(map.get(vars.$media, "tablet")) {
+  @include min-width("tablet") {
     grid-template-columns: repeat(8, 1fr);
   }
 
-  @include min-width(map.get(vars.$media, "desktop")) {
+  @include min-width("desktop") {
     margin: 0 vars.$spacing-gutters-desktop;
     gap: vars.$spacing-grid-gap-desktop;
     grid-template-columns: repeat(12, 1fr);

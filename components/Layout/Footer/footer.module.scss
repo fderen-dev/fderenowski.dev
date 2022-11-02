@@ -57,7 +57,7 @@ $desktop-icon-size: 32px;
   }
 }
 
-@include mixins.min-width(map.get(vars.$media, "desktop")) {
+@include mixins.min-width("desktop") {
   .footer {
     flex-direction: row;
     justify-content: space-between;

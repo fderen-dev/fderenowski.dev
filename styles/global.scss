@@ -44,7 +44,7 @@ h3 {
   font-weight: vars.$fw-normal;
 }
 
-@include mixins.min-width(map.get(vars.$media, "desktop")) {
+@include mixins.min-width("desktop") {
   body {
     font-size: vars.$fs-desktop-body;
   }
