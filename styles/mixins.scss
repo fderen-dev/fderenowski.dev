@@ -77,14 +77,18 @@
   }
 }
 
-@mixin yellow-background($xPosition: -5%, $yPosition: 50%) {
+@mixin yellow-background(
+  $xPosition: -5%,
+  $yPosition: 50%,
+  $background: vars.$g-yellow-subheader
+) {
   position: absolute;
   z-index: vars.$z-index-background;
   top: $yPosition;
   left: $xPosition;
   width: 100%;
   height: 150%;
-  background: vars.$g-yellow-subheader;
+  background: $background;
   content: "";
   transform: translateY(-$yPosition);
 }
@@ -95,10 +99,11 @@
   top: 50%;
   left: 50%;
   width: 150%;
+  max-width: vars.$max-width;
   height: 150%;
   background-color: vars.$c-pitch-black;
   content: "";
   filter: blur(1.5px);
-  opacity: 0.2;
+  opacity: 0.3;
   transform: translate(-50%, -50%);
 }

@@ -9,7 +9,7 @@ $media: (
 );
 
 // z-index
-$z-index-background: 0;
+$z-index-background: -1;
 $z-index-foreground: 2;
 $z-index-gear: 3;
 $z-index-heading: 4;
@@ -66,6 +66,11 @@ $c-footer-font: $c-pitch-black;
 $g-yellow-subheader: linear-gradient(
   90deg,
   rgb(255 202 30 / 50%) 35%,
+  rgb(0 0 0 / 0%) 100%
+);
+$g-yellow-subheader-about: linear-gradient(
+  90deg,
+  rgb(255 202 30 / 80%) 50%,
   rgb(0 0 0 / 0%) 100%
 );
 $g-black-background: linear-gradient(

@@ -4,6 +4,7 @@
 
 .root {
   z-index: vars.$z-index-background;
+  overflow: hidden;
   background-color: vars.$c-background-yellow;
 }
 
@@ -26,8 +27,6 @@
 .content {
   @include mixins.grid-layout;
 
-  position: relative;
-  z-index: vars.$z-index-foreground;
   height: inherit;
 
   section p {
