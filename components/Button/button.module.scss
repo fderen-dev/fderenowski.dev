@@ -1,0 +1,49 @@
+@use "styles/variables" as vars;
+
+.button {
+  padding: 10px 25px;
+  border-radius: vars.$border-radius;
+  box-shadow: vars.$shadow-button;
+  cursor: pointer;
+  font-family: Exo, sans-serif;
+  font-weight: vars.$fw-bold;
+  transition: transform ease-in 3ms, box-shadow ease-in 3ms;
+  user-select: none;
+
+  &:active {
+    box-shadow: vars.$shadow-button-active;
+    transform: scale(0.95);
+  }
+
+  &.primary {
+    border: none;
+    background-color: vars.$c-button-primary;
+    color: vars.$c-pitch-black;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: vars.$c-button-primary-hover;
+    }
+
+    // TODO: style disabled pseudo class
+    // &:disabled {
+    // }
+  }
+
+  &.secondary {
+    border: solid 2px vars.$c-snow-white;
+    background-color: vars.$c-button-secondary;
+    color: vars.$c-snow-white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: vars.$c-button-secondary-hover;
+    }
+
+    // TODO: style disabled pseudo class
+    // &:disabled {
+    // }
+  }
+}

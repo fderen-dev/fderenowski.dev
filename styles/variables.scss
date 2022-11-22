@@ -55,12 +55,18 @@ $c-vanilla-yellow: #ffeb54;
 $c-pitch-black: #000;
 $c-dirty-brown: #6c4317;
 $c-snow-white: #fff;
+$c-black-20: rgb(0 0 0 / 20%);
+$c-black-40: rgb(0 0 0 / 40%);
 $c-background-yellow: $c-warm-yellow;
 $c-background-gray: $c-spider-gray;
 $c-link-active: $c-snow-white;
 $c-font: $c-gru-gray;
 $c-heading-font: $c-pitch-black;
 $c-footer-font: $c-pitch-black;
+$c-button-primary: $c-warm-yellow;
+$c-button-primary-hover: #b28f00;
+$c-button-secondary: $c-black-20;
+$c-button-secondary-hover: $c-black-40;
 
 // gradients
 $g-yellow-subheader: linear-gradient(
@@ -79,6 +85,11 @@ $g-black-background: linear-gradient(
   rgb(0 0 0 / 0%) 100%
 );
 
+// shadows
+$shadow-button: 8px 8px 24px 0 rgba(0 0 0 / 100%);
+$shadow-button-hover: 8px 8px 24px -5px rgba(0 0 0 / 100%);
+$shadow-button-active: 8px 8px 24px -20px rgba(0 0 0 / 100%);
+
 // spacings
 $spacing-small: 8px;
 $spacing-medium: 16px;
@@ -95,3 +106,4 @@ $navbar-height: 64px;
 
 // modal
 $modal-close-timeout-ms: 300;
+$border-radius: 4px;
