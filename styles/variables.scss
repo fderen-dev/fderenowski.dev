@@ -63,8 +63,9 @@ $c-link-active: $c-snow-white;
 $c-font: $c-gru-gray;
 $c-heading-font: $c-pitch-black;
 $c-footer-font: $c-pitch-black;
+$c-button-disabled: gray;
 $c-button-primary: $c-warm-yellow;
-$c-button-primary-hover: #b28f00;
+$c-button-primary-hover: #fc0;
 $c-button-secondary: $c-black-20;
 $c-button-secondary-hover: $c-black-40;
 
@@ -86,9 +87,8 @@ $g-black-background: linear-gradient(
 );
 
 // shadows
-$shadow-button: 8px 8px 24px 0 rgba(0 0 0 / 100%);
-$shadow-button-hover: 8px 8px 24px -5px rgba(0 0 0 / 100%);
-$shadow-button-active: 8px 8px 24px -20px rgba(0 0 0 / 100%);
+$shadow-button: 4px 4px 16px 4px rgba(0 0 0 / 50%);
+$shadow-button-active: 4px 4px 16px -4px rgba(0 0 0 / 50%);
 
 // spacings
 $spacing-small: 8px;

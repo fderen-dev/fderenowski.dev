@@ -7,43 +7,65 @@
   cursor: pointer;
   font-family: Exo, sans-serif;
   font-weight: vars.$fw-bold;
-  transition: transform ease-in 3ms, box-shadow ease-in 3ms;
+  transition: transform ease-in 3ms;
   user-select: none;
 
-  &:active {
+  &:disabled {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  &::after:not(:disabled) {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
     box-shadow: vars.$shadow-button-active;
+    content: "";
+    inset: 0;
+    opacity: 0;
+    transition: opacity ease-in 3ms;
+  }
+
+  &:active:not(:disabled) {
+    box-shadow: unset;
     transform: scale(0.95);
   }
 
+  &:active:not(:disabled)::after {
+    opacity: 1;
+  }
+
+  &.primary:disabled,
+  &.secondary:disabled {
+    border: none;
+    background-color: vars.$c-button-disabled;
+    color: vars.$c-snow-white;
+  }
+
+  /* stylelint-disable-next-line no-descending-specificity */
   &.primary {
     border: none;
     background-color: vars.$c-button-primary;
     color: vars.$c-pitch-black;
 
-    &:hover,
-    &:focus,
-    &:active {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
       background-color: vars.$c-button-primary-hover;
     }
-
-    // TODO: style disabled pseudo class
-    // &:disabled {
-    // }
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   &.secondary {
     border: solid 2px vars.$c-snow-white;
     background-color: vars.$c-button-secondary;
     color: vars.$c-snow-white;
 
-    &:hover,
-    &:focus,
-    &:active {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
       background-color: vars.$c-button-secondary-hover;
     }
-
-    // TODO: style disabled pseudo class
-    // &:disabled {
-    // }
   }
 }
