@@ -58,7 +58,7 @@ const NavigationList = ({ className }: NavigationListProps) => (
     <NavigationItem href="/about">About</NavigationItem>
     <NavigationItem href="/blog">Blog</NavigationItem>
     <NavigationItem href="/portfolio">Portfolio</NavigationItem>
-    <NavigationItem href="/contat">Contact</NavigationItem>
+    <NavigationItem href="/contact">Contact</NavigationItem>
   </ul>
 );
 
