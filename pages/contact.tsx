@@ -19,11 +19,11 @@ const Contact: NextPage = () => {
           <h3>or feedback?</h3>
           <form className={styles.form}>
             <label>
-              Name
+              <span className={styles.text}>Name</span>
               <input placeholder="What's your name?"></input>
             </label>
             <label>
-              E-mail
+              <span className={styles.text}>E-mail</span>
               <input
                 id="email"
                 type="email"
@@ -31,10 +31,8 @@ const Contact: NextPage = () => {
               ></input>
             </label>
             <label>
-              Message
-              <textarea
-                placeholder="What's on your mind?"
-              ></textarea>
+              <span className={styles.text}>Message</span>
+              <textarea placeholder="What's on your mind?"></textarea>
             </label>
             <Button type="submit">Send!</Button>
           </form>

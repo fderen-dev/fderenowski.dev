@@ -61,6 +61,7 @@
 
 @mixin grid-layout() {
   display: grid;
+  width: 100%;
   max-width: map.get(vars.$media, "max");
   margin: 0 vars.$spacing-gutters-mobile;
   gap: vars.$spacing-grid-gap-mobile;
@@ -106,4 +107,9 @@
   filter: blur(1.5px);
   opacity: 0.3;
   transform: translate(-50%, -50%);
+}
+
+@mixin page-spacing() {
+  margin-block-end: vars.$spacing-page;
+  margin-block-start: vars.$spacing-page;
 }
