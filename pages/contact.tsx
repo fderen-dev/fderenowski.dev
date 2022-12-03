@@ -1,3 +1,4 @@
+import { FormEvent } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { default as Textarea} from 'react-textarea-autosize';
@@ -9,6 +10,10 @@ import styles from './contact.module.scss'
 
 
 const Contact: NextPage = () => {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+  }
+
   return (
     <>
       <Head>
@@ -16,9 +21,11 @@ const Contact: NextPage = () => {
       </Head>
       <Layout>
         <section className={styles.section}>
-          <h2>Any questions?</h2>
-          <h3>or feedback?</h3>
-          <form className={styles.form}>
+          <h2 className={styles.heading}>
+            Any questions?
+            <div className={styles.subheading}>or feedback?</div>
+          </h2>
+          <form onSubmit={handleSubmit} className={styles.form}>
             <div className={styles.formGroup}>
               <label>
                 <span className={styles.text}>Name</span>

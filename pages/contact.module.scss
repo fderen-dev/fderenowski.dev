@@ -1,9 +1,34 @@
 @use "styles/mixins.scss";
+@use "styles/variables.scss" as vars;
 
 .section {
+  position: relative;
+  z-index: 1;
   @include mixins.page-spacing;
 
   grid-column: 1/-1;
+
+  &::before {
+    @include mixins.black-background;
+
+    z-index: -1;
+    height: 80%;
+    margin-block-start: vars.$spacing-large;
+  }
+}
+
+.heading {
+  position: relative;
+  margin-block-end: vars.$spacing-extra-large;
+
+  .subheading {
+    position: relative;
+    left: 10%;
+  }
+
+  &::before {
+    @include mixins.yellow-background;
+  }
 }
 
 .form {
@@ -16,7 +41,7 @@
     flex-direction: column;
 
     > * {
-      margin-block-end: 2rem;
+      margin-block-end: vars.$spacing-large;
     }
   }
 
@@ -25,7 +50,7 @@
     flex-direction: column;
 
     .text {
-      margin-block-end: 1rem;
+      margin-block-end: vars.$spacing-medium;
     }
   }
 
@@ -40,7 +65,7 @@
   }
 
   button[type="submit"] {
-    margin-block-start: 5rem;
+    margin-block-start: vars.$spacing-extra-large;
   }
 }
 
@@ -59,7 +84,7 @@
     .formGroup {
       width: 100%;
       flex-direction: row;
-      column-gap: 2rem;
+      column-gap: vars.$spacing-desktop;
 
       > * {
         flex: 1;
