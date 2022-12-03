@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
 import { default as Textarea} from 'react-textarea-autosize';
@@ -6,13 +6,34 @@ import { default as Textarea} from 'react-textarea-autosize';
 import { Button } from "components/Button/Button";
 import { Layout } from "components/Layout/Layout";
 
+import { TimeoutHandle } from "utils/types";
+
 import styles from './contact.module.scss'
 
 
 const Contact: NextPage = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const timeoutHandle = useRef<TimeoutHandle | null>(null);
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
+
+    setIsSubmitting(true);
+
+    timeoutHandle.current = setTimeout(() => {
+      setIsSubmitting(false);
+    }, 1000);
   }
+
+  useEffect(() => {
+    return (() => {
+      if (timeoutHandle.current) {
+        clearTimeout(timeoutHandle.current);
+
+        timeoutHandle.current = null;
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -48,7 +69,7 @@ const Contact: NextPage = () => {
                 placeholder="What's on your mind?"
               />
             </label>
-            <Button type="submit">Send!</Button>
+            <Button type="submit" loading={isSubmitting}>Send!</Button>
           </form>
         </section>
       </Layout>
