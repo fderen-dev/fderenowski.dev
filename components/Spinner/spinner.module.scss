@@ -1,0 +1,15 @@
+@use "styles/mixins.scss";
+
+.spinner {
+  &.small {
+    @include mixins.spinner(24px);
+  }
+
+  &.medium {
+    @include mixins.spinner(32px);
+  }
+
+  &.large {
+    @include mixins.spinner(48px);
+  }
+}
