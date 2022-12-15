@@ -1,0 +1,59 @@
+@use "styles/mixins.scss";
+@use "styles/variables.scss" as vars;
+
+.form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+
+    > * {
+      margin-block-end: vars.$spacing-large;
+    }
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+
+    .text {
+      margin-block-end: vars.$spacing-medium;
+    }
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  button[type="submit"] {
+    height: 48px;
+    margin-block-start: vars.$spacing-extra-large;
+  }
+}
+
+@include mixins.min-width("desktop") {
+  .form {
+    .formGroup {
+      width: 100%;
+      flex-direction: row;
+      column-gap: vars.$spacing-desktop;
+
+      > * {
+        flex: 1;
+      }
+    }
+
+    input {
+      flex-grow: 1;
+    }
+  }
+}
