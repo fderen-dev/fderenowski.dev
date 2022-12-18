@@ -15,19 +15,15 @@ export const TextArea = ({
   validation,
   ...textAreaProps
 }: TextAreaProps) => {
-  const { handleChange, handleBlur } = useFormControl(name, validation);
+  const { handleChange, handleBlur } = useFormControl<HTMLTextAreaElement>(name, validation);
 
   return (
     <label className={labelClass}>
       <span>{label}</span>
       <ReactTextareaAutosize
         name={name}
-        onChange={(event) =>
-          handleChange(event as unknown as React.ChangeEvent<HTMLInputElement>)
-        }
-        onBlur={(event) =>
-          handleBlur(event as unknown as React.FocusEvent<HTMLInputElement>)
-        }
+        onChange={handleChange}
+        onBlur={handleBlur}
         {...textAreaProps}
       />
     </label>

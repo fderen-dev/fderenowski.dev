@@ -6,7 +6,7 @@ interface InputProps extends Omit<React.ComponentPropsWithRef<"input">, 'name'>,
 }
 
 export const Input = ({ name, label, inputClass, labelClass, validation, ...inputProps }: InputProps) => {
-  const { handleChange, handleBlur } = useFormControl(name, validation);
+  const { handleChange, handleBlur } = useFormControl<HTMLInputElement>(name, validation);
 
     return (
       <label className={labelClass}>
