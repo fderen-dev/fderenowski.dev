@@ -1,0 +1,1 @@
+export const isEmpty = (value: string, message: string): string | null => typeof value === "string" && value.trim().length > 0 ? null : message;

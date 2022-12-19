@@ -1,0 +1,14 @@
+.controlGroup {
+  position: relative;
+}
+
+.error {
+  border: solid 1px;
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: 0;
+  border: solid 1px red;
+  margin-block-start: 8px;
+}

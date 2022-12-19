@@ -5,6 +5,7 @@ import { default as Textarea} from 'react-textarea-autosize';
 
 import { Button } from "components/Button/Button";
 import Forms, { FormStructure } from "components/Forms";
+import validators from "components/Forms/validators";
 import { Layout } from "components/Layout/Layout";
 
 import { TimeoutHandle } from "utils/types";
@@ -57,7 +58,8 @@ const Contact: NextPage = () => {
                 <Forms.Input
                   name="name"
                   label="name"
-                  placeholder="What's your name?" />
+                  placeholder="What's your name?"
+                />
                 <Forms.Input
                   type="email"
                   name="email"
