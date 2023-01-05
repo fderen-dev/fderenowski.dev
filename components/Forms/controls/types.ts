@@ -1,9 +1,9 @@
-export type FormControlValidation = (value: string) => string | null;
+import { Validator } from "../validators/types";
 
 export interface FormControlProps {
   name: string;
   error?: string;
-  validation?: FormControlValidation;
+  validation?: Validator;
   label: string;
   labelClass?: string;
 }
