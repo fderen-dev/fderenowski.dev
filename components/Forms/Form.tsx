@@ -12,6 +12,7 @@ export type FormStructure = Record<string, string>;
 interface FormApi<FormStructure> {
     setValue: (name: keyof FormStructure, value: string) => void,
     setError: (name: keyof FormStructure, error: string) => void,
+    clearError: (name: keyof FormStructure) => void,
     clear: () => void,
 }
 
@@ -23,6 +24,9 @@ const FormApiContext = createContext<FormApi<FormStructure>>({
     },
     setError(name: string, error: string) {
         throw methodNotImplementedError;
+    },
+    clearError(name: string) {
+              throw methodNotImplementedError;
     },
     clear() {
         throw methodNotImplementedError;
@@ -51,6 +55,18 @@ export const Form = <F extends FormStructure>({
     setErrors((prev) => ({ ...prev, [name]: error }));
   }, []);
 
+  const clearError = useCallback((name: keyof F) => {
+    setErrors((prev) => {
+      const newState = structuredClone(prev);
+
+      if (newState.hasOwnProperty(name)) {
+        delete newState[name];
+      }
+
+      return newState;
+    })
+  }, []);
+
   const clear = useCallback(() => {
     setValues((prev) => {
       const newValues = structuredClone(prev);
@@ -72,9 +88,10 @@ export const Form = <F extends FormStructure>({
     () => ({
       setValue,
       setError,
+      clearError,
       clear,
     }),
-    [setValue, setError, clear]
+    [setValue, setError, clearError, clear]
   );
 
   return (
