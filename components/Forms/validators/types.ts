@@ -1,4 +1,5 @@
-export type Validator = (value: string) => Array<string>;
+export type Validator = (value: string) => string;
+
 export type ValidatorBuilder = (
   message: string,
   ...args: Array<any>
