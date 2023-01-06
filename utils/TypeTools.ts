@@ -7,7 +7,7 @@ export class TypeTools {
     return typeof value === "string";
   }
 
-  static isNotEmtpyString(value: unknown): boolean {
+  static isNonEmptyString(value: unknown): boolean {
     return this.isString(value) && (value as string).trim().length > 0;
   }
 
