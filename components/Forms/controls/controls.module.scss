@@ -1,14 +1,11 @@
+@use "variables.scss" as vars;
+
 .controlGroup {
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .error {
-  border: solid 1px;
-}
-
-.errorMessage {
-  position: absolute;
-  bottom: 0;
-  border: solid 1px red;
-  margin-block-start: 8px;
+  border: solid 2px vars.$c-error;
 }
