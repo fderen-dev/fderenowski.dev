@@ -1,5 +1,6 @@
 import classNames from "classnames/bind";
 
+import { ErrorPopup } from "./ErrorPopup";
 import { FormControlProps } from "./types";
 import { useFormControl } from "./useFormsControl";
 
@@ -13,8 +14,12 @@ interface InputProps extends Omit<React.ComponentPropsWithRef<"input">, 'name'>,
     inputClass?: string;
 }
 
-export const Input = ({ name, label, inputClass, labelClass, validation, ...inputProps }: InputProps) => {
-  const { handleChange, handleBlur } = useFormControl<HTMLInputElement>(name, validation);
+export const Input = ({ name, label, inputClass, labelClass, validation, validateOnChange, ...inputProps }: InputProps) => {
+  const { handleChange, handleBlur } = useFormControl<HTMLInputElement>(
+    name,
+    validation,
+    validateOnChange
+  );
   const errors = useFormErrorsContext();
 
     return (
@@ -28,7 +33,7 @@ export const Input = ({ name, label, inputClass, labelClass, validation, ...inpu
           className={cx(inputClass, { error: errors[name] })}
           {...inputProps}
         />
-        {errors[name] && <span className={styles.errorMessage}>{errors[name]}</span>}
+        {errors[name] && <ErrorPopup message={errors[name]} />}
       </div>
     );
 }
