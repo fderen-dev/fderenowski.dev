@@ -11,3 +11,10 @@ export const minLengthBuilder: ValidatorBuilder =
     TypeTools.isNonEmptyString(value) && value.trim().length >= length
       ? ""
       : message;
+
+const emailRegexp = new RegExp(
+        /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
+        "gm"
+      );
+
+export const isEmailBuilder: ValidatorBuilder = (message: string) => (value: string) => emailRegexp.test(value) ? "" : message;
