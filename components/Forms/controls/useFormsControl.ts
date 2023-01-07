@@ -5,25 +5,27 @@ export const useFormControl = <InputElement extends HTMLInputElement | HTMLTextA
     const { setValue, setError, clearError } = useFormApiContext();
 
     const validate = (value: string) => {
-      const errorMessage = validation?.(value);
+      if (validation) {
+        const errorMessage = validation(value);
 
-      if (errorMessage) {
-        setError(name, errorMessage);
-      } else {
-        clearError(name);
-      }
+        if (errorMessage) {
+          setError(name, errorMessage);
+        } else {
+          clearError(name);
+        }
+    }
     };
     
     const handleChange = (event: React.ChangeEvent<InputElement>): void => {
       setValue(name, event.target.value);
 
-      if (validation && validateOnChange) {
+      if (validateOnChange) {
         validate(event.target.value);
       }
     };
 
     const handleBlur = (event: React.FocusEvent<InputElement>): void => {
-      if (validation && !validateOnChange) {
+      if (!validateOnChange) {
         validate(event.target.value);
       }
     };
