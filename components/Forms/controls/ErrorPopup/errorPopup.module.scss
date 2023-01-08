@@ -3,14 +3,13 @@
 .errorPopup {
   position: absolute;
   z-index: vars.$z-index-modal;
-  top: calc(100% + 8px);
+  top: calc(100% + 12px);
   right: 5%;
   width: clamp(150px, 100%, 500px);
   padding: 16px;
   border-radius: 4px;
   background-color: vars.$c-error;
   color: vars.$c-error;
-  text-align: center;
 
   &::after {
     position: absolute;
@@ -25,16 +24,10 @@
   }
 }
 
-.hideButton {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .errorMessage {
   width: auto;
-  margin: 0;
   color: vars.$c-snow-white;
+  text-align: center;
   user-select: none;
   white-space: pre-wrap;
 }

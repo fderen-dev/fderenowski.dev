@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 
-import { ErrorPopup } from "./ErrorPopup";
+import { ErrorPopup } from "./ErrorPopup/ErrorPopup";
 import { FormControlProps } from "./types";
 import { useFormControl } from "./useFormsControl";
 

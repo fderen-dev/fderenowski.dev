@@ -1,5 +1,5 @@
 import { Input } from './controls/Input';
-import { TextArea } from './controls/TextArea';
+import { TextArea } from './controls/TextArea/TextArea';
 import { FormGroup } from './elements/FormGroup';
 import { Form, FormStructure as FS } from "./Form";
 
