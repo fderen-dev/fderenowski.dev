@@ -8,9 +8,12 @@ export const isEmptyBuilder: ValidatorBuilder = (message: string): Validator => 
 export const minLengthBuilder: ValidatorBuilder =
   (message: string, length: number): Validator =>
   (value: string) =>
-    TypeTools.isNonEmptyString(value) && value.trim().length >= length
+    TypeTools.isNullOrUndefined(value) ? "" : value.trim().length >= length
       ? ""
       : message;
+
+export const maxLengthBuilder: ValidatorBuilder = (message: string, length: number): Validator => (value: string) => 
+  TypeTools.isNullOrUndefined(value) ? "" : value.trim().length <= length ? "" : message;
 
 const emailRegexp = new RegExp(
         /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
