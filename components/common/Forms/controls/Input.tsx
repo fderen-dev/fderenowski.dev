@@ -4,7 +4,7 @@ import { ErrorPopup } from "./ErrorPopup/ErrorPopup";
 import { FormControlProps } from "./types";
 import { useFormControl } from "./useFormsControl";
 
-import { useFormErrorsContext } from "../Form";
+import { useFormErrorsContext } from "../FormProvider";
 
 import styles from "./controls.module.scss";
 

@@ -5,14 +5,11 @@ import {
   useMemo,
   useState,
 } from "react";
-import classNames from "classnames";
 import isEmpty from "lodash/isEmpty";
 
 import { TypeTools } from "utils/TypeTools";
 
 import { FormControlProps } from "./controls/types";
-
-import styles from "./form.module.scss";
 
 const methodNotImplementedError = new Error("Method not implemented");
 
@@ -51,19 +48,15 @@ const FormStateContext = createContext<FormState>({
   hasErrors: false,
 });
 
-interface FormProps<F extends FormStructure> {
-  onSubmit: (values: F, event: React.FormEvent) => void;
+interface FormProviderProps {
   children:
     | React.ReactElement<FormControlProps>
     | Array<React.ReactElement<FormControlProps>>;
-  className?: string;
 }
 
-export const Form = <F extends FormStructure>({
-  onSubmit,
+export const FormProvider = <F extends FormStructure>({
   children,
-  className,
-}: FormProps<F>) => {
+}: FormProviderProps) => {
   const [values, setValues] = useState<F>({} as F);
   const [errors, setErrors] = useState<F>({} as F);
   const [state, setState] = useState<FormState>({
@@ -140,11 +133,6 @@ export const Form = <F extends FormStructure>({
     }));
   }, []);
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    onSubmit(values, event);
-  };
-
   const api = useMemo(
     () => ({
       setValue,
@@ -160,12 +148,7 @@ export const Form = <F extends FormStructure>({
       <FormValuesContext.Provider value={values}>
         <FormErrorsContext.Provider value={errors}>
           <FormStateContext.Provider value={state}>
-            <form
-              className={classNames(styles.form, className)}
-              onSubmit={handleSubmit}
-            >
-              {children}
-            </form>
+            {children}
           </FormStateContext.Provider>
         </FormErrorsContext.Provider>
       </FormValuesContext.Provider>

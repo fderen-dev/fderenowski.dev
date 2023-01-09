@@ -1,6 +1,6 @@
 import classNames from "classnames/bind";
 
-import { Spinner } from "components/Spinner/Spinner";
+import { Spinner } from "components/common/Spinner/Spinner";
 
 import styles from "./button.module.scss";
 

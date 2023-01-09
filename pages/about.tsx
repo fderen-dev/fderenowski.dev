@@ -2,8 +2,8 @@ import { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-import { Layout } from "components/Layout/Layout";
-import { Section } from "components/Section/Section";
+import { Layout } from "components/common/Layout/Layout";
+import { Section } from "components/common/Section/Section";
 
 import portrait from "../public/static/portrait.webp";
 
