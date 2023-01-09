@@ -98,7 +98,7 @@ export const TextArea = ({
   labelClass,
   ...textAreaProps
 }: TextAreaProps) => {
-  const { errors } = useFormErrorsContext();
+  const errors = useFormErrorsContext();
   const hasError = Boolean(errors[name]);
 
   return (

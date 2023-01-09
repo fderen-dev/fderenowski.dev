@@ -8,6 +8,8 @@ import {
 import classNames from "classnames";
 import isEmpty from "lodash/isEmpty";
 
+import { TypeTools } from "utils/TypeTools";
+
 import { FormControlProps } from "./controls/types";
 
 import styles from "./form.module.scss";
@@ -23,16 +25,13 @@ interface FormApi<S> {
   clear: () => void;
 }
 
-interface FormErrors<S> {
-  errors: S;
+interface FormState {
+  hasValues: boolean;
   hasErrors: boolean;
 }
 
 const FormValuesContext = createContext<FormStructure>({});
-const FormErrorsContext = createContext<FormErrors<FormStructure>>({
-  errors: {},
-  hasErrors: false,
-});
+const FormErrorsContext = createContext<FormStructure>({});
 const FormApiContext = createContext<FormApi<FormStructure>>({
   setValue(name: string, value: string) {
     throw methodNotImplementedError;
@@ -46,6 +45,10 @@ const FormApiContext = createContext<FormApi<FormStructure>>({
   clear() {
     throw methodNotImplementedError;
   },
+});
+const FormStateContext = createContext<FormState>({
+  hasValues: false,
+  hasErrors: false,
 });
 
 interface FormProps<F extends FormStructure> {
@@ -62,34 +65,62 @@ export const Form = <F extends FormStructure>({
   className,
 }: FormProps<F>) => {
   const [values, setValues] = useState<F>({} as F);
-  const [errors, setErrors] = useState<FormErrors<F>>({
+  const [errors, setErrors] = useState<F>({} as F);
+  const [state, setState] = useState<FormState>({
+    hasValues: false,
     hasErrors: false,
-    errors: {} as F,
   });
 
   const setValue = useCallback((name: keyof F, value: string) => {
-    setValues((prev) => ({ ...prev, [name]: value }));
+    let hasValues = false;
+
+    setValues((prev) => {
+      const newValues = { ...prev, [name]: value };
+
+      hasValues = Object.values(newValues).some((value) =>
+        TypeTools.isNonEmptyString(value)
+      );
+
+      return newValues;
+    });
+
+    setState((prev) => ({
+      ...prev,
+      hasValues,
+    }));
   }, []);
 
   const setError = useCallback((name: keyof F, error: string) => {
     setErrors((prev) => ({
-      errors: { ...prev.errors, [name]: error },
+      ...prev,
+      [name]: error,
+    }));
+
+    setState((prev) => ({
+      ...prev,
       hasErrors: true,
     }));
   }, []);
 
   const clearError = useCallback((name: keyof F) => {
+    let hasErrors = false;
+
     setErrors((prev) => {
       const newState = structuredClone(prev);
 
-      if (newState.errors.hasOwnProperty(name)) {
-        delete newState.errors[name];
+      if (newState.hasOwnProperty(name)) {
+        delete newState[name];
       }
 
-      newState.hasErrors = !isEmpty(newState.errors);
+      hasErrors = !isEmpty(newState);
 
       return newState;
     });
+
+    setState((prev) => ({
+      ...prev,
+      hasErrors,
+    }));
   }, []);
 
   const clear = useCallback(() => {
@@ -102,6 +133,11 @@ export const Form = <F extends FormStructure>({
 
       return newValues;
     });
+
+    setState((prev) => ({
+      ...prev,
+      hasValues: false,
+    }));
   }, []);
 
   const handleSubmit = (event: React.FormEvent) => {
@@ -123,12 +159,14 @@ export const Form = <F extends FormStructure>({
     <FormApiContext.Provider value={api}>
       <FormValuesContext.Provider value={values}>
         <FormErrorsContext.Provider value={errors}>
-          <form
-            className={classNames(styles.form, className)}
-            onSubmit={handleSubmit}
-          >
-            {children}
-          </form>
+          <FormStateContext.Provider value={state}>
+            <form
+              className={classNames(styles.form, className)}
+              onSubmit={handleSubmit}
+            >
+              {children}
+            </form>
+          </FormStateContext.Provider>
         </FormErrorsContext.Provider>
       </FormValuesContext.Provider>
     </FormApiContext.Provider>
@@ -138,3 +176,4 @@ export const Form = <F extends FormStructure>({
 export const useFormApiContext = () => useContext(FormApiContext);
 export const useFormValuesContext = () => useContext(FormValuesContext);
 export const useFormErrorsContext = () => useContext(FormErrorsContext);
+export const useFormStateContext = () => useContext(FormStateContext);

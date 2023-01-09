@@ -30,7 +30,7 @@ export const Input = ({
     validation,
     validateOnChange
   );
-  const { errors } = useFormErrorsContext();
+  const errors = useFormErrorsContext();
 
   return (
     <div className={styles.controlGroup}>
