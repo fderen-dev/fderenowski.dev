@@ -1,6 +1,8 @@
 import { useRef } from "react";
 import classNames from "classnames/bind";
-import ReactTextareaAutosize, { TextareaAutosizeProps } from "react-textarea-autosize";
+import ReactTextareaAutosize, {
+  TextareaAutosizeProps,
+} from "react-textarea-autosize";
 
 import { TypeTools } from "utils/TypeTools";
 
@@ -9,12 +11,12 @@ import { ErrorPopup } from "../ErrorPopup/ErrorPopup";
 import { FormControlProps } from "../types";
 import { useFormControl } from "../useFormsControl";
 
-import controlsStyles from '../controls.module.scss';
-import styles from './textArea.module.scss';
+import controlsStyles from "../controls.module.scss";
+import styles from "./textArea.module.scss";
 
 const cx = classNames.bind({
   ...styles,
-  ...controlsStyles
+  ...controlsStyles,
 });
 
 interface MaxLengthIndicatorProps {
@@ -26,7 +28,6 @@ const MaxLengthIndicator = ({
   textAreaElement,
   maxLength,
 }: MaxLengthIndicatorProps) => {
-
   if (!textAreaElement) {
     return null;
   }
@@ -36,13 +37,12 @@ const MaxLengthIndicator = ({
   return (
     <p className={styles.maxLengthIndicator}>{`${length}/${maxLength}`}</p>
   );
-}
+};
 
-
-interface InputProps extends Omit<TextAreaProps, 'label' | 'labelClass'> {
+interface InputProps extends Omit<TextAreaProps, "label" | "labelClass"> {
   hasError: boolean;
   children: React.ReactNode;
-};
+}
 
 const Input = ({
   name,
@@ -54,13 +54,13 @@ const Input = ({
   children,
   ...textAreaProps
 }: InputProps) => {
-    const inputRef = useRef<HTMLTextAreaElement | null>(null);
-    const { handleChange, handleBlur } = useFormControl<HTMLTextAreaElement>(
-      name,
-      validation,
-      validateOnChange
-    );
-    const showMaxLengthIndicator = !TypeTools.isNullOrUndefined(maxLength);
+  const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const { handleChange, handleBlur } = useFormControl<HTMLTextAreaElement>(
+    name,
+    validation,
+    validateOnChange
+  );
+  const showMaxLengthIndicator = !TypeTools.isNullOrUndefined(maxLength);
 
   return (
     <>
@@ -86,9 +86,11 @@ const Input = ({
   );
 };
 
-interface TextAreaProps extends Omit<TextareaAutosizeProps, 'name'>, FormControlProps {
+interface TextAreaProps
+  extends Omit<TextareaAutosizeProps, "name">,
+    FormControlProps {
   textAreaClass?: string;
-};
+}
 
 export const TextArea = ({
   name,
@@ -96,7 +98,7 @@ export const TextArea = ({
   labelClass,
   ...textAreaProps
 }: TextAreaProps) => {
-  const errors = useFormErrorsContext();
+  const { errors } = useFormErrorsContext();
   const hasError = Boolean(errors[name]);
 
   return (
@@ -105,8 +107,10 @@ export const TextArea = ({
         {label}
       </label>
       <Input name={name} hasError={hasError} {...textAreaProps}>
-        {hasError && <ErrorPopup message={errors[name]} popupClass={styles.errorPopup} />}
+        {hasError && (
+          <ErrorPopup message={errors[name]} popupClass={styles.errorPopup} />
+        )}
       </Input>
     </div>
   );
-}
+};

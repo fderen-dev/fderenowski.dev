@@ -1,8 +1,8 @@
-import classNames from 'classnames/bind';
+import classNames from "classnames/bind";
 
-import { Spinner } from 'components/Spinner/Spinner';
+import { Spinner } from "components/Spinner/Spinner";
 
-import styles from './button.module.scss';
+import styles from "./button.module.scss";
 
 type Variant = "primary" | "secondary";
 
@@ -14,12 +14,29 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
 
 const cx = classNames.bind(styles);
 
-export const Button = ({onClick, variant = "primary", loading, disabled, children, className, ...props}: ButtonProps) => {
+export const Button = ({
+  onClick,
+  variant = "primary",
+  loading,
+  disabled,
+  children,
+  className,
+  ...props
+}: ButtonProps) => {
   const isDisabled = disabled || loading;
 
   return (
-    <button onClick={loading ? undefined : onClick} disabled={isDisabled} className={cx(styles.button, variant, className)} {...props}>
-      {loading ? <Spinner size='small' className={styles.loadingSpinner} /> : children}
+    <button
+      onClick={loading ? undefined : onClick}
+      disabled={isDisabled}
+      className={cx(styles.button, variant, className)}
+      {...props}
+    >
+      {loading ? (
+        <Spinner size="small" className={styles.loadingSpinner} />
+      ) : (
+        children
+      )}
     </button>
   );
-}
+};

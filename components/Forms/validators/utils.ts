@@ -2,7 +2,10 @@ import { TypeTools } from "utils/TypeTools";
 
 import { Validator } from "./types";
 
-export const composeValidators = (validators: Array<Validator>, delimiter = '\n'): Validator => {
+export const composeValidators = (
+  validators: Array<Validator>,
+  delimiter = "\n"
+): Validator => {
   return function runValidatorsAndJoinMessages(value: string): string {
     const messages: Array<string> = [];
 
@@ -15,5 +18,5 @@ export const composeValidators = (validators: Array<Validator>, delimiter = '\n'
     });
 
     return messages.join(delimiter);
-  }
-}
+  };
+};

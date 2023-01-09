@@ -5,9 +5,9 @@ import Image from "next/image";
 import { Layout } from "components/Layout/Layout";
 import { Section } from "components/Section/Section";
 
-import portrait from '../public/static/portrait.webp';
+import portrait from "../public/static/portrait.webp";
 
-import styles from './about.module.scss';
+import styles from "./about.module.scss";
 
 const About: NextPage = () => {
   return (

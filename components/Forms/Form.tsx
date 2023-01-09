@@ -1,42 +1,59 @@
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
-import classNames from 'classnames';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
+import classNames from "classnames";
+import isEmpty from "lodash/isEmpty";
 
-import { FormControlProps } from './controls/types';
+import { FormControlProps } from "./controls/types";
 
-import styles from './form.module.scss';
+import styles from "./form.module.scss";
 
 const methodNotImplementedError = new Error("Method not implemented");
 
 export type FormStructure = Record<string, string>;
 
-interface FormApi<FormStructure> {
-    setValue: (name: keyof FormStructure, value: string) => void,
-    setError: (name: keyof FormStructure, error: string) => void,
-    clearError: (name: keyof FormStructure) => void,
-    clear: () => void,
+interface FormApi<S> {
+  setValue: (name: keyof S, value: string) => void;
+  setError: (name: keyof S, error: string) => void;
+  clearError: (name: keyof S) => void;
+  clear: () => void;
+}
+
+interface FormErrors<S> {
+  errors: S;
+  hasErrors: boolean;
 }
 
 const FormValuesContext = createContext<FormStructure>({});
-const FormErrorsContext = createContext<FormStructure>({});
+const FormErrorsContext = createContext<FormErrors<FormStructure>>({
+  errors: {},
+  hasErrors: false,
+});
 const FormApiContext = createContext<FormApi<FormStructure>>({
-    setValue(name: string, value: string) {
-        throw methodNotImplementedError;
-    },
-    setError(name: string, error: string) {
-        throw methodNotImplementedError;
-    },
-    clearError(name: string) {
-              throw methodNotImplementedError;
-    },
-    clear() {
-        throw methodNotImplementedError;
-    },
+  setValue(name: string, value: string) {
+    throw methodNotImplementedError;
+  },
+  setError(name: string, error: string) {
+    throw methodNotImplementedError;
+  },
+  clearError(name: string) {
+    throw methodNotImplementedError;
+  },
+  clear() {
+    throw methodNotImplementedError;
+  },
 });
 
 interface FormProps<F extends FormStructure> {
-    onSubmit: (values: F, event: React.FormEvent) => void;
-    children: React.ReactElement<FormControlProps> | Array<React.ReactElement<FormControlProps>>;
-    className?: string;
+  onSubmit: (values: F, event: React.FormEvent) => void;
+  children:
+    | React.ReactElement<FormControlProps>
+    | Array<React.ReactElement<FormControlProps>>;
+  className?: string;
 }
 
 export const Form = <F extends FormStructure>({
@@ -45,26 +62,34 @@ export const Form = <F extends FormStructure>({
   className,
 }: FormProps<F>) => {
   const [values, setValues] = useState<F>({} as F);
-  const [errors, setErrors] = useState<F>({} as F);
+  const [errors, setErrors] = useState<FormErrors<F>>({
+    hasErrors: false,
+    errors: {} as F,
+  });
 
   const setValue = useCallback((name: keyof F, value: string) => {
     setValues((prev) => ({ ...prev, [name]: value }));
   }, []);
 
   const setError = useCallback((name: keyof F, error: string) => {
-    setErrors((prev) => ({ ...prev, [name]: error }));
+    setErrors((prev) => ({
+      errors: { ...prev.errors, [name]: error },
+      hasErrors: true,
+    }));
   }, []);
 
   const clearError = useCallback((name: keyof F) => {
     setErrors((prev) => {
       const newState = structuredClone(prev);
 
-      if (newState.hasOwnProperty(name)) {
-        delete newState[name];
+      if (newState.errors.hasOwnProperty(name)) {
+        delete newState.errors[name];
       }
 
+      newState.hasErrors = !isEmpty(newState.errors);
+
       return newState;
-    })
+    });
   }, []);
 
   const clear = useCallback(() => {

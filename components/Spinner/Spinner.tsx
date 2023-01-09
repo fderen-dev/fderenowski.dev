@@ -1,7 +1,7 @@
-import classNames from 'classnames/bind';
-import bind from 'classnames/bind'
+import classNames from "classnames/bind";
+import bind from "classnames/bind";
 
-import styles from './spinner.module.scss';
+import styles from "./spinner.module.scss";
 
 type Size = "small" | "medium" | "large";
 

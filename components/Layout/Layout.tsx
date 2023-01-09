@@ -11,9 +11,7 @@ import styles from "./layout.module.scss";
 const Main = ({ children }: WithChildren) => (
   <main className={styles.main}>
     <div className={styles.contentWrapper}>
-      <div className={styles.content}>
-        {children}
-      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   </main>
 );

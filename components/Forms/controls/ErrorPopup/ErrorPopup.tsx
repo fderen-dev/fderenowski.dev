@@ -1,6 +1,6 @@
-import classNames from 'classnames';
+import classNames from "classnames";
 
-import styles from './errorPopup.module.scss';
+import styles from "./errorPopup.module.scss";
 
 interface ErrorPopupProps {
   message: string;
@@ -8,12 +8,9 @@ interface ErrorPopupProps {
 }
 
 export const ErrorPopup = ({ message, popupClass }: ErrorPopupProps) => {
-
   return (
     <div className={classNames(styles.errorPopup, popupClass)}>
-      <p className={styles.errorMessage}>
-        {message}
-      </p>
+      <p className={styles.errorMessage}>{message}</p>
     </div>
   );
-}
+};

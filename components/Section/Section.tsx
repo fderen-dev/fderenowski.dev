@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames/bind";
 
 import { WithChildren } from "utils/types";
@@ -17,7 +17,16 @@ interface SectionProps extends WithChildren {
   withIntersection?: boolean;
 }
 
-export const Section = ({ children, header, left, center, right, withIntersection, className, headerClassName }: SectionProps) => { 
+export const Section = ({
+  children,
+  header,
+  left,
+  center,
+  right,
+  withIntersection,
+  className,
+  headerClassName,
+}: SectionProps) => {
   const containerRef = useRef(null);
   const [isInViewport, setIsInViewport] = useState(false);
 
@@ -28,15 +37,18 @@ export const Section = ({ children, header, left, center, right, withIntersectio
           setIsInViewport(true);
           disconnectObserver();
         }
-      }
-      let observer: IntersectionObserver | null = new IntersectionObserver(onIntersection, { threshold: 1.0 });
+      };
+      let observer: IntersectionObserver | null = new IntersectionObserver(
+        onIntersection,
+        { threshold: 1.0 }
+      );
 
       const disconnectObserver = (): void => {
         if (containerRef.current && observer) {
-            observer.disconnect();
-            observer = null;
-          }
+          observer.disconnect();
+          observer = null;
         }
+      };
 
       if (containerRef.current && observer) {
         observer.observe(containerRef.current);
@@ -60,11 +72,17 @@ export const Section = ({ children, header, left, center, right, withIntersectio
       })}
     >
       {header && (
-        <h2 className={cx(styles.header, headerClassName, { left, center, right })}>
+        <h2
+          className={cx(styles.header, headerClassName, {
+            left,
+            center,
+            right,
+          })}
+        >
           <span className={styles.headerText}>{header}</span>
         </h2>
       )}
       {children}
     </section>
   );
-}
+};

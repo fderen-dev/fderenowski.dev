@@ -41,10 +41,9 @@ const NavigationItem = ({
       href={href}
       className={cx(styles.navigationItemLink, linkClassName, {
         undelineOnHover: !disableUnderline,
-      })}>
-
+      })}
+    >
       {children}
-
     </Link>
   </As>
 );
