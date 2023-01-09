@@ -1,45 +1,38 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
-import { default as Textarea} from 'react-textarea-autosize';
 
-import { Button } from "components/Button/Button";
-import Forms, { FormStructure } from "components/Forms";
-import validators from "components/Forms/validators";
-import { Layout } from "components/Layout/Layout";
+import { FormProvider } from "components/common/Forms/FormProvider";
+import { Layout } from "components/common/Layout/Layout";
+import {
+  ContactForm,
+  ContactFormStructure,
+} from "components/ContactForm/ContactForm";
 
 import { TimeoutHandle } from "utils/types";
 
-import styles from './contact.module.scss'
-
-interface ContactFormStructure extends FormStructure {
-  name: string;
-  email: string;
-  message: string;
-}
-
+import styles from "./contact.module.scss";
 
 const Contact: NextPage = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const timeoutHandle = useRef<TimeoutHandle | null>(null);
 
-  const handleSubmit = (values: ContactFormStructure) => {
-    setIsSubmitting(true);
-
-    timeoutHandle.current = setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
-      setIsSubmitting(false);
-    }, 1000);
+  const handleSubmit = async (values: ContactFormStructure) => {
+    return new Promise<void>((resolve) => {
+      setTimeout(() => {
+        resolve();
+        alert(JSON.stringify(values, null, 2));
+      }, 2000);
+    });
   };
 
   useEffect(() => {
-    return (() => {
+    return () => {
       if (timeoutHandle.current) {
         clearTimeout(timeoutHandle.current);
 
         timeoutHandle.current = null;
       }
-    });
+    };
   }, []);
 
   return (
@@ -53,30 +46,9 @@ const Contact: NextPage = () => {
             Any questions?
             <div className={styles.subheading}>or feedback?</div>
           </h2>
-          <Forms.Form onSubmit={handleSubmit}>
-            <Forms.FormGroup>
-                <Forms.Input
-                  name="name"
-                  label="name"
-                  placeholder="What's your name?"
-                />
-                <Forms.Input
-                  type="email"
-                  name="email"
-                  label="E-mail"
-                  placeholder="Type your email so I could get back to you"
-                />
-            </Forms.FormGroup>
-            <label>
-              <span className={styles.text}>Message</span>
-              <Textarea
-                minRows={5}
-                maxRows={8}
-                placeholder="What's on your mind?"
-              />
-            </label>
-            <Button type="submit" loading={isSubmitting}>Send!</Button>
-          </Forms.Form>
+          <FormProvider>
+            <ContactForm onSubmit={handleSubmit} />
+          </FormProvider>
         </section>
       </Layout>
     </>
