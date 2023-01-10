@@ -28,11 +28,7 @@ const MaxLengthIndicator = ({
   textAreaElement,
   maxLength,
 }: MaxLengthIndicatorProps) => {
-  if (!textAreaElement) {
-    return null;
-  }
-
-  const length = textAreaElement.value.length;
+  const length = textAreaElement?.value?.length ?? 0;
 
   return (
     <p className={styles.maxLengthIndicator}>{`${length}/${maxLength}`}</p>
