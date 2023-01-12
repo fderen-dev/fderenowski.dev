@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import classNames from "classnames";
 
 import { WithChildren } from "utils/types";
 
@@ -8,19 +9,29 @@ import { Navbar } from "./Navbar/Navbar";
 
 import styles from "./layout.module.scss";
 
-const Main = ({ children }: WithChildren) => (
+interface MainProps extends WithChildren {
+  contentClassName?: string;
+}
+
+const Main = ({ children, contentClassName }: MainProps) => (
   <main className={styles.main}>
     <div className={styles.contentWrapper}>
-      <div className={styles.content}>{children}</div>
+      <div className={classNames(styles.content, contentClassName)}>
+        {children}
+      </div>
     </div>
   </main>
 );
 
-export const Layout = ({ children }: { children: ReactNode }) => (
+interface LayoutProps extends WithChildren {
+  contentClassName?: string;
+}
+
+export const Layout = ({ children, contentClassName }: LayoutProps) => (
   <div className={styles.root}>
     <Navbar />
     <Header />
-    <Main>{children}</Main>
+    <Main contentClassName={contentClassName}>{children}</Main>
     <Footer />
   </div>
 );

@@ -17,6 +17,7 @@ $z-index-paragraph: 1;
   top: 7vh;
   max-height: 500px;
   object-fit: contain;
+  @include mixins.not-selectable;
 }
 
 .content {

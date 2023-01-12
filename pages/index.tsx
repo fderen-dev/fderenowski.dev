@@ -4,14 +4,16 @@ import Head from "next/head";
 import { Layout } from "components/common/Layout/Layout";
 import { Section } from "components/common/Section/Section";
 
+import styles from "./index.module.scss";
+
 const Home: NextPage = () => {
   return (
     <>
       <Head>
         <title>fderenowski.dev - Home</title>
       </Head>
-      <Layout>
-        <Section left withIntersection header="Lorem">
+      <Layout contentClassName={styles.layoutContent}>
+        <Section left header="Lorem" className={styles.section}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -32,6 +34,7 @@ const Home: NextPage = () => {
           right
           withIntersection
           header="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          className={styles.section}
         >
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
@@ -49,7 +52,7 @@ const Home: NextPage = () => {
             dictum.
           </p>
         </Section>
-        <Section left withIntersection>
+        <Section left withIntersection className={styles.section}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur
@@ -66,7 +69,7 @@ const Home: NextPage = () => {
             dictum.
           </p>
         </Section>
-        <Section right withIntersection>
+        <Section right withIntersection className={styles.section}>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eros
             risus, efficitur non neque in, tempus mattis ipsum. Duis efficitur

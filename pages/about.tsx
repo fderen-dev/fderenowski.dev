@@ -23,6 +23,7 @@ const About: NextPage = () => {
             sizes="(max-width: 1920px) 80vw, 800px"
             priority
             className={styles.portrait}
+            draggable={false}
           />
           <div className={styles.content}>
             <h2 className={styles.subheader}>About me</h2>

@@ -10,7 +10,6 @@
 
 .section {
   display: flex;
-  min-height: 70vh;
   flex-direction: column;
   justify-content: center;
   text-align: justify;
@@ -19,17 +18,7 @@
   transition-timing-function: linear;
 
   > :not(h2)::before {
-    position: absolute;
-    width: min(80%, 700px);
-    height: 300px;
-    box-sizing: content-box;
-    background: linear-gradient(
-      270deg,
-      rgb(0 0 0 / 20%) 35%,
-      rgb(0 0 0 / 0%) 100%
-    );
-    content: "";
-    transform: translateY(-15%);
+    @include mixins.black-background;
   }
 
   &.left,
@@ -40,18 +29,10 @@
 
   &.left {
     grid-column: 1/5;
-
-    > :not(h2)::before {
-      left: -2%;
-    }
   }
 
   &.right {
     grid-column: 1/5;
-
-    > :not(h2)::before {
-      right: -2%;
-    }
   }
 
   &.outOfViewport {
@@ -95,7 +76,7 @@
     }
 
     &.center {
-      grid-column: 2 / 8;
+      grid-column: 2/8;
     }
 
     &.right {
@@ -106,16 +87,12 @@
 
 @include mixins.min-width("desktop") {
   .section {
-    > :not(h2)::before {
-      top: -22%;
-    }
-
     &.left {
       grid-column: 1/10;
     }
 
     &.center {
-      grid-column: 2 / 12;
+      grid-column: 2/12;
     }
 
     &.right {
