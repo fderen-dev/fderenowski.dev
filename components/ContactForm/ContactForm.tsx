@@ -52,7 +52,7 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
   };
 
   return (
-    <Forms.Form onSubmit={handleSubmit}>
+    <Forms.Form validateOnSubmit onSubmit={handleSubmit}>
       <Forms.FormGroup>
         <Forms.Input
           validateOnChange

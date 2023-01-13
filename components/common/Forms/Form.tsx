@@ -1,11 +1,27 @@
+import React, { Children as ReactChildren } from "react";
 import classNames from "classnames";
 
+import { InputProps } from "./controls/Input";
+import { TextAreaProps } from "./controls/TextArea/TextArea";
 import { FormControlProps } from "./controls/types";
-import { useFormValuesContext } from "./FormProvider";
+import { useFormApiContext, useFormValuesContext } from "./FormProvider";
 
 import styles from "./form.module.scss";
 
 export type FormStructure = Record<string, string>;
+
+const validateChild = (
+  child: React.ReactElement<InputProps | TextAreaProps>,
+  formState: FormStructure,
+  errorSetter: (name: string, error: string) => void
+) => {
+  const { name, validation } = child.props;
+  const error = validation?.(formState[name] ?? "");
+
+  if (error) {
+    errorSetter(name, error);
+  }
+};
 
 interface FormProps {
   onSubmit: <S extends FormStructure>(
@@ -15,14 +31,37 @@ interface FormProps {
   children:
     | React.ReactElement<FormControlProps>
     | Array<React.ReactElement<FormControlProps>>;
+  validateOnSubmit?: boolean;
   className?: string;
 }
 
-export const Form = ({ onSubmit, children, className }: FormProps) => {
+export const Form = ({
+  onSubmit,
+  children,
+  validateOnSubmit,
+  className,
+}: FormProps) => {
   const values = useFormValuesContext();
+  const { setError } = useFormApiContext();
+
+  const validateChildren = (children: FormProps["children"]) => {
+    ReactChildren.forEach(children, (child) => {
+      if (child.props?.hasOwnProperty("children")) {
+        // @ts-ignore
+        validateChildren(child.props.children);
+      } else if (child.props?.name) {
+        validateChild(child, values, setError);
+      }
+    });
+  };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
+
+    if (validateOnSubmit) {
+      validateChildren(children);
+    }
+
     onSubmit(values, event);
   };
 

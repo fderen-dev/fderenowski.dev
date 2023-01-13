@@ -10,7 +10,7 @@ import styles from "./controls.module.scss";
 
 const cx = classNames.bind(styles);
 
-interface InputProps
+export interface InputProps
   extends Omit<React.ComponentPropsWithRef<"input">, "name">,
     FormControlProps {
   inputClass?: string;

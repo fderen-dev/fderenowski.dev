@@ -82,7 +82,7 @@ const Input = ({
   );
 };
 
-interface TextAreaProps
+export interface TextAreaProps
   extends Omit<TextareaAutosizeProps, "name">,
     FormControlProps {
   textAreaClass?: string;
