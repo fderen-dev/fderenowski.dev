@@ -1,5 +1,6 @@
 import React, { Children as ReactChildren } from "react";
 import classNames from "classnames";
+import noop from "lodash/noop";
 
 import { InputProps } from "./controls/Input";
 import { TextAreaProps } from "./controls/TextArea/TextArea";
@@ -14,13 +15,17 @@ const validateChild = (
   child: React.ReactElement<InputProps | TextAreaProps>,
   formState: FormStructure,
   errorSetter: (name: string, error: string) => void
-) => {
+): boolean => {
   const { name, validation } = child.props;
   const error = validation?.(formState[name] ?? "");
 
   if (error) {
     errorSetter(name, error);
+
+    return false;
   }
+
+  return true;
 };
 
 interface FormProps {
@@ -44,25 +49,29 @@ export const Form = ({
   const values = useFormValuesContext();
   const { setError } = useFormApiContext();
 
-  const validateChildren = (children: FormProps["children"]) => {
+  const validateChildren = (children: FormProps["children"]): boolean => {
+    let isValid = true;
+
     ReactChildren.forEach(children, (child) => {
       if (child.props?.hasOwnProperty("children")) {
         // @ts-ignore
         validateChildren(child.props.children);
-      } else if (child.props?.name) {
-        validateChild(child, values, setError);
+      } else if (child.props?.name && child.props?.validation) {
+        isValid = validateChild(child, values, setError);
       }
     });
+
+    return isValid;
   };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     if (validateOnSubmit) {
-      validateChildren(children);
+      validateChildren(children) ? onSubmit(values, event) : noop;
+    } else {
+      onSubmit(values, event);
     }
-
-    onSubmit(values, event);
   };
 
   return (
