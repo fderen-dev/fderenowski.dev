@@ -48,7 +48,7 @@ export const ContactForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("", {
+      const response = await fetch(process.env.NEXT_STATIC_FORMSPREE_URL, {
         method: "POST",
         body: JSON.stringify(values),
         headers: {

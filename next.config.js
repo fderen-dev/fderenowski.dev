@@ -1,5 +1,10 @@
 const path = require("path");
 const StylelintPlugin = require("stylelint-webpack-plugin");
+const nextEnv = require("next-env");
+const dotenvLoad = require("dotenv-load");
+
+dotenvLoad();
+const withNextEnv = nextEnv();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -22,4 +27,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withNextEnv(nextConfig);
