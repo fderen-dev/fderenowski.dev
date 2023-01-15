@@ -28,7 +28,8 @@ const validateChild = (
   return true;
 };
 
-interface FormProps {
+interface FormProps
+  extends Omit<React.ComponentPropsWithoutRef<"form">, "onSubmit"> {
   onSubmit: <S extends FormStructure>(
     values: S,
     event?: React.FormEvent

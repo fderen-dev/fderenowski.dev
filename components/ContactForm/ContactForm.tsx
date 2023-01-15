@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { Button } from "components/common/Button/Button";
 import Forms, { FormStructure } from "components/common/Forms";
@@ -30,11 +30,8 @@ export interface ContactFormStructure extends FormStructure {
   message: string;
 }
 
-interface ContactFormProps {
-  onSubmit: (values: ContactFormStructure) => Promise<void>;
-}
-
-export const ContactForm = ({ onSubmit }: ContactFormProps) => {
+export const ContactForm = () => {
+  const abortControllerRef = useRef<AbortController | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { hasErrors, hasValues } = useFormStateContext();
 
@@ -46,10 +43,38 @@ export const ContactForm = ({ onSubmit }: ContactFormProps) => {
       return;
     }
 
+    abortControllerRef.current = new AbortController();
+
     setIsSubmitting(true);
-    await onSubmit(values);
-    setIsSubmitting(false);
+
+    try {
+      const response = await fetch("", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          Accept: "application/json",
+        },
+        signal: abortControllerRef.current.signal,
+      });
+
+      if (!response.ok) {
+        console.error(`Submittion problem, ${response.status}`);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+        abortControllerRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <Forms.Form validateOnSubmit onSubmit={handleSubmit}>
