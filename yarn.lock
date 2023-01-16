@@ -1650,7 +1650,7 @@
     escape-html "^1.0.3"
     imgix-url-builder "^0.0.3"
 
-"@prismicio/helpers@^2.3.8":
+"@prismicio/helpers@^2.3.5", "@prismicio/helpers@^2.3.8":
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.3.8.tgz#5724bbe418d2ad848d3ab37d2efac57b78f61462"
   integrity sha512-YHkEI2gHBRtNbMIEY8+ao9TLAqAMJSPbhGOAX9hiXHofcKSCBrpd9zaMxKNo5iXCWHnyBk1dsTsWXjKx0d1Rew==
@@ -1675,6 +1675,15 @@
     newtype-ts "^0.3.5"
     tslib "^2.3.1"
     uuid "^8.3.2"
+
+"@prismicio/next@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@prismicio/next/-/next-1.0.2.tgz#76dcc6357a0a74cb69af52cf1821874307bcb7e5"
+  integrity sha512-QGUe8nIEawMDj7MuO9ZP497hwiKUtO+ZIpyHeoMul7+2t4p36wgrKIETVlDD+J8W+K8T9Ayj/zsKbH+BQQmRhA==
+  dependencies:
+    "@prismicio/helpers" "^2.3.5"
+    "@prismicio/types" "^0.2.3"
+    imgix-url-builder "^0.0.3"
 
 "@prismicio/react@^2.5.1":
   version "2.5.1"
