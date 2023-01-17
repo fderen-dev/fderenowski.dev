@@ -6,7 +6,7 @@ import styles from "./button.module.scss";
 
 type Variant = "primary" | "secondary";
 
-interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   variant?: Variant;
   loading?: boolean;
   children: React.ReactNode;
