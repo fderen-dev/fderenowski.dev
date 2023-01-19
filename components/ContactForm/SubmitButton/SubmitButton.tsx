@@ -10,6 +10,17 @@ import { Button } from "components/common/Button/Button";
 
 import { TimeoutHandle } from "utils/types";
 
+import ErrorIcon from "public/static/cancel.svg";
+import OkIcon from "public/static/ok.svg";
+
+import styles from "./submitButton.module.scss";
+
+const StatusIcon = ({ status }: { status: Status }) => (
+  <i className={styles.icon}>
+    {status === Status.Ok ? <OkIcon /> : <ErrorIcon />}
+  </i>
+);
+
 interface SubmitButtonProps
   extends Omit<
     React.ComponentProps<typeof Button>,
@@ -17,6 +28,7 @@ interface SubmitButtonProps
   > {
   text: string;
   statusTimeoutMs?: number;
+  onStatusClear?: () => void;
 }
 
 export interface SubmitButtonApi {
@@ -24,39 +36,41 @@ export interface SubmitButtonApi {
   setError: () => void;
 }
 
-enum StatusFlag {
+enum Status {
   Ok = "Ok",
   Error = "Error",
 }
 
 export const SubmitButton = forwardRef<SubmitButtonApi, SubmitButtonProps>(
-  function SubmitProps(props, ref) {
-    const [statusFlag, setStatusFlag] = useState<StatusFlag | null>(null);
+  function SubmitProps(
+    { text, statusTimeoutMs = 2000, onStatusClear, loading, disabled, ...rest },
+    ref
+  ) {
+    const [status, setStatus] = useState<Status | null>(null);
     const timeoutRef = useRef<TimeoutHandle | null>(null);
-
-    const { text, statusTimeoutMs = 2000, ...rest } = props;
 
     useImperativeHandle(
       ref,
       () => ({
-        setOk: () => setStatusFlag(StatusFlag.Ok),
-        setError: () => setStatusFlag(StatusFlag.Error),
+        setOk: () => setStatus(Status.Ok),
+        setError: () => setStatus(Status.Error),
       }),
       []
     );
 
     useEffect(() => {
-      if (statusFlag) {
+      if (status) {
         if (timeoutRef.current) {
           clearTimeout(timeoutRef.current);
           timeoutRef.current = null;
         }
 
         setTimeout(() => {
-          setStatusFlag(null);
+          setStatus(null);
+          onStatusClear?.();
         }, statusTimeoutMs);
       }
-    }, [statusFlag, statusTimeoutMs]);
+    }, [status, statusTimeoutMs, onStatusClear]);
 
     useEffect(() => {
       () => {
@@ -68,8 +82,15 @@ export const SubmitButton = forwardRef<SubmitButtonApi, SubmitButtonProps>(
     }, []);
 
     return (
-      <Button type="submit" variant="primary" {...rest}>
-        {statusFlag ?? text}
+      <Button
+        type="submit"
+        variant="primary"
+        loading={loading && !status}
+        disabled={disabled || Boolean(status)}
+        {...rest}
+        className={styles.button}
+      >
+        {status ? <StatusIcon status={status} /> : text}
       </Button>
     );
   }

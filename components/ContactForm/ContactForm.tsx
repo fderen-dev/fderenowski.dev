@@ -70,6 +70,7 @@ export const ContactForm = () => {
       }
     } catch (error) {
       console.error(error);
+      submitButtonApiRef.current?.setError();
     } finally {
       setIsSubmitting(false);
     }

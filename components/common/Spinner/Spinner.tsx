@@ -1,5 +1,4 @@
 import classNames from "classnames/bind";
-import bind from "classnames/bind";
 
 import styles from "./spinner.module.scss";
 
@@ -13,5 +12,5 @@ interface SpinnerProps {
 const cx = classNames.bind(styles);
 
 export const Spinner = ({ size = "medium", className }: SpinnerProps) => (
-  <div className={cx(styles.spinner, size, className)}></div>
+  <i className={cx(styles.spinner, size, className)}></i>
 );
