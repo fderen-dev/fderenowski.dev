@@ -103,9 +103,7 @@ export const TextArea = ({
         {label}
       </label>
       <Input name={name} hasError={hasError} {...textAreaProps}>
-        {hasError && (
-          <ErrorPopup message={errors[name]} popupClass={styles.errorPopup} />
-        )}
+        <ErrorPopup message={errors[name]} popupClass={styles.errorPopup} />
       </Input>
     </div>
   );

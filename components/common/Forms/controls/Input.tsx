@@ -43,7 +43,7 @@ export const Input = ({
         className={cx(inputClass, { error: errors[name] })}
         {...inputProps}
       />
-      {errors[name] && <ErrorPopup message={errors[name]} />}
+      <ErrorPopup message={errors[name]} />
     </div>
   );
 };

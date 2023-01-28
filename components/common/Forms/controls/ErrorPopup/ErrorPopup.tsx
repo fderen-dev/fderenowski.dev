@@ -1,5 +1,9 @@
 import classNames from "classnames";
 
+import { FadeInAndOut } from "components/transitions/FadeInAndOut/FadeInAndOut";
+
+import { TypeTools } from "utils/TypeTools";
+
 import styles from "./errorPopup.module.scss";
 
 interface ErrorPopupProps {
@@ -8,9 +12,13 @@ interface ErrorPopupProps {
 }
 
 export const ErrorPopup = ({ message, popupClass }: ErrorPopupProps) => {
+  const isTriggered = TypeTools.isNonEmptyString(message);
+
   return (
-    <div className={classNames(styles.errorPopup, popupClass)}>
-      <p className={styles.errorMessage}>{message}</p>
-    </div>
+    <FadeInAndOut isTriggered={isTriggered}>
+      <div className={classNames(styles.errorPopup, popupClass)}>
+        <p className={styles.errorMessage}>{message}</p>
+      </div>
+    </FadeInAndOut>
   );
 };
