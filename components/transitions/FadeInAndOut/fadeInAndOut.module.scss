@@ -1,0 +1,30 @@
+.appear,
+.enter {
+  display: block;
+  opacity: 0;
+}
+
+.appearActive,
+.enterActive {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+
+.appearDone,
+.enterDone {
+  opacity: 1;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.exitDone {
+  display: none;
+  opacity: 0;
+}
