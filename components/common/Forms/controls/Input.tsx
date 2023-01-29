@@ -31,6 +31,7 @@ export const Input = ({
     validateOnChange
   );
   const errors = useFormErrorsContext();
+  const hasError = Boolean(errors[name]);
 
   return (
     <div className={styles.controlGroup}>
@@ -40,10 +41,10 @@ export const Input = ({
         name={name}
         onChange={handleChange}
         onBlur={handleBlur}
-        className={cx(inputClass, { error: errors[name] })}
+        className={cx(inputClass, { error: hasError })}
         {...inputProps}
       />
-      <ErrorPopup message={errors[name]} />
+      <ErrorPopup show={hasError} message={errors[name]} />
     </div>
   );
 };
