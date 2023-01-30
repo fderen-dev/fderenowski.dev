@@ -14,6 +14,17 @@ const routes = [
   {
     type: "homepage",
     path: "/",
+    lang: "en-us",
+  },
+  {
+    type: "page",
+    path: "/contact",
+    lang: "en-us",
+  },
+  {
+    type: "page",
+    path: "/about",
+    lang: "en-us",
   },
 ];
 
@@ -23,7 +34,11 @@ const routes = [
  *
  * @param config {prismicNext.CreateClientConfig} - Configuration for the Prismic client.
  */
-export const createClient = (config = {}) => {
+export const createClient = ({
+  previewData,
+  req,
+  ...config
+}: prismicNext.CreateClientConfig = {}) => {
   const client = prismic.createClient(sm.apiEndpoint, {
     routes,
     ...config,
@@ -31,8 +46,8 @@ export const createClient = (config = {}) => {
 
   prismicNext.enableAutoPreviews({
     client,
-    previewData: config.previewData,
-    req: config.req,
+    previewData,
+    req,
   });
 
   return client;
