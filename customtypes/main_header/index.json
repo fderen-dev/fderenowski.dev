@@ -1,0 +1,24 @@
+{
+  "id": "main_header",
+  "label": "Main header",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "heading": {
+        "type": "Text",
+        "config": {
+          "label": "Heading",
+          "placeholder": ""
+        }
+      },
+      "subheading": {
+        "type": "Text",
+        "config": {
+          "label": "Subheading",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

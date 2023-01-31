@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "author",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "sing",
+              "type": "Text"
+            }
+          ],
+          [
+            "description",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "magnet",
+              "type": "Text"
+            }
+          ],
+          [
+            "lang",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "within",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "ogdata": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "particles",
+              "type": "Text"
+            }
+          ],
+          [
+            "type",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "pencil",
+              "type": "Text"
+            }
+          ],
+          [
+            "image",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "buried",
+              "type": "Text"
+            }
+          ],
+          [
+            "url",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "opinion",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "trail",
+    "type": "Text"
+  }
+}

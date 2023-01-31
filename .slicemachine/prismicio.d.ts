@@ -9,6 +9,28 @@ type Simplify<T> = {
 /** Content for Home page documents */
 interface HomePageDocumentData {
     /**
+     * document title field in *Home page*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.document_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    document_title: prismicT.KeyTextField;
+    /**
+     * metadata field in *Home page*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.metadata[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    metadata: prismicT.GroupField<Simplify<HomePageDocumentDataMetadataItem>>;
+    /**
      * Slice Zone field in *Home page*
      *
      * - **Field Type**: Slice Zone
@@ -19,6 +41,72 @@ interface HomePageDocumentData {
      *
      */
     slices: prismicT.SliceZone<HomePageDocumentDataSlicesSlice>;
+}
+/**
+ * Item in Home page → metadata
+ *
+ */
+export interface HomePageDocumentDataMetadataItem {
+    /**
+     * author field in *Home page → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.metadata[].author
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    author: prismicT.KeyTextField;
+    /**
+     * description field in *Home page → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.metadata[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * og_title field in *Home page → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.metadata[].og_title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    og_title: prismicT.KeyTextField;
+    /**
+     * og_type field in *Home page → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.metadata[].og_type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    og_type: prismicT.KeyTextField;
+    /**
+     * og_image field in *Home page → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.metadata[].og_image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    og_image: prismicT.KeyTextField;
+    /**
+     * og_url field in *Home page → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page.metadata[].og_url
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    og_url: prismicT.KeyTextField;
 }
 /**
  * Slice for *Home page → Slice Zone*
@@ -35,7 +123,210 @@ type HomePageDocumentDataSlicesSlice = HeaderSlice | SectionSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomePageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomePageDocumentData>, "home_page", Lang>;
-export type AllDocumentTypes = HomePageDocument;
+/** Content for Main footer documents */
+interface MainFooterDocumentData {
+    /**
+     * text content field in *Main footer*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: main_footer.text_content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    text_content: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Main footer*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: main_footer.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<MainFooterDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Main footer → Slice Zone*
+ *
+ */
+type MainFooterDocumentDataSlicesSlice = never;
+/**
+ * Main footer document from Prismic
+ *
+ * - **API ID**: `main_footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MainFooterDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<MainFooterDocumentData>, "main_footer", Lang>;
+/** Content for Main header documents */
+interface MainHeaderDocumentData {
+    /**
+     * Heading field in *Main header*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: main_header.heading
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    heading: prismicT.KeyTextField;
+    /**
+     * Subheading field in *Main header*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: main_header.subheading
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subheading: prismicT.KeyTextField;
+}
+/**
+ * Main header document from Prismic
+ *
+ * - **API ID**: `main_header`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MainHeaderDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<MainHeaderDocumentData>, "main_header", Lang>;
+/** Content for SEO documents */
+interface SeoDocumentData {
+    /**
+     * metadata field in *SEO*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.metadata[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    metadata: prismicT.GroupField<Simplify<SeoDocumentDataMetadataItem>>;
+    /**
+     * ogdata field in *SEO*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.ogdata[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    ogdata: prismicT.GroupField<Simplify<SeoDocumentDataOgdataItem>>;
+    /**
+     * title field in *SEO*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+}
+/**
+ * Item in SEO → metadata
+ *
+ */
+export interface SeoDocumentDataMetadataItem {
+    /**
+     * author field in *SEO → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.metadata[].author
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    author: prismicT.KeyTextField;
+    /**
+     * description field in *SEO → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.metadata[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
+    /**
+     * lang field in *SEO → metadata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.metadata[].lang
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    lang: prismicT.KeyTextField;
+}
+/**
+ * Item in SEO → ogdata
+ *
+ */
+export interface SeoDocumentDataOgdataItem {
+    /**
+     * title field in *SEO → ogdata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.ogdata[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * type field in *SEO → ogdata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.ogdata[].type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    type: prismicT.KeyTextField;
+    /**
+     * image field in *SEO → ogdata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.ogdata[].image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    image: prismicT.KeyTextField;
+    /**
+     * url field in *SEO → ogdata*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: seo.ogdata[].url
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    url: prismicT.KeyTextField;
+}
+/**
+ * SEO document from Prismic
+ *
+ * - **API ID**: `seo`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SeoDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<SeoDocumentData>, "seo", Lang>;
+export type AllDocumentTypes = HomePageDocument | MainFooterDocument | MainHeaderDocument | SeoDocument;
 /**
  * Primary content in Header → Primary
  *
@@ -85,6 +376,71 @@ type HeaderSliceVariation = HeaderSliceDefault;
  *
  */
 export type HeaderSlice = prismicT.SharedSlice<"header", HeaderSliceVariation>;
+/**
+ * Primary content in IconLink → Primary
+ *
+ */
+interface IconLinkSliceDefaultPrimary {
+    /**
+     * aria label field in *IconLink → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: icon_link.primary.aria_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    aria_label: prismicT.RichTextField;
+    /**
+     * target url field in *IconLink → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_link.primary.target_url
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    target_url: prismicT.LinkField;
+}
+/**
+ * Item in IconLink → Items
+ *
+ */
+export interface IconLinkSliceDefaultItem {
+    /**
+     * icon field in *IconLink → Items*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: icon_link.items[].icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for IconLink Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `IconLink`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type IconLinkSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<IconLinkSliceDefaultPrimary>, Simplify<IconLinkSliceDefaultItem>>;
+/**
+ * Slice variation for *IconLink*
+ *
+ */
+type IconLinkSliceVariation = IconLinkSliceDefault;
+/**
+ * IconLink Shared Slice
+ *
+ * - **API ID**: `icon_link`
+ * - **Description**: `IconLink`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type IconLinkSlice = prismicT.SharedSlice<"icon_link", IconLinkSliceVariation>;
 /**
  * Primary content in Section → Primary
  *
@@ -139,6 +495,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomePageDocumentData, HomePageDocumentDataSlicesSlice, HomePageDocument, AllDocumentTypes, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, SectionSliceDefaultPrimary, SectionSliceDefault, SectionSliceVariation, SectionSlice };
+        export type { HomePageDocumentData, HomePageDocumentDataMetadataItem, HomePageDocumentDataSlicesSlice, HomePageDocument, MainFooterDocumentData, MainFooterDocumentDataSlicesSlice, MainFooterDocument, MainHeaderDocumentData, MainHeaderDocument, SeoDocumentData, SeoDocumentDataMetadataItem, SeoDocumentDataOgdataItem, SeoDocument, AllDocumentTypes, HeaderSliceDefaultPrimary, HeaderSliceDefault, HeaderSliceVariation, HeaderSlice, IconLinkSliceDefaultPrimary, IconLinkSliceDefaultItem, IconLinkSliceDefault, IconLinkSliceVariation, IconLinkSlice, SectionSliceDefaultPrimary, SectionSliceDefault, SectionSliceVariation, SectionSlice };
     }
 }

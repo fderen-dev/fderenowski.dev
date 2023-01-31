@@ -1,0 +1,11 @@
+{
+  "text_content": {
+    "__TYPE__": "FieldContent",
+    "value": "paragraph",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": []
+  }
+}

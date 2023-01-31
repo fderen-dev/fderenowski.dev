@@ -1,17 +1,10 @@
 {
-  "id": "home_page",
-  "label": "Home page",
-  "repeatable": false,
+  "id": "seo",
+  "label": "SEO",
+  "repeatable": true,
   "status": true,
   "json": {
     "Main": {
-      "document_title": {
-        "type": "Text",
-        "config": {
-          "label": "document title",
-          "placeholder": ""
-        }
-      },
       "metadata": {
         "type": "Group",
         "config": {
@@ -31,49 +24,57 @@
                 "placeholder": ""
               }
             },
-            "og_title": {
+            "lang": {
               "type": "Text",
               "config": {
-                "label": "og_title",
-                "placeholder": ""
-              }
-            },
-            "og_type": {
-              "type": "Text",
-              "config": {
-                "label": "og_type",
-                "placeholder": ""
-              }
-            },
-            "og_image": {
-              "type": "Text",
-              "config": {
-                "label": "og_image",
-                "placeholder": ""
-              }
-            },
-            "og_url": {
-              "type": "Text",
-              "config": {
-                "label": "og_url",
+                "label": "lang",
                 "placeholder": ""
               }
             }
           }
         }
       },
-      "slices": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
+      "ogdata": {
+        "type": "Group",
         "config": {
-          "choices": {
-            "header": {
-              "type": "SharedSlice"
+          "label": "ogdata",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "title",
+                "placeholder": ""
+              }
             },
-            "section": {
-              "type": "SharedSlice"
+            "type": {
+              "type": "Text",
+              "config": {
+                "label": "type",
+                "placeholder": ""
+              }
+            },
+            "image": {
+              "type": "Text",
+              "config": {
+                "label": "image",
+                "placeholder": ""
+              }
+            },
+            "url": {
+              "type": "Text",
+              "config": {
+                "label": "url",
+                "placeholder": ""
+              }
             }
           }
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
         }
       }
     }

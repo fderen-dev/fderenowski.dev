@@ -1,6 +1,9 @@
 {
   "_cts": {
-    "home_page": {}
+    "home_page": {},
+    "seo": {},
+    "main_header": {},
+    "main_footer": {}
   },
   "slices": {
     "Section": {
@@ -11,6 +14,12 @@
     "Header": {
       "default": {
         "primary": {}
+      }
+    },
+    "IconLink": {
+      "default": {
+        "primary": {},
+        "items": {}
       }
     }
   }
