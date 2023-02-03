@@ -1,0 +1,81 @@
+{
+  "name": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Quis in velit Lorem nisi ipsum laborum tempor. Excepteur ipsum dolore cupidatat aute do pariatur laborum nulla in."
+        }
+      }
+    ]
+  },
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "tiny"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "navigation_item$8b1d0904-aa3c-4f07-91ce-b8c80d85e262",
+        "name": "navigation_item",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "name": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Cupidatat consequat id culpa mollit enim sit eiusmod enim dolor quis tempor et. Laboris cupidatat minim velit nisi cillum in occaecat sint eu amet."
+                  }
+                }
+              ]
+            },
+            "link": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "http://twitter.com"
+              }
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "child_name",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Occaecat et dolore ullamco incididunt tempor et non enim duis proident adipisicing eiusmod et."
+                        }
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "child_link",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "__TYPE__": "ExternalLink",
+                      "url": "https://slicemachine.dev"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -12,18 +12,8 @@ export const repositoryName = prismic.getRepositoryName(sm.apiEndpoint);
 /** @type {prismic.ClientConfig['routes']} **/
 const routes = [
   {
-    type: "homepage",
+    type: "home_page",
     path: "/",
-    lang: "en-us",
-  },
-  {
-    type: "page",
-    path: "/contact",
-    lang: "en-us",
-  },
-  {
-    type: "page",
-    path: "/about",
     lang: "en-us",
   },
 ];

@@ -3,7 +3,9 @@
     "home_page": {},
     "seo": {},
     "main_header": {},
-    "main_footer": {}
+    "main_footer": {},
+    "homepage": {},
+    "navigation": {}
   },
   "slices": {
     "Section": {
@@ -20,6 +22,22 @@
       "default": {
         "primary": {},
         "items": {}
+      }
+    },
+    "NavigationItem": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Navigation": {},
+    "Fragment": {
+      "default": {
+        "primary": {},
+        "items": {}
+      },
+      "homepageFragment": {
+        "primary": {}
       }
     }
   }

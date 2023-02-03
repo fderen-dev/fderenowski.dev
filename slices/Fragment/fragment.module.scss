@@ -1,0 +1,10 @@
+$gap: 100px;
+
+.section {
+  min-height: calc(50vh - $gap);
+
+  > :not(h2)::before {
+    max-height: calc(100% + ($gap / 2));
+    opacity: 0.25;
+  }
+}

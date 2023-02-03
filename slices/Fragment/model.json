@@ -1,0 +1,79 @@
+{
+  "id": "fragment",
+  "type": "SharedSlice",
+  "name": "Fragment",
+  "description": "Fragment",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Fragment",
+      "primary": {
+        "header": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Header",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        }
+      },
+      "items": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,strong,em,embed,hyperlink"
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "homepageFragment",
+      "name": "Homepage Fragment",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Fragment",
+      "primary": {
+        "header": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Header",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        },
+        "placement": {
+          "type": "Select",
+          "config": {
+            "label": "Placement",
+            "placeholder": "",
+            "options": [
+              "Left",
+              "Right"
+            ]
+          }
+        }
+      },
+      "items": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,strong,em,embed,hyperlink"
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}
