@@ -16,6 +16,7 @@ export type Placement = {
   top: string;
   left: string;
   right: string;
+  bottom: string;
 };
 
 export type ResponsivePlacement = {
@@ -29,6 +30,7 @@ interface GearProps {
   placement: Partial<Placement>;
   responsivePlacement?: ResponsivePlacement;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export const Gear: FC<GearProps> = ({
@@ -37,11 +39,12 @@ export const Gear: FC<GearProps> = ({
   maxSize = "20%",
   minSize = "150px",
   className,
+  style,
 }) => {
   const { isScrolling, scrollDirection } = useScrollDetectionContext();
   const { isDesktop } = useMediaQueriesContext();
   const isMounted = useIsMounted();
-  let { top, left, right } = placement;
+  let { top, left, right, bottom } = placement;
 
   if (responsivePlacement) {
     const { desktop, mobiles } = responsivePlacement;
@@ -49,10 +52,12 @@ export const Gear: FC<GearProps> = ({
       top = desktop.top;
       left = desktop.left;
       right = desktop.right;
+      bottom = desktop.bottom;
     } else {
       top = mobiles.top;
       left = mobiles.left;
       right = mobiles.right;
+      bottom = mobiles.bottom;
     }
   }
 
@@ -66,9 +71,11 @@ export const Gear: FC<GearProps> = ({
         down: scrollDirection === ScrollDirection.Down,
       })}
       style={{
+        ...style,
         top,
         left,
         right,
+        bottom,
         minWidth: minSize,
         minHeight: minSize,
         maxWidth: maxSize,
