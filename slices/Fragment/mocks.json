@@ -27,7 +27,7 @@
                 {
                   "type": "paragraph",
                   "content": {
-                    "text": "Fugiat anim reprehenderit velit elit consectetur ad sint laboris exercitation reprehenderit dolor sint officia sint do."
+                    "text": "Officia adipisicing irure elit ad consequat culpa tempor commodo."
                   }
                 }
               ]
@@ -71,6 +71,110 @@
                   "type": "paragraph",
                   "content": {
                     "text": "Cillum commodo non id. Esse adipisicing ipsum sunt. Occaecat voluptate aute mollit irure in magna commodo tempor commodo dolor ullamco dolor est."
+                  }
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "aboutMeFragment",
+    "primary": {
+      "header": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading2",
+            "content": {
+              "text": "Minerals"
+            }
+          }
+        ]
+      },
+      "portrait": {
+        "origin": {
+          "id": "main",
+          "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
+          "width": 3212,
+          "height": 3880
+        },
+        "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?rect=0%2C0%2C3212%2C3880&w=760&h=918",
+        "width": 760,
+        "height": 918,
+        "edit": {
+          "zoom": 1,
+          "crop": {
+            "x": 0,
+            "y": 0
+          },
+          "background": "transparent"
+        },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
+        "thumbnails": {
+          "tablet": {
+            "origin": {
+              "id": "tablet",
+              "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+              "width": 3882,
+              "height": 2584
+            },
+            "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?rect=0%2C0%2C3882%2C2584&w=984&h=655",
+            "width": 984,
+            "height": 655,
+            "edit": {
+              "zoom": 1,
+              "crop": {
+                "x": 0,
+                "y": 0
+              },
+              "background": "transparent"
+            },
+            "credits": null,
+            "alt": null
+          },
+          "desktop": {
+            "origin": {
+              "id": "desktop",
+              "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+              "width": 3935,
+              "height": 5894
+            },
+            "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?rect=0%2C0%2C3934%2C5894&w=1600&h=2397",
+            "width": 1600,
+            "height": 2397,
+            "edit": {
+              "zoom": 1,
+              "crop": {
+                "x": 0,
+                "y": 0
+              },
+              "background": "transparent"
+            },
+            "credits": null,
+            "alt": null
+          }
+        }
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "content",
+            {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Sit quis incididunt aute. Eu labore tempor commodo veniam ut deserunt dolore sunt voluptate."
                   }
                 }
               ]

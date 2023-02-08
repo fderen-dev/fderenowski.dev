@@ -6,6 +6,106 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = {
     [KeyType in keyof T]: T[KeyType];
 };
+/** Content for About documents */
+interface AboutDocumentData {
+    /**
+     * Meta Title field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.meta_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_title: prismicT.KeyTextField;
+    /**
+     * Meta Description field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.meta_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_description: prismicT.KeyTextField;
+    /**
+     * Meta Author field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.meta_author
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_author: prismicT.KeyTextField;
+    /**
+     * Meta Keywords field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.meta_keywords
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_keywords: prismicT.KeyTextField;
+    /**
+     * Meta Robots field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.meta_robots
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_robots: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *About*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.slices[]
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<AboutDocumentDataSlicesSlice>;
+    /**
+     * Slice Zone field in *About*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.slices1[]
+     * - **Tab**: Page Content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices1: prismicT.SliceZone<AboutDocumentDataSlices1Slice>;
+}
+/**
+ * Slice for *About → Slice Zone*
+ *
+ */
+type AboutDocumentDataSlicesSlice = never;
+/**
+ * Slice for *About → Slice Zone*
+ *
+ */
+type AboutDocumentDataSlices1Slice = FragmentSlice;
+/**
+ * About document from Prismic
+ *
+ * - **API ID**: `about`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type AboutDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
 /** Content for Homepage documents */
 interface HomepageDocumentData {
     /**
@@ -130,7 +230,7 @@ type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
-export type AllDocumentTypes = HomepageDocument | NavigationDocument;
+export type AllDocumentTypes = AboutDocument | HomepageDocument | NavigationDocument;
 /**
  * Primary content in Fragment → Primary
  *
@@ -224,10 +324,61 @@ export interface FragmentSliceHomepageFragmentItem {
  */
 export type FragmentSliceHomepageFragment = prismicT.SharedSliceVariation<"homepageFragment", Simplify<FragmentSliceHomepageFragmentPrimary>, Simplify<FragmentSliceHomepageFragmentItem>>;
 /**
+ * Primary content in Fragment → Primary
+ *
+ */
+interface FragmentSliceAboutMeFragmentPrimary {
+    /**
+     * Header field in *Fragment → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: *None*
+     * - **API ID Path**: fragment.primary.header
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    header: prismicT.TitleField;
+    /**
+     * Portrait field in *Fragment → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: fragment.primary.portrait
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    portrait: prismicT.ImageField<"tablet" | "desktop">;
+}
+/**
+ * Item in Fragment → Items
+ *
+ */
+export interface FragmentSliceAboutMeFragmentItem {
+    /**
+     * Content field in *Fragment → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: fragment.items[].content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    content: prismicT.RichTextField;
+}
+/**
+ * About Me Fragment variation for Fragment Slice
+ *
+ * - **API ID**: `aboutMeFragment`
+ * - **Description**: `Fragment`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type FragmentSliceAboutMeFragment = prismicT.SharedSliceVariation<"aboutMeFragment", Simplify<FragmentSliceAboutMeFragmentPrimary>, Simplify<FragmentSliceAboutMeFragmentItem>>;
+/**
  * Slice variation for *Fragment*
  *
  */
-type FragmentSliceVariation = FragmentSliceDefault | FragmentSliceHomepageFragment;
+type FragmentSliceVariation = FragmentSliceDefault | FragmentSliceHomepageFragment | FragmentSliceAboutMeFragment;
 /**
  * Fragment Shared Slice
  *
@@ -317,6 +468,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceVariation, FragmentSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }

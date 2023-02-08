@@ -27,8 +27,8 @@
           "config": {
             "label": "Content",
             "placeholder": "",
-            "allowTargetBlank": false,
-            "single": "paragraph,strong,em,embed,hyperlink"
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em,hyperlink,embed"
           }
         }
       },
@@ -58,6 +58,57 @@
             "options": [
               "Left",
               "Right"
+            ]
+          }
+        }
+      },
+      "items": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph,strong,em,embed,hyperlink"
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "aboutMeFragment",
+      "name": "About Me Fragment",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Fragment",
+      "primary": {
+        "header": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Header",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "heading2"
+          }
+        },
+        "portrait": {
+          "type": "Image",
+          "config": {
+            "label": "Portrait",
+            "constraint": {
+              "width": 760
+            },
+            "thumbnails": [
+              {
+                "name": "tablet",
+                "width": 984,
+                "height": null
+              },
+              {
+                "name": "desktop",
+                "width": 1600,
+                "height": null
+              }
             ]
           }
         }

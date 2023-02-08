@@ -5,7 +5,8 @@
     "main_header": {},
     "main_footer": {},
     "homepage": {},
-    "navigation": {}
+    "navigation": {},
+    "about": {}
   },
   "slices": {
     "Section": {
@@ -37,7 +38,12 @@
         "items": {}
       },
       "homepageFragment": {
-        "primary": {}
+        "primary": {},
+        "items": {}
+      },
+      "aboutMeFragment": {
+        "primary": {},
+        "items": {}
       }
     }
   }

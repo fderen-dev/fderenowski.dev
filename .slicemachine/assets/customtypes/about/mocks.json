@@ -1,0 +1,92 @@
+{
+  "meta_title": {
+    "__TYPE__": "FieldContent",
+    "value": "children",
+    "type": "Text"
+  },
+  "meta_description": {
+    "__TYPE__": "FieldContent",
+    "value": "organized",
+    "type": "Text"
+  },
+  "meta_author": {
+    "__TYPE__": "FieldContent",
+    "value": "done",
+    "type": "Text"
+  },
+  "meta_keywords": {
+    "__TYPE__": "FieldContent",
+    "value": "sudden",
+    "type": "Text"
+  },
+  "meta_robots": {
+    "__TYPE__": "FieldContent",
+    "value": "mine",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": []
+  },
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "market"
+  },
+  "slices1": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "fragment$fc93060b-c2b4-49e1-8349-4c30a44cc923",
+        "name": "fragment",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "header": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading2",
+                  "content": {
+                    "text": "Individual"
+                  }
+                }
+              ]
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "content",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Et dolore ut magna Lorem velit magna cupidatat officia adipisicing qui elit eu."
+                        }
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "button_link",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "__TYPE__": "ExternalLink",
+                      "url": "http://twitter.com"
+                    }
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
