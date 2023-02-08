@@ -1,8 +1,8 @@
 import { GetStaticProps, NextPage } from "next";
-import Head from "next/head";
 import type { Content } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
+import { Head } from "components/common/Head/Head";
 import { Layout } from "components/common/Layout/Layout";
 
 import { createClient } from "../prismicio";
@@ -24,29 +24,13 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 };
 
 const Home: NextPage<Content.HomepageDocument> = (page) => {
-  console.log(page);
-
   const {
     data: { slices: slicesData, ...meta },
   } = page;
 
   return (
     <>
-      <Head>
-        {meta.meta_title && <title>{meta.meta_title}</title>}
-        {meta.meta_author && (
-          <meta property="author" content={meta.meta_author} />
-        )}
-        {meta.meta_description && (
-          <meta property="description" content={meta.meta_description} />
-        )}
-        {meta.meta_keywords && (
-          <meta property="keywords" content={meta.meta_keywords} />
-        )}
-        {meta.meta_robots && (
-          <meta property="robots" content={meta.meta_robots} />
-        )}
-      </Head>
+      <Head meta={meta} />
       <Layout contentClassName={styles.layoutContent}>
         <SliceZone slices={slicesData} components={slices} />
       </Layout>
