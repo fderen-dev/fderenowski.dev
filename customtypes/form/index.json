@@ -1,0 +1,9 @@
+{
+  "id": "form",
+  "label": "Form",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {}
+  }
+}

@@ -1,0 +1,129 @@
+[
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "default",
+    "primary": {
+      "type": {
+        "__TYPE__": "FieldContent",
+        "value": "Text",
+        "type": "Select"
+      },
+      "name": {
+        "__TYPE__": "FieldContent",
+        "value": "saddle",
+        "type": "Text"
+      },
+      "label": {
+        "__TYPE__": "FieldContent",
+        "value": "relationship",
+        "type": "Text"
+      },
+      "placeholder": {
+        "__TYPE__": "FieldContent",
+        "value": "against",
+        "type": "Text"
+      },
+      "required": {
+        "__TYPE__": "BooleanContent",
+        "value": false
+      },
+      "requiredvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "quiet",
+        "type": "Text"
+      },
+      "minlength": {
+        "__TYPE__": "FieldContent",
+        "value": "89",
+        "type": "Number"
+      },
+      "minlengthvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "how",
+        "type": "Text"
+      },
+      "maxlength": {
+        "__TYPE__": "FieldContent",
+        "value": "94",
+        "type": "Number"
+      },
+      "maxlengthvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "courage",
+        "type": "Text"
+      },
+      "emailvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "steam",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "textArea",
+    "primary": {
+      "name": {
+        "__TYPE__": "FieldContent",
+        "value": "review",
+        "type": "Text"
+      },
+      "label": {
+        "__TYPE__": "FieldContent",
+        "value": "least",
+        "type": "Text"
+      },
+      "placeholder": {
+        "__TYPE__": "FieldContent",
+        "value": "bill",
+        "type": "Text"
+      },
+      "required": {
+        "__TYPE__": "BooleanContent",
+        "value": true
+      },
+      "requiredvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "although",
+        "type": "Text"
+      },
+      "minlength": {
+        "__TYPE__": "FieldContent",
+        "value": "40",
+        "type": "Number"
+      },
+      "minlengthvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "but",
+        "type": "Text"
+      },
+      "maxlength": {
+        "__TYPE__": "FieldContent",
+        "value": "37",
+        "type": "Number"
+      },
+      "maxlengthvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "none",
+        "type": "Text"
+      },
+      "emailvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "better",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  }
+]

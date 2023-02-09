@@ -6,7 +6,9 @@
     "main_footer": {},
     "homepage": {},
     "navigation": {},
-    "about": {}
+    "about": {},
+    "contact": {},
+    "form": {}
   },
   "slices": {
     "Section": {
@@ -44,6 +46,21 @@
       "aboutMeFragment": {
         "primary": {},
         "items": {}
+      }
+    },
+    "TextInput": {
+      "default": {
+        "primary": {},
+        "items": {}
+      }
+    },
+    "Input": {
+      "default": {
+        "primary": {},
+        "items": {}
+      },
+      "textArea": {
+        "primary": {}
       }
     }
   }

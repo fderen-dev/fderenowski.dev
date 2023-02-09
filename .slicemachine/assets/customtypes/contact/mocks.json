@@ -1,0 +1,31 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "night"
+  },
+  "meta_title": {
+    "__TYPE__": "FieldContent",
+    "value": "enough",
+    "type": "Text"
+  },
+  "meta_author": {
+    "__TYPE__": "FieldContent",
+    "value": "press",
+    "type": "Text"
+  },
+  "meta_description": {
+    "__TYPE__": "FieldContent",
+    "value": "island",
+    "type": "Text"
+  },
+  "meta_keywords": {
+    "__TYPE__": "FieldContent",
+    "value": "slightly",
+    "type": "Text"
+  },
+  "meta_robots": {
+    "__TYPE__": "FieldContent",
+    "value": "dirty",
+    "type": "Text"
+  }
+}

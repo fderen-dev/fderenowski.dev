@@ -106,6 +106,86 @@ type AboutDocumentDataSlices1Slice = FragmentSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type AboutDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
+/** Content for Contact documents */
+interface ContactDocumentData {
+    /**
+     * Meta Title field in *Contact*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.meta_title
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_title: prismicT.KeyTextField;
+    /**
+     * Meta Author field in *Contact*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.meta_author
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_author: prismicT.KeyTextField;
+    /**
+     * Meta Description field in *Contact*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.meta_description
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_description: prismicT.KeyTextField;
+    /**
+     * Meta Keywords field in *Contact*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.meta_keywords
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_keywords: prismicT.KeyTextField;
+    /**
+     * Meta Robots field in *Contact*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.meta_robots
+     * - **Tab**: SEO
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    meta_robots: prismicT.KeyTextField;
+}
+/**
+ * Contact document from Prismic
+ *
+ * - **API ID**: `contact`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ContactDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ContactDocumentData>, "contact", Lang>;
+/** Content for Form documents */
+type FormDocumentData = Record<string, never>;
+/**
+ * Form document from Prismic
+ *
+ * - **API ID**: `form`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FormDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<FormDocumentData>, "form", Lang>;
 /** Content for Homepage documents */
 interface HomepageDocumentData {
     /**
@@ -230,7 +310,7 @@ type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
-export type AllDocumentTypes = AboutDocument | HomepageDocument | NavigationDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | FormDocument | HomepageDocument | NavigationDocument;
 /**
  * Primary content in Fragment → Primary
  *
@@ -389,6 +469,262 @@ type FragmentSliceVariation = FragmentSliceDefault | FragmentSliceHomepageFragme
  */
 export type FragmentSlice = prismicT.SharedSlice<"fragment", FragmentSliceVariation>;
 /**
+ * Primary content in Input → Primary
+ *
+ */
+interface TextInputSliceDefaultPrimary {
+    /**
+     * Type field in *Input → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.type
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    type: prismicT.SelectField<"Text" | "Email">;
+    /**
+     * Name field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Label field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Placeholder field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.placeholder
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    placeholder: prismicT.KeyTextField;
+    /**
+     * Required field in *Input → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: text_input.primary.required
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    required: prismicT.BooleanField;
+    /**
+     * RequiredValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.requiredvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    requiredvalidationmessage: prismicT.KeyTextField;
+    /**
+     * MinLength field in *Input → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.minlength
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    minlength: prismicT.NumberField;
+    /**
+     * MinLengthValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.minlengthvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    minlengthvalidationmessage: prismicT.KeyTextField;
+    /**
+     * MaxLength field in *Input → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.maxlength
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    maxlength: prismicT.NumberField;
+    /**
+     * MaxLengthValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.maxlengthvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    maxlengthvalidationmessage: prismicT.KeyTextField;
+    /**
+     * EmailValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.emailvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    emailvalidationmessage: prismicT.KeyTextField;
+}
+/**
+ * Default variation for Input Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `TextInput`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextInputSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<TextInputSliceDefaultPrimary>, never>;
+/**
+ * Primary content in Input → Primary
+ *
+ */
+interface TextInputSliceTextAreaPrimary {
+    /**
+     * Name field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Label field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Placeholder field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.placeholder
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    placeholder: prismicT.KeyTextField;
+    /**
+     * Required field in *Input → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: text_input.primary.required
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    required: prismicT.BooleanField;
+    /**
+     * RequiredValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.requiredvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    requiredvalidationmessage: prismicT.KeyTextField;
+    /**
+     * MinLength field in *Input → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.minlength
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    minlength: prismicT.NumberField;
+    /**
+     * MinLengthValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.minlengthvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    minlengthvalidationmessage: prismicT.KeyTextField;
+    /**
+     * MaxLength field in *Input → Primary*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.maxlength
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    maxlength: prismicT.NumberField;
+    /**
+     * MaxLengthValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.maxlengthvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    maxlengthvalidationmessage: prismicT.KeyTextField;
+    /**
+     * EmailValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.emailvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    emailvalidationmessage: prismicT.KeyTextField;
+}
+/**
+ * TextArea variation for Input Slice
+ *
+ * - **API ID**: `textArea`
+ * - **Description**: `TextInput`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextInputSliceTextArea = prismicT.SharedSliceVariation<"textArea", Simplify<TextInputSliceTextAreaPrimary>, never>;
+/**
+ * Slice variation for *Input*
+ *
+ */
+type TextInputSliceVariation = TextInputSliceDefault | TextInputSliceTextArea;
+/**
+ * Input Shared Slice
+ *
+ * - **API ID**: `text_input`
+ * - **Description**: `TextInput`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextInputSlice = prismicT.SharedSlice<"text_input", TextInputSliceVariation>;
+/**
  * Primary content in NavigationItem → Primary
  *
  */
@@ -468,6 +804,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FormDocumentData, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceVariation, TextInputSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }

@@ -19,13 +19,12 @@ const Fragment = ({ slice }: SliceComponentProps<Content.FragmentSlice>) => {
         header={slice?.primary?.header?.[0]?.text}
         className={styles.section}
       >
-        {slice.items.map((item) => (
-          <>
-            {item.content && (
+        {slice.items.map(
+          (item) =>
+            item.content && (
               <PrismicRichText field={item.content} key={slice.id} />
-            )}
-          </>
-        ))}
+            )
+        )}
       </Section>
     );
   }
