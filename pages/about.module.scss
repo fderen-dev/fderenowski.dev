@@ -16,6 +16,7 @@ $z-index-paragraph: 1;
   position: relative;
   top: 7vh;
   max-height: 500px;
+  margin: 0 auto;
   object-fit: contain;
   @include mixins.not-selectable;
 }
@@ -24,10 +25,18 @@ $z-index-paragraph: 1;
   position: relative;
   z-index: vars.$z-index-content;
 
+  &::before {
+    @include mixins.black-background;
+
+    width: 120%;
+    height: 120%;
+    opacity: 0.9;
+  }
+
   .subheader {
     position: relative;
     z-index: $z-index-header;
-    color: vars.$c-pitch-black;
+    color: vars.$c-snow-white-80;
 
     &::before {
       @include mixins.yellow-background(
@@ -41,12 +50,6 @@ $z-index-paragraph: 1;
   .paragraph {
     position: relative;
     z-index: $z-index-paragraph;
-
-    &::before {
-      @include mixins.black-background;
-
-      opacity: 0.9;
-    }
 
     .paragraphText {
       position: relative;
@@ -67,6 +70,12 @@ $z-index-paragraph: 1;
 
   .portrait {
     max-height: 800px;
+  }
+
+  .content {
+    &::before {
+      height: 140%;
+    }
   }
 }
 

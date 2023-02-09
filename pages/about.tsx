@@ -23,7 +23,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 
 const About: NextPage<Content.AboutDocument> = (page) => {
   const {
-    data: { slices: slicesData, ...meta },
+    data: { slices1: slicesData, ...meta },
   } = page;
 
   return (
