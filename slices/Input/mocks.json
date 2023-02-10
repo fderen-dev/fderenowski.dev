@@ -3,11 +3,6 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
-      "type": {
-        "__TYPE__": "FieldContent",
-        "value": "Text",
-        "type": "Select"
-      },
       "name": {
         "__TYPE__": "FieldContent",
         "value": "saddle",
@@ -50,11 +45,6 @@
       "maxlengthvalidationmessage": {
         "__TYPE__": "FieldContent",
         "value": "courage",
-        "type": "Text"
-      },
-      "emailvalidationmessage": {
-        "__TYPE__": "FieldContent",
-        "value": "steam",
         "type": "Text"
       }
     },
@@ -112,10 +102,46 @@
         "__TYPE__": "FieldContent",
         "value": "none",
         "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "email",
+    "primary": {
+      "name": {
+        "__TYPE__": "FieldContent",
+        "value": "these",
+        "type": "Text"
+      },
+      "label": {
+        "__TYPE__": "FieldContent",
+        "value": "law",
+        "type": "Text"
+      },
+      "placeholder": {
+        "__TYPE__": "FieldContent",
+        "value": "composed",
+        "type": "Text"
+      },
+      "required": {
+        "__TYPE__": "BooleanContent",
+        "value": true
+      },
+      "requiredvalidationmessage": {
+        "__TYPE__": "FieldContent",
+        "value": "brush",
+        "type": "Text"
       },
       "emailvalidationmessage": {
         "__TYPE__": "FieldContent",
-        "value": "better",
+        "value": "minerals",
         "type": "Text"
       }
     },

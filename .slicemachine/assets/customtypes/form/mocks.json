@@ -1,1 +1,86 @@
-{}
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "secret"
+  },
+  "submitlabel": {
+    "__TYPE__": "FieldContent",
+    "value": "shore",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "text_input$3da0287a-b740-4a0a-a0d2-0a90e95c28eb",
+        "name": "text_input",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "type": {
+              "__TYPE__": "FieldContent",
+              "value": "Text",
+              "type": "Select"
+            },
+            "name": {
+              "__TYPE__": "FieldContent",
+              "value": "saddle",
+              "type": "Text"
+            },
+            "label": {
+              "__TYPE__": "FieldContent",
+              "value": "husband",
+              "type": "Text"
+            },
+            "placeholder": {
+              "__TYPE__": "FieldContent",
+              "value": "easy",
+              "type": "Text"
+            },
+            "required": {
+              "__TYPE__": "BooleanContent",
+              "value": true
+            },
+            "requiredvalidationmessage": {
+              "__TYPE__": "FieldContent",
+              "value": "example",
+              "type": "Text"
+            },
+            "minlength": {
+              "__TYPE__": "FieldContent",
+              "value": "84",
+              "type": "Number"
+            },
+            "minlengthvalidationmessage": {
+              "__TYPE__": "FieldContent",
+              "value": "best",
+              "type": "Text"
+            },
+            "maxlength": {
+              "__TYPE__": "FieldContent",
+              "value": "60",
+              "type": "Number"
+            },
+            "maxlengthvalidationmessage": {
+              "__TYPE__": "FieldContent",
+              "value": "mouse",
+              "type": "Text"
+            },
+            "emailvalidationmessage": {
+              "__TYPE__": "FieldContent",
+              "value": "differ",
+              "type": "Text"
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -11,17 +11,6 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "TextInput",
       "primary": {
-        "type": {
-          "type": "Select",
-          "config": {
-            "label": "Type",
-            "placeholder": "",
-            "options": [
-              "Text",
-              "Email"
-            ]
-          }
-        },
         "name": {
           "type": "Text",
           "config": {
@@ -84,13 +73,6 @@
           "type": "Text",
           "config": {
             "label": "MaxLengthValidationMessage",
-            "placeholder": ""
-          }
-        },
-        "emailvalidationmessage": {
-          "type": "Text",
-          "config": {
-            "label": "EmailValidationMessage",
             "placeholder": ""
           }
         }
@@ -167,6 +149,54 @@
           "type": "Text",
           "config": {
             "label": "MaxLengthValidationMessage",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "email",
+      "name": "Email",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "TextInput",
+      "primary": {
+        "name": {
+          "type": "Text",
+          "config": {
+            "label": "Name",
+            "placeholder": ""
+          }
+        },
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "placeholder": {
+          "type": "Text",
+          "config": {
+            "label": "Placeholder",
+            "placeholder": ""
+          }
+        },
+        "required": {
+          "type": "Boolean",
+          "config": {
+            "label": "Required",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "requiredvalidationmessage": {
+          "type": "Text",
+          "config": {
+            "label": "RequiredValidationMessage",
             "placeholder": ""
           }
         },

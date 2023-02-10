@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Content } from "@prismicio/client";
 
 import Forms, { FormStructure } from "components/common/Forms";
 import { useFormStateContext } from "components/common/Forms/FormProvider";
@@ -31,7 +32,13 @@ export interface ContactFormStructure extends FormStructure {
   message: string;
 }
 
-export const ContactForm = () => {
+interface ContactFormProps {
+  data: Content.FormDocumentData;
+}
+
+export const ContactForm = ({ data }: ContactFormProps) => {
+  const { submitlabel: submitLabel, slices } = data;
+
   const abortControllerRef = useRef<AbortController | null>(null);
   const submitButtonApiRef = useRef<SubmitButtonApi | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -115,7 +122,7 @@ export const ContactForm = () => {
         placeholder="What's on your mind?"
       />
       <SubmitButton
-        text="Submit"
+        text={submitLabel ?? "Submit"}
         loading={isSubmitting}
         disabled={isDisabled}
         ref={submitButtonApiRef}

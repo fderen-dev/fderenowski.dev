@@ -11,6 +11,20 @@
           "label": "UID",
           "placeholder": ""
         }
+      },
+      "header": {
+        "type": "Text",
+        "config": {
+          "label": "Header",
+          "placeholder": ""
+        }
+      },
+      "subheading": {
+        "type": "Text",
+        "config": {
+          "label": "Subheading",
+          "placeholder": ""
+        }
       }
     },
     "SEO": {

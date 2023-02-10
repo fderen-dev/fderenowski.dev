@@ -109,6 +109,28 @@ export type AboutDocument<Lang extends string = string> = prismicT.PrismicDocume
 /** Content for Contact documents */
 interface ContactDocumentData {
     /**
+     * Header field in *Contact*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.header
+     * - **Tab**: Page Content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    header: prismicT.KeyTextField;
+    /**
+     * Subheading field in *Contact*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.subheading
+     * - **Tab**: Page Content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subheading: prismicT.KeyTextField;
+    /**
      * Meta Title field in *Contact*
      *
      * - **Field Type**: Text
@@ -175,7 +197,35 @@ interface ContactDocumentData {
  */
 export type ContactDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ContactDocumentData>, "contact", Lang>;
 /** Content for Form documents */
-type FormDocumentData = Record<string, never>;
+interface FormDocumentData {
+    /**
+     * SubmitLabel field in *Form*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: form.submitlabel
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    submitlabel: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Form*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: form.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<FormDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Form → Slice Zone*
+ *
+ */
+type FormDocumentDataSlicesSlice = TextInputSlice;
 /**
  * Form document from Prismic
  *
@@ -185,7 +235,7 @@ type FormDocumentData = Record<string, never>;
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type FormDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<FormDocumentData>, "form", Lang>;
+export type FormDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<FormDocumentData>, "form", Lang>;
 /** Content for Homepage documents */
 interface HomepageDocumentData {
     /**
@@ -474,16 +524,6 @@ export type FragmentSlice = prismicT.SharedSlice<"fragment", FragmentSliceVariat
  */
 interface TextInputSliceDefaultPrimary {
     /**
-     * Type field in *Input → Primary*
-     *
-     * - **Field Type**: Select
-     * - **Placeholder**: *None*
-     * - **API ID Path**: text_input.primary.type
-     * - **Documentation**: https://prismic.io/docs/core-concepts/select
-     *
-     */
-    type: prismicT.SelectField<"Text" | "Email">;
-    /**
      * Name field in *Input → Primary*
      *
      * - **Field Type**: Text
@@ -574,16 +614,6 @@ interface TextInputSliceDefaultPrimary {
      *
      */
     maxlengthvalidationmessage: prismicT.KeyTextField;
-    /**
-     * EmailValidationMessage field in *Input → Primary*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: text_input.primary.emailvalidationmessage
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    emailvalidationmessage: prismicT.KeyTextField;
 }
 /**
  * Default variation for Input Slice
@@ -690,6 +720,72 @@ interface TextInputSliceTextAreaPrimary {
      *
      */
     maxlengthvalidationmessage: prismicT.KeyTextField;
+}
+/**
+ * TextArea variation for Input Slice
+ *
+ * - **API ID**: `textArea`
+ * - **Description**: `TextInput`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TextInputSliceTextArea = prismicT.SharedSliceVariation<"textArea", Simplify<TextInputSliceTextAreaPrimary>, never>;
+/**
+ * Primary content in Input → Primary
+ *
+ */
+interface TextInputSliceEmailPrimary {
+    /**
+     * Name field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Label field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Placeholder field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.placeholder
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    placeholder: prismicT.KeyTextField;
+    /**
+     * Required field in *Input → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: text_input.primary.required
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    required: prismicT.BooleanField;
+    /**
+     * RequiredValidationMessage field in *Input → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_input.primary.requiredvalidationmessage
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    requiredvalidationmessage: prismicT.KeyTextField;
     /**
      * EmailValidationMessage field in *Input → Primary*
      *
@@ -702,19 +798,19 @@ interface TextInputSliceTextAreaPrimary {
     emailvalidationmessage: prismicT.KeyTextField;
 }
 /**
- * TextArea variation for Input Slice
+ * Email variation for Input Slice
  *
- * - **API ID**: `textArea`
+ * - **API ID**: `email`
  * - **Description**: `TextInput`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type TextInputSliceTextArea = prismicT.SharedSliceVariation<"textArea", Simplify<TextInputSliceTextAreaPrimary>, never>;
+export type TextInputSliceEmail = prismicT.SharedSliceVariation<"email", Simplify<TextInputSliceEmailPrimary>, never>;
 /**
  * Slice variation for *Input*
  *
  */
-type TextInputSliceVariation = TextInputSliceDefault | TextInputSliceTextArea;
+type TextInputSliceVariation = TextInputSliceDefault | TextInputSliceTextArea | TextInputSliceEmail;
 /**
  * Input Shared Slice
  *
@@ -804,6 +900,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FormDocumentData, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceVariation, TextInputSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }
