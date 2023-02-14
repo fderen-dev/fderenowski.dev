@@ -33,11 +33,11 @@ export interface ContactFormStructure extends FormStructure {
 }
 
 interface ContactFormProps {
-  data: Content.FormDocumentData;
+  formData: Content.FormDocumentData;
 }
 
-export const ContactForm = ({ data }: ContactFormProps) => {
-  const { submitlabel: submitLabel, slices } = data;
+export const ContactForm = ({ formData }: ContactFormProps) => {
+  const { submitlabel: submitLabel, slices } = formData;
 
   const abortControllerRef = useRef<AbortController | null>(null);
   const submitButtonApiRef = useRef<SubmitButtonApi | null>(null);

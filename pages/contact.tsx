@@ -5,6 +5,7 @@ import { PrismicText } from "@prismicio/react";
 import { FormProvider } from "components/common/Forms/FormProvider";
 import { Head } from "components/common/Head/Head";
 import { Layout } from "components/common/Layout/Layout";
+import { Navbar } from "components/common/Layout/Navbar/Navbar";
 import { ContactForm } from "components/ContactForm/ContactForm";
 
 import { createClient } from "../prismicio";
@@ -22,11 +23,16 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "form",
     "contact-form"
   );
+  const navigation = await client.getByUID<Content.NavigationDocument>(
+    "navigation",
+    "top-navigation"
+  );
 
   return {
     props: {
       contact,
       form,
+      navigation,
     },
   };
 };
@@ -34,7 +40,8 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 const Contact: NextPage<{
   contact: Content.ContactDocument;
   form: Content.FormDocument;
-}> = ({ contact, form: { data: formData } }) => {
+  navigation: Content.NavigationDocument;
+}> = ({ contact, form, navigation }) => {
   const {
     data: { header, subheading, ...meta },
   } = contact;
@@ -42,7 +49,7 @@ const Contact: NextPage<{
   return (
     <>
       <Head meta={meta} />
-      <Layout>
+      <Layout Navbar={<Navbar navigationData={navigation.data} />}>
         <section className={styles.section}>
           <h2 className={styles.heading}>
             {header}
@@ -51,7 +58,7 @@ const Contact: NextPage<{
             )}
           </h2>
           <FormProvider>
-            <ContactForm data={formData} />
+            <ContactForm formData={form.data} />
           </FormProvider>
         </section>
       </Layout>
