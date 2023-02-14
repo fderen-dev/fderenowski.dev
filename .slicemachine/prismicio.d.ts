@@ -199,6 +199,17 @@ export type ContactDocument<Lang extends string = string> = prismicT.PrismicDocu
 /** Content for Form documents */
 interface FormDocumentData {
     /**
+     * Name field in *Form*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: form.name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
      * SubmitLabel field in *Form*
      *
      * - **Field Type**: Text
@@ -847,32 +858,6 @@ interface NavigationItemSliceDefaultPrimary {
     link: prismicT.LinkField;
 }
 /**
- * Item in NavigationItem → Items
- *
- */
-export interface NavigationItemSliceDefaultItem {
-    /**
-     * Child Name field in *NavigationItem → Items*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: navigation_item.items[].child_name
-     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-     *
-     */
-    child_name: prismicT.RichTextField;
-    /**
-     * Child Link field in *NavigationItem → Items*
-     *
-     * - **Field Type**: Link
-     * - **Placeholder**: *None*
-     * - **API ID Path**: navigation_item.items[].child_link
-     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-     *
-     */
-    child_link: prismicT.LinkField;
-}
-/**
  * Default variation for NavigationItem Slice
  *
  * - **API ID**: `default`
@@ -880,7 +865,7 @@ export interface NavigationItemSliceDefaultItem {
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type NavigationItemSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<NavigationItemSliceDefaultPrimary>, Simplify<NavigationItemSliceDefaultItem>>;
+export type NavigationItemSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<NavigationItemSliceDefaultPrimary>, never>;
 /**
  * Slice variation for *NavigationItem*
  *
@@ -900,6 +885,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefaultItem, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }

@@ -1,41 +1,41 @@
 {
+  "name": {
+    "__TYPE__": "FieldContent",
+    "value": "war",
+    "type": "Text"
+  },
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "secret"
+    "value": "stared"
   },
   "submitlabel": {
     "__TYPE__": "FieldContent",
-    "value": "shore",
+    "value": "motion",
     "type": "Text"
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "text_input$3da0287a-b740-4a0a-a0d2-0a90e95c28eb",
+        "key": "text_input$3bc593b4-ab83-4a15-b499-a33911441237",
         "name": "text_input",
         "widget": {
           "__TYPE__": "SharedSliceContent",
           "variation": "default",
           "primary": {
-            "type": {
-              "__TYPE__": "FieldContent",
-              "value": "Text",
-              "type": "Select"
-            },
             "name": {
               "__TYPE__": "FieldContent",
-              "value": "saddle",
+              "value": "serious",
               "type": "Text"
             },
             "label": {
               "__TYPE__": "FieldContent",
-              "value": "husband",
+              "value": "free",
               "type": "Text"
             },
             "placeholder": {
               "__TYPE__": "FieldContent",
-              "value": "easy",
+              "value": "accurate",
               "type": "Text"
             },
             "required": {
@@ -44,32 +44,27 @@
             },
             "requiredvalidationmessage": {
               "__TYPE__": "FieldContent",
-              "value": "example",
+              "value": "means",
               "type": "Text"
             },
             "minlength": {
               "__TYPE__": "FieldContent",
-              "value": "84",
+              "value": "69",
               "type": "Number"
             },
             "minlengthvalidationmessage": {
               "__TYPE__": "FieldContent",
-              "value": "best",
+              "value": "scientist",
               "type": "Text"
             },
             "maxlength": {
               "__TYPE__": "FieldContent",
-              "value": "60",
+              "value": "92",
               "type": "Number"
             },
             "maxlengthvalidationmessage": {
               "__TYPE__": "FieldContent",
-              "value": "mouse",
-              "type": "Text"
-            },
-            "emailvalidationmessage": {
-              "__TYPE__": "FieldContent",
-              "value": "differ",
+              "value": "forgotten",
               "type": "Text"
             }
           },

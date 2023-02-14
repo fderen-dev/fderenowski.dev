@@ -5,6 +5,13 @@
   "status": true,
   "json": {
     "Main": {
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
       "uid": {
         "type": "UID",
         "config": {
