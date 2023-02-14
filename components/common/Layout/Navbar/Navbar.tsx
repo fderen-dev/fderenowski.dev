@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Content } from "@prismicio/client";
+import { PrismicLink, PrismicText } from "@prismicio/react";
 import classNames from "classnames/bind";
 import ReactModal from "react-modal";
 
@@ -7,6 +9,7 @@ import { MediaQueries, useMediaQueriesContext } from "context/MediaQueries";
 import { useScrollDetectionContext } from "context/ScrollDetection";
 import { ROUTES } from "utils/constants";
 import { WithChildren } from "utils/types";
+import { TypeTools } from "utils/TypeTools";
 import { useIsMounted } from "utils/useIsMounted";
 import { ScrollDirection } from "utils/useScrollDetection";
 
@@ -20,7 +23,8 @@ const modalCloseTimeoutMs = parseInt(variables.MODAL_CLOSE_TIMEOUT_MS, 10);
 const cx = classNames.bind(styles);
 
 interface NavigationItemProps extends WithChildren {
-  href: string;
+  field?: any;
+  href?: string;
   As?: "li" | "div" | "span";
   disableUnderline?: boolean;
   containerClassName?: string;
@@ -28,36 +32,58 @@ interface NavigationItemProps extends WithChildren {
 }
 
 const NavigationItem = ({
+  field,
   href,
   children,
   As = "li",
   disableUnderline,
   containerClassName,
   linkClassName,
-}: NavigationItemProps) => (
-  <As className={cx(styles.navigationItem, containerClassName)}>
-    <Link
-      passHref
-      href={href}
-      className={cx(styles.navigationItemLink, linkClassName, {
-        undelineOnHover: !disableUnderline,
-      })}
-    >
-      {children}
-    </Link>
-  </As>
-);
+}: NavigationItemProps) => {
+  if (TypeTools.isNonEmptyString(href)) {
+    return (
+      <As className={cx(styles.navigationItem, containerClassName)}>
+        <Link
+          href={href as string}
+          className={cx(styles.navigationItemLink, linkClassName, {
+            undelineOnHover: !disableUnderline,
+          })}
+        >
+          {children}
+        </Link>
+      </As>
+    );
+  } else if (!TypeTools.isNullOrUndefined(field)) {
+    return (
+      <As className={cx(styles.navigationItem, containerClassName)}>
+        <PrismicLink
+          field={field}
+          className={cx(styles.navigationItemLink, linkClassName, {
+            undelineOnHover: !disableUnderline,
+          })}
+        >
+          {children}
+        </PrismicLink>
+      </As>
+    );
+  }
+
+  return null;
+};
 
 interface NavigationListProps {
+  navigationData: Content.NavigationDocumentData;
   className?: string;
 }
 
-const NavigationList = ({ className }: NavigationListProps) => (
+const NavigationList = ({ navigationData, className }: NavigationListProps) => (
   <ul className={cx(styles.navigationList, className)}>
-    <NavigationItem href="/about">About</NavigationItem>
-    <NavigationItem href="/blog">Blog</NavigationItem>
-    <NavigationItem href="/portfolio">Portfolio</NavigationItem>
-    <NavigationItem href="/contact">Contact</NavigationItem>
+    {navigationData?.slices &&
+      navigationData.slices.map((slice) => (
+        <NavigationItem field={slice.primary.link} key={slice.id}>
+          <PrismicText field={slice.primary.name} />
+        </NavigationItem>
+      ))}
   </ul>
 );
 
@@ -73,11 +99,13 @@ const HomeRoute = () => (
 );
 
 interface NavbarContentProps {
+  navigationData: Content.NavigationDocumentData;
   isMobileNavigationOpen: Boolean;
   toggleMobileNavigation: () => void;
 }
 
 const NavbarContent = ({
+  navigationData,
   isMobileNavigationOpen,
   toggleMobileNavigation,
 }: NavbarContentProps) => {
@@ -98,13 +126,20 @@ const NavbarContent = ({
         </button>
       </MediaQueries.ForMobile>
       <MediaQueries.ForTabletAndAbove>
-        <NavigationList className={styles.horizontal} />
+        <NavigationList
+          navigationData={navigationData}
+          className={styles.horizontal}
+        />
       </MediaQueries.ForTabletAndAbove>
     </div>
   );
 };
 
-export const Navbar = () => {
+interface NavbarProps {
+  navigationData: Content.NavigationDocumentData;
+}
+
+export const Navbar = ({ navigationData }: NavbarProps) => {
   const { isTablet } = useMediaQueriesContext();
   const { prevIsScrolling, isScrolling, scrollDirection } =
     useScrollDetectionContext();
@@ -132,6 +167,7 @@ export const Navbar = () => {
       >
         {isMounted && (
           <NavbarContent
+            navigationData={navigationData}
             isMobileNavigationOpen={isMobileNavigationOpen}
             toggleMobileNavigation={toggleMobileNavigation}
           />
@@ -150,7 +186,10 @@ export const Navbar = () => {
         closeTimeoutMS={modalCloseTimeoutMs}
         className={styles.mobileNavigationContent}
       >
-        <NavigationList className={styles.vertical} />
+        <NavigationList
+          navigationData={navigationData}
+          className={styles.vertical}
+        />
       </ReactModal>
     </>
   );
