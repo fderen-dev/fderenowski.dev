@@ -1,11 +1,10 @@
-import { ReactNode } from "react";
+import { ReactElement } from "react";
 import classNames from "classnames";
 
 import { WithChildren } from "utils/types";
 
 import { Footer } from "./Footer/Footer";
 import { Header } from "./Header/Header";
-import { Navbar } from "./Navbar/Navbar";
 
 import styles from "./layout.module.scss";
 
@@ -24,12 +23,13 @@ const Main = ({ children, contentClassName }: MainProps) => (
 );
 
 interface LayoutProps extends WithChildren {
+  Navbar?: ReactElement;
   contentClassName?: string;
 }
 
-export const Layout = ({ children, contentClassName }: LayoutProps) => (
+export const Layout = ({ Navbar, children, contentClassName }: LayoutProps) => (
   <div className={styles.root}>
-    <Navbar />
+    {Navbar}
     <Header />
     <Main contentClassName={contentClassName}>{children}</Main>
     <Footer />
