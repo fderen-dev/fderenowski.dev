@@ -2,16 +2,19 @@
 
 import Fragment from './Fragment';
 import Input from './Input';
+import LinkIcon from './LinkIcon';
 import NavigationItem from './NavigationItem';
 
 export {
 	Fragment,
 	Input,
+	LinkIcon,
 	NavigationItem,
 };
 
 export const components = {
 	fragment: Fragment,
 	text_input: Input,
+	link_icon: LinkIcon,
 	navigation_item: NavigationItem,
 };

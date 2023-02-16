@@ -196,6 +196,46 @@ interface ContactDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ContactDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ContactDocumentData>, "contact", Lang>;
+/** Content for Footer documents */
+interface FooterDocumentData {
+    /**
+     * Copy field in *Footer*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.copy
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    copy: prismicT.RichTextField;
+    /**
+     * Slice Zone field in *Footer*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<FooterDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Footer → Slice Zone*
+ *
+ */
+type FooterDocumentDataSlicesSlice = LinkIconSlice;
+/**
+ * Footer document from Prismic
+ *
+ * - **API ID**: `footer`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FooterDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
 /** Content for Form documents */
 interface FormDocumentData {
     /**
@@ -371,7 +411,7 @@ type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
-export type AllDocumentTypes = AboutDocument | ContactDocument | FormDocument | HomepageDocument | NavigationDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | HomepageDocument | NavigationDocument;
 /**
  * Primary content in Fragment → Primary
  *
@@ -832,6 +872,55 @@ type TextInputSliceVariation = TextInputSliceDefault | TextInputSliceTextArea | 
  */
 export type TextInputSlice = prismicT.SharedSlice<"text_input", TextInputSliceVariation>;
 /**
+ * Primary content in LinkIcon → Primary
+ *
+ */
+interface LinkIconSliceDefaultPrimary {
+    /**
+     * link field in *LinkIcon → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: link_icon.primary.link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    link: prismicT.LinkField;
+    /**
+     * icon field in *LinkIcon → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: link_icon.primary.icon
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    icon: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for LinkIcon Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `LinkIcon`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkIconSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<LinkIconSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *LinkIcon*
+ *
+ */
+type LinkIconSliceVariation = LinkIconSliceDefault;
+/**
+ * LinkIcon Shared Slice
+ *
+ * - **API ID**: `link_icon`
+ * - **Description**: `LinkIcon`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkIconSlice = prismicT.SharedSlice<"link_icon", LinkIconSliceVariation>;
+/**
  * Primary content in NavigationItem → Primary
  *
  */
@@ -885,6 +974,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }
