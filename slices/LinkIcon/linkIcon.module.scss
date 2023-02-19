@@ -1,0 +1,22 @@
+@use "styles/mixins.scss";
+@use "styles/variables.scss" as vars;
+
+$icon-size: 24px;
+$desktop-icon-size: 32px;
+
+.link {
+  .icon {
+    width: $icon-size;
+    height: $icon-size;
+    @include mixins.hoverable-icon;
+  }
+}
+
+@include mixins.min-width("desktop") {
+  .link {
+    .icon {
+      width: $desktop-icon-size;
+      height: $desktop-icon-size;
+    }
+  }
+}
