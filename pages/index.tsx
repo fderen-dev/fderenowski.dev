@@ -43,7 +43,7 @@ const Home: NextPage<{
     <>
       <Head meta={meta} />
       <Layout
-        Navbar={<Navbar navigationData={navigation.data} />}
+        Navbar={<Navbar prismicDocumentData={navigation.data} />}
         contentClassName={styles.layoutContent}
       >
         <SliceZone slices={slicesData} components={slices} />

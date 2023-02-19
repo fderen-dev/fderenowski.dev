@@ -72,14 +72,17 @@ const NavigationItem = ({
 };
 
 interface NavigationListProps {
-  navigationData: Content.NavigationDocumentData;
+  prismicDocumentData: Content.NavigationDocumentData;
   className?: string;
 }
 
-const NavigationList = ({ navigationData, className }: NavigationListProps) => (
+const NavigationList = ({
+  prismicDocumentData,
+  className,
+}: NavigationListProps) => (
   <ul className={cx(styles.navigationList, className)}>
-    {navigationData?.slices &&
-      navigationData.slices.map((slice) => (
+    {prismicDocumentData?.slices &&
+      prismicDocumentData.slices.map((slice) => (
         <NavigationItem field={slice.primary.link} key={slice.id}>
           <PrismicText field={slice.primary.name} />
         </NavigationItem>
@@ -99,13 +102,13 @@ const HomeRoute = () => (
 );
 
 interface NavbarContentProps {
-  navigationData: Content.NavigationDocumentData;
+  prismicDocumentData: Content.NavigationDocumentData;
   isMobileNavigationOpen: Boolean;
   toggleMobileNavigation: () => void;
 }
 
 const NavbarContent = ({
-  navigationData,
+  prismicDocumentData,
   isMobileNavigationOpen,
   toggleMobileNavigation,
 }: NavbarContentProps) => {
@@ -127,7 +130,7 @@ const NavbarContent = ({
       </MediaQueries.ForMobile>
       <MediaQueries.ForTabletAndAbove>
         <NavigationList
-          navigationData={navigationData}
+          prismicDocumentData={prismicDocumentData}
           className={styles.horizontal}
         />
       </MediaQueries.ForTabletAndAbove>
@@ -136,10 +139,10 @@ const NavbarContent = ({
 };
 
 interface NavbarProps {
-  navigationData: Content.NavigationDocumentData;
+  prismicDocumentData: Content.NavigationDocumentData;
 }
 
-export const Navbar = ({ navigationData }: NavbarProps) => {
+export const Navbar = ({ prismicDocumentData }: NavbarProps) => {
   const { isTablet } = useMediaQueriesContext();
   const { prevIsScrolling, isScrolling, scrollDirection } =
     useScrollDetectionContext();
@@ -167,7 +170,7 @@ export const Navbar = ({ navigationData }: NavbarProps) => {
       >
         {isMounted && (
           <NavbarContent
-            navigationData={navigationData}
+            prismicDocumentData={prismicDocumentData}
             isMobileNavigationOpen={isMobileNavigationOpen}
             toggleMobileNavigation={toggleMobileNavigation}
           />
@@ -187,7 +190,7 @@ export const Navbar = ({ navigationData }: NavbarProps) => {
         className={styles.mobileNavigationContent}
       >
         <NavigationList
-          navigationData={navigationData}
+          prismicDocumentData={prismicDocumentData}
           className={styles.vertical}
         />
       </ReactModal>

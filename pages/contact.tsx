@@ -49,7 +49,7 @@ const Contact: NextPage<{
   return (
     <>
       <Head meta={meta} />
-      <Layout Navbar={<Navbar navigationData={navigation.data} />}>
+      <Layout Navbar={<Navbar prismicDocumentData={navigation.data} />}>
         <section className={styles.section}>
           <h2 className={styles.heading}>
             {header}
@@ -58,7 +58,7 @@ const Contact: NextPage<{
             )}
           </h2>
           <FormProvider>
-            <ContactForm formData={form.data} />
+            <ContactForm prismicDocumentData={form.data} />
           </FormProvider>
         </section>
       </Layout>

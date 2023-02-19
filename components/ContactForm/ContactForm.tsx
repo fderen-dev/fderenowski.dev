@@ -33,11 +33,11 @@ export interface ContactFormStructure extends FormStructure {
 }
 
 interface ContactFormProps {
-  formData: Content.FormDocumentData;
+  prismicDocumentData: Content.FormDocumentData;
 }
 
-export const ContactForm = ({ formData }: ContactFormProps) => {
-  const { submitlabel: submitLabel, slices } = formData;
+export const ContactForm = ({ prismicDocumentData }: ContactFormProps) => {
+  const { submitlabel: submitLabel, slices } = prismicDocumentData;
 
   const abortControllerRef = useRef<AbortController | null>(null);
   const submitButtonApiRef = useRef<SubmitButtonApi | null>(null);

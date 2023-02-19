@@ -40,7 +40,7 @@ const About: NextPage<{
   return (
     <>
       <Head meta={meta} />
-      <Layout Navbar={<Navbar navigationData={navigation.data} />}>
+      <Layout Navbar={<Navbar prismicDocumentData={navigation.data} />}>
         <SliceZone slices={slicesData} components={slices} />
       </Layout>
     </>
