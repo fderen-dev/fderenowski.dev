@@ -1,5 +1,4 @@
 @use "styles/mixins.scss";
-@use "styles/variables.scss" as vars;
 
 $icon-size: 24px;
 $desktop-icon-size: 32px;
@@ -8,7 +7,8 @@ $desktop-icon-size: 32px;
   .icon {
     width: $icon-size;
     height: $icon-size;
-    @include mixins.hoverable-icon;
+
+    @include mixins.hoverable-icon(filter, brightness(0) invert(1));
   }
 }
 
