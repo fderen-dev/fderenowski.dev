@@ -210,6 +210,17 @@ interface FooterDocumentData {
      */
     copy: prismicT.RichTextField;
     /**
+     * logo field in *Footer*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: footer.logo
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    logo: prismicT.ImageField<"desktop">;
+    /**
      * Slice Zone field in *Footer*
      *
      * - **Field Type**: Slice Zone

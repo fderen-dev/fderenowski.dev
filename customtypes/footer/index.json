@@ -21,6 +21,23 @@
           "single": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
         }
       },
+      "logo": {
+        "type": "Image",
+        "config": {
+          "label": "logo",
+          "constraint": {
+            "width": 60,
+            "height": 60
+          },
+          "thumbnails": [
+            {
+              "name": "desktop",
+              "width": 75,
+              "height": 75
+            }
+          ]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

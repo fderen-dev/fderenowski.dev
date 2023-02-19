@@ -4,8 +4,6 @@
 
 $logo-size: 60px;
 $desktop-logo-size: 75px;
-$icon-size: 24px;
-$desktop-icon-size: 32px;
 
 .container {
   display: flex;
@@ -49,14 +47,6 @@ $desktop-icon-size: 32px;
   user-select: none;
 }
 
-.link {
-  .icon {
-    width: $icon-size;
-    height: $icon-size;
-    @include mixins.hoverable-icon;
-  }
-}
-
 @include mixins.min-width("desktop") {
   .footer {
     flex-direction: row;
@@ -79,12 +69,5 @@ $desktop-icon-size: 32px;
 
   .links {
     column-gap: vars.$spacing-desktop;
-  }
-
-  .link {
-    .icon {
-      width: $desktop-icon-size;
-      height: $desktop-icon-size;
-    }
   }
 }
