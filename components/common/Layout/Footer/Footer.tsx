@@ -19,7 +19,10 @@ export const Footer = ({ prismicDocumentData }: FooterProps) => {
     <div className={styles.container}>
       <footer className={styles.footer}>
         {/* TODO: replace with actual logo */}
-        <PrismicImage field={prismicDocumentData.logo} />
+        <PrismicImage
+          field={prismicDocumentData.logo}
+          className={styles.logo}
+        />
         <div className={styles.right}>
           <small className={styles.copyright}>
             <PrismicRichText field={prismicDocumentData.copy} />

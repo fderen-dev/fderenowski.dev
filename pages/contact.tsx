@@ -4,6 +4,7 @@ import { PrismicText } from "@prismicio/react";
 
 import { FormProvider } from "components/common/Forms/FormProvider";
 import { Head } from "components/common/Head/Head";
+import { Footer } from "components/common/Layout/Footer/Footer";
 import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 import { ContactForm } from "components/ContactForm/ContactForm";
@@ -27,12 +28,17 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "navigation",
     "top-navigation"
   );
+  const footer = await client.getByUID<Content.FooterDocument>(
+    "footer",
+    "footer"
+  );
 
   return {
     props: {
       contact,
       form,
       navigation,
+      footer,
     },
   };
 };
@@ -41,7 +47,8 @@ const Contact: NextPage<{
   contact: Content.ContactDocument;
   form: Content.FormDocument;
   navigation: Content.NavigationDocument;
-}> = ({ contact, form, navigation }) => {
+  footer: Content.FooterDocument;
+}> = ({ contact, form, navigation, footer }) => {
   const {
     data: { header, subheading, ...meta },
   } = contact;
@@ -49,7 +56,10 @@ const Contact: NextPage<{
   return (
     <>
       <Head meta={meta} />
-      <Layout Navbar={<Navbar prismicDocumentData={navigation.data} />}>
+      <Layout
+        Navbar={<Navbar prismicDocumentData={navigation.data} />}
+        Footer={<Footer prismicDocumentData={footer.data} />}
+      >
         <section className={styles.section}>
           <h2 className={styles.heading}>
             {header}

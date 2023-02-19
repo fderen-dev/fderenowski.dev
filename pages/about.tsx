@@ -3,6 +3,7 @@ import { Content } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
 import { Head } from "components/common/Head/Head";
+import { Footer } from "components/common/Layout/Footer/Footer";
 import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 
@@ -20,11 +21,16 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "navigation",
     "top-navigation"
   );
+  const footer = await client.getByUID<Content.FooterDocument>(
+    "footer",
+    "footer"
+  );
 
   return {
     props: {
       page,
       navigation,
+      footer,
     },
   };
 };
@@ -32,7 +38,8 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 const About: NextPage<{
   page: Content.AboutDocument;
   navigation: Content.NavigationDocument;
-}> = ({ page, navigation }) => {
+  footer: Content.FooterDocument;
+}> = ({ page, navigation, footer }) => {
   const {
     data: { slices1: slicesData, ...meta },
   } = page;
@@ -40,7 +47,10 @@ const About: NextPage<{
   return (
     <>
       <Head meta={meta} />
-      <Layout Navbar={<Navbar prismicDocumentData={navigation.data} />}>
+      <Layout
+        Navbar={<Navbar prismicDocumentData={navigation.data} />}
+        Footer={<Footer prismicDocumentData={footer.data} />}
+      >
         <SliceZone slices={slicesData} components={slices} />
       </Layout>
     </>

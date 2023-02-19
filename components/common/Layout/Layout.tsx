@@ -24,14 +24,20 @@ const Main = ({ children, contentClassName }: MainProps) => (
 
 interface LayoutProps extends WithChildren {
   Navbar?: ReactElement;
+  Footer?: ReactElement;
   contentClassName?: string;
 }
 
-export const Layout = ({ Navbar, children, contentClassName }: LayoutProps) => (
+export const Layout = ({
+  Navbar,
+  Footer,
+  children,
+  contentClassName,
+}: LayoutProps) => (
   <div className={styles.root}>
     {Navbar}
     <Header />
     <Main contentClassName={contentClassName}>{children}</Main>
-    <Footer />
+    {Footer}
   </div>
 );
