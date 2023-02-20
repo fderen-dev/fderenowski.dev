@@ -9,7 +9,8 @@
     "about": {},
     "contact": {},
     "form": {},
-    "footer": {}
+    "footer": {},
+    "header": {}
   },
   "slices": {
     "Section": {

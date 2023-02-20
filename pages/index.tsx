@@ -4,6 +4,7 @@ import { SliceZone } from "@prismicio/react";
 
 import { Head } from "components/common/Head/Head";
 import { Footer } from "components/common/Layout/Footer/Footer";
+import { Header } from "components/common/Layout/Header/Header";
 import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 
@@ -23,6 +24,10 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "navigation",
     "top-navigation"
   );
+  const header = await client.getByUID<Content.HeaderDocument>(
+    "header",
+    "main-header"
+  );
   const footer = await client.getByUID<Content.FooterDocument>(
     "footer",
     "footer"
@@ -32,6 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     props: {
       page,
       navigation,
+      header,
       footer,
     },
   };
@@ -40,8 +46,9 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 const Home: NextPage<{
   page: Content.HomepageDocument;
   navigation: Content.NavigationDocument;
+  header: Content.HeaderDocument;
   footer: Content.FooterDocument;
-}> = ({ page, navigation, footer }) => {
+}> = ({ page, navigation, header, footer }) => {
   const {
     data: { slices: slicesData, ...meta },
   } = page;
@@ -51,6 +58,7 @@ const Home: NextPage<{
       <Head meta={meta} />
       <Layout
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
+        Header={<Header prismicDocumentData={header.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
         contentClassName={styles.layoutContent}
       >

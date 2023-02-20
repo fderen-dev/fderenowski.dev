@@ -3,9 +3,6 @@ import classNames from "classnames";
 
 import { WithChildren } from "utils/types";
 
-import { Footer } from "./Footer/Footer";
-import { Header } from "./Header/Header";
-
 import styles from "./layout.module.scss";
 
 interface MainProps extends WithChildren {
@@ -24,19 +21,21 @@ const Main = ({ children, contentClassName }: MainProps) => (
 
 interface LayoutProps extends WithChildren {
   Navbar?: ReactElement;
+  Header?: ReactElement;
   Footer?: ReactElement;
   contentClassName?: string;
 }
 
 export const Layout = ({
   Navbar,
+  Header,
   Footer,
   children,
   contentClassName,
 }: LayoutProps) => (
   <div className={styles.root}>
     {Navbar}
-    <Header />
+    {Header}
     <Main contentClassName={contentClassName}>{children}</Main>
     {Footer}
   </div>

@@ -298,6 +298,41 @@ type FormDocumentDataSlicesSlice = TextInputSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type FormDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<FormDocumentData>, "form", Lang>;
+/** Content for Header documents */
+interface HeaderDocumentData {
+    /**
+     * header field in *Header*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: header.header
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    header: prismicT.KeyTextField;
+    /**
+     * subheader field in *Header*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: header.subheader
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    subheader: prismicT.KeyTextField;
+}
+/**
+ * Header document from Prismic
+ *
+ * - **API ID**: `header`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HeaderDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
 /** Content for Homepage documents */
 interface HomepageDocumentData {
     /**
@@ -396,6 +431,28 @@ interface NavigationDocumentData {
      */
     name: prismicT.RichTextField;
     /**
+     * homePageUrl field in *Navigation*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.homepageurl
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    homepageurl: prismicT.LinkField;
+    /**
+     * homePageIcon field in *Navigation*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.homepageicon
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    homepageicon: prismicT.ImageField<never>;
+    /**
      * Slice Zone field in *Navigation*
      *
      * - **Field Type**: Slice Zone
@@ -422,7 +479,7 @@ type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
-export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | HomepageDocument | NavigationDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | HeaderDocument | HomepageDocument | NavigationDocument;
 /**
  * Primary content in Fragment → Primary
  *
@@ -985,6 +1042,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HeaderDocumentData, HeaderDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }

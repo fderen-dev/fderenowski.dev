@@ -1,3 +1,5 @@
+import { Content } from "@prismicio/client";
+
 import { Gear, Placement } from "../Gear/Gear";
 
 import styles from "./header.module.scss";
@@ -12,13 +14,25 @@ const GEAR_STYLE: React.CSSProperties = {
   marginBottom: "auto",
 };
 
-export const Header = () => (
+interface HeaderProps {
+  prismicDocumentData: Content.HeaderDocumentData;
+}
+
+export const Header = ({ prismicDocumentData }: HeaderProps) => (
   <div className={styles.container}>
     <header className={styles.header}>
-      <div className={styles.headingContainer}>
-        <h1 className={styles.heading}>Filip Derenowski</h1>
-        <div className={styles.subheading}>Frontend developer</div>
-      </div>
+      {prismicDocumentData && (
+        <div className={styles.headingContainer}>
+          {prismicDocumentData.header && (
+            <h1 className={styles.heading}>{prismicDocumentData.header}</h1>
+          )}
+          {prismicDocumentData.subheader && (
+            <div className={styles.subheading}>
+              {prismicDocumentData.subheader}
+            </div>
+          )}
+        </div>
+      )}
       <Gear
         placement={DESKTOP_GEAR_PLACEMENT}
         style={GEAR_STYLE}
