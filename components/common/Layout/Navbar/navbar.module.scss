@@ -39,11 +39,12 @@ $horizontal-list-max-gap: 50px;
 
   .homeRoute {
     .logo {
+      width: auto;
       height: $logo-height;
       max-height: 100%;
       @include mixins.hoverable-icon(
-        fill,
-        vars.$c-link-active,
+        filter,
+        brightness(0) invert(1),
         transform,
         rotate(360deg)
       );

@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { PrismicLink, PrismicText } from "@prismicio/react";
+import type * as PrismicType from "@prismicio/types";
 import classNames from "classnames/bind";
 import ReactModal from "react-modal";
 
 import { MediaQueries, useMediaQueriesContext } from "context/MediaQueries";
 import { useScrollDetectionContext } from "context/ScrollDetection";
-import { ROUTES } from "utils/constants";
 import { WithChildren } from "utils/types";
 import { TypeTools } from "utils/TypeTools";
 import { useIsMounted } from "utils/useIsMounted";
 import { ScrollDirection } from "utils/useScrollDetection";
-
-import GearImage from "public/static/gear.svg";
 
 import styles from "./navbar.module.scss";
 import variables from "styles/exports.module.scss";
@@ -90,14 +89,19 @@ const NavigationList = ({
   </ul>
 );
 
-const HomeRoute = () => (
+interface HomeRouteProps {
+  iconField: PrismicType.ImageField;
+  linkField: PrismicType.LinkField;
+}
+
+const HomeRoute = ({ iconField, linkField }: HomeRouteProps) => (
   <NavigationItem
     disableUnderline
     As="span"
-    href={ROUTES.HOME}
+    field={linkField}
     containerClassName={styles.homeRoute}
   >
-    <GearImage alt="Logo" className={styles.logo} />
+    <PrismicNextImage field={iconField} className={styles.logo} />
   </NavigationItem>
 );
 
@@ -112,9 +116,13 @@ const NavbarContent = ({
   isMobileNavigationOpen,
   toggleMobileNavigation,
 }: NavbarContentProps) => {
+  console.log(prismicDocumentData);
   return (
     <div className={styles.navbarContent}>
-      <HomeRoute />
+      <HomeRoute
+        iconField={prismicDocumentData.homepageicon}
+        linkField={prismicDocumentData.homepageurl}
+      />
       <MediaQueries.ForMobile>
         <button
           onClick={toggleMobileNavigation}

@@ -21,6 +21,22 @@
           "placeholder": ""
         }
       },
+      "homepageurl": {
+        "type": "Link",
+        "config": {
+          "label": "homePageUrl",
+          "placeholder": "",
+          "select": null
+        }
+      },
+      "homepageicon": {
+        "type": "Image",
+        "config": {
+          "label": "homePageIcon",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

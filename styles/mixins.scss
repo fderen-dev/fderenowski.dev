@@ -42,7 +42,7 @@
 ) {
   @if $secondary-transition-property and $secondary-transition-value {
     transition: $transition-property, $secondary-transition-property;
-    transition-duration: 0.3s;
+    transition-duration: 0.4s;
     transition-timing-function: ease-in;
 
     &:hover,
