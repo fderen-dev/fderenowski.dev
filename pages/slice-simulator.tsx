@@ -6,6 +6,7 @@ import { components } from "../slices";
 const SliceSimulatorPage = () => (
   <SliceSimulator
     sliceZone={({ slices }) => (
+      // @ts-ignore
       <SliceZone slices={slices} components={components} />
     )}
     state={{}}

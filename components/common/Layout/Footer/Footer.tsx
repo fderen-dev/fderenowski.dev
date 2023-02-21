@@ -30,6 +30,7 @@ export const Footer = ({ prismicDocumentData }: FooterProps) => {
           <div className={styles.links}>
             <SliceZone
               slices={prismicDocumentData.slices}
+              // @ts-ignore
               components={slices}
             />
           </div>
