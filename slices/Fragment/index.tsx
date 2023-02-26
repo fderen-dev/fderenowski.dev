@@ -1,6 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { SliceComponentProps } from "@prismicio/react";
+import { SliceComponentProps, SliceComponentType } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
 import { PrismicText } from "@prismicio/react";
 
@@ -9,7 +9,11 @@ import { Section } from "components/common/Section/Section";
 import aboutMeStyles from "../../pages/about.module.scss";
 import styles from "./fragment.module.scss";
 
-const Fragment = ({ slice }: SliceComponentProps<Content.FragmentSlice>) => {
+const Fragment: SliceComponentType = (
+  props: SliceComponentProps<Content.FragmentSlice>
+) => {
+  const { slice } = props;
+
   if (slice.variation === "homepageFragment") {
     return (
       <Section
@@ -52,6 +56,8 @@ const Fragment = ({ slice }: SliceComponentProps<Content.FragmentSlice>) => {
       </section>
     );
   }
+
+  return null;
 };
 
 export default Fragment;

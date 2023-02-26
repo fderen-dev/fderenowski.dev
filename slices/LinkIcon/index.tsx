@@ -1,11 +1,17 @@
 import React from "react";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicLink, SliceComponentProps } from "@prismicio/react";
+import {
+  PrismicLink,
+  SliceComponentProps,
+  SliceComponentType,
+} from "@prismicio/react";
 
 import styles from "./linkIcon.module.scss";
 
-const LinkIcon = ({ slice }: SliceComponentProps<Content.LinkIconSlice>) => (
+const LinkIcon: SliceComponentType = ({
+  slice,
+}: SliceComponentProps<Content.LinkIconSlice>) => (
   <PrismicLink
     rel="noreferrer noopener"
     target="_blank"

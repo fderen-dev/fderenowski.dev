@@ -62,7 +62,6 @@ const Home: NextPage<{
         Footer={<Footer prismicDocumentData={footer.data} />}
         contentClassName={styles.layoutContent}
       >
-        {/* @ts-ignore */}
         <SliceZone slices={slicesData} components={slices} />
       </Layout>
     </>

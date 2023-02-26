@@ -1,7 +1,10 @@
-const NavigationItem = (props: any) => {
-  console.log(props);
+import { Content } from "@prismicio/client";
+import { SliceComponentProps, SliceComponentType } from "@prismicio/react";
 
-  return <div>NavigationItem</div>;
+const NavigationItem: SliceComponentType = (
+  props: SliceComponentProps<Content.NavigationItemSlice>
+) => {
+  return null;
 };
 
 export default NavigationItem;

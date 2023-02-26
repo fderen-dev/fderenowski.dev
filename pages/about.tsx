@@ -59,7 +59,6 @@ const About: NextPage<{
         Header={<Header prismicDocumentData={header.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
       >
-        {/* @ts-ignore */}
         <SliceZone slices={slicesData} components={slices} />
       </Layout>
     </>
