@@ -14,50 +14,51 @@ const Fragment: SliceComponentType = (
 ) => {
   const { slice } = props;
 
-  if (slice.variation === "homepageFragment") {
-    return (
-      <Section
-        withIntersection
-        left={slice?.primary?.placement === "Left"}
-        right={slice?.primary?.placement === "Right"}
-        header={slice?.primary?.header?.[0]?.text}
-        className={styles.section}
-      >
-        {slice.items.map(
-          (item) =>
-            item.content && (
-              <PrismicRichText field={item.content} key={slice.id} />
-            )
-        )}
-      </Section>
-    );
-  }
+  switch (slice.variation) {
+    case "homepageFragment":
+      return (
+        <Section
+          withIntersection
+          left={slice?.primary?.placement === "Left"}
+          right={slice?.primary?.placement === "Right"}
+          header={slice?.primary?.header?.[0]?.text}
+          className={styles.section}
+        >
+          {slice.items.map(
+            (item) =>
+              item.content && (
+                <PrismicRichText field={item.content} key={slice.id} />
+              )
+          )}
+        </Section>
+      );
 
-  if (slice.variation === "aboutMeFragment") {
-    return (
-      <section className={aboutMeStyles.section}>
-        <PrismicNextImage
-          field={slice?.primary?.portrait}
-          sizes="(max-width: 1920px) 80vw, 800px"
-          priority
-          className={aboutMeStyles.portrait}
-          draggable={false}
-        />
-        <div className={aboutMeStyles.content}>
-          <h2 className={aboutMeStyles.subheader}>
-            {slice?.primary?.header?.[0]?.text}
-          </h2>
-          {slice.items.map((item) => (
-            <p className={aboutMeStyles.paragraph} key={slice.id}>
-              {item.content && <PrismicText field={item.content} />}
-            </p>
-          ))}
-        </div>
-      </section>
-    );
-  }
+    case "aboutMeFragment":
+      return (
+        <section className={aboutMeStyles.section}>
+          <PrismicNextImage
+            field={slice?.primary?.portrait}
+            sizes="(max-width: 1920px) 80vw, 800px"
+            priority
+            className={aboutMeStyles.portrait}
+            draggable={false}
+          />
+          <div className={aboutMeStyles.content}>
+            <h2 className={aboutMeStyles.subheader}>
+              {slice?.primary?.header?.[0]?.text}
+            </h2>
+            {slice.items.map((item) => (
+              <p className={aboutMeStyles.paragraph} key={slice.id}>
+                {item.content && <PrismicText field={item.content} />}
+              </p>
+            ))}
+          </div>
+        </section>
+      );
 
-  return null;
+    default:
+      return null;
+  }
 };
 
 export default Fragment;
