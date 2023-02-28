@@ -2,10 +2,12 @@ import { Content } from "@prismicio/client";
 import { SliceComponentProps, SliceComponentType } from "@prismicio/react";
 import { noop } from "lodash";
 
-import { Input } from "components/common/Forms/controls/Input";
+import Forms from "components/common/Forms";
 import { TextArea } from "components/common/Forms/controls/TextArea/TextArea";
 import {
   isEmailBuilder,
+  isEmptyBuilder,
+  maxLengthBuilder,
   minLengthBuilder,
 } from "components/common/Forms/validators/simple";
 import { composeValidators } from "components/common/Forms/validators/utils";
@@ -43,20 +45,20 @@ const TextInput: SliceComponentType = (
   }
 
   const requiredValidator =
-    required && !TypeTools.isNonEmptyString(requiredvalidationmessage)
-      ? isEmailBuilder(requiredvalidationmessage as string)
+    required && TypeTools.isNonEmptyString(requiredvalidationmessage)
+      ? isEmptyBuilder(requiredvalidationmessage as string)
       : (noop as any);
   const minLengthValidator =
     !TypeTools.isNullOrUndefined(minlength) &&
-    !TypeTools.isNonEmptyString(minlengthvalidationmessage)
+    TypeTools.isNonEmptyString(minlengthvalidationmessage)
       ? minLengthBuilder(minlengthvalidationmessage, minlength)
       : (noop as any);
   const maxLengthValidator =
     !TypeTools.isNullOrUndefined(maxlength) &&
-    !TypeTools.isNonEmptyString(maxlengthvalidationmessage)
-      ? minLengthBuilder(maxlengthvalidationmessage, maxlength)
+    TypeTools.isNonEmptyString(maxlengthvalidationmessage)
+      ? maxLengthBuilder(maxlengthvalidationmessage, maxlength)
       : (noop as any);
-  const emailValidator = !TypeTools.isNonEmptyString(emailvalidationmessage)
+  const emailValidator = TypeTools.isNonEmptyString(emailvalidationmessage)
     ? isEmailBuilder(emailvalidationmessage)
     : (noop as any);
 
@@ -70,7 +72,7 @@ const TextInput: SliceComponentType = (
   switch (variation) {
     case "default":
       return (
-        <Input
+        <Forms.Input
           validateOnChange
           name={name!}
           label={label!}
@@ -83,7 +85,7 @@ const TextInput: SliceComponentType = (
 
     case "email":
       return (
-        <Input
+        <Forms.Input
           validateOnChange
           type="email"
           name={name!}
@@ -95,7 +97,7 @@ const TextInput: SliceComponentType = (
 
     case "textArea":
       return (
-        <TextArea
+        <Forms.TextArea
           validateOnChange
           name={name!}
           label={label!}
