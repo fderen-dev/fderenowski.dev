@@ -3,6 +3,7 @@ import Modal from "react-modal";
 
 import { MediaQueries } from "context/MediaQueries";
 import RootProvider from "context/RootProvider";
+import { isDevMode } from "utils/utils";
 
 import "styles/global.scss";
 
@@ -12,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RootProvider>
       <Component {...pageProps} />
-      <MediaQueries.CurrentBreakpoint />
+      {isDevMode && <MediaQueries.CurrentBreakpoint />}
     </RootProvider>
   );
 }
