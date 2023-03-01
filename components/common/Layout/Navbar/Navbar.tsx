@@ -115,36 +115,33 @@ const NavbarContent = ({
   prismicDocumentData,
   isMobileNavigationOpen,
   toggleMobileNavigation,
-}: NavbarContentProps) => {
-  console.log(prismicDocumentData);
-  return (
-    <div className={styles.navbarContent}>
-      <HomeRoute
-        iconField={prismicDocumentData.homepageicon}
-        linkField={prismicDocumentData.homepageurl}
+}: NavbarContentProps) => (
+  <div className={styles.navbarContent}>
+    <HomeRoute
+      iconField={prismicDocumentData.homepageicon}
+      linkField={prismicDocumentData.homepageurl}
+    />
+    <MediaQueries.ForMobile>
+      <button
+        onClick={toggleMobileNavigation}
+        className={cx("hamburger hamburger--spin", {
+          ["is-active"]: isMobileNavigationOpen,
+        })}
+        type="button"
+      >
+        <span className="hamburger-box">
+          <span className="hamburger-inner"></span>
+        </span>
+      </button>
+    </MediaQueries.ForMobile>
+    <MediaQueries.ForTabletAndAbove>
+      <NavigationList
+        prismicDocumentData={prismicDocumentData}
+        className={styles.horizontal}
       />
-      <MediaQueries.ForMobile>
-        <button
-          onClick={toggleMobileNavigation}
-          className={cx("hamburger hamburger--spin", {
-            ["is-active"]: isMobileNavigationOpen,
-          })}
-          type="button"
-        >
-          <span className="hamburger-box">
-            <span className="hamburger-inner"></span>
-          </span>
-        </button>
-      </MediaQueries.ForMobile>
-      <MediaQueries.ForTabletAndAbove>
-        <NavigationList
-          prismicDocumentData={prismicDocumentData}
-          className={styles.horizontal}
-        />
-      </MediaQueries.ForTabletAndAbove>
-    </div>
-  );
-};
+    </MediaQueries.ForTabletAndAbove>
+  </div>
+);
 
 interface NavbarProps {
   prismicDocumentData: Content.NavigationDocumentData;

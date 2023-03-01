@@ -115,7 +115,7 @@ const CurrentBreakpoint = ({
   bottom = "10px",
   right = "10px",
   opacity = 0.5,
-}) => {
+}: CurrentBreakpointProps) => {
   const { isTablet, isDesktop } = useMediaQueriesContext();
   const [isMinimized, setIsMinimized] = useState(false);
   const toggleIsMinimized = () => setIsMinimized((prev) => !prev);
