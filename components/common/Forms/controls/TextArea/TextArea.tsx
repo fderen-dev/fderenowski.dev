@@ -66,7 +66,7 @@ const Input = ({
           name={name}
           onChange={handleChange}
           onBlur={handleBlur}
-          className={cx(textAreaClass, { error: hasError })}
+          className={cx(styles.control, textAreaClass, { error: hasError })}
           ref={inputRef}
           {...textAreaProps}
         />

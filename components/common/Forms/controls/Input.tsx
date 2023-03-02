@@ -41,7 +41,7 @@ export const Input = ({
         name={name}
         onChange={handleChange}
         onBlur={handleBlur}
-        className={cx(inputClass, { error: hasError })}
+        className={cx(styles.control, inputClass, { error: hasError })}
         {...inputProps}
       />
       <ErrorPopup show={hasError} message={errors[name]} />

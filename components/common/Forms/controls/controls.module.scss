@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.control {
+  border: solid 2px vars.$c-transparent;
+}
+
 .error {
-  outline: solid 2px vars.$c-error;
+  border: solid 2px vars.$c-error;
 }

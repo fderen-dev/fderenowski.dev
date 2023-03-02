@@ -10,6 +10,7 @@
   padding: 16px;
   border-radius: 4px;
   background-color: vars.$c-error;
+  box-shadow: 1px 1px 5px vars.$c-pitch-black;
   color: vars.$c-error;
 
   &::after {
