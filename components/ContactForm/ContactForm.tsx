@@ -16,11 +16,17 @@ export interface ContactFormStructure extends FormStructure {
 }
 
 interface ContactFormProps {
-  prismicDocumentData: Content.FormDocumentData;
+  prismicDocumentData: {
+    form: Content.FormDocumentData;
+    formGroup: Content.FormgroupDocumentData;
+  };
 }
 
-export const ContactForm = ({ prismicDocumentData }: ContactFormProps) => {
-  const { submitlabel: submitLabel, slices: slicesData } = prismicDocumentData;
+export const ContactForm = ({
+  prismicDocumentData: { form, formGroup },
+}: ContactFormProps) => {
+  const { submitlabel: submitLabel, slices: formSlicesData } = form;
+  const { slices: formGroupSlicesData } = formGroup;
 
   const abortControllerRef = useRef<AbortController | null>(null);
   const submitButtonApiRef = useRef<SubmitButtonApi | null>(null);
@@ -77,7 +83,10 @@ export const ContactForm = ({ prismicDocumentData }: ContactFormProps) => {
 
   return (
     <Forms.Form validateOnSubmit onSubmit={handleSubmit}>
-      <SliceZone slices={slicesData} components={slices} />
+      <Forms.FormGroup>
+        <SliceZone slices={formGroupSlicesData} components={slices} />
+      </Forms.FormGroup>
+      <SliceZone slices={formSlicesData} components={slices} />
       <SubmitButton
         text={submitLabel ?? "Submit"}
         loading={isSubmitting}

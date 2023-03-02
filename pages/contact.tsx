@@ -24,6 +24,10 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "form",
     "contact-form"
   );
+  const formGroup = await client.getByUID<Content.FormgroupDocument>(
+    "formgroup",
+    "conctact-form-nameemail-form-group"
+  );
   const navigation = await client.getByUID<Content.NavigationDocument>(
     "navigation",
     "top-navigation"
@@ -41,6 +45,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     props: {
       contact,
       form,
+      formGroup,
       navigation,
       header,
       footer,
@@ -51,13 +56,18 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 const Contact: NextPage<{
   contact: Content.ContactDocument;
   form: Content.FormDocument;
+  formGroup: Content.FormgroupDocument;
   navigation: Content.NavigationDocument;
   header: Content.HeaderDocument;
   footer: Content.FooterDocument;
-}> = ({ contact, form, navigation, header: mainHeader, footer }) => {
+}> = ({ contact, form, formGroup, navigation, header: mainHeader, footer }) => {
   const {
     data: { header, subheading, ...meta },
   } = contact;
+  const conctactFormPrismicDocumentData = {
+    form: form.data,
+    formGroup: formGroup.data,
+  };
 
   return (
     <>
@@ -75,7 +85,9 @@ const Contact: NextPage<{
             )}
           </h2>
           <FormProvider>
-            <ContactForm prismicDocumentData={form.data} />
+            <ContactForm
+              prismicDocumentData={conctactFormPrismicDocumentData}
+            />
           </FormProvider>
         </section>
       </Layout>
