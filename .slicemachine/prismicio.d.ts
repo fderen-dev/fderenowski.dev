@@ -298,6 +298,46 @@ type FormDocumentDataSlicesSlice = TextInputSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type FormDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<FormDocumentData>, "form", Lang>;
+/** Content for FormGroup documents */
+interface FormgroupDocumentData {
+    /**
+     * Name field in *FormGroup*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: formgroup.name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *FormGroup*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: formgroup.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<FormgroupDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *FormGroup → Slice Zone*
+ *
+ */
+type FormgroupDocumentDataSlicesSlice = TextInputSlice;
+/**
+ * FormGroup document from Prismic
+ *
+ * - **API ID**: `formgroup`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FormgroupDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<FormgroupDocumentData>, "formgroup", Lang>;
 /** Content for Header documents */
 interface HeaderDocumentData {
     /**
@@ -479,7 +519,7 @@ type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
-export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | HeaderDocument | HomepageDocument | NavigationDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | FormgroupDocument | HeaderDocument | HomepageDocument | NavigationDocument;
 /**
  * Primary content in Fragment → Primary
  *
@@ -1042,6 +1082,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, HeaderDocumentData, HeaderDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, FormgroupDocumentData, FormgroupDocumentDataSlicesSlice, FormgroupDocument, HeaderDocumentData, HeaderDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
     }
 }

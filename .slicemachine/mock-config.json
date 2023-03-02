@@ -10,7 +10,8 @@
     "contact": {},
     "form": {},
     "footer": {},
-    "header": {}
+    "header": {},
+    "formgroup": {}
   },
   "slices": {
     "Section": {
