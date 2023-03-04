@@ -1,0 +1,55 @@
+{
+  "id": "link_button",
+  "type": "SharedSlice",
+  "name": "LinkButton",
+  "description": "LinkButton",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "LinkButton",
+      "primary": {
+        "label": {
+          "type": "Text",
+          "config": {
+            "label": "Label",
+            "placeholder": ""
+          }
+        },
+        "href": {
+          "type": "Link",
+          "config": {
+            "label": "Href",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "placement": {
+          "type": "Select",
+          "config": {
+            "label": "Placement",
+            "placeholder": "",
+            "options": [
+              "Left",
+              "Center",
+              "Right"
+            ]
+          }
+        },
+        "disabled": {
+          "type": "Boolean",
+          "config": {
+            "label": "Disabled",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

@@ -11,10 +11,10 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "LinkIcon",
       "primary": {
-        "link": {
+        "href": {
           "type": "Link",
           "config": {
-            "label": "link",
+            "label": "Href",
             "placeholder": "",
             "allowTargetBlank": true,
             "select": null
@@ -23,7 +23,7 @@
         "icon": {
           "type": "Image",
           "config": {
-            "label": "icon",
+            "label": "Icon",
             "constraint": {
               "width": 32,
               "height": 32

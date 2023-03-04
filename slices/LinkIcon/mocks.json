@@ -3,33 +3,33 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
-      "link": {
-        "__TYPE__": "LinkContent",
-        "value": {
-          "__TYPE__": "ExternalLink",
-          "url": "http://twitter.com"
-        }
-      },
       "icon": {
         "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
-          "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
-          "width": 5616,
-          "height": 3744
+          "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
+          "width": 4000,
+          "height": 4000
         },
-        "url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?rect=936%2C0%2C3744%2C3744&w=32&h=32",
+        "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04?rect=0%2C0%2C4000%2C4000&w=32&h=32",
         "width": 32,
         "height": 32,
         "edit": {
           "zoom": 1,
           "crop": {
-            "x": 936,
+            "x": 0,
             "y": 0
           },
           "background": "transparent"
         },
         "thumbnails": {}
+      },
+      "href": {
+        "__TYPE__": "LinkContent",
+        "value": {
+          "__TYPE__": "ExternalLink",
+          "url": "https://slicemachine.dev"
+        }
       }
     },
     "items": [

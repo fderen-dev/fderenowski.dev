@@ -1,0 +1,96 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "front"
+  },
+  "name": {
+    "__TYPE__": "FieldContent",
+    "value": "buffalo",
+    "type": "Text"
+  },
+  "header": {
+    "__TYPE__": "FieldContent",
+    "value": "wait",
+    "type": "Text"
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "placeable_content$f1e71d35-a269-451a-80ab-a3d20ab58e95",
+        "name": "placeable_content",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {},
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": [
+                [
+                  "content",
+                  {
+                    "__TYPE__": "StructuredTextContent",
+                    "value": [
+                      {
+                        "type": "paragraph",
+                        "content": {
+                          "text": "Nisi dolore laboris officia. Sit laboris eu laborum sunt sint quis laboris sit aliquip duis sunt id pariatur ad. Pariatur consequat id minim."
+                        }
+                      }
+                    ]
+                  }
+                ],
+                [
+                  "content_placement",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "Right",
+                    "type": "Select"
+                  }
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "key": "link_button$0d774b24-73e7-487e-a177-624178c2105f",
+        "name": "link_button",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "label": {
+              "__TYPE__": "FieldContent",
+              "value": "temperature",
+              "type": "Text"
+            },
+            "href": {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "__TYPE__": "ExternalLink",
+                "url": "https://slicemachine.dev"
+              }
+            },
+            "placement": {
+              "__TYPE__": "FieldContent",
+              "value": "Left",
+              "type": "Select"
+            },
+            "disabled": {
+              "__TYPE__": "BooleanContent",
+              "value": false
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

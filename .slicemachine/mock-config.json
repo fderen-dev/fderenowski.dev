@@ -11,7 +11,8 @@
     "form": {},
     "footer": {},
     "header": {},
-    "formgroup": {}
+    "formgroup": {},
+    "home_page_article": {}
   },
   "slices": {
     "Section": {
@@ -72,6 +73,17 @@
     "LinkIcon": {
       "default": {
         "primary": {}
+      }
+    },
+    "LinkButton": {
+      "default": {
+        "primary": {}
+      }
+    },
+    "PlaceableContent": {
+      "default": {
+        "primary": {},
+        "items": {}
       }
     }
   }

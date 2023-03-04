@@ -373,6 +373,57 @@ interface HeaderDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HeaderDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
+/** Content for Home Page Article documents */
+interface HomePageArticleDocumentData {
+    /**
+     * Name field in *Home Page Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page_article.name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Header field in *Home Page Article*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page_article.header
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    header: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *Home Page Article*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page_article.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices: prismicT.SliceZone<HomePageArticleDocumentDataSlicesSlice>;
+}
+/**
+ * Slice for *Home Page Article → Slice Zone*
+ *
+ */
+type HomePageArticleDocumentDataSlicesSlice = PlaceableContentSlice | LinkButtonSlice;
+/**
+ * Home Page Article document from Prismic
+ *
+ * - **API ID**: `home_page_article`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type HomePageArticleDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<HomePageArticleDocumentData>, "home_page_article", Lang>;
 /** Content for Homepage documents */
 interface HomepageDocumentData {
     /**
@@ -519,7 +570,7 @@ type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
-export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | FormgroupDocument | HeaderDocument | HomepageDocument | NavigationDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | FormgroupDocument | HeaderDocument | HomePageArticleDocument | HomepageDocument | NavigationDocument;
 /**
  * Primary content in Fragment → Primary
  *
@@ -602,6 +653,16 @@ export interface FragmentSliceHomepageFragmentItem {
      *
      */
     content: prismicT.RichTextField;
+    /**
+     * Button Link field in *Fragment → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: fragment.items[].button_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    button_link: prismicT.LinkField;
 }
 /**
  * Homepage Fragment variation for Fragment Slice
@@ -980,22 +1041,92 @@ type TextInputSliceVariation = TextInputSliceDefault | TextInputSliceTextArea | 
  */
 export type TextInputSlice = prismicT.SharedSlice<"text_input", TextInputSliceVariation>;
 /**
+ * Primary content in LinkButton → Primary
+ *
+ */
+interface LinkButtonSliceDefaultPrimary {
+    /**
+     * Label field in *LinkButton → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: link_button.primary.label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    label: prismicT.KeyTextField;
+    /**
+     * Href field in *LinkButton → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: link_button.primary.href
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    href: prismicT.LinkField;
+    /**
+     * Placement field in *LinkButton → Primary*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: link_button.primary.placement
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    placement: prismicT.SelectField<"Left" | "Center" | "Right">;
+    /**
+     * Disabled field in *LinkButton → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: link_button.primary.disabled
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    disabled: prismicT.BooleanField;
+}
+/**
+ * Default variation for LinkButton Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `LinkButton`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkButtonSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<LinkButtonSliceDefaultPrimary>, never>;
+/**
+ * Slice variation for *LinkButton*
+ *
+ */
+type LinkButtonSliceVariation = LinkButtonSliceDefault;
+/**
+ * LinkButton Shared Slice
+ *
+ * - **API ID**: `link_button`
+ * - **Description**: `LinkButton`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkButtonSlice = prismicT.SharedSlice<"link_button", LinkButtonSliceVariation>;
+/**
  * Primary content in LinkIcon → Primary
  *
  */
 interface LinkIconSliceDefaultPrimary {
     /**
-     * link field in *LinkIcon → Primary*
+     * Href field in *LinkIcon → Primary*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
-     * - **API ID Path**: link_icon.primary.link
+     * - **API ID Path**: link_icon.primary.href
      * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
      *
      */
-    link: prismicT.LinkField;
+    href: prismicT.LinkField;
     /**
-     * icon field in *LinkIcon → Primary*
+     * Icon field in *LinkIcon → Primary*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -1077,11 +1208,90 @@ type NavigationItemSliceVariation = NavigationItemSliceDefault;
  *
  */
 export type NavigationItemSlice = prismicT.SharedSlice<"navigation_item", NavigationItemSliceVariation>;
+/**
+ * Item in PlaceableContent → Items
+ *
+ */
+export interface PlaceableContentSliceDefaultItem {
+    /**
+     * Content field in *PlaceableContent → Items*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: placeable_content.items[].content
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    content: prismicT.RichTextField;
+    /**
+     * Content Placement field in *PlaceableContent → Items*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: placeable_content.items[].content_placement
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    content_placement: prismicT.SelectField<"Left" | "Right">;
+    /**
+     * Button Link Href field in *PlaceableContent → Items*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: placeable_content.items[].button_link_href
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    button_link_href: prismicT.LinkField;
+    /**
+     * Button Link Label field in *PlaceableContent → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: placeable_content.items[].button_link_label
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    button_link_label: prismicT.KeyTextField;
+    /**
+     * Button Link Placement field in *PlaceableContent → Items*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: placeable_content.items[].button_link_placement
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    button_link_placement: prismicT.SelectField<"Left" | "Center" | "Right">;
+}
+/**
+ * Default variation for PlaceableContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `PlaceableContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PlaceableContentSliceDefault = prismicT.SharedSliceVariation<"default", Record<string, never>, Simplify<PlaceableContentSliceDefaultItem>>;
+/**
+ * Slice variation for *PlaceableContent*
+ *
+ */
+type PlaceableContentSliceVariation = PlaceableContentSliceDefault;
+/**
+ * PlaceableContent Shared Slice
+ *
+ * - **API ID**: `placeable_content`
+ * - **Description**: `PlaceableContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PlaceableContentSlice = prismicT.SharedSlice<"placeable_content", PlaceableContentSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, FormgroupDocumentData, FormgroupDocumentDataSlicesSlice, FormgroupDocument, HeaderDocumentData, HeaderDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, FormgroupDocumentData, FormgroupDocumentDataSlicesSlice, FormgroupDocument, HeaderDocumentData, HeaderDocument, HomePageArticleDocumentData, HomePageArticleDocumentDataSlicesSlice, HomePageArticleDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkButtonSliceDefaultPrimary, LinkButtonSliceDefault, LinkButtonSliceVariation, LinkButtonSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, PlaceableContentSliceDefaultItem, PlaceableContentSliceDefault, PlaceableContentSliceVariation, PlaceableContentSlice };
     }
 }
