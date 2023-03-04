@@ -15,7 +15,7 @@ const LinkIcon: SliceComponentType = ({
   <PrismicLink
     rel="noreferrer noopener"
     target="_blank"
-    field={slice.primary.link}
+    field={slice.primary.href}
     className={styles.link}
   >
     <PrismicNextImage
