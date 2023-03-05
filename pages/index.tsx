@@ -1,6 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
 import type { Content } from "@prismicio/client";
-import { SliceZone } from "@prismicio/react";
+import { HomePageArticle } from "customtypes/home_page_article/HomePageArticle";
 
 import { Head } from "components/common/Head/Head";
 import { Footer } from "components/common/Layout/Footer/Footer";
@@ -9,7 +9,6 @@ import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 
 import { createClient } from "../prismicio";
-import { components as slices } from "../slices";
 
 import styles from "./index.module.scss";
 
@@ -20,6 +19,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "homepage",
     "home"
   );
+  const articles = await client.getAllByType("home_page_article");
   const navigation = await client.getByUID<Content.NavigationDocument>(
     "navigation",
     "top-navigation"
@@ -38,6 +38,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
       page,
       navigation,
       header,
+      articles,
       footer,
     },
   };
@@ -47,8 +48,9 @@ const Home: NextPage<{
   page: Content.HomepageDocument;
   navigation: Content.NavigationDocument;
   header: Content.HeaderDocument;
+  articles: Array<Content.HomePageArticleDocument>;
   footer: Content.FooterDocument;
-}> = ({ page, navigation, header, footer }) => {
+}> = ({ page, navigation, header, articles, footer }) => {
   const {
     data: { slices: slicesData, ...meta },
   } = page;
@@ -62,7 +64,13 @@ const Home: NextPage<{
         Footer={<Footer prismicDocumentData={footer.data} />}
         contentClassName={styles.layoutContent}
       >
-        <SliceZone slices={slicesData} components={slices} />
+        {/* <SliceZone slices={slicesData} components={slices} /> */}
+        {articles.map((article) => (
+          <HomePageArticle
+            prismicDocumentData={article.data}
+            key={article.uid}
+          />
+        ))}
       </Layout>
     </>
   );

@@ -1,0 +1,102 @@
+@use "sass:map";
+@use "styles/mixins";
+@use "styles/variables" as vars;
+
+.article,
+.header {
+  position: relative;
+  z-index: vars.$z-index-content;
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+  transition-duration: 0.6s;
+  transition-property: filter, opacity;
+  transition-timing-function: linear;
+
+  > :not(h2)::before {
+    @include mixins.black-background;
+  }
+
+  &.start,
+  &.center,
+  &.end {
+    grid-column: 1/5;
+  }
+
+  &.start {
+    grid-column: 1/5;
+  }
+
+  &.end {
+    grid-column: 1/5;
+  }
+
+  &.outOfViewport {
+    filter: blur(100px);
+    opacity: 0;
+  }
+
+  &.inViewport {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.header {
+  position: relative;
+  width: 100%;
+
+  &::before {
+    @include mixins.yellow-background;
+  }
+
+  &.start {
+    text-align: start;
+  }
+
+  &.end {
+    text-align: end;
+  }
+
+  .headerText {
+    position: relative;
+    z-index: vars.$z-index-text-background;
+    display: block;
+  }
+}
+
+@include mixins.min-width("tablet") {
+  .article {
+    &.start {
+      grid-column: 1/7;
+    }
+
+    &.center {
+      grid-column: 2/8;
+    }
+
+    &.end {
+      grid-column: 4/9;
+    }
+  }
+}
+
+@include mixins.min-width("desktop") {
+  .article {
+    &.start {
+      grid-column: 1/10;
+    }
+
+    &.center {
+      grid-column: 2/12;
+    }
+
+    &.end {
+      grid-column: 6/13;
+    }
+  }
+}

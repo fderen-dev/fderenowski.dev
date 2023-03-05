@@ -26,6 +26,18 @@
           "placeholder": ""
         }
       },
+      "placement": {
+        "type": "Select",
+        "config": {
+          "label": "Placement",
+          "placeholder": "",
+          "options": [
+            "start",
+            "center",
+            "end"
+          ]
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

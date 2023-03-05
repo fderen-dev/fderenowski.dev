@@ -1,23 +1,28 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "front"
+    "value": "interior"
   },
   "name": {
     "__TYPE__": "FieldContent",
-    "value": "buffalo",
+    "value": "cotton",
     "type": "Text"
   },
   "header": {
     "__TYPE__": "FieldContent",
-    "value": "wait",
+    "value": "noun",
     "type": "Text"
+  },
+  "placement": {
+    "__TYPE__": "FieldContent",
+    "value": "end",
+    "type": "Select"
   },
   "slices": {
     "__TYPE__": "SliceContentType",
     "value": [
       {
-        "key": "placeable_content$f1e71d35-a269-451a-80ab-a3d20ab58e95",
+        "key": "placeable_content$5e1ee56b-f0ff-452c-88be-ab191eeb8445",
         "name": "placeable_content",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -35,7 +40,7 @@
                       {
                         "type": "paragraph",
                         "content": {
-                          "text": "Nisi dolore laboris officia. Sit laboris eu laborum sunt sint quis laboris sit aliquip duis sunt id pariatur ad. Pariatur consequat id minim."
+                          "text": "Et non esse commodo ut. Quis aliqua dolor voluptate. Sunt dolore velit aute proident amet."
                         }
                       }
                     ]
@@ -45,7 +50,33 @@
                   "content_placement",
                   {
                     "__TYPE__": "FieldContent",
-                    "value": "Right",
+                    "value": "start",
+                    "type": "Select"
+                  }
+                ],
+                [
+                  "button_link_href",
+                  {
+                    "__TYPE__": "LinkContent",
+                    "value": {
+                      "__TYPE__": "ExternalLink",
+                      "url": "http://google.com"
+                    }
+                  }
+                ],
+                [
+                  "button_link_label",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "running",
+                    "type": "Text"
+                  }
+                ],
+                [
+                  "button_link_placement",
+                  {
+                    "__TYPE__": "FieldContent",
+                    "value": "center",
                     "type": "Select"
                   }
                 ]
@@ -55,7 +86,7 @@
         }
       },
       {
-        "key": "link_button$0d774b24-73e7-487e-a177-624178c2105f",
+        "key": "link_button$3ddf0341-83c7-4cc6-809b-dbb166bea721",
         "name": "link_button",
         "widget": {
           "__TYPE__": "SharedSliceContent",
@@ -63,19 +94,19 @@
           "primary": {
             "label": {
               "__TYPE__": "FieldContent",
-              "value": "temperature",
+              "value": "desert",
               "type": "Text"
             },
             "href": {
               "__TYPE__": "LinkContent",
               "value": {
                 "__TYPE__": "ExternalLink",
-                "url": "https://slicemachine.dev"
+                "url": "http://twitter.com"
               }
             },
             "placement": {
               "__TYPE__": "FieldContent",
-              "value": "Left",
+              "value": "start",
               "type": "Select"
             },
             "disabled": {
