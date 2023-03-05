@@ -1,7 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import classNames from "classnames/bind";
 
 import { WithChildren } from "utils/types";
+import { useIntersection } from "utils/useIntersection";
 
 import styles from "./section.module.scss";
 
@@ -28,37 +29,7 @@ export const Section = ({
   headerClassName,
 }: SectionProps) => {
   const containerRef = useRef(null);
-  const [isInViewport, setIsInViewport] = useState(false);
-
-  useEffect(() => {
-    if (withIntersection) {
-      const onIntersection: IntersectionObserverCallback = (entries): void => {
-        if (entries[0].isIntersecting) {
-          setIsInViewport(true);
-          disconnectObserver();
-        }
-      };
-      let observer: IntersectionObserver | null = new IntersectionObserver(
-        onIntersection,
-        { threshold: 1.0 }
-      );
-
-      const disconnectObserver = (): void => {
-        if (containerRef.current && observer) {
-          observer.disconnect();
-          observer = null;
-        }
-      };
-
-      if (containerRef.current && observer) {
-        observer.observe(containerRef.current);
-      }
-
-      return disconnectObserver;
-    }
-
-    return () => {};
-  }, [withIntersection]);
+  const isInViewport = useIntersection(containerRef, 1.0, withIntersection);
 
   return (
     <section
