@@ -27,8 +27,9 @@
             "label": "Content Placement",
             "placeholder": "",
             "options": [
-              "Left",
-              "Right"
+              "start",
+              "center",
+              "end"
             ]
           }
         },
@@ -54,9 +55,9 @@
             "label": "Button Link Placement",
             "placeholder": "",
             "options": [
-              "Left",
-              "Center",
-              "Right"
+              "start",
+              "center",
+              "end"
             ]
           }
         }

@@ -32,9 +32,9 @@
             "label": "Placement",
             "placeholder": "",
             "options": [
-              "Left",
-              "Center",
-              "Right"
+              "start",
+              "center",
+              "end"
             ]
           }
         },

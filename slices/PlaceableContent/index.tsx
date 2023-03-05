@@ -6,7 +6,6 @@ import {
   SliceComponentProps,
   SliceComponentType,
 } from "@prismicio/react";
-import { getPlacement } from "slices/utils";
 
 import { Button } from "components/common/Button/Button";
 
@@ -25,28 +24,30 @@ const PlaceableContentItem = ({
     button_link_placement,
   },
 }: PlaceableContentItemProps) => {
-  const contentPlacement = getPlacement(content_placement);
-  const buttonLinkPlacement = getPlacement(button_link_placement);
+  console.log(button_link_placement);
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <div
         className={styles.contentWrapper}
-        style={{ justifyContent: contentPlacement }}
+        style={{ justifyContent: content_placement ?? "start" }}
       >
         <PrismicRichText field={content} />
       </div>
       {button_link_href && (
         <div
           className={styles.buttonWrapper}
-          style={{ justifyContent: buttonLinkPlacement }}
+          style={{ justifyContent: button_link_placement ?? "start" }}
         >
-          <PrismicLink href={button_link_href as unknown as string}>
-            <Button variant="primary">{button_link_label}</Button>
+          {/*@ts-ignore*/}
+          <PrismicLink href={button_link_href.url}>
+            <Button variant="primary" className={styles.button}>
+              {button_link_label}
+            </Button>
           </PrismicLink>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

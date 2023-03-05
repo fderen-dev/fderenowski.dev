@@ -6,3 +6,15 @@
 .buttonWrapper {
   display: flex;
 }
+
+.wrapper {
+  .buttonWrapper {
+    &:not(:first-child) {
+      margin-block-start: 20px;
+    }
+  }
+}
+
+.button {
+  composes: button from "../LinkButton/linkButton.module.scss";
+}

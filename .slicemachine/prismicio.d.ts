@@ -398,6 +398,17 @@ interface HomePageArticleDocumentData {
      */
     header: prismicT.KeyTextField;
     /**
+     * Placement field in *Home Page Article*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page_article.placement
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    placement: prismicT.SelectField<"start" | "center" | "end">;
+    /**
      * Slice Zone field in *Home Page Article*
      *
      * - **Field Type**: Slice Zone
@@ -1074,7 +1085,7 @@ interface LinkButtonSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/core-concepts/select
      *
      */
-    placement: prismicT.SelectField<"Left" | "Center" | "Right">;
+    placement: prismicT.SelectField<"start" | "center" | "end">;
     /**
      * Disabled field in *LinkButton → Primary*
      *
@@ -1232,7 +1243,7 @@ export interface PlaceableContentSliceDefaultItem {
      * - **Documentation**: https://prismic.io/docs/core-concepts/select
      *
      */
-    content_placement: prismicT.SelectField<"Left" | "Right">;
+    content_placement: prismicT.SelectField<"start" | "center" | "end">;
     /**
      * Button Link Href field in *PlaceableContent → Items*
      *
@@ -1262,7 +1273,7 @@ export interface PlaceableContentSliceDefaultItem {
      * - **Documentation**: https://prismic.io/docs/core-concepts/select
      *
      */
-    button_link_placement: prismicT.SelectField<"Left" | "Center" | "Right">;
+    button_link_placement: prismicT.SelectField<"start" | "center" | "end">;
 }
 /**
  * Default variation for PlaceableContent Slice

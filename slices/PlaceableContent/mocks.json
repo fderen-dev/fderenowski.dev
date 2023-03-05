@@ -25,7 +25,7 @@
             "content_placement",
             {
               "__TYPE__": "FieldContent",
-              "value": "Left",
+              "value": "end",
               "type": "Select"
             }
           ],
@@ -33,7 +33,7 @@
             "button_link_placement",
             {
               "__TYPE__": "FieldContent",
-              "value": "Center",
+              "value": "center",
               "type": "Select"
             }
           ],
