@@ -95,11 +95,7 @@
   transform: translateY(-$yPosition);
 }
 
-@mixin black-background(
-  $opacity: 0.3,
-  $blur: 5px,
-  $color: vars.$c-pitch-black
-) {
+@mixin black-background($opacity: 0.2, $color: vars.$c-pitch-black) {
   position: absolute;
   z-index: vars.$z-index-background;
   top: 50%;
@@ -109,7 +105,6 @@
   height: 150%;
   background-color: $color;
   content: "";
-  filter: blur($blur);
   opacity: $opacity;
   transform: translate(-50%, -50%);
 }
