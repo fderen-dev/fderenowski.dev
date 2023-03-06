@@ -25,7 +25,7 @@ interface NavigationItemProps extends WithChildren {
   field?: any;
   href?: string;
   As?: "li" | "div" | "span";
-  disableUnderline?: boolean;
+  disableAnimation?: boolean;
   containerClassName?: string;
   linkClassName?: string;
 }
@@ -35,7 +35,7 @@ const NavigationItem = ({
   href,
   children,
   As = "li",
-  disableUnderline,
+  disableAnimation,
   containerClassName,
   linkClassName,
 }: NavigationItemProps) => {
@@ -45,10 +45,16 @@ const NavigationItem = ({
         <Link
           href={href as string}
           className={cx(styles.navigationItemLink, linkClassName, {
-            undelineOnHover: !disableUnderline,
+            animationOnHover: !disableAnimation,
           })}
         >
-          {children}
+          <div
+            className={cx(styles.navigationItemChildWrapper, {
+              animationOnHover: !disableAnimation,
+            })}
+          >
+            {children}
+          </div>
         </Link>
       </As>
     );
@@ -57,11 +63,15 @@ const NavigationItem = ({
       <As className={cx(styles.navigationItem, containerClassName)}>
         <PrismicLink
           field={field}
-          className={cx(styles.navigationItemLink, linkClassName, {
-            undelineOnHover: !disableUnderline,
-          })}
+          className={cx(styles.navigationItemLink, linkClassName)}
         >
-          {children}
+          <div
+            className={cx(styles.navigationItemChildWrapper, {
+              animationOnHover: !disableAnimation,
+            })}
+          >
+            {children}
+          </div>
         </PrismicLink>
       </As>
     );
@@ -96,7 +106,7 @@ interface HomeRouteProps {
 
 const HomeRoute = ({ iconField, linkField }: HomeRouteProps) => (
   <NavigationItem
-    disableUnderline
+    disableAnimation
     As="span"
     field={linkField}
     containerClassName={styles.homeRoute}

@@ -116,8 +116,15 @@ $horizontal-list-max-gap: 50px;
   text-transform: uppercase;
   user-select: none;
 
-  &.undelineOnHover {
-    @include mixins.underline-on-hover;
+  &:hover,
+  &:focus {
+    .navigationItemChildWrapper {
+      transition: transform 0.2s;
+
+      &.animationOnHover {
+        transform: rotateZ(-5deg) scale(1.1);
+      }
+    }
   }
 }
 
