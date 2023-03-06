@@ -12,6 +12,10 @@
   position: relative;
   z-index: vars.$z-index-layout;
   height: inherit;
+  background-color: vars.$c-background-gray;
+  background-image: url("../../../public/static/square.png");
+  background-position: center;
+  background-repeat: repeat;
 }
 
 .contentWrapper {
@@ -21,7 +25,6 @@
 
   // hide thin line
   margin-top: -1px;
-  background-color: vars.$c-background-gray;
 }
 
 .content {
