@@ -39,11 +39,7 @@ $z-index-paragraph: 1;
     color: vars.$c-snow-white-80;
 
     &::before {
-      @include mixins.yellow-background(
-        -5%,
-        50%,
-        vars.$g-yellow-subheader-about
-      );
+      @include mixins.yellow-background;
     }
   }
 
