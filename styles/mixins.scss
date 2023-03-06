@@ -80,9 +80,9 @@
 }
 
 @mixin yellow-background(
+  $background: vars.$g-yellow-subheader,
   $xPosition: -5%,
-  $yPosition: 50%,
-  $background: vars.$g-yellow-subheader
+  $yPosition: 50%
 ) {
   position: absolute;
   z-index: vars.$z-index-background;
@@ -95,7 +95,7 @@
   transform: translateY(-$yPosition);
 }
 
-@mixin black-background($opacity: 0.2, $color: vars.$c-pitch-black) {
+@mixin black-background($opacity: 0.75, $color: vars.$c-pitch-black) {
   position: absolute;
   z-index: vars.$z-index-background;
   top: 50%;
@@ -104,6 +104,7 @@
   max-width: vars.$max-width;
   height: 150%;
   background-color: $color;
+  box-shadow: 1px 1px 5px rgb(0 0 0 / 75%);
   content: "";
   opacity: $opacity;
   transform: translate(-50%, -50%);
