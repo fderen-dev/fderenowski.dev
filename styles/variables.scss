@@ -78,6 +78,11 @@ $g-yellow-subheader: linear-gradient(
   rgb(255 202 30 / 50%) 35%,
   rgb(0 0 0 / 0%) 100%
 );
+$g-yellow-subheader-reverted: linear-gradient(
+  90deg,
+  rgb(0 0 0 / 0%) 35%,
+  rgb(255 202 30 / 50%) 100%
+);
 $g-yellow-subheader-about: linear-gradient(
   90deg,
   rgb(255 202 30 / 80%) 50%,

@@ -50,16 +50,20 @@
   position: relative;
   width: 100%;
 
-  &::before {
-    @include mixins.yellow-background;
-  }
-
   &.start {
     text-align: start;
+
+    &::before {
+      @include mixins.yellow-background;
+    }
   }
 
   &.end {
     text-align: end;
+
+    &::before {
+      @include mixins.yellow-background(vars.$g-yellow-subheader-reverted, +5%);
+    }
   }
 
   .headerText {
