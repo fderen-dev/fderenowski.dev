@@ -15,6 +15,14 @@
   }
 }
 
+.link {
+  composes: link from "../LinkButton/linkButton.module.scss";
+}
+
 .button {
   composes: button from "../LinkButton/linkButton.module.scss";
+}
+
+.buttonText {
+  composes: buttonText from "../LinkButton/linkButton.module.scss";
 }

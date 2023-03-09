@@ -17,9 +17,9 @@ const LinkButton: SliceComponentType = ({
     className={styles.wrapper}
     style={{ justifyContent: slice.primary.placement ?? "start" }}
   >
-    <PrismicLink field={slice.primary.href}>
+    <PrismicLink field={slice.primary.href} className={styles.link}>
       <Button variant="primary" className={styles.button}>
-        {slice.primary.label}
+        <span className={styles.buttonText}>{slice.primary.label}</span>
       </Button>
     </PrismicLink>
   </div>
