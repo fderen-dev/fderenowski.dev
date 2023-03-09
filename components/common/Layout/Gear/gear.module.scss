@@ -3,6 +3,8 @@
 .gear {
   position: absolute;
   z-index: vars.$z-index-gear;
+  display: inline-block;
+  width: fit-content;
   height: auto;
   animation-duration: 4s;
   animation-fill-mode: forwards;
