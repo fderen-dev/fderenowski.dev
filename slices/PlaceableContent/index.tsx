@@ -37,7 +37,7 @@ const PlaceableContentItem = ({
         style={{ justifyContent: button_link_placement ?? "start" }}
       >
         {/*@ts-ignore*/}
-        <PrismicLink href={button_link_href.url}>
+        <PrismicLink href={button_link_href.url} className={styles.link}>
           <Button variant="primary" className={styles.button}>
             <span className={styles.buttonText}>{button_link_label}</span>
           </Button>
