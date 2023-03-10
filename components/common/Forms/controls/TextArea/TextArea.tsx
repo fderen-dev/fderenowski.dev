@@ -6,7 +6,7 @@ import ReactTextareaAutosize, {
 
 import { TypeTools } from "utils/TypeTools";
 
-import { useFormErrorsContext } from "../../FormProvider";
+import { useFormErrorsContext, useFormValuesContext } from "../../FormProvider";
 import { ErrorPopup } from "../ErrorPopup/ErrorPopup";
 import { FormControlProps } from "../types";
 import { useFormControl } from "../useFormsControl";
@@ -51,6 +51,9 @@ const Input = ({
   ...textAreaProps
 }: InputProps) => {
   const inputRef = useRef<HTMLTextAreaElement | null>(null);
+  const values = useFormValuesContext();
+  // @ts-ignore
+  const value = values[name];
   const { handleChange, handleBlur } = useFormControl<HTMLTextAreaElement>(
     name,
     validation,
@@ -64,6 +67,7 @@ const Input = ({
         <ReactTextareaAutosize
           id={name}
           name={name}
+          value={value}
           onChange={handleChange}
           onBlur={handleBlur}
           className={cx(styles.control, textAreaClass, { error: hasError })}

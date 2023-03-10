@@ -4,7 +4,7 @@ import { ErrorPopup } from "./ErrorPopup/ErrorPopup";
 import { FormControlProps } from "./types";
 import { useFormControl } from "./useFormsControl";
 
-import { useFormErrorsContext } from "../FormProvider";
+import { useFormErrorsContext, useFormValuesContext } from "../FormProvider";
 
 import styles from "./controls.module.scss";
 
@@ -30,6 +30,9 @@ export const Input = ({
     validation,
     validateOnChange
   );
+  const values = useFormValuesContext();
+  // @ts-ignore
+  const value = values[name];
   const errors = useFormErrorsContext();
   const hasError = Boolean(errors[name]);
 
@@ -40,6 +43,7 @@ export const Input = ({
         id={name}
         name={name}
         onChange={handleChange}
+        value={value}
         onBlur={handleBlur}
         className={cx(styles.control, inputClass, { error: hasError })}
         {...inputProps}

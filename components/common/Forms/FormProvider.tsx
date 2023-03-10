@@ -30,13 +30,13 @@ interface FormState {
 const FormValuesContext = createContext<FormStructure>({});
 const FormErrorsContext = createContext<FormStructure>({});
 const FormApiContext = createContext<FormApi<FormStructure>>({
-  setValue(name: string, value: string) {
+  setValue<S>(name: keyof S, value: string) {
     throw methodNotImplementedError;
   },
-  setError(name: string, error: string) {
+  setError<S>(name: keyof S, error: string) {
     throw methodNotImplementedError;
   },
-  clearError(name: string) {
+  clearError<S>(name: keyof S) {
     throw methodNotImplementedError;
   },
   clear() {

@@ -3,7 +3,10 @@ import { Content } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
 import Forms, { FormStructure } from "components/common/Forms";
-import { useFormStateContext } from "components/common/Forms/FormProvider";
+import {
+  useFormApiContext,
+  useFormStateContext,
+} from "components/common/Forms/FormProvider";
 
 import { SubmitButton, SubmitButtonApi } from "./SubmitButton/SubmitButton";
 
@@ -31,6 +34,7 @@ export const ContactForm = ({
   const abortControllerRef = useRef<AbortController | null>(null);
   const submitButtonApiRef = useRef<SubmitButtonApi | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { clear: clearForm } = useFormApiContext();
   const { hasErrors, hasValues } = useFormStateContext();
 
   const isDisabled = hasErrors || !hasValues;
@@ -60,6 +64,7 @@ export const ContactForm = ({
 
       if (response.ok) {
         submitButtonApiRef.current?.setOk();
+        clearForm();
       } else {
         console.error(`Submittion problem, ${response.status}`);
         submitButtonApiRef.current?.setError();
