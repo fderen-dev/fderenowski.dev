@@ -3,6 +3,8 @@
 @use "styles/animations.scss" as anims;
 
 .container {
+  height: 40vh;
+  min-height: calc(250px + vars.$navbar-height);
   background-color: vars.$c-background-yellow;
 }
 
@@ -11,12 +13,13 @@
   display: flex;
   overflow: hidden;
   max-width: map.get(vars.$media, "max");
-  height: 40vh;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
   background-color: vars.$c-background-yellow;
   color: vars.$c-heading-font;
+  margin-block-start: vars.$navbar-height;
 }
 
 .headingContainer {
