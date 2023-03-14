@@ -110,6 +110,7 @@ const HomeRoute = ({ iconField, linkField }: HomeRouteProps) => (
     As="span"
     field={linkField}
     containerClassName={styles.homeRoute}
+    aria-label="Open naviagtion menu"
   >
     <PrismicNextImage field={iconField} className={styles.logo} />
   </NavigationItem>
