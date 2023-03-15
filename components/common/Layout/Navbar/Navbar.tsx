@@ -110,7 +110,7 @@ const HomeRoute = ({ iconField, linkField }: HomeRouteProps) => (
     As="span"
     field={linkField}
     containerClassName={styles.homeRoute}
-    aria-label="Open naviagtion menu"
+    aria-label="Navigate to homepage"
   >
     <PrismicNextImage field={iconField} className={styles.logo} />
   </NavigationItem>
@@ -139,6 +139,7 @@ const NavbarContent = ({
           ["is-active"]: isMobileNavigationOpen,
         })}
         type="button"
+        aria-label="Open naviagtion menu"
       >
         <span className="hamburger-box">
           <span className="hamburger-inner"></span>
