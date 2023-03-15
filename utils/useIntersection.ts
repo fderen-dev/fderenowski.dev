@@ -35,7 +35,8 @@ export const useIntersection = <Element extends HTMLElement>(
     }
 
     return () => {};
-  }, [withIntersection]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [withIntersection, threshold]);
 
   return isInViewport;
 };
