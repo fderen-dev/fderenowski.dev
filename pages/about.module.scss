@@ -17,6 +17,7 @@ $z-index-paragraph: 1;
   top: 7vh;
   max-height: 500px;
   margin: 0 auto;
+  filter: drop-shadow(vars.$shadow-generic);
   object-fit: contain;
   @include mixins.not-selectable;
 }

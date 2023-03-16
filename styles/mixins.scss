@@ -104,7 +104,7 @@
   max-width: vars.$max-width;
   height: 150%;
   background-color: $color;
-  box-shadow: 1px 1px 5px rgb(0 0 0 / 75%);
+  box-shadow: vars.$shadow-generic-75;
   content: "";
   opacity: $opacity;
   transform: translate(-50%, -50%);

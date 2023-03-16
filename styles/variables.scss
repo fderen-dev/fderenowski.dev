@@ -53,6 +53,7 @@ $c-gru-gray: #b5b5b5;
 $c-warm-yellow: #deb204;
 $c-vanilla-yellow: #ffeb54;
 $c-pitch-black: #000;
+$c-pitch-black-75: #000000bf;
 $c-dirty-brown: #6c4317;
 $c-snow-white: #fff;
 $c-snow-white-80: #fffd;
@@ -97,6 +98,8 @@ $g-black-background: linear-gradient(
 // shadows
 $shadow-button: 4px 4px 16px 4px rgba(0 0 0 / 50%);
 $shadow-button-active: 4px 4px 16px -4px rgba(0 0 0 / 50%);
+$shadow-generic: 1px 1px 3px $c-pitch-black;
+$shadow-generic-75: 1px 1px 3px $c-pitch-black-75;
 
 // spacings
 $spacing-small: 8px;
