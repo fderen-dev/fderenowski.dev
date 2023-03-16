@@ -79,6 +79,7 @@ export const Form = ({
     <form
       className={classNames(styles.form, className)}
       onSubmit={handleSubmit}
+      noValidate
     >
       {children}
     </form>
