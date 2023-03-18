@@ -10,8 +10,8 @@ import { Button } from "components/common/Button/Button";
 
 import { TimeoutHandle } from "utils/types";
 
-import ErrorIcon from "public/static/cancel.svg";
-import OkIcon from "public/static/ok.svg";
+import ErrorIcon from "public/cancel.svg";
+import OkIcon from "public/ok.svg";
 
 import styles from "./submitButton.module.scss";
 
