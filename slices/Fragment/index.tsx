@@ -2,7 +2,6 @@ import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps, SliceComponentType } from "@prismicio/react";
 import { PrismicRichText } from "@prismicio/react";
-import { PrismicText } from "@prismicio/react";
 
 import { Section } from "components/common/Section/Section";
 
@@ -47,11 +46,12 @@ const Fragment: SliceComponentType = (
             <h2 className={aboutMeStyles.subheader}>
               {slice?.primary?.header?.[0]?.text}
             </h2>
-            {slice.items.map((item) => (
-              <p className={aboutMeStyles.paragraph} key={slice.id}>
-                {item.content && <PrismicText field={item.content} />}
-              </p>
-            ))}
+            {slice.items.map(
+              (item) =>
+                item.content && (
+                  <PrismicRichText field={item.content} key={slice.id} />
+                )
+            )}
           </div>
         </section>
       );

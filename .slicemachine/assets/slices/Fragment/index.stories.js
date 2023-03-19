@@ -5,7 +5,7 @@ export default {
 }
 
 
-export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"content":[{"type":"paragraph","text":"Officia adipisicing irure elit ad consequat culpa tempor commodo.","spans":[]}]}],"primary":{"header":[{"type":"heading2","text":"Monkey","spans":[]}]},"id":"_Default","slice_type":"fragment"}} />
+export const _Default = () => <MyComponent slice={{"variation":"default","version":"sktwi1xtmkfgx8626","items":[{"content":[{"type":"paragraph","text":"Duis anim ut voluptate.","spans":[]}]}],"primary":{"header":[{"type":"heading2","text":"Monkey","spans":[]}]},"id":"_Default","slice_type":"fragment"}} />
 _Default.storyName = ''
 
 export const _HomepageFragment = () => <MyComponent slice={{"variation":"homepageFragment","version":"sktwi1xtmkfgx8626","items":[{"content":[{"type":"paragraph","text":"Cillum commodo non id. Esse adipisicing ipsum sunt. Occaecat voluptate aute mollit irure in magna commodo tempor commodo dolor ullamco dolor est.","spans":[]}],"button_link":{"link_type":"Web","url":"http://google.com"}}],"primary":{"header":[{"type":"heading2","text":"Master","spans":[]}],"placement":"Left"},"id":"_HomepageFragment","slice_type":"fragment"}} />
