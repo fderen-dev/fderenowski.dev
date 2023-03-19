@@ -10,6 +10,10 @@ $z-index-paragraph: 1;
   @include mixins.page-spacing;
 
   margin-block-start: -13vh;
+
+  a {
+    @include mixins.inline-link;
+  }
 }
 
 .portrait {
@@ -30,7 +34,7 @@ $z-index-paragraph: 1;
     @include mixins.black-background;
 
     width: 120%;
-    height: 120%;
+    height: 110%;
     opacity: 0.9;
   }
 
@@ -71,7 +75,7 @@ $z-index-paragraph: 1;
 
   .content {
     &::before {
-      height: 140%;
+      height: 120%;
     }
   }
 }

@@ -165,3 +165,8 @@
   pointer-events: none;
   user-select: none;
 }
+
+@mixin inline-link {
+  color: vars.$c-vanilla-yellow;
+  text-decoration: none;
+}

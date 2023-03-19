@@ -44,6 +44,10 @@
     filter: blur(0);
     opacity: 1;
   }
+
+  a {
+    @include mixins.inline-link;
+  }
 }
 
 .header {
