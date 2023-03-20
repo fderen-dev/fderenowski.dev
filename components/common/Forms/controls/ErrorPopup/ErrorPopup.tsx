@@ -19,6 +19,7 @@ export const ErrorPopup = ({
   popupClass,
 }: ErrorPopupProps) => {
   const [message, setMessage] = useState(messageProp);
+  const [isHidden, setIsHidden] = useState(!show);
 
   useEffect(() => {
     if (TypeTools.isNonEmptyString(messageProp)) {
@@ -26,9 +27,16 @@ export const ErrorPopup = ({
     }
   }, [messageProp]);
 
+  useEffect(() => {
+    setIsHidden(!show);
+  }, [show]);
+
+  const visible = show && !isHidden;
+
   return (
-    <FadeInAndOut isTriggered={show}>
+    <FadeInAndOut isTriggered={visible}>
       <div className={classNames(styles.errorPopup, popupClass)}>
+        <button aria-label="Dismiss validation error message" onClick={() => setIsHidden(true)} className={styles.dismissButton}>x</button>
         <p className={styles.errorMessage}>{message}</p>
       </div>
     </FadeInAndOut>
