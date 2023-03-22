@@ -38,6 +38,22 @@
           ]
         }
       },
+      "with_intersection": {
+        "type": "Boolean",
+        "config": {
+          "label": "With Intersection",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "order": {
+        "type": "Number",
+        "config": {
+          "label": "Order",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

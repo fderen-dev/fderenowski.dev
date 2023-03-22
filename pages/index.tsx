@@ -12,6 +12,10 @@ import { createClient } from "../prismicio";
 
 import styles from "./index.module.scss";
 
+const sortArticles = (article1: Content.HomePageArticleDocument, article2: Content.HomePageArticleDocument): number => {
+  return (article1.data.order ?? 0) - (article2.data.order ?? 0)
+}
+
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
 
@@ -64,8 +68,7 @@ const Home: NextPage<{
         Footer={<Footer prismicDocumentData={footer.data} />}
         contentClassName={styles.layoutContent}
       >
-        {/* <SliceZone slices={slicesData} components={slices} /> */}
-        {articles.map((article) => (
+        {articles.sort(sortArticles).map((article) => (
           <HomePageArticle
             prismicDocumentData={article.data}
             key={article.uid}

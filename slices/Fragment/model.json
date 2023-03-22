@@ -60,6 +60,15 @@
               "Right"
             ]
           }
+        },
+        "with_intersection": {
+          "type": "Boolean",
+          "config": {
+            "label": "With Intersection",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
         }
       },
       "items": {

@@ -16,10 +16,10 @@ interface HomePageArticleProps {
 }
 
 export const HomePageArticle = ({
-  prismicDocumentData: { header, placement, slices: slicesData },
+  prismicDocumentData: { header, placement, slices: slicesData, with_intersection },
 }: HomePageArticleProps) => {
   const wrapperRef = useRef(null);
-  const isInViewport = useIntersection(wrapperRef);
+  const isInViewport = useIntersection(wrapperRef, 1.0, with_intersection);
 
   return (
     <article

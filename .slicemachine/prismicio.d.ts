@@ -409,6 +409,29 @@ interface HomePageArticleDocumentData {
      */
     placement: prismicT.SelectField<"start" | "center" | "end">;
     /**
+     * With Intersection field in *Home Page Article*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: home_page_article.with_intersection
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    with_intersection: prismicT.BooleanField;
+    /**
+     * Order field in *Home Page Article*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_page_article.order
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    order: prismicT.NumberField;
+    /**
      * Slice Zone field in *Home Page Article*
      *
      * - **Field Type**: Slice Zone
@@ -648,6 +671,17 @@ interface FragmentSliceHomepageFragmentPrimary {
      *
      */
     placement: prismicT.SelectField<"Left" | "Right">;
+    /**
+     * With Intersection field in *Fragment → Primary*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: true
+     * - **API ID Path**: fragment.primary.with_intersection
+     * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+     *
+     */
+    with_intersection: prismicT.BooleanField;
 }
 /**
  * Item in Fragment → Items
