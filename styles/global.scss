@@ -20,8 +20,13 @@ body {
 }
 
 #__next {
-  height: 100%;
   background-color: vars.$c-background-gray;
+}
+
+body,
+body > div:first-child,
+div#__next {
+  height: 100%;
 }
 
 h1,
