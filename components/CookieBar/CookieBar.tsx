@@ -1,18 +1,35 @@
 import CookieConsent from "react-cookie-consent";
 
+import { Button } from "components/common/Button/Button";
+
+import { isDevMode } from "utils/utils";
+
+import styles from "./cookieBar.module.scss";
+
 export const CookieBar = () => (
   <CookieConsent
-    debug
     overlay
     acceptOnOverlayClick
     enableDeclineButton
-    location="bottom"
+    disableStyles
+    flipButtons
     buttonText="Accept"
     declineButtonText="Decline"
     cookieName="cookieConsent"
-    style={{ background: "#333", color: "#fff" }}
-    buttonStyle={{ background: "#FA9D1C", color: "#fff", fontSize: "13px" }}
+    debug={isDevMode}
     expires={365}
+    ButtonComponent={Button}
+    customButtonProps={{
+      className: styles.button,
+    }}
+    customDeclineButtonProps={{
+      className: styles.button,
+      variant: "secondary",
+    }}
+    containerClasses={styles.container}
+    contentClasses={styles.content}
+    overlayClasses={styles.overlay}
+    buttonWrapperClasses={styles.buttonContainer}
   >
     I am collecting trafic data with Google Analytics. Your consent will be
     appreciated.
