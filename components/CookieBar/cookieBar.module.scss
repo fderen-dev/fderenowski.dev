@@ -1,0 +1,60 @@
+@use "variables.scss" as vars;
+@use "mixins.scss";
+
+.container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: vars.$spacing-mobile;
+  background: vars.$c-pitch-black;
+}
+
+.content {
+  position: relative;
+  font-size: vars.$fs-mobile-h2;
+  margin-block-end: vars.$spacing-large;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$spacing-mobile;
+}
+
+.overlay {
+  position: fixed;
+  z-index: vars.$z-index-modal;
+  overflow: hidden;
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  background: vars.$c-black-90;
+  inset: 0;
+  isolation: isolate;
+
+  &::before {
+    display: block;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    content: "";
+  }
+}
+
+@include mixins.min-width("desktop") {
+  .container {
+    padding: vars.$spacing-desktop;
+  }
+
+  .content {
+    font-size: vars.$fs-desktop-cookie-bar-content;
+  }
+
+  .buttonContainer {
+    flex-direction: row;
+    gap: vars.$spacing-desktop;
+  }
+
+  .button {
+    padding: 12px 48px;
+  }
+}
