@@ -8,6 +8,7 @@ import { Header } from "components/common/Layout/Header/Header";
 import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 import { ContactForm } from "components/ContactForm/ContactForm";
+import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { createClient } from "../prismicio";
 
@@ -40,6 +41,10 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "footer",
     "footer"
   );
+  const cookieBar = await client.getByUID<Content.CookiebarDocument>(
+    "cookiebar",
+    "cookie-bar"
+  );
 
   return {
     props: {
@@ -49,6 +54,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
       navigation,
       header,
       footer,
+      cookieBar,
     },
   };
 };
@@ -60,7 +66,16 @@ const Contact: NextPage<{
   navigation: Content.NavigationDocument;
   header: Content.HeaderDocument;
   footer: Content.FooterDocument;
-}> = ({ contact, form, formGroup, navigation, header: mainHeader, footer }) => {
+  cookieBar: Content.CookiebarDocument;
+}> = ({
+  contact,
+  form,
+  formGroup,
+  navigation,
+  header: mainHeader,
+  footer,
+  cookieBar,
+}) => {
   const {
     data: { header, subheading, ...meta },
   } = contact;
@@ -91,6 +106,7 @@ const Contact: NextPage<{
           </FormProvider>
         </section>
       </Layout>
+      <CookieBar prismicDocumentData={cookieBar.data} />
     </>
   );
 };
