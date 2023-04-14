@@ -7,6 +7,7 @@ import { Footer } from "components/common/Layout/Footer/Footer";
 import { Header } from "components/common/Layout/Header/Header";
 import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
+import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { createClient } from "../prismicio";
 import { components as slices } from "../slices";
@@ -30,6 +31,10 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "footer",
     "footer"
   );
+  const cookieBar = await client.getByUID<Content.CookiebarDocument>(
+    "cookiebar",
+    "cookie-bar"
+  );
 
   return {
     props: {
@@ -37,6 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
       navigation,
       header,
       footer,
+      cookieBar,
     },
   };
 };
@@ -46,7 +52,8 @@ const About: NextPage<{
   navigation: Content.NavigationDocument;
   header: Content.HeaderDocument;
   footer: Content.FooterDocument;
-}> = ({ page, navigation, header, footer }) => {
+  cookieBar: Content.CookiebarDocument;
+}> = ({ page, navigation, header, footer, cookieBar }) => {
   const {
     data: { slices1: slicesData, ...meta },
   } = page;
@@ -61,6 +68,7 @@ const About: NextPage<{
       >
         <SliceZone slices={slicesData} components={slices} />
       </Layout>
+      <CookieBar prismicDocumentData={cookieBar.data} />
     </>
   );
 };

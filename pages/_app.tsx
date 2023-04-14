@@ -1,7 +1,6 @@
 import type { AppProps } from "next/app";
 import Modal from "react-modal";
 
-import { CookieBar } from "components/CookieBar/CookieBar";
 import { Measurement } from "components/Measurement/Measurement";
 
 import { MediaQueries } from "context/MediaQueries";
@@ -16,7 +15,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RootProvider>
       <Measurement />
-      <CookieBar />
       <Component {...pageProps} />
       {isDevMode && <MediaQueries.CurrentBreakpoint />}
     </RootProvider>
