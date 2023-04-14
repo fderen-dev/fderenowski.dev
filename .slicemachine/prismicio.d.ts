@@ -196,6 +196,74 @@ interface ContactDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ContactDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ContactDocumentData>, "contact", Lang>;
+/** Content for CookieBar documents */
+interface CookiebarDocumentData {
+    /**
+     * Name field in *CookieBar*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: cookiebar.name
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * DeclineButtonText field in *CookieBar*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: cookiebar.declinebuttontext
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    declinebuttontext: prismicT.KeyTextField;
+    /**
+     * AcceptButtonText field in *CookieBar*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: cookiebar.acceptbuttontext
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    acceptbuttontext: prismicT.KeyTextField;
+    /**
+     * Content field in *CookieBar*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: cookiebar.content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    content: prismicT.KeyTextField;
+    /**
+     * ExpirationTimeInDays field in *CookieBar*
+     *
+     * - **Field Type**: Number
+     * - **Placeholder**: *None*
+     * - **API ID Path**: cookiebar.expirationtimeindays
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/number
+     *
+     */
+    expirationtimeindays: prismicT.NumberField;
+}
+/**
+ * CookieBar document from Prismic
+ *
+ * - **API ID**: `cookiebar`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CookiebarDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<CookiebarDocumentData>, "cookiebar", Lang>;
 /** Content for Footer documents */
 interface FooterDocumentData {
     /**
@@ -604,7 +672,7 @@ type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
  * @typeParam Lang - Language API ID of the document.
  */
 export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
-export type AllDocumentTypes = AboutDocument | ContactDocument | FooterDocument | FormDocument | FormgroupDocument | HeaderDocument | HomePageArticleDocument | HomepageDocument | NavigationDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | CookiebarDocument | FooterDocument | FormDocument | FormgroupDocument | HeaderDocument | HomePageArticleDocument | HomepageDocument | NavigationDocument;
 /**
  * Primary content in Fragment → Primary
  *
@@ -1337,6 +1405,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, FormgroupDocumentData, FormgroupDocumentDataSlicesSlice, FormgroupDocument, HeaderDocumentData, HeaderDocument, HomePageArticleDocumentData, HomePageArticleDocumentDataSlicesSlice, HomePageArticleDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkButtonSliceDefaultPrimary, LinkButtonSliceDefault, LinkButtonSliceVariation, LinkButtonSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, PlaceableContentSliceDefaultItem, PlaceableContentSliceDefault, PlaceableContentSliceVariation, PlaceableContentSlice };
+        export type { AboutDocumentData, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocument, ContactDocumentData, ContactDocument, CookiebarDocumentData, CookiebarDocument, FooterDocumentData, FooterDocumentDataSlicesSlice, FooterDocument, FormDocumentData, FormDocumentDataSlicesSlice, FormDocument, FormgroupDocumentData, FormgroupDocumentDataSlicesSlice, FormgroupDocument, HeaderDocumentData, HeaderDocument, HomePageArticleDocumentData, HomePageArticleDocumentDataSlicesSlice, HomePageArticleDocument, HomepageDocumentData, HomepageDocumentDataSlicesSlice, HomepageDocument, NavigationDocumentData, NavigationDocumentDataSlicesSlice, NavigationDocument, AllDocumentTypes, FragmentSliceDefaultPrimary, FragmentSliceDefaultItem, FragmentSliceDefault, FragmentSliceHomepageFragmentPrimary, FragmentSliceHomepageFragmentItem, FragmentSliceHomepageFragment, FragmentSliceAboutMeFragmentPrimary, FragmentSliceAboutMeFragmentItem, FragmentSliceAboutMeFragment, FragmentSliceVariation, FragmentSlice, TextInputSliceDefaultPrimary, TextInputSliceDefault, TextInputSliceTextAreaPrimary, TextInputSliceTextArea, TextInputSliceEmailPrimary, TextInputSliceEmail, TextInputSliceVariation, TextInputSlice, LinkButtonSliceDefaultPrimary, LinkButtonSliceDefault, LinkButtonSliceVariation, LinkButtonSlice, LinkIconSliceDefaultPrimary, LinkIconSliceDefault, LinkIconSliceVariation, LinkIconSlice, NavigationItemSliceDefaultPrimary, NavigationItemSliceDefault, NavigationItemSliceVariation, NavigationItemSlice, PlaceableContentSliceDefaultItem, PlaceableContentSliceDefault, PlaceableContentSliceVariation, PlaceableContentSlice };
     }
 }

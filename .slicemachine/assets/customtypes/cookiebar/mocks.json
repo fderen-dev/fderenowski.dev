@@ -1,0 +1,31 @@
+{
+  "name": {
+    "__TYPE__": "FieldContent",
+    "value": "plant",
+    "type": "Text"
+  },
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "tongue"
+  },
+  "declinebuttontext": {
+    "__TYPE__": "FieldContent",
+    "value": "ago",
+    "type": "Text"
+  },
+  "acceptbuttontext": {
+    "__TYPE__": "FieldContent",
+    "value": "stand",
+    "type": "Text"
+  },
+  "content": {
+    "__TYPE__": "FieldContent",
+    "value": "whatever",
+    "type": "Text"
+  },
+  "expirationtimeindays": {
+    "__TYPE__": "FieldContent",
+    "value": "75",
+    "type": "Number"
+  }
+}

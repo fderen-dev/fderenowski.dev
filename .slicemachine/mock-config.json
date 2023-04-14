@@ -12,7 +12,8 @@
     "footer": {},
     "header": {},
     "formgroup": {},
-    "home_page_article": {}
+    "home_page_article": {},
+    "cookiebar": {}
   },
   "slices": {
     "Section": {
