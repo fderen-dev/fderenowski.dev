@@ -107,6 +107,208 @@ type AboutDocumentDataSlices1Slice = FragmentSlice;
  */
 export type AboutDocument<Lang extends string = string> =
   prismicT.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
+/** Content for Blog documents */
+interface BlogDocumentData {
+  /**
+   * Name field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.name
+   * - **Tab**: Page Content
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  name: prismicT.KeyTextField;
+  /**
+   * Meta Tilte field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.meta_tilte
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_tilte: prismicT.KeyTextField;
+  /**
+   * Meta Description field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.meta_description
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_description: prismicT.KeyTextField;
+  /**
+   * Meta Author field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.meta_author
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_author: prismicT.KeyTextField;
+  /**
+   * Meta Keywords field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.meta_keywords
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_keywords: prismicT.KeyTextField;
+  /**
+   * Meta Robots field in *Blog*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.meta_robots
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_robots: prismicT.KeyTextField;
+}
+/**
+ * Blog document from Prismic
+ *
+ * - **API ID**: `blog`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogDocument<Lang extends string = string> =
+  prismicT.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
+/** Content for BlogPost documents */
+interface BlogpostDocumentData {
+  /**
+   * Name field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.name
+   * - **Tab**: Post Content
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  name: prismicT.KeyTextField;
+  /**
+   * Header field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.header
+   * - **Tab**: Post Content
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  header: prismicT.KeyTextField;
+  /**
+   * DateCreated field in *BlogPost*
+   *
+   * - **Field Type**: Timestamp
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.datecreated
+   * - **Tab**: Post Content
+   * - **Documentation**: https://prismic.io/docs/core-concepts/timestamp
+   *
+   */
+  datecreated: prismicT.TimestampField;
+  /**
+   * Slice Zone field in *BlogPost*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.slices[]
+   * - **Tab**: Post Content
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismicT.SliceZone<BlogpostDocumentDataSlicesSlice>;
+  /**
+   * Meta Title field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.meta_title
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_title: prismicT.KeyTextField;
+  /**
+   * Meta Description field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.meta_description
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_description: prismicT.KeyTextField;
+  /**
+   * Meta Author field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.meta_author
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_author: prismicT.KeyTextField;
+  /**
+   * Meta Keywords field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.meta_keywords
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_keywords: prismicT.KeyTextField;
+  /**
+   * Meta Robots field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.meta_robots
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_robots: prismicT.KeyTextField;
+}
+/**
+ * Slice for *BlogPost → Slice Zone*
+ *
+ */
+type BlogpostDocumentDataSlicesSlice = BlogPostContentSlice;
+/**
+ * BlogPost document from Prismic
+ *
+ * - **API ID**: `blogpost`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogpostDocument<Lang extends string = string> =
+  prismicT.PrismicDocumentWithUID<
+    Simplify<BlogpostDocumentData>,
+    "blogpost",
+    Lang
+  >;
 /** Content for Contact documents */
 interface ContactDocumentData {
   /**
@@ -710,6 +912,8 @@ export type NavigationDocument<Lang extends string = string> =
   >;
 export type AllDocumentTypes =
   | AboutDocument
+  | BlogDocument
+  | BlogpostDocument
   | ContactDocument
   | CookiebarDocument
   | FooterDocument
@@ -719,6 +923,62 @@ export type AllDocumentTypes =
   | HomePageArticleDocument
   | HomepageDocument
   | NavigationDocument;
+/**
+ * Item in BlogPostContent → Items
+ *
+ */
+export interface BlogPostContentSliceDefaultItem {
+  /**
+   * Content field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.items[].content
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  content: prismicT.RichTextField;
+  /**
+   * Image field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.items[].image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for BlogPostContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `BlogPostContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type BlogPostContentSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<BlogPostContentSliceDefaultItem>
+>;
+/**
+ * Slice variation for *BlogPostContent*
+ *
+ */
+type BlogPostContentSliceVariation = BlogPostContentSliceDefault;
+/**
+ * BlogPostContent Shared Slice
+ *
+ * - **API ID**: `blog_post_content`
+ * - **Description**: `BlogPostContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type BlogPostContentSlice = prismicT.SharedSlice<
+  "blog_post_content",
+  BlogPostContentSliceVariation
+>;
 /**
  * Primary content in Fragment → Primary
  *
@@ -914,6 +1174,281 @@ type FragmentSliceVariation =
 export type FragmentSlice = prismicT.SharedSlice<
   "fragment",
   FragmentSliceVariation
+>;
+/**
+ * Primary content in LinkButton → Primary
+ *
+ */
+interface LinkButtonSliceDefaultPrimary {
+  /**
+   * Label field in *LinkButton → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_button.primary.label
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  label: prismicT.KeyTextField;
+  /**
+   * Href field in *LinkButton → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_button.primary.href
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  href: prismicT.LinkField;
+  /**
+   * Placement field in *LinkButton → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_button.primary.placement
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  placement: prismicT.SelectField<"start" | "center" | "end">;
+  /**
+   * Disabled field in *LinkButton → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: link_button.primary.disabled
+   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
+   *
+   */
+  disabled: prismicT.BooleanField;
+}
+/**
+ * Default variation for LinkButton Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `LinkButton`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkButtonSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Simplify<LinkButtonSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *LinkButton*
+ *
+ */
+type LinkButtonSliceVariation = LinkButtonSliceDefault;
+/**
+ * LinkButton Shared Slice
+ *
+ * - **API ID**: `link_button`
+ * - **Description**: `LinkButton`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkButtonSlice = prismicT.SharedSlice<
+  "link_button",
+  LinkButtonSliceVariation
+>;
+/**
+ * Primary content in LinkIcon → Primary
+ *
+ */
+interface LinkIconSliceDefaultPrimary {
+  /**
+   * Href field in *LinkIcon → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_icon.primary.href
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  href: prismicT.LinkField;
+  /**
+   * Icon field in *LinkIcon → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: link_icon.primary.icon
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  icon: prismicT.ImageField<never>;
+}
+/**
+ * Default variation for LinkIcon Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `LinkIcon`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkIconSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Simplify<LinkIconSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *LinkIcon*
+ *
+ */
+type LinkIconSliceVariation = LinkIconSliceDefault;
+/**
+ * LinkIcon Shared Slice
+ *
+ * - **API ID**: `link_icon`
+ * - **Description**: `LinkIcon`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type LinkIconSlice = prismicT.SharedSlice<
+  "link_icon",
+  LinkIconSliceVariation
+>;
+/**
+ * Primary content in NavigationItem → Primary
+ *
+ */
+interface NavigationItemSliceDefaultPrimary {
+  /**
+   * Name field in *NavigationItem → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: This is where it all begins...
+   * - **API ID Path**: navigation_item.primary.name
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  name: prismicT.RichTextField;
+  /**
+   * Link field in *NavigationItem → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: navigation_item.primary.link
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  link: prismicT.LinkField;
+}
+/**
+ * Default variation for NavigationItem Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `NavigationItem`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavigationItemSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Simplify<NavigationItemSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *NavigationItem*
+ *
+ */
+type NavigationItemSliceVariation = NavigationItemSliceDefault;
+/**
+ * NavigationItem Shared Slice
+ *
+ * - **API ID**: `navigation_item`
+ * - **Description**: `NavigationItem`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type NavigationItemSlice = prismicT.SharedSlice<
+  "navigation_item",
+  NavigationItemSliceVariation
+>;
+/**
+ * Item in PlaceableContent → Items
+ *
+ */
+export interface PlaceableContentSliceDefaultItem {
+  /**
+   * Content field in *PlaceableContent → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: placeable_content.items[].content
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  content: prismicT.RichTextField;
+  /**
+   * Content Placement field in *PlaceableContent → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: placeable_content.items[].content_placement
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  content_placement: prismicT.SelectField<"start" | "center" | "end">;
+  /**
+   * Button Link Href field in *PlaceableContent → Items*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: placeable_content.items[].button_link_href
+   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+   *
+   */
+  button_link_href: prismicT.LinkField;
+  /**
+   * Button Link Label field in *PlaceableContent → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: placeable_content.items[].button_link_label
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  button_link_label: prismicT.KeyTextField;
+  /**
+   * Button Link Placement field in *PlaceableContent → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: placeable_content.items[].button_link_placement
+   * - **Documentation**: https://prismic.io/docs/core-concepts/select
+   *
+   */
+  button_link_placement: prismicT.SelectField<"start" | "center" | "end">;
+}
+/**
+ * Default variation for PlaceableContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `PlaceableContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PlaceableContentSliceDefault = prismicT.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  Simplify<PlaceableContentSliceDefaultItem>
+>;
+/**
+ * Slice variation for *PlaceableContent*
+ *
+ */
+type PlaceableContentSliceVariation = PlaceableContentSliceDefault;
+/**
+ * PlaceableContent Shared Slice
+ *
+ * - **API ID**: `placeable_content`
+ * - **Description**: `PlaceableContent`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type PlaceableContentSlice = prismicT.SharedSlice<
+  "placeable_content",
+  PlaceableContentSliceVariation
 >;
 /**
  * Primary content in Input → Primary
@@ -1235,281 +1770,6 @@ export type TextInputSlice = prismicT.SharedSlice<
   "text_input",
   TextInputSliceVariation
 >;
-/**
- * Primary content in LinkButton → Primary
- *
- */
-interface LinkButtonSliceDefaultPrimary {
-  /**
-   * Label field in *LinkButton → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: link_button.primary.label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  label: prismicT.KeyTextField;
-  /**
-   * Href field in *LinkButton → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: link_button.primary.href
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
-   */
-  href: prismicT.LinkField;
-  /**
-   * Placement field in *LinkButton → Primary*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: link_button.primary.placement
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
-   */
-  placement: prismicT.SelectField<"start" | "center" | "end">;
-  /**
-   * Disabled field in *LinkButton → Primary*
-   *
-   * - **Field Type**: Boolean
-   * - **Placeholder**: *None*
-   * - **Default Value**: false
-   * - **API ID Path**: link_button.primary.disabled
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
-   */
-  disabled: prismicT.BooleanField;
-}
-/**
- * Default variation for LinkButton Slice
- *
- * - **API ID**: `default`
- * - **Description**: `LinkButton`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type LinkButtonSliceDefault = prismicT.SharedSliceVariation<
-  "default",
-  Simplify<LinkButtonSliceDefaultPrimary>,
-  never
->;
-/**
- * Slice variation for *LinkButton*
- *
- */
-type LinkButtonSliceVariation = LinkButtonSliceDefault;
-/**
- * LinkButton Shared Slice
- *
- * - **API ID**: `link_button`
- * - **Description**: `LinkButton`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type LinkButtonSlice = prismicT.SharedSlice<
-  "link_button",
-  LinkButtonSliceVariation
->;
-/**
- * Primary content in LinkIcon → Primary
- *
- */
-interface LinkIconSliceDefaultPrimary {
-  /**
-   * Href field in *LinkIcon → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: link_icon.primary.href
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
-   */
-  href: prismicT.LinkField;
-  /**
-   * Icon field in *LinkIcon → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: link_icon.primary.icon
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
-   */
-  icon: prismicT.ImageField<never>;
-}
-/**
- * Default variation for LinkIcon Slice
- *
- * - **API ID**: `default`
- * - **Description**: `LinkIcon`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type LinkIconSliceDefault = prismicT.SharedSliceVariation<
-  "default",
-  Simplify<LinkIconSliceDefaultPrimary>,
-  never
->;
-/**
- * Slice variation for *LinkIcon*
- *
- */
-type LinkIconSliceVariation = LinkIconSliceDefault;
-/**
- * LinkIcon Shared Slice
- *
- * - **API ID**: `link_icon`
- * - **Description**: `LinkIcon`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type LinkIconSlice = prismicT.SharedSlice<
-  "link_icon",
-  LinkIconSliceVariation
->;
-/**
- * Primary content in NavigationItem → Primary
- *
- */
-interface NavigationItemSliceDefaultPrimary {
-  /**
-   * Name field in *NavigationItem → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: This is where it all begins...
-   * - **API ID Path**: navigation_item.primary.name
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  name: prismicT.RichTextField;
-  /**
-   * Link field in *NavigationItem → Primary*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: navigation_item.primary.link
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
-   */
-  link: prismicT.LinkField;
-}
-/**
- * Default variation for NavigationItem Slice
- *
- * - **API ID**: `default`
- * - **Description**: `NavigationItem`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type NavigationItemSliceDefault = prismicT.SharedSliceVariation<
-  "default",
-  Simplify<NavigationItemSliceDefaultPrimary>,
-  never
->;
-/**
- * Slice variation for *NavigationItem*
- *
- */
-type NavigationItemSliceVariation = NavigationItemSliceDefault;
-/**
- * NavigationItem Shared Slice
- *
- * - **API ID**: `navigation_item`
- * - **Description**: `NavigationItem`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type NavigationItemSlice = prismicT.SharedSlice<
-  "navigation_item",
-  NavigationItemSliceVariation
->;
-/**
- * Item in PlaceableContent → Items
- *
- */
-export interface PlaceableContentSliceDefaultItem {
-  /**
-   * Content field in *PlaceableContent → Items*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: placeable_content.items[].content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  content: prismicT.RichTextField;
-  /**
-   * Content Placement field in *PlaceableContent → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: placeable_content.items[].content_placement
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
-   */
-  content_placement: prismicT.SelectField<"start" | "center" | "end">;
-  /**
-   * Button Link Href field in *PlaceableContent → Items*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: placeable_content.items[].button_link_href
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
-   */
-  button_link_href: prismicT.LinkField;
-  /**
-   * Button Link Label field in *PlaceableContent → Items*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: placeable_content.items[].button_link_label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
-  button_link_label: prismicT.KeyTextField;
-  /**
-   * Button Link Placement field in *PlaceableContent → Items*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: placeable_content.items[].button_link_placement
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
-   */
-  button_link_placement: prismicT.SelectField<"start" | "center" | "end">;
-}
-/**
- * Default variation for PlaceableContent Slice
- *
- * - **API ID**: `default`
- * - **Description**: `PlaceableContent`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type PlaceableContentSliceDefault = prismicT.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  Simplify<PlaceableContentSliceDefaultItem>
->;
-/**
- * Slice variation for *PlaceableContent*
- *
- */
-type PlaceableContentSliceVariation = PlaceableContentSliceDefault;
-/**
- * PlaceableContent Shared Slice
- *
- * - **API ID**: `placeable_content`
- * - **Description**: `PlaceableContent`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type PlaceableContentSlice = prismicT.SharedSlice<
-  "placeable_content",
-  PlaceableContentSliceVariation
->;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1524,6 +1784,15 @@ declare module "@prismicio/client" {
       AboutDocumentDataSlices1Slice,
       AboutDocumentDataSlicesSlice,
       AllDocumentTypes,
+      BlogDocument,
+      BlogDocumentData,
+      BlogPostContentSlice,
+      BlogPostContentSliceDefault,
+      BlogPostContentSliceDefaultItem,
+      BlogPostContentSliceVariation,
+      BlogpostDocument,
+      BlogpostDocumentData,
+      BlogpostDocumentDataSlicesSlice,
       ContactDocument,
       ContactDocumentData,
       CookiebarDocument,

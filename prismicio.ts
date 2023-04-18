@@ -29,6 +29,17 @@ const routes = [
     path: "/contact",
     lang: "en-us",
   },
+  {
+    type: "blog",
+    uid: "blog",
+    path: "/blog",
+    lang: "en-us",
+  },
+  {
+    type: "blogpost",
+    path: "/blog/:path",
+    lang: "en-us",
+  },
 ];
 
 /**
