@@ -48,7 +48,7 @@ export const CookieBar = ({ prismicDocumentData }: CookieBarProps) => {
       buttonText={acceptbuttontext}
       declineButtonText={declinebuttontext}
       cookieName="cookieConsent"
-      debug={isDevMode}
+      // debug={isDevMode}
       expires={expirationtimeindays!}
       onAccept={enableBodyScroll}
       onDecline={enableBodyScroll}
