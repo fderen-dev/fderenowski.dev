@@ -37,7 +37,7 @@ const routes = [
   },
   {
     type: "blogpost",
-    path: "/blog/:path",
+    path: "/blog/:uid",
     lang: "en-us",
   },
 ];

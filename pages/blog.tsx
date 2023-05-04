@@ -41,9 +41,7 @@ const Blog: NextPage<{
       <ul>
         {blogPosts.map((blogPost) => (
           <li key={blogPost.id}>
-            <a href={getBlogPostUrl(blogPost.data.path)}>
-              {blogPost.data.name}
-            </a>
+            <a href={getBlogPostUrl(blogPost.uid)}>{blogPost.data.name}</a>
           </li>
         ))}
       </ul>
