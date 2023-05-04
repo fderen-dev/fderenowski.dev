@@ -1,0 +1,18 @@
+[
+  {
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "laugh"
+    },
+    "header": {
+      "__TYPE__": "FieldContent",
+      "value": "zipper",
+      "type": "Text"
+    },
+    "subheader": {
+      "__TYPE__": "FieldContent",
+      "value": "vapor",
+      "type": "Text"
+    }
+  }
+]
