@@ -1,0 +1,43 @@
+[
+  {
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "star"
+    },
+    "header": {
+      "__TYPE__": "FieldContent",
+      "value": "managed",
+      "type": "Text"
+    },
+    "subheading": {
+      "__TYPE__": "FieldContent",
+      "value": "variety",
+      "type": "Text"
+    },
+    "meta_title": {
+      "__TYPE__": "FieldContent",
+      "value": "along",
+      "type": "Text"
+    },
+    "meta_author": {
+      "__TYPE__": "FieldContent",
+      "value": "plan",
+      "type": "Text"
+    },
+    "meta_description": {
+      "__TYPE__": "FieldContent",
+      "value": "dull",
+      "type": "Text"
+    },
+    "meta_keywords": {
+      "__TYPE__": "FieldContent",
+      "value": "lot",
+      "type": "Text"
+    },
+    "meta_robots": {
+      "__TYPE__": "FieldContent",
+      "value": "friendly",
+      "type": "Text"
+    }
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "name": {
+      "__TYPE__": "FieldContent",
+      "value": "motor",
+      "type": "Text"
+    },
+    "uid": {
+      "__TYPE__": "UIDContent",
+      "value": "joy"
+    },
+    "declinebuttontext": {
+      "__TYPE__": "FieldContent",
+      "value": "silence",
+      "type": "Text"
+    },
+    "acceptbuttontext": {
+      "__TYPE__": "FieldContent",
+      "value": "prove",
+      "type": "Text"
+    },
+    "content": {
+      "__TYPE__": "FieldContent",
+      "value": "according",
+      "type": "Text"
+    },
+    "expirationtimeindays": {
+      "__TYPE__": "FieldContent",
+      "value": "85",
+      "type": "Number"
+    }
+  }
+]
