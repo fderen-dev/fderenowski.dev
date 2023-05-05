@@ -1,17 +1,9 @@
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 
-import { TypeTools } from "utils/TypeTools";
+import { BlogPostCard } from "components/Blog/BlogPostCard";
 
 import { createClient } from "../prismicio";
-
-const getBlogPostUrl = (path: string | null): string => {
-  if (TypeTools.isNullOrUndefined(path)) {
-    return "/blog";
-  }
-
-  return `/blog/${path}`;
-};
 
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
@@ -40,9 +32,7 @@ const Blog: NextPage<{
       <h1>{name}</h1>
       <ul>
         {blogPosts.map((blogPost) => (
-          <li key={blogPost.id}>
-            <a href={getBlogPostUrl(blogPost.uid)}>{blogPost.data.name}</a>
-          </li>
+          <BlogPostCard prismicDocumentData={blogPost} key={blogPost.id} />
         ))}
       </ul>
     </main>

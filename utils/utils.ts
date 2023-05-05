@@ -1,3 +1,5 @@
+import { TypeTools } from "./TypeTools";
+
 export const isDevMode = process && process.env.NODE_ENV === "development";
 
 export const setBodyScroll = (isScrollable: boolean) => {
@@ -10,4 +12,16 @@ export const setBodyScroll = (isScrollable: boolean) => {
   } else {
     console.log("no body");
   }
+};
+
+export const getBlogPostUrl = (path: string | null): string => {
+  if (TypeTools.isNullOrUndefined(path)) {
+    return "/blog";
+  }
+
+  return `/blog/${path}`;
+};
+
+export const getLocalDateString = (date: string | Date): string => {
+  return new Date(date).toLocaleDateString();
 };
