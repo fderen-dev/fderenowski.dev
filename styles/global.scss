@@ -20,12 +20,12 @@ body {
 }
 
 #__next {
-  background-color: vars.$c-background-gray;
+  background-color: vars.$c-warm-yellow;
 }
 
 body,
-body > div:first-child,
-div#__next {
+div#__next,
+div#layout {
   height: 100%;
 }
 

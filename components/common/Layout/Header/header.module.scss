@@ -6,6 +6,7 @@
   height: 40vh;
   min-height: calc(250px + vars.$navbar-height);
   background-color: vars.$c-background-yellow;
+  margin-block-start: vars.$navbar-height;
 }
 
 .header {
@@ -19,7 +20,6 @@
   margin: 0 auto;
   background-color: vars.$c-background-yellow;
   color: vars.$c-heading-font;
-  margin-block-start: vars.$navbar-height;
 }
 
 .headingContainer {
