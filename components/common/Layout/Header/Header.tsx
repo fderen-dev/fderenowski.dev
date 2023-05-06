@@ -19,8 +19,8 @@ interface HeaderProps {
 }
 
 export const Header = ({ prismicDocumentData }: HeaderProps) => (
-  <div className={styles.container}>
-    <header className={styles.header}>
+  <header className={styles.container}>
+    <div className={styles.header}>
       {prismicDocumentData && (
         <div className={styles.headingContainer}>
           {prismicDocumentData.header && (
@@ -38,6 +38,6 @@ export const Header = ({ prismicDocumentData }: HeaderProps) => (
         style={GEAR_STYLE}
         maxSize="70%"
       />
-    </header>
-  </div>
+    </div>
+  </header>
 );
