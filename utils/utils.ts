@@ -21,7 +21,3 @@ export const getBlogPostUrl = (path: string | null): string => {
 
   return `/blog/${path}`;
 };
-
-export const getLocalDateString = (date: string | Date): string => {
-  return new Date(date).toLocaleDateString();
-};
