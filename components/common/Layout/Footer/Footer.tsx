@@ -16,8 +16,8 @@ export const Footer = ({ prismicDocumentData }: FooterProps) => {
   }
 
   return (
-    <div className={styles.container}>
-      <footer className={styles.footer}>
+    <footer className={styles.container}>
+      <div className={styles.footer}>
         {/* TODO: replace with actual logo */}
         <PrismicImage
           field={prismicDocumentData.logo}
@@ -34,7 +34,7 @@ export const Footer = ({ prismicDocumentData }: FooterProps) => {
             />
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
   );
 };
