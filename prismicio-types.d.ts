@@ -121,16 +121,16 @@ interface BlogDocumentData {
    */
   name: prismicT.KeyTextField;
   /**
-   * Meta Tilte field in *Blog*
+   * Meta Title field in *Blog*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: blog.meta_tilte
+   * - **API ID Path**: blog.meta_title
    * - **Tab**: SEO
    * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
    *
    */
-  meta_tilte: prismicT.KeyTextField;
+  meta_title: prismicT.KeyTextField;
   /**
    * Meta Description field in *Blog*
    *
