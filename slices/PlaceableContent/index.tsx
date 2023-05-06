@@ -23,29 +23,33 @@ const PlaceableContentItem = ({
     button_link_label,
     button_link_placement,
   },
-}: PlaceableContentItemProps) => (
-  <div className={styles.wrapper}>
-    <div
-      className={styles.contentWrapper}
-      style={{ justifyContent: content_placement ?? "start" }}
-    >
-      <PrismicRichText field={content} />
-    </div>
-    {button_link_href && (
+}: PlaceableContentItemProps) => {
+  const doesLinkContainUrl = button_link_href.hasOwnProperty("url");
+
+  return (
+    <div className={styles.wrapper}>
       <div
-        className={styles.buttonWrapper}
-        style={{ justifyContent: button_link_placement ?? "start" }}
+        className={styles.contentWrapper}
+        style={{ justifyContent: content_placement ?? "start" }}
       >
-        {/*@ts-ignore*/}
-        <PrismicLink href={button_link_href.url} className={styles.link}>
-          <Button variant="primary" className={styles.button}>
-            <span className={styles.buttonText}>{button_link_label}</span>
-          </Button>
-        </PrismicLink>
+        <PrismicRichText field={content} />
       </div>
-    )}
-  </div>
-);
+      {doesLinkContainUrl && (
+        <div
+          className={styles.buttonWrapper}
+          style={{ justifyContent: button_link_placement ?? "start" }}
+        >
+          {/*@ts-ignore*/}
+          <PrismicLink href={button_link_href.url} className={styles.link}>
+            <Button variant="primary" className={styles.button}>
+              <span className={styles.buttonText}>{button_link_label}</span>
+            </Button>
+          </PrismicLink>
+        </div>
+      )}
+    </div>
+  );
+};
 
 const PlaceableContent: SliceComponentType = ({
   slice,
