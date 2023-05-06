@@ -33,7 +33,7 @@ export const Layout = ({
   children,
   contentClassName,
 }: LayoutProps) => (
-  <div className={styles.root}>
+  <div id="layout" className={styles.root}>
     {Navbar}
     {Header}
     <Main contentClassName={contentClassName}>{children}</Main>
