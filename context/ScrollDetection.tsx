@@ -9,9 +9,20 @@ import {
 
 const ScrollDetectionContext = createContext<ScrollData>(initialScrollData);
 
-export const ScrollDetectionProvider = ({ children }: WithChildren) => {
-  const { prevIsScrolling, isScrolling, scrollDirection } =
-    useScrollDetection(100);
+interface ScrollDetectionProvideProps extends WithChildren {
+  element: HTMLElement;
+  treshold: number;
+}
+
+export const ScrollDetectionProvider = ({
+  element,
+  treshold,
+  children,
+}: ScrollDetectionProvideProps) => {
+  const { prevIsScrolling, isScrolling, scrollDirection } = useScrollDetection(
+    element,
+    treshold
+  );
 
   const value = useMemo(
     () => ({
