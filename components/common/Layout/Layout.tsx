@@ -1,7 +1,9 @@
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 import classNames from "classnames";
 
+import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { WithChildren } from "utils/types";
+import { useIsMounted } from "utils/useIsMounted";
 
 import styles from "./layout.module.scss";
 
@@ -32,11 +34,18 @@ export const Layout = ({
   Footer,
   children,
   contentClassName,
-}: LayoutProps) => (
-  <div id="layout" className={styles.root}>
-    {Navbar}
-    {Header}
-    <Main contentClassName={contentClassName}>{children}</Main>
-    {Footer}
-  </div>
-);
+}: LayoutProps) => {
+  const layoutRef = useRef(null);
+  useIsMounted();
+
+  return (
+    <div id="layout" className={styles.root} ref={layoutRef}>
+      <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
+        {Navbar}
+        {Header}
+        <Main contentClassName={contentClassName}>{children}</Main>
+        {Footer}
+      </ScrollDetectionProvider>
+    </div>
+  );
+};

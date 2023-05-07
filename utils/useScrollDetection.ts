@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import noop from "lodash/noop";
 
 import { TimeoutHandle } from "./types";
-import { useIsMounted } from "./useIsMounted";
 
 export enum ScrollDirection {
   Up = "Up",
@@ -22,21 +21,21 @@ export const initialScrollData: ScrollData = {
 };
 
 export const useScrollDetection = (
+  element: HTMLElement,
   wait: number = 200,
   treshold: number = 0
 ) => {
   const [scrollData, setScrollData] = useState<ScrollData>(initialScrollData);
   const prevScrollY = useRef(0);
-  const timeoutHandle = useRef<TimeoutHandle | null>(null);
   const isBlocked = useRef(false);
-  const isMounted = useIsMounted();
 
   useEffect(() => {
-    if (isMounted) {
-      prevScrollY.current = window.pageYOffset;
+    if (element) {
+      let timeoutHandle: TimeoutHandle | null = null;
+      prevScrollY.current = element.scrollTop;
 
       const doSetTimeout = (): void => {
-        timeoutHandle.current = setTimeout(() => {
+        timeoutHandle = setTimeout(() => {
           setScrollData((prev) => ({
             prevIsScrolling: prev.isScrolling,
             isScrolling: false,
@@ -48,15 +47,15 @@ export const useScrollDetection = (
       };
 
       const doClearTimeout = (): void => {
-        if (timeoutHandle.current) {
-          clearTimeout(timeoutHandle.current);
-          timeoutHandle.current = null;
+        if (timeoutHandle) {
+          clearTimeout(timeoutHandle);
+          timeoutHandle = null;
         }
       };
 
       const getScrollDirection = (): ScrollDirection => {
         let newScrollDirection = ScrollDirection.Down;
-        const scrollY = window.pageYOffset;
+        const scrollY = element.scrollTop;
 
         if (Math.abs(scrollY - prevScrollY.current) >= treshold) {
           newScrollDirection =
@@ -85,16 +84,16 @@ export const useScrollDetection = (
         }
       };
 
-      window.addEventListener("scroll", onScroll);
+      element.addEventListener("scroll", onScroll);
 
       return () => {
         doClearTimeout();
-        window.removeEventListener("scroll", onScroll);
+        element.removeEventListener("scroll", onScroll);
       };
     }
 
     return () => noop;
-  }, [wait, treshold, isMounted]);
+  }, [element, wait, treshold]);
 
   return scrollData;
 };
