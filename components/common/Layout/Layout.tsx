@@ -5,6 +5,8 @@ import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { WithChildren } from "utils/types";
 import { useIsMounted } from "utils/useIsMounted";
 
+import { TypewriterProvider } from "./Header/Typewriter/Typewriter";
+
 import styles from "./layout.module.scss";
 
 interface MainProps extends WithChildren {
@@ -42,7 +44,7 @@ export const Layout = ({
     <div id="layout" className={styles.root} ref={layoutRef}>
       <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
         {Navbar}
-        {Header}
+        <TypewriterProvider>{Header}</TypewriterProvider>
         <Main contentClassName={contentClassName}>{children}</Main>
         {Footer}
       </ScrollDetectionProvider>
