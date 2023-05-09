@@ -1,11 +1,18 @@
+@use "styles/animations.scss" as anims;
+
 .container {
   display: flex;
+  margin: 0;
   user-select: none;
   white-space: pre;
 }
 
-// .character {
-// }
+.text {
+  font-family: Exo, sans-serif;
+  font-size: clamp(2rem, 1.5821rem + 1.5198vw, 4.5rem);
+  font-weight: 400;
+}
 
-// .cursor {
-// }
+.cursor {
+  @include anims.cursor;
+}

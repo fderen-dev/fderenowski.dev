@@ -20,16 +20,8 @@ interface HeaderProps {
 }
 
 export const Header = ({ prismicDocumentData }: HeaderProps) => {
-  const { play } = useTypewriterApi();
-
   return (
     <header className={styles.container}>
-      <Typewriter
-        text="Front-end developer"
-        characterTypingDurationMs={150}
-        as="h1"
-      />
-      <button onClick={() => play()}>play</button>
       <div className={styles.header}>
         {prismicDocumentData && (
           <div className={styles.headingContainer}>
@@ -38,7 +30,11 @@ export const Header = ({ prismicDocumentData }: HeaderProps) => {
             )}
             {prismicDocumentData.subheader && (
               <div className={styles.subheading}>
-                {prismicDocumentData.subheader}
+                <Typewriter
+                  text={prismicDocumentData.subheader}
+                  characterTypingDurationMs={150}
+                  as="h2"
+                />
               </div>
             )}
           </div>

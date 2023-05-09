@@ -1,5 +1,15 @@
 @use "./variables.scss" as vars;
 
+@keyframes animated-cursor {
+  from {
+    border-right-color: vars.$c-pitch-black;
+  }
+
+  to {
+    border-right-color: transparent;
+  }
+}
+
 @mixin typewriter(
   $textAnimationDuration: 4s,
   $textAnimationSteps: 29,
@@ -23,14 +33,9 @@
       width: 100%;
     }
   }
+}
 
-  @keyframes animated-cursor {
-    from {
-      border-right-color: vars.$c-pitch-black;
-    }
-
-    to {
-      border-right-color: transparent;
-    }
-  }
+@mixin cursor() {
+  border-right: solid 3px vars.$c-pitch-black;
+  animation: animated-cursor 0.6s infinite;
 }

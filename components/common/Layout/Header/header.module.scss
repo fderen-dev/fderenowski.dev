@@ -3,7 +3,7 @@
 @use "styles/animations.scss" as anims;
 
 .container {
-  min-height: calc(250px + vars.$navbar-height);
+  min-height: calc(40vh - vars.$navbar-height);
   background-color: vars.$c-background-yellow;
   margin-block-start: vars.$navbar-height;
 }
@@ -34,10 +34,4 @@
   font-family: Teko, sans-serif;
   font-size: clamp(5rem, 4.3313rem + 2.4316vw, 9rem);
   line-height: 1.2;
-}
-
-.subheading {
-  font-family: Exo, sans-serif;
-  font-size: clamp(2rem, 1.5821rem + 1.5198vw, 4.5rem);
-  @include anims.typewriter;
 }

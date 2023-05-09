@@ -44,7 +44,7 @@ export const Layout = ({
     <div id="layout" className={styles.root} ref={layoutRef}>
       <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
         {Navbar}
-        <TypewriterProvider>{Header}</TypewriterProvider>
+        {Header}
         <Main contentClassName={contentClassName}>{children}</Main>
         {Footer}
       </ScrollDetectionProvider>
