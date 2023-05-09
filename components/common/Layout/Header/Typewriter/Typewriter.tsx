@@ -1,10 +1,14 @@
 import {
   createContext,
+  Dispatch,
   ElementType,
+  MutableRefObject,
+  SetStateAction,
   useCallback,
   useContext,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
@@ -14,44 +18,53 @@ import { WithChildren } from "utils/types";
 import styles from "./typewriter.module.scss";
 
 interface TypewriterApi {
-  play: () => void;
+  setCharacters: Dispatch<SetStateAction<string>>;
+  setCharacterIndex: (index: number) => void;
 }
 
 const TypewriterApiContext = createContext<TypewriterApi>({
-  play: () => {
+  setCharacters: () => {
+    throw methodNotImplementedError;
+  },
+  setCharacterIndex: (index: number) => {
     throw methodNotImplementedError;
   },
 });
 
 interface TypewriteState {
-  isPlaying: boolean;
+  characters: string;
+  characterIndex: MutableRefObject<number> | null;
 }
 
 const TypewriterStateContext = createContext<TypewriteState>({
-  isPlaying: false,
+  characters: "",
+  characterIndex: null,
 });
 
 interface TypewriterProviderProps extends WithChildren {}
 
 export const TypewriterProvider = ({ children }: TypewriterProviderProps) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [characters, setCharacters] = useState<string>("");
+  const characterIndex = useRef<number>(0);
 
-  const play = useCallback(() => {
-    setIsPlaying(true);
+  const setCharacterIndex = useCallback((index: number) => {
+    characterIndex.current = index;
   }, []);
 
   const api: TypewriterApi = useMemo(
     () => ({
-      play,
+      setCharacters,
+      setCharacterIndex,
     }),
-    [play]
+    [setCharacterIndex]
   );
 
   const state = useMemo(
     () => ({
-      isPlaying,
+      characters,
+      characterIndex,
     }),
-    [isPlaying]
+    [characters]
   );
 
   return (
@@ -73,49 +86,45 @@ interface TypewriterProps {
 }
 
 export const Typewriter = ({
-  text,
+  text: propText,
   characterTypingDurationMs,
   as,
 }: TypewriterProps) => {
   const Tag = as;
-  const [characters, setCharacters] = useState<Array<string>>([]);
-  const { isPlaying } = useTypewriterState();
+  const { characters, characterIndex } = useTypewriterState();
+  const { setCharacters } = useTypewriterApi();
+  const text = `${propText}         `;
+  const canRun = text.length !== characters.length;
 
   useEffect(() => {
-    let canRun = true;
     let intervalHandler: NodeJS.Timeout | undefined;
     const clear = () => {
       clearInterval(intervalHandler);
       intervalHandler = undefined;
     };
 
-    if (canRun && isPlaying) {
-      let iterator = 0;
-      const textLength = text.length;
-
+    if (canRun && characterIndex) {
       intervalHandler = setInterval(() => {
-        setCharacters((prev) => [...prev, text[iterator]]);
-        iterator = iterator + 1;
+        setCharacters((prev) => {
+          const next = `${prev}${text[characterIndex.current]}`;
+          characterIndex.current++;
 
-        if (iterator === textLength) {
-          clear();
-          canRun = true;
-        }
+          return next;
+        });
       }, characterTypingDurationMs);
+    } else {
+      clear();
     }
 
     return () => {
       clear();
-      setCharacters([]);
-      canRun = false;
     };
-  }, [isPlaying, characterTypingDurationMs, text]);
+  }, [canRun, setCharacters, characterIndex, characterTypingDurationMs, text]);
 
   return (
     <Tag className={styles.container}>
-      {characters.map((character, index) => (
-        <span key={`${character}_${index}`}>{character}</span>
-      ))}
+      <span className={styles.text}>{characters}</span>
+      <span className={styles.cursor}></span>
     </Tag>
   );
 };
