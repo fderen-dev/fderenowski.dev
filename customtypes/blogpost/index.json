@@ -21,6 +21,41 @@
         "type": "Timestamp",
         "config": { "label": "DateCreated", "placeholder": "" }
       },
+      "background": {
+        "type": "Image",
+        "config": {
+          "label": "Background",
+          "constraint": { "width": 720, "height": 480 },
+          "thumbnails": [
+            { "name": "medium", "width": 1080, "height": 720 },
+            { "name": "large", "width": 1920, "height": 1080 }
+          ]
+        }
+      },
+      "thumbnail": {
+        "type": "Image",
+        "config": {
+          "label": "Thumbnail",
+          "constraint": { "width": 200, "height": 150 },
+          "thumbnails": [{ "name": "medium", "width": 400, "height": 300 }]
+        }
+      },
+      "content": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Content",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "tags": {
+        "type": "Text",
+        "config": {
+          "label": "Tags",
+          "placeholder": "Tags separated with semicolon"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
