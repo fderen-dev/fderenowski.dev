@@ -1,6 +1,8 @@
 import { Content } from "@prismicio/client";
+import { PrismicImage } from "@prismicio/react";
 
-import { getBlogPostUrl, getLocalDateString } from "utils/utils";
+import { useClientSideDate } from "utils/useClientSideDate";
+import { getBlogPostUrl } from "utils/utils";
 
 import styles from "./blogPostCard.module.scss";
 
@@ -9,19 +11,33 @@ interface BlogPostCardProps {
 }
 
 export const BlogPostCard = ({ prismicDocumentData }: BlogPostCardProps) => {
-  const {
-    uid,
-    data: { header, datecreated },
-  } = prismicDocumentData;
-
+  const { uid, data } = prismicDocumentData;
+  const { header, datecreated, thumbnail } = data;
   const link = getBlogPostUrl(uid);
-  const date = datecreated && getLocalDateString(datecreated);
+  const date = useClientSideDate(datecreated);
+  const tags = data.tags?.split(";") ?? [];
 
   return (
     <article className={styles.card}>
-      {header && <h2>{header}</h2>}
-      {date && <time>{date}</time>}
-      <a className={styles.link} href={link}></a>
+      {thumbnail && (
+        <PrismicImage className={styles.thumbnail} field={thumbnail} />
+      )}
+      <div className={styles.contentWrapper}>
+        {header && <h2 className={styles.header}>{header}</h2>}
+        <div className={styles.footer}>
+          {tags.length > 0 && (
+            <div className={styles.tagsContainer}>
+              {tags.map((tag) => (
+                <a key={tag} className={styles.tag}>
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )}
+          {date && <time className={styles.date}>{date}</time>}
+        </div>
+      </div>
+      <a className={styles.link} href={link} />
     </article>
   );
 };
