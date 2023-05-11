@@ -245,17 +245,6 @@ interface BlogpostDocumentData {
    */
   thumbnail: prismicT.ImageField<"medium">;
   /**
-   * Content field in *BlogPost*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: blogpost.content
-   * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
-   */
-  content: prismicT.RichTextField;
-  /**
    * Tags field in *BlogPost*
    *
    * - **Field Type**: Text
