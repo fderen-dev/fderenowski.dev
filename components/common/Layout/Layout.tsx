@@ -5,18 +5,16 @@ import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { WithChildren } from "utils/types";
 import { useIsMounted } from "utils/useIsMounted";
 
-import { TypewriterProvider } from "./Header/Typewriter/Typewriter";
-
 import styles from "./layout.module.scss";
 
 interface MainProps extends WithChildren {
-  contentClassName?: string;
+  mainClassName?: string;
 }
 
-const Main = ({ children, contentClassName }: MainProps) => (
+const Main = ({ children, mainClassName }: MainProps) => (
   <main className={styles.main}>
     <div className={styles.contentWrapper}>
-      <div className={classNames(styles.content, contentClassName)}>
+      <div className={classNames(styles.content, mainClassName)}>
         {children}
       </div>
     </div>
@@ -27,7 +25,7 @@ interface LayoutProps extends WithChildren {
   Navbar?: ReactElement;
   Header?: ReactElement;
   Footer?: ReactElement;
-  contentClassName?: string;
+  mainClassName?: string;
 }
 
 export const Layout = ({
@@ -35,7 +33,7 @@ export const Layout = ({
   Header,
   Footer,
   children,
-  contentClassName,
+  mainClassName,
 }: LayoutProps) => {
   const layoutRef = useRef(null);
   useIsMounted();
@@ -45,7 +43,7 @@ export const Layout = ({
       <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
         {Navbar}
         {Header}
-        <Main contentClassName={contentClassName}>{children}</Main>
+        <Main mainClassName={mainClassName}>{children}</Main>
         {Footer}
       </ScrollDetectionProvider>
     </div>
