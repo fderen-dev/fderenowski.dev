@@ -76,7 +76,7 @@ const Home: NextPage<{
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={header.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
-        contentClassName={styles.layoutContent}
+        mainClassName={styles.layoutContent}
       >
         {articles.sort(sortArticles).map((article) => (
           <HomePageArticle
