@@ -1,5 +1,6 @@
 import { Content } from "@prismicio/client";
 import { PrismicImage } from "@prismicio/react";
+import classNames from "classnames";
 
 import { useClientSideDate } from "utils/useClientSideDate";
 import { getBlogPostUrl } from "utils/utils";
@@ -8,9 +9,13 @@ import styles from "./blogPostCard.module.scss";
 
 interface BlogPostCardProps {
   prismicDocumentData: Content.BlogpostDocument;
+  className?: string;
 }
 
-export const BlogPostCard = ({ prismicDocumentData }: BlogPostCardProps) => {
+export const BlogPostCard = ({
+  prismicDocumentData,
+  className,
+}: BlogPostCardProps) => {
   const { uid, data } = prismicDocumentData;
   const { header, datecreated, thumbnail } = data;
   const link = getBlogPostUrl(uid);
@@ -18,7 +23,7 @@ export const BlogPostCard = ({ prismicDocumentData }: BlogPostCardProps) => {
   const tags = data.tags?.split(";") ?? [];
 
   return (
-    <article className={styles.card}>
+    <article className={classNames(styles.card, className)}>
       {thumbnail && (
         <PrismicImage className={styles.thumbnail} field={thumbnail} />
       )}

@@ -10,7 +10,7 @@ $inner-spacing: 24px;
   flex-direction: column;
   box-shadow: 6px 6px 6px vars.$c-black-40;
   isolation: isolate;
-  transition: transform 0.3s ease-in;
+  transition: transform 0.25s ease-in;
 
   &::after {
     @include mixins.black-background;
@@ -20,7 +20,7 @@ $inner-spacing: 24px;
   }
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 }
 
@@ -62,6 +62,7 @@ $inner-spacing: 24px;
   border-radius: 50px;
   background: vars.$c-warm-yellow;
   font-size: 1.2rem;
+  transition: transform 0.1s ease-in;
 
   &:hover {
     transform: scale(1.05);
