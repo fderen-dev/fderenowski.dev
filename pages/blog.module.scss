@@ -1,0 +1,40 @@
+@use "styles/variables" as vars;
+@use "styles/mixins";
+
+.main {
+  margin-block: vars.$spacing-mobile;
+}
+
+.controlsContainer {
+  grid-column: 1/-1;
+  grid-row: 1;
+  padding-block: 32px;
+}
+
+.posts {
+  display: grid;
+  gap: vars.$spacing-large;
+  grid-column: 1/-1;
+  grid-row: 2;
+}
+
+.postCard {
+  grid-column: 1/5;
+  grid-column: auto;
+}
+
+@include mixins.min-width("tablet") {
+  .posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include mixins.min-width("desktop") {
+  .main {
+    margin-block: vars.$spacing-desktop;
+  }
+
+  .posts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
