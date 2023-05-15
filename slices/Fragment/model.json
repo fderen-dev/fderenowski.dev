@@ -55,10 +55,7 @@
           "config": {
             "label": "Placement",
             "placeholder": "",
-            "options": [
-              "Left",
-              "Right"
-            ]
+            "options": ["Left", "Right"]
           }
         },
         "with_intersection": {
@@ -113,21 +110,8 @@
           "type": "Image",
           "config": {
             "label": "Portrait",
-            "constraint": {
-              "width": 760
-            },
-            "thumbnails": [
-              {
-                "name": "tablet",
-                "width": 984,
-                "height": null
-              },
-              {
-                "name": "desktop",
-                "width": 1600,
-                "height": null
-              }
-            ]
+            "constraint": { "width": null, "height": 800 },
+            "thumbnails": []
           }
         }
       },
