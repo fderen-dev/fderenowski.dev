@@ -1,201 +1,156 @@
 [
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "default",
-    "primary": {
-      "header": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "heading2",
-            "content": {
-              "text": "Monkey"
-            }
-          }
-        ]
-      }
-    },
-    "items": [
-      {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "content",
-            {
-              "__TYPE__": "StructuredTextContent",
-              "value": [
-                {
-                  "type": "paragraph",
-                  "content": {
-                    "text": "Duis anim ut voluptate."
-                  }
-                }
-              ]
-            }
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "homepageFragment",
-    "primary": {
-      "header": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "heading2",
-            "content": {
-              "text": "Master"
-            }
-          }
-        ]
-      },
-      "placement": {
-        "__TYPE__": "FieldContent",
-        "value": "Left",
-        "type": "Select"
-      },
-      "with_intersection": {
-        "__TYPE__": "BooleanContent",
-        "value": false
-      }
-    },
-    "items": [
-      {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "content",
-            {
-              "__TYPE__": "StructuredTextContent",
-              "value": [
-                {
-                  "type": "paragraph",
-                  "content": {
-                    "text": "Cillum commodo non id. Esse adipisicing ipsum sunt. Occaecat voluptate aute mollit irure in magna commodo tempor commodo dolor ullamco dolor est."
-                  }
-                }
-              ]
-            }
-          ],
-          [
-            "button_link",
-            {
-              "__TYPE__": "LinkContent",
-              "value": {
-                "__TYPE__": "ExternalLink",
-                "url": "http://google.com"
-              }
-            }
-          ]
-        ]
-      }
-    ]
-  },
-  {
-    "__TYPE__": "SharedSliceContent",
-    "variation": "aboutMeFragment",
-    "primary": {
-      "header": {
-        "__TYPE__": "StructuredTextContent",
-        "value": [
-          {
-            "type": "heading2",
-            "content": {
-              "text": "Minerals"
-            }
-          }
-        ]
-      },
-      "portrait": {
-        "origin": {
-          "id": "main",
-          "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6",
-          "width": 3212,
-          "height": 3880
-        },
-        "url": "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?rect=0%2C0%2C3212%2C3880&w=760&h=918",
-        "width": 760,
-        "height": 918,
-        "edit": {
-          "zoom": 1,
-          "crop": {
-            "x": 0,
-            "y": 0
-          },
-          "background": "transparent"
-        },
-        "credits": null,
-        "alt": null,
-        "__TYPE__": "ImageContent",
-        "thumbnails": {
-          "tablet": {
-            "origin": {
-              "id": "tablet",
-              "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-              "width": 3882,
-              "height": 2584
-            },
-            "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?rect=0%2C0%2C3882%2C2584&w=984&h=655",
-            "width": 984,
-            "height": 655,
-            "edit": {
-              "zoom": 1,
-              "crop": {
-                "x": 0,
-                "y": 0
-              },
-              "background": "transparent"
-            },
-            "credits": null,
-            "alt": null
-          },
-          "desktop": {
-            "origin": {
-              "id": "desktop",
-              "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
-              "width": 3935,
-              "height": 5894
-            },
-            "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?rect=0%2C0%2C3934%2C5894&w=1600&h=2397",
-            "width": 1600,
-            "height": 2397,
-            "edit": {
-              "zoom": 1,
-              "crop": {
-                "x": 0,
-                "y": 0
-              },
-              "background": "transparent"
-            },
-            "credits": null,
-            "alt": null
-          }
-        }
-      }
-    },
-    "items": [
-      {
-        "__TYPE__": "GroupItemContent",
-        "value": [
-          [
-            "content",
-            {
-              "__TYPE__": "StructuredTextContent",
-              "value": [
-                {
-                  "type": "paragraph",
-                  "content": {
-                    "text": "Sit quis incididunt aute. Eu labore tempor commodo veniam ut deserunt dolore sunt voluptate."
-                  }
-                }
-              ]
-            }
-          ]
-        ]
-      }
-    ]
-  }
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"header": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Monkey"
+						}
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"content",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Duis anim ut voluptate."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "homepageFragment",
+		"primary": {
+			"header": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Master"
+						}
+					}
+				]
+			},
+			"placement": {
+				"__TYPE__": "FieldContent",
+				"value": "Left",
+				"type": "Select"
+			},
+			"with_intersection": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"content",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Cillum commodo non id. Esse adipisicing ipsum sunt. Occaecat voluptate aute mollit irure in magna commodo tempor commodo dolor ullamco dolor est."
+									}
+								}
+							]
+						}
+					],
+					[
+						"button_link",
+						{
+							"__TYPE__": "LinkContent",
+							"value": {
+								"__TYPE__": "ExternalLink",
+								"url": "http://google.com"
+							}
+						}
+					]
+				]
+			}
+		]
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "aboutMeFragment",
+		"primary": {
+			"header": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading2",
+						"content": {
+							"text": "Minerals"
+						}
+					}
+				]
+			},
+			"portrait": {
+				"__TYPE__": "ImageContent",
+				"origin": {
+					"id": "main",
+					"url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43",
+					"width": 4024,
+					"height": 4024
+				},
+				"url": "https://images.unsplash.com/photo-1607582278043-57198ac8da43?rect=0%2C0%2C4024%2C4024&w=800&h=800",
+				"width": 800,
+				"height": 800,
+				"edit": {
+					"zoom": 1,
+					"crop": {
+						"x": 0,
+						"y": 0
+					},
+					"background": "transparent"
+				},
+				"thumbnails": {}
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": [
+					[
+						"content",
+						{
+							"__TYPE__": "StructuredTextContent",
+							"value": [
+								{
+									"type": "paragraph",
+									"content": {
+										"text": "Sit quis incididunt aute. Eu labore tempor commodo veniam ut deserunt dolore sunt voluptate."
+									}
+								}
+							]
+						}
+					]
+				]
+			}
+		]
+	}
 ]
