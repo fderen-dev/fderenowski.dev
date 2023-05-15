@@ -2,10 +2,29 @@ import { Content } from "@prismicio/client";
 import { PrismicImage } from "@prismicio/react";
 import classNames from "classnames";
 
+import { TypeTools } from "utils/TypeTools";
 import { useClientSideDate } from "utils/useClientSideDate";
 import { getBlogPostUrl } from "utils/utils";
 
 import styles from "./blogPostCard.module.scss";
+
+interface Tag {
+  name: string;
+  url: string;
+  key: string;
+}
+
+const getTags = (raw: string): Array<Tag> => {
+  if (TypeTools.isNullOrUndefined(raw)) {
+    return [];
+  }
+
+  return raw.split(";").map<Tag>((name, idx) => ({
+    name,
+    url: `blog?tag=${name}`,
+    key: `tag-${idx}`,
+  }));
+};
 
 interface BlogPostCardProps {
   prismicDocumentData: Content.BlogpostDocument;
@@ -20,7 +39,7 @@ export const BlogPostCard = ({
   const { header, datecreated, thumbnail } = data;
   const link = getBlogPostUrl(uid);
   const date = useClientSideDate(datecreated);
-  const tags = data.tags?.split(";") ?? [];
+  const tags = getTags(data.tags!);
 
   return (
     <article className={classNames(styles.card, className)}>
@@ -32,9 +51,9 @@ export const BlogPostCard = ({
         <div className={styles.footer}>
           {tags.length > 0 && (
             <div className={styles.tagsContainer}>
-              {tags.map((tag) => (
-                <a key={tag} className={styles.tag}>
-                  {tag}
+              {tags.map(({ name, url, key }) => (
+                <a key={key} href={url} className={styles.tag}>
+                  {name}
                 </a>
               ))}
             </div>
