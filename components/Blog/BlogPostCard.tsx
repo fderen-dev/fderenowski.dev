@@ -1,45 +1,27 @@
-import { Content } from "@prismicio/client";
 import { PrismicImage } from "@prismicio/react";
 import classNames from "classnames";
+import { Tag } from "models/blog/Tag";
+import { BlogpostDocumentWithTags } from "pages/blog";
 
-import { TypeTools } from "utils/TypeTools";
 import { useClientSideDate } from "utils/useClientSideDate";
 import { getBlogPostUrl } from "utils/utils";
 
 import styles from "./blogPostCard.module.scss";
 
-interface Tag {
-  name: string;
-  url: string;
-  key: string;
-}
-
-const getTags = (raw: string): Array<Tag> => {
-  if (TypeTools.isNullOrUndefined(raw)) {
-    return [];
-  }
-
-  return raw.split(";").map<Tag>((name, idx) => ({
-    name,
-    url: `blog?tag=${name}`,
-    key: `tag-${idx}`,
-  }));
-};
-
 interface BlogPostCardProps {
-  prismicDocumentData: Content.BlogpostDocument;
+  prismicDocument: BlogpostDocumentWithTags;
   className?: string;
 }
 
 export const BlogPostCard = ({
-  prismicDocumentData,
+  prismicDocument,
   className,
 }: BlogPostCardProps) => {
-  const { uid, data } = prismicDocumentData;
-  const { header, datecreated, thumbnail } = data;
+  const { uid, data } = prismicDocument;
+  const { header, datecreated, thumbnail, tags } = data ?? {};
   const link = getBlogPostUrl(uid);
   const date = useClientSideDate(datecreated);
-  const tags = getTags(data.tags!);
+  const typedTags = (tags as unknown as Array<Tag>) ?? [];
 
   return (
     <article className={classNames(styles.card, className)}>
@@ -49,9 +31,9 @@ export const BlogPostCard = ({
       <div className={styles.contentWrapper}>
         {header && <h2 className={styles.header}>{header}</h2>}
         <div className={styles.footer}>
-          {tags.length > 0 && (
+          {typedTags.length > 0 && (
             <div className={styles.tagsContainer}>
-              {tags.map(({ name, url, key }) => (
+              {typedTags.map(({ name, url, key }) => (
                 <a key={key} href={url} className={styles.tag}>
                   {name}
                 </a>
