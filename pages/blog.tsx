@@ -1,5 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
+import { Tag } from "models/blog/Tag";
 
 import { BlogPostCard } from "components/Blog/BlogPostCard";
 import { Head } from "components/common/Head/Head";
@@ -9,15 +10,42 @@ import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
+import { TypeTools } from "utils/TypeTools";
+
 import { createClient } from "../prismicio";
 
 import styles from "./blog.module.scss";
 
+export type BlogpostDocumentWithTags = Omit<
+  Content.BlogpostDocument,
+  "data"
+> & {
+  data: BlogpostDocumentDataWithTags;
+};
+
+type BlogpostDocumentDataWithTags = Omit<
+  Content.BlogpostDocumentData,
+  "tags"
+> & {
+  tags: Array<Tag>;
+};
+
+const getTags = (raw: string | null): Array<Tag> => {
+  if (TypeTools.isNullOrUndefined(raw)) {
+    return [];
+  }
+
+  return raw!.split(";").map<Tag>((name, idx) => ({
+    name,
+    url: `blog?tag=${name}`,
+    key: `tag-${idx}`,
+  }));
+};
+
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
-
   const page = await client.getByUID("blog", "blog");
-  const blogPosts = await client.getAllByType("blogpost");
+  let blogPosts = await client.getAllByType("blogpost");
   const navigation = await client.getByUID<Content.NavigationDocument>(
     "navigation",
     "top-navigation"
@@ -35,6 +63,13 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "cookie-bar"
   );
 
+  // @ts-ignore
+  blogPosts =
+    blogPosts?.map((post) => ({
+      ...post,
+      data: { ...post.data, tags: getTags(post.data?.tags) },
+    })) ?? [];
+
   return {
     props: {
       page,
@@ -49,7 +84,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 
 const Blog: NextPage<{
   page: Content.BlogDocument;
-  blogPosts: Array<Content.BlogpostDocument>;
+  blogPosts: Array<BlogpostDocumentWithTags>;
   navigation: Content.NavigationDocument;
   header: Content.HeaderDocument;
   footer: Content.FooterDocument;
@@ -79,7 +114,7 @@ const Blog: NextPage<{
         <ul className={styles.posts}>
           {blogPosts.map((blogPost) => (
             <BlogPostCard
-              prismicDocumentData={blogPost}
+              prismicDocument={blogPost}
               className={styles.postCard}
               key={blogPost.id}
             />
