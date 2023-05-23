@@ -65,10 +65,10 @@ const About: NextPage<{
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={header.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
+        CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
       >
         <SliceZone slices={slicesData} components={slices} />
       </Layout>
-      <CookieBar prismicDocumentData={cookieBar.data} />
     </>
   );
 };

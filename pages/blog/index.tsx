@@ -110,6 +110,7 @@ const Blog: NextPage<{
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={mainHeader.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
+        CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
         mainClassName={styles.main}
       >
         <div className={styles.controlsContainer}></div>
@@ -123,7 +124,6 @@ const Blog: NextPage<{
           ))}
         </ul>
       </Layout>
-      <CookieBar prismicDocumentData={cookieBar.data} />
     </>
   );
 };

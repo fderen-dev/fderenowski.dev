@@ -91,6 +91,7 @@ const Contact: NextPage<{
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={mainHeader.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
+        CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
       >
         <section className={styles.section}>
           <h2 className={styles.heading}>
@@ -106,7 +107,6 @@ const Contact: NextPage<{
           </FormProvider>
         </section>
       </Layout>
-      <CookieBar prismicDocumentData={cookieBar.data} />
     </>
   );
 };

@@ -25,6 +25,7 @@ interface LayoutProps extends WithChildren {
   Navbar?: ReactElement;
   Header?: ReactElement;
   Footer?: ReactElement;
+  CookieBar?: ReactElement;
   mainClassName?: string;
 }
 
@@ -32,6 +33,7 @@ export const Layout = ({
   Navbar,
   Header,
   Footer,
+  CookieBar,
   children,
   mainClassName,
 }: LayoutProps) => {
@@ -46,6 +48,7 @@ export const Layout = ({
         <Main mainClassName={mainClassName}>{children}</Main>
         {Footer}
       </ScrollDetectionProvider>
+      {CookieBar}
     </div>
   );
 };

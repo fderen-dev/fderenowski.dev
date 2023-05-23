@@ -76,6 +76,7 @@ const Home: NextPage<{
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={header.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
+        CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
         mainClassName={styles.layoutContent}
       >
         {articles.sort(sortArticles).map((article) => (
@@ -85,7 +86,6 @@ const Home: NextPage<{
           />
         ))}
       </Layout>
-      <CookieBar prismicDocumentData={cookieBar.data} />
     </>
   );
 };
