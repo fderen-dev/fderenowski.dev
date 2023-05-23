@@ -1,4 +1,4 @@
-import { GetStaticProps, NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 import { Tag } from "models/blog/Tag";
 
@@ -12,7 +12,7 @@ import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { TypeTools } from "utils/TypeTools";
 
-import { createClient } from "../prismicio";
+import { createClient } from "../../prismicio";
 
 import styles from "./blog.module.scss";
 
@@ -42,7 +42,9 @@ const getTags = (raw: string | null): Array<Tag> => {
   }));
 };
 
-export const getStaticProps: GetStaticProps = async ({ previewData }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  previewData,
+}) => {
   const client = createClient({ previewData });
   const page = await client.getByUID("blog", "blog");
   let blogPosts = await client.getAllByType("blogpost");
