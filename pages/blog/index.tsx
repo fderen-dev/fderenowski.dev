@@ -1,4 +1,5 @@
-import { GetServerSideProps, NextPage } from "next";
+import { useEffect, useState } from "react";
+import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 import { Tag } from "models/blog/Tag";
 
@@ -42,12 +43,11 @@ const getTags = (raw: string | null): Array<Tag> => {
   }));
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  previewData,
-}) => {
+const getPostsEndpoint = (origin: string) => `${origin}/api/posts`;
+
+export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
   const page = await client.getByUID("blog", "blog");
-  let blogPosts = await client.getAllByType("blogpost");
   const navigation = await client.getByUID<Content.NavigationDocument>(
     "navigation",
     "top-navigation"
@@ -65,17 +65,9 @@ export const getServerSideProps: GetServerSideProps = async ({
     "cookie-bar"
   );
 
-  // @ts-ignore
-  blogPosts =
-    blogPosts?.map((post) => ({
-      ...post,
-      data: { ...post.data, tags: getTags(post.data?.tags) },
-    })) ?? [];
-
   return {
     props: {
       page,
-      blogPosts,
       navigation,
       header,
       footer,
@@ -91,17 +83,55 @@ const Blog: NextPage<{
   header: Content.HeaderDocument;
   footer: Content.FooterDocument;
   cookieBar: Content.CookiebarDocument;
-}> = ({
-  page,
-  blogPosts,
-  navigation,
-  header: mainHeader,
-  footer,
-  cookieBar,
-}) => {
+}> = ({ page, navigation, header: mainHeader, footer, cookieBar }) => {
   const {
     data: { name, ...meta },
   } = page;
+
+  const [posts, setPosts] = useState<Array<BlogpostDocumentWithTags>>([]);
+  const [isFetching, setIsFetching] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    const fetchPosts = async () => {
+      const postsEndpoint = getPostsEndpoint(window.location.origin);
+
+      setIsFetching(true);
+      try {
+        const response = await fetch(postsEndpoint, {
+          method: "GET",
+          signal: abortController.signal,
+        });
+
+        if (!response.ok) {
+          setError(response.statusText);
+
+          return;
+        }
+
+        const posts: Array<Content.BlogpostDocument> = await response.json();
+        const postsWithTags =
+          posts?.map((post) => ({
+            ...post,
+            data: { ...post.data, tags: getTags(post.data?.tags) },
+          })) ?? [];
+
+        setPosts(postsWithTags as any);
+      } catch (networkError) {
+        setError("Network error");
+      } finally {
+        setIsFetching(false);
+      }
+    };
+
+    if (!abortController.signal.aborted) {
+      fetchPosts();
+    }
+
+    return () => abortController.abort();
+  }, []);
 
   return (
     <>
@@ -114,15 +144,19 @@ const Blog: NextPage<{
         mainClassName={styles.main}
       >
         <div className={styles.controlsContainer}></div>
-        <ul className={styles.posts}>
-          {blogPosts.map((blogPost) => (
-            <BlogPostCard
-              prismicDocument={blogPost}
-              className={styles.postCard}
-              key={blogPost.id}
-            />
-          ))}
-        </ul>
+        {isFetching && <p>Loading</p>}
+        {error && <p>{error}</p>}
+        {posts && (
+          <ul className={styles.posts}>
+            {posts.map((blogPost) => (
+              <BlogPostCard
+                prismicDocument={blogPost}
+                className={styles.postCard}
+                key={blogPost.id}
+              />
+            ))}
+          </ul>
+        )}
       </Layout>
     </>
   );
