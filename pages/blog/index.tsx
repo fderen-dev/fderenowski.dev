@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
-import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
-import { Tag } from "models/blog/Tag";
 
-import { BlogPostCard } from "components/Blog/BlogPostCard";
+import { BlogPostCard } from "components/blog/BlogPostCard";
 import { Head } from "components/common/Head/Head";
 import { Footer } from "components/common/Layout/Footer/Footer";
 import { Header } from "components/common/Layout/Header/Header";
@@ -12,7 +10,7 @@ import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
-import { TypeTools } from "utils/TypeTools";
+import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 
 import { createClient } from "../../prismicio";
 

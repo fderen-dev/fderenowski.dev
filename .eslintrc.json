@@ -15,7 +15,7 @@
             "groups": [
               ["^react$", "^next", "^@", "^[a-z]"],
               ["^components"],
-              ["^context", "^utils"],
+              ["^models", "^context", "^hooks", "^utils"],
               ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
               ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
               ["^public", "^assets"],

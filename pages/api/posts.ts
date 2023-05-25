@@ -1,9 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
-import { Tag } from "models/blog/Tag";
 import { createClient } from "prismicio";
 
+import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
+import { Tag } from "models/blog/Tag";
 import { TypeTools } from "utils/TypeTools";
 
 const getTags = (raw: string | null): Array<Tag> => {

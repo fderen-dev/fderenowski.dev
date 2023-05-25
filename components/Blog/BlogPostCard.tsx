@@ -1,8 +1,8 @@
 import { PrismicImage } from "@prismicio/react";
 import classNames from "classnames";
-import { Tag } from "models/blog/Tag";
-import { BlogpostDocumentWithTags } from "pages/blog";
 
+import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
+import { Tag } from "models/blog/Tag";
 import { useClientSideDate } from "utils/useClientSideDate";
 import { getBlogPostUrl } from "utils/utils";
 
