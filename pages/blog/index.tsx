@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
+import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 import { Tag } from "models/blog/Tag";
 
 import { BlogPostCard } from "components/Blog/BlogPostCard";
@@ -16,32 +17,6 @@ import { TypeTools } from "utils/TypeTools";
 import { createClient } from "../../prismicio";
 
 import styles from "./blog.module.scss";
-
-export type BlogpostDocumentWithTags = Omit<
-  Content.BlogpostDocument,
-  "data"
-> & {
-  data: BlogpostDocumentDataWithTags;
-};
-
-type BlogpostDocumentDataWithTags = Omit<
-  Content.BlogpostDocumentData,
-  "tags"
-> & {
-  tags: Array<Tag>;
-};
-
-const getTags = (raw: string | null): Array<Tag> => {
-  if (TypeTools.isNullOrUndefined(raw)) {
-    return [];
-  }
-
-  return raw!.split(";").map<Tag>((name, idx) => ({
-    name,
-    url: `blog?tag=${name}`,
-    key: `tag-${idx}`,
-  }));
-};
 
 const getPostsEndpoint = (origin: string) => `${origin}/api/posts`;
 
@@ -78,7 +53,6 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
 
 const Blog: NextPage<{
   page: Content.BlogDocument;
-  blogPosts: Array<BlogpostDocumentWithTags>;
   navigation: Content.NavigationDocument;
   header: Content.HeaderDocument;
   footer: Content.FooterDocument;
@@ -111,14 +85,8 @@ const Blog: NextPage<{
           return;
         }
 
-        const posts: Array<Content.BlogpostDocument> = await response.json();
-        const postsWithTags =
-          posts?.map((post) => ({
-            ...post,
-            data: { ...post.data, tags: getTags(post.data?.tags) },
-          })) ?? [];
-
-        setPosts(postsWithTags as any);
+        const posts: Array<BlogpostDocumentWithTags> = await response.json();
+        setPosts(posts);
       } catch (networkError) {
         setError("Network error");
       } finally {

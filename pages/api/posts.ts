@@ -1,11 +1,26 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { Content } from "@prismicio/client";
+import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
+import { Tag } from "models/blog/Tag";
 import { createClient } from "prismicio";
+
+import { TypeTools } from "utils/TypeTools";
+
+const getTags = (raw: string | null): Array<Tag> => {
+  if (TypeTools.isNullOrUndefined(raw)) {
+    return [];
+  }
+
+  return raw!.split(";").map<Tag>((name, idx) => ({
+    name,
+    url: `blog?tag=${name}`,
+    key: `tag-${idx}`,
+  }));
+};
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Array<Content.BlogpostDocument>>
+  res: NextApiResponse<Array<BlogpostDocumentWithTags>>
 ) {
   const client = createClient();
 
@@ -13,7 +28,13 @@ export default function handler(
     client
       .getAllByType("blogpost")
       .then((posts) => {
-        res.status(200).json(posts);
+        const postsWithMappedTasks =
+          posts?.map((post) => ({
+            ...post,
+            data: { ...post.data, tags: getTags(post.data?.tags) },
+          })) ?? [];
+
+        res.status(200).json(postsWithMappedTasks);
       })
       .catch(() => {
         res.statusMessage = "Unable to fetch posts data";
