@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 
@@ -10,13 +9,11 @@ import { Layout } from "components/common/Layout/Layout";
 import { Navbar } from "components/common/Layout/Navbar/Navbar";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
-import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
+import { useFetchPosts } from "hooks/blog/useFetchPosts";
 
 import { createClient } from "../../prismicio";
 
 import styles from "./blog.module.scss";
-
-const getPostsEndpoint = (origin: string) => `${origin}/api/posts`;
 
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
@@ -60,44 +57,7 @@ const Blog: NextPage<{
     data: { name, ...meta },
   } = page;
 
-  const [posts, setPosts] = useState<Array<BlogpostDocumentWithTags>>([]);
-  const [isFetching, setIsFetching] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const abortController = new AbortController();
-
-    const fetchPosts = async () => {
-      const postsEndpoint = getPostsEndpoint(window.location.origin);
-
-      setIsFetching(true);
-      try {
-        const response = await fetch(postsEndpoint, {
-          method: "GET",
-          signal: abortController.signal,
-        });
-
-        if (!response.ok) {
-          setError(response.statusText);
-
-          return;
-        }
-
-        const posts: Array<BlogpostDocumentWithTags> = await response.json();
-        setPosts(posts);
-      } catch (networkError) {
-        setError("Network error");
-      } finally {
-        setIsFetching(false);
-      }
-    };
-
-    if (!abortController.signal.aborted) {
-      fetchPosts();
-    }
-
-    return () => abortController.abort();
-  }, []);
+  const { data: posts, isFetching, error } = useFetchPosts();
 
   return (
     <>
