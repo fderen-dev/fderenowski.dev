@@ -1,4 +1,5 @@
 import { GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/router";
 import { Content } from "@prismicio/client";
 
 import { BlogPostCard } from "components/blog/BlogPostCard";
@@ -10,6 +11,7 @@ import { Navbar } from "components/common/Layout/Navbar/Navbar";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { useFetchPosts } from "hooks/blog/useFetchPosts";
+import { TypeTools } from "utils/TypeTools";
 
 import { createClient } from "../../prismicio";
 
@@ -57,7 +59,19 @@ const Blog: NextPage<{
     data: { name, ...meta },
   } = page;
 
-  const { data: posts, isFetching, error } = useFetchPosts();
+  const { query } = useRouter();
+
+  let tags: Array<string> = [];
+
+  if (!TypeTools.isNullOrUndefined(query.tag)) {
+    if (Array.isArray(query.tag)) {
+      tags = query.tag;
+    } else if (typeof query.tag === "string") {
+      tags = [query.tag!];
+    }
+  }
+
+  const { data: posts, isFetching, error } = useFetchPosts(tags);
 
   return (
     <>
