@@ -3,11 +3,18 @@ import { useEffect, useState } from "react";
 import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 import { FetchReturnType } from "models/misc";
 
-const getPostsEndpoint = (origin: string) => `${origin}/api/posts`;
+const getPostsEndpointUrl = (tags: Array<string>) => {
+  const url = new URL(`${origin}/api/posts`);
+  tags.forEach((tag) => {
+    url.searchParams.append("tag", tag);
+  });
 
-export const useFetchPosts = (): FetchReturnType<
-  Array<BlogpostDocumentWithTags>
-> => {
+  return url;
+};
+
+export const useFetchPosts = (
+  tags: Array<string>
+): FetchReturnType<Array<BlogpostDocumentWithTags>> => {
   const [posts, setPosts] = useState<Array<BlogpostDocumentWithTags>>([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +23,7 @@ export const useFetchPosts = (): FetchReturnType<
     const abortController = new AbortController();
 
     const fetchPosts = async () => {
-      const postsEndpoint = getPostsEndpoint(window.location.origin);
+      const postsEndpoint = getPostsEndpointUrl(tags);
 
       setIsFetching(true);
       try {
@@ -32,7 +39,7 @@ export const useFetchPosts = (): FetchReturnType<
         }
 
         const posts: Array<BlogpostDocumentWithTags> = await response.json();
-        setPosts(posts);
+        setPosts(posts ?? []);
       } catch (networkError) {
         setError("Network error");
       } finally {
@@ -45,7 +52,8 @@ export const useFetchPosts = (): FetchReturnType<
     }
 
     return () => abortController.abort();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(tags)]);
 
   return {
     data: posts,
