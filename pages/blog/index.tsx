@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { Content } from "@prismicio/client";
 
-import { BlogPostCard } from "components/blog/BlogPostCard";
+import { BlogPostCard } from "components/blog/BlogPostCard/BlogPostCard";
 import { Head } from "components/common/Head/Head";
 import { Footer } from "components/common/Layout/Footer/Footer";
 import { Header } from "components/common/Layout/Header/Header";
