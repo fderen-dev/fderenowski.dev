@@ -4,11 +4,9 @@ import cloneDeep from "lodash/cloneDeep";
 import isEqual from "lodash/isEqual";
 import { createClient } from "prismicio";
 
-import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
+import { Posts } from "models/blog/Posts";
 import { Tag } from "models/blog/Tag";
 import { TypeTools } from "utils/TypeTools";
-
-type Posts = Array<BlogpostDocumentWithTags>;
 
 let posts: Posts | null = null;
 
