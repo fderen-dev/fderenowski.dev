@@ -1,26 +1,22 @@
 import { FetchReturnType } from "models/misc";
 import { TypeTools } from "utils/TypeTools";
 
-interface WithFetchingDataProps<ComponentProps, DataType>
-  extends Omit<FetchReturnType<DataType>, "data"> {
-  Component: React.FunctionComponent<
-    ComponentProps & Pick<FetchReturnType<DataType>, "data">
-  >;
-  Loader?: React.ReactElement;
-  NoResults?: React.ReactElement;
+interface WithFetchingDataProps<Data> extends FetchReturnType<Data> {
+  Loader?: JSX.Element;
+  NoResults?: JSX.Element;
 }
 
-export const withFetchingData = <ComponentProps, DataType>({
-  Component,
-  Loader,
-  NoResults,
-  isFetching,
-  error,
-}: WithFetchingDataProps<ComponentProps, DataType>) => {
-  const ComponentWithFetchingData = ({
+export const withFetchingData = <Props extends object, Data>(
+  Component: React.FunctionComponent<Props>
+): React.FunctionComponent<Props & WithFetchingDataProps<Data>> =>
+  function SomeName({
+    isFetching,
+    error,
     data,
-    ...rest
-  }: FetchReturnType<DataType>) => {
+    Loader,
+    NoResults,
+    ...props
+  }: WithFetchingDataProps<Data>) {
     if (isFetching) {
       return Loader ?? <p>Loading...</p>;
     }
@@ -33,9 +29,5 @@ export const withFetchingData = <ComponentProps, DataType>({
       return NoResults ?? <p>No results</p>;
     }
 
-    // @ts-ignore
-    return <Component data={data} {...rest} />;
+    return <Component data={data} {...(props as Props)} />;
   };
-
-  return ComponentWithFetchingData;
-};
