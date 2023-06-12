@@ -1,5 +1,5 @@
 export interface FetchReturnType<Data> {
-  data: Data;
+  data: Data | null;
   isFetching: boolean;
   error: string | null;
 }
