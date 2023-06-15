@@ -9,10 +9,10 @@ import ReactModal from "react-modal";
 
 import { MediaQueries, useMediaQueriesContext } from "context/MediaQueries";
 import { useScrollDetectionContext } from "context/ScrollDetection";
+import { useIsMounted } from "utils/hooks";
+import { ScrollDirection } from "utils/hooks/useScrollDetection";
 import { WithChildren } from "utils/types";
 import { TypeTools } from "utils/TypeTools";
-import { useIsMounted } from "utils/useIsMounted";
-import { ScrollDirection } from "utils/useScrollDetection";
 
 import styles from "./navbar.module.scss";
 import variables from "styles/exports.module.scss";

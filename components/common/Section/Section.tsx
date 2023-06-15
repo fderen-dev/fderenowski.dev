@@ -1,8 +1,8 @@
 import { useRef } from "react";
 import classNames from "classnames/bind";
 
+import { useIntersection } from "utils/hooks";
 import { WithChildren } from "utils/types";
-import { useIntersection } from "utils/useIntersection";
 
 import styles from "./section.module.scss";
 

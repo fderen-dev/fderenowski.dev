@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import noop from "lodash/noop";
 
-import { TimeoutHandle } from "./types";
+import { TimeoutHandle } from "../types";
 
 export enum ScrollDirection {
   Up = "Up",

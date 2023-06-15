@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 import { Tag } from "models/blog/Tag";
-import { useClientSideDate } from "utils/useClientSideDate";
+import { useClientSideDate } from "utils/hooks";
 import { getBlogPostUrl } from "utils/utils";
 
 import styles from "./blogPostCard.module.scss";
