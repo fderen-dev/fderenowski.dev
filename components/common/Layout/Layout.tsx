@@ -2,8 +2,8 @@ import { ReactElement, useRef } from "react";
 import classNames from "classnames";
 
 import { ScrollDetectionProvider } from "context/ScrollDetection";
+import { useIsMounted } from "utils/hooks";
 import { WithChildren } from "utils/types";
-import { useIsMounted } from "utils/useIsMounted";
 
 import styles from "./layout.module.scss";
 

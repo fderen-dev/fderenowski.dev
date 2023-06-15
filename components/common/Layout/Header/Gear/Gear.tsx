@@ -3,8 +3,8 @@ import classNames from "classnames/bind";
 
 import { useMediaQueriesContext } from "context/MediaQueries";
 import { useScrollDetectionContext } from "context/ScrollDetection";
-import { useIsMounted } from "utils/useIsMounted";
-import { ScrollDirection } from "utils/useScrollDetection";
+import { useIsMounted } from "utils/hooks";
+import { ScrollDirection } from "utils/hooks/useScrollDetection";
 
 import GearImage from "public/gear.svg";
 

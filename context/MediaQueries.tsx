@@ -1,7 +1,7 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
+import { useMinWidthMediaQuery } from "utils/hooks";
 import { WithChildren } from "utils/types";
-import { useMinWidthMediaQuery } from "utils/useMinWidthMediaQuery";
 
 import variables from "styles/exports.module.scss";
 

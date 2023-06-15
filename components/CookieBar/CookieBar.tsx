@@ -4,8 +4,8 @@ import CookieConsent from "react-cookie-consent";
 
 import { Button } from "components/common/Button/Button";
 
-import { useIsMounted } from "utils/useIsMounted";
-import { isDevMode, setBodyScroll } from "utils/utils";
+import { useIsMounted } from "utils/hooks";
+import { setBodyScroll } from "utils/utils";
 
 import styles from "./cookieBar.module.scss";
 
@@ -48,7 +48,7 @@ export const CookieBar = ({ prismicDocumentData }: CookieBarProps) => {
       buttonText={acceptbuttontext}
       declineButtonText={declinebuttontext}
       cookieName="cookieConsent"
-      debug={isDevMode}
+      // debug={isDevMode}
       expires={expirationtimeindays!}
       onAccept={enableBodyScroll}
       onDecline={enableBodyScroll}

@@ -7,11 +7,10 @@ import {
 } from "react";
 import isEmpty from "lodash/isEmpty";
 
+import { methodNotImplementedError } from "utils/errors";
 import { TypeTools } from "utils/TypeTools";
 
 import { FormControlProps } from "./controls/types";
-
-const methodNotImplementedError = new Error("Method not implemented");
 
 export type FormStructure = Record<string, string>;
 

@@ -1,11 +1,11 @@
 import { createContext, useContext, useMemo } from "react";
 
-import { WithChildren } from "utils/types";
 import {
   initialScrollData,
   ScrollData,
   useScrollDetection,
-} from "utils/useScrollDetection";
+} from "utils/hooks/useScrollDetection";
+import { WithChildren } from "utils/types";
 
 const ScrollDetectionContext = createContext<ScrollData>(initialScrollData);
 
