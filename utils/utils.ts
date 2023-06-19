@@ -1,6 +1,7 @@
 import { TypeTools } from "./TypeTools";
 
 export const isDevMode = process && process.env.NODE_ENV === "development";
+export const isClient = typeof window !== "undefined";
 
 export const setBodyScroll = (isScrollable: boolean) => {
   const body = document.getElementsByTagName("body").item(0);
