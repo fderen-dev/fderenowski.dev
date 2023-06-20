@@ -11,7 +11,7 @@
   padding-block: 32px;
 }
 
-.posts {
+.postsList {
   display: grid;
   gap: vars.$spacing-large;
   grid-column: 1/-1;
@@ -24,7 +24,7 @@
 }
 
 @include mixins.min-width("tablet") {
-  .posts {
+  .postsList {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -34,7 +34,7 @@
     margin-block: vars.$spacing-desktop;
   }
 
-  .posts {
+  .postsList {
     grid-template-columns: repeat(3, 1fr);
   }
 }
