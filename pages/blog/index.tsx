@@ -66,7 +66,10 @@ const Blog: NextPage<{
       >
         <div className={styles.controlsContainer}></div>
         <ClientSideContainer>
-          <BlogPostsListContainer />
+          <BlogPostsListContainer
+            listClassName={styles.postsList}
+            cardClassName={styles.postCard}
+          />
         </ClientSideContainer>
       </Layout>
     </>
