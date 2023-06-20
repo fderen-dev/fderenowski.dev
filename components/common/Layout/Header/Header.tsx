@@ -1,7 +1,7 @@
 import { Content } from "@prismicio/client";
 
 import { Gear, Placement } from "./Gear/Gear";
-import { Typewriter, useTypewriterApi } from "./Typewriter/Typewriter";
+import { Typewriter } from "./Typewriter/Typewriter";
 
 import styles from "./header.module.scss";
 

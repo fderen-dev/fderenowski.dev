@@ -3,10 +3,7 @@ import type { Content } from "@prismicio/client";
 import { HomePageArticle } from "customtypes/home_page_article/HomePageArticle";
 
 import { Head } from "components/common/Head/Head";
-import { Footer } from "components/common/Layout/Footer/Footer";
-import { Header } from "components/common/Layout/Header/Header";
-import { Layout } from "components/common/Layout/Layout";
-import { Navbar } from "components/common/Layout/Navbar/Navbar";
+import { Footer, Header, Layout, Navbar } from "components/common/Layout";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { createClient } from "../prismicio";
