@@ -1,23 +1,19 @@
-import { useMemo } from "react";
-
 import { useFetchPosts } from "hooks/blog/useFetchPosts";
 
 import { BlogPostsListWithFetchingData } from "../BlogPostsList/BlogPostsList";
 
 interface BlogPostListContainerProps {
+  selectedTags: Array<string>;
   listClassName?: string;
   cardClassName?: string;
 }
 
 export const BlogPostsListContainer = ({
+  selectedTags,
   listClassName,
   cardClassName,
 }: BlogPostListContainerProps) => {
-  const tags: Array<string> = useMemo(
-    () => new URLSearchParams(window.location.search).getAll("tag"),
-    []
-  );
-  const { data: posts, isFetching, error } = useFetchPosts(tags);
+  const { data: posts, isFetching, error } = useFetchPosts(selectedTags);
 
   return (
     <BlogPostsListWithFetchingData
