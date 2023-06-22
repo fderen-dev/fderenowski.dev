@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 
@@ -8,6 +8,7 @@ import { Head } from "components/common/Head/Head";
 import { Footer, Header, Layout, Navbar } from "components/common/Layout";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
+import { Tag } from "models/blog/Tag";
 import { ClientSideContainer } from "utils/components";
 
 import { createClient } from "../../prismicio";
@@ -75,31 +76,34 @@ const Blog: NextPage<{
 };
 
 function markSelectedTags(
-  availableTags: Array<string>,
+  availableTags: Array<Tag>,
   selectedTags: Array<string>
-): Array<{ label: string; isSelected: boolean }> {
+): Array<BlogPostsListTag> {
   return availableTags.map((tag) => ({
-    label: tag,
-    isSelected: selectedTags.includes(tag),
+    ...tag,
+    isSelected: Boolean(
+      selectedTags.find((selectedTag) => selectedTag === tag.path)
+    ),
   }));
 }
 
-interface BlogPostsListTag {
-  label: string;
+export interface BlogPostsListTag extends Tag {
+  id: string;
+  url: string;
+  name: string;
   isSelected: boolean;
 }
 
-const TagsList = ({ tags }: { tags: Array<BlogPostsListTag> }) => {
+interface TagListProps {
+  tags: Array<BlogPostsListTag>;
+  onTagClick: (tag: BlogPostsListTag) => void;
+}
+
+const TagsList = ({ tags, onTagClick }: TagListProps) => {
   return (
     <ul style={{ display: "flex" }}>
-      {tags.map((tag, index) => (
-        <Tag
-          key={index}
-          tag={tag}
-          onClick={() => {
-            console.log(tag);
-          }}
-        />
+      {tags.map((tag) => (
+        <Tag key={tag.id} tag={tag} onClick={() => onTagClick(tag)} />
       ))}
     </ul>
   );
@@ -114,12 +118,12 @@ const Tag = ({
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   className?: string;
 }) => {
-  const { label, isSelected } = tag;
+  const { name, isSelected } = tag;
 
   return (
     <li className={className}>
       <Button variant={isSelected ? "primary" : "secondary"} onClick={onClick}>
-        {label}
+        {name}
       </Button>
     </li>
   );
@@ -129,18 +133,45 @@ const Container = () => {
   const selectedTags: Array<string> = new URLSearchParams(
     window.location.search
   ).getAll("tag");
-  const availableTags = ["angular", "react.js", "sass"];
-  const [tags] = useState<Array<BlogPostsListTag>>(
+  const availableTags: Array<Tag> = [
+    { id: "1", name: "angular", path: "angular", url: "blog?tag=angular" },
+    { id: "2", name: "react.js", path: "angular", url: "blog?tag=react.js" },
+    { id: "3", name: "sass", path: "angular", url: "blog?tag=sass" },
+  ];
+  const [tags, setTags] = useState<Array<BlogPostsListTag>>(
     markSelectedTags(availableTags, selectedTags)
   );
+
+  const toggleTagSelected = (tag: BlogPostsListTag) => {
+    const selectedTagIndex = tags.findIndex((_tag) => _tag.name === tag.name);
+
+    if (selectedTagIndex !== -1) {
+      setTags((prev) => {
+        const selectedTag = prev[selectedTagIndex];
+        selectedTag.isSelected = !selectedTag.isSelected;
+
+        return structuredClone(prev);
+      });
+    }
+  };
+
+  const selectedTagsPaths = useMemo(() => {
+    return tags.reduce((tagsPaths, tag) => {
+      if (tag.isSelected) {
+        return [...tagsPaths, tag.url];
+      }
+
+      return tagsPaths;
+    }, [] as Array<string>);
+  }, [JSON.stringify(tags)]);
 
   return (
     <>
       <section className={styles.controlsContainer}>
-        <TagsList tags={tags} />
+        <TagsList tags={tags} onTagClick={toggleTagSelected} />
       </section>
       <BlogPostsListContainer
-        selectedTags={selectedTags}
+        selectedTagsPaths={selectedTagsPaths}
         listClassName={styles.postsList}
         cardClassName={styles.postCard}
       />
