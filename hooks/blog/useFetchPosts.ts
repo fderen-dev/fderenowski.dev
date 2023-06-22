@@ -4,19 +4,22 @@ import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 import { FetchReturnType } from "models/misc";
 import { useFetch } from "hooks/useFetch";
 
-const getPostsEndpointUrl = (tags: Array<string>) => {
+const getPostsEndpointUrl = (tagsPaths: Array<string>) => {
   const url = new URL(`${origin}/api/posts`);
-  tags.forEach((tag) => {
-    url.searchParams.append("tag", tag);
+  tagsPaths.forEach((path) => {
+    url.searchParams.append("tag", path);
   });
 
   return url;
 };
 
 export const useFetchPosts = (
-  tags: Array<string>
+  tagsPaths: Array<string>
 ): FetchReturnType<Array<BlogpostDocumentWithTags>> => {
-  const url = useMemo(() => getPostsEndpointUrl(tags), [JSON.stringify(tags)]);
+  const url = useMemo(
+    () => getPostsEndpointUrl(tagsPaths),
+    [JSON.stringify(tagsPaths)]
+  );
   const { data, isFetching, error } =
     useFetch<Array<BlogpostDocumentWithTags>>(url);
 
