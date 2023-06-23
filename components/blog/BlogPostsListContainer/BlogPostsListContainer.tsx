@@ -1,23 +1,29 @@
+import { memo } from "react";
+
 import { useFetchPosts } from "hooks/blog/useFetchPosts";
 
+import { TagPillClickHandler } from "../BlogPostCard/BlogPostCard";
 import { BlogPostsListWithFetchingData } from "../BlogPostsList/BlogPostsList";
 
 interface BlogPostListContainerProps {
-  selectedTags: Array<string>;
+  selectedTagsPaths: Array<string>;
+  onTagPillClick: TagPillClickHandler;
   listClassName?: string;
   cardClassName?: string;
 }
 
-export const BlogPostsListContainer = ({
-  selectedTags,
+const _BlogPostsListContainer = ({
+  selectedTagsPaths,
+  onTagPillClick,
   listClassName,
   cardClassName,
 }: BlogPostListContainerProps) => {
-  const { data: posts, isFetching, error } = useFetchPosts(selectedTags);
+  const { data: posts, isFetching, error } = useFetchPosts(selectedTagsPaths);
 
   return (
     <BlogPostsListWithFetchingData
       data={posts}
+      onTagPillClick={onTagPillClick}
       isFetching={isFetching}
       error={error}
       cardClassName={cardClassName}
@@ -25,3 +31,5 @@ export const BlogPostsListContainer = ({
     />
   );
 };
+
+export const BlogPostsListContainer = memo(_BlogPostsListContainer);
