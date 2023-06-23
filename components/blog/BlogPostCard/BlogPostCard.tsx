@@ -8,12 +8,16 @@ import { getBlogPostUrl } from "utils/utils";
 
 import styles from "./blogPostCard.module.scss";
 
+export type TagPillClickHandler = (tag: Tag) => void;
+
 interface BlogPostCardProps {
   prismicDocument: BlogpostDocumentWithTags;
+  onTagPillClick: TagPillClickHandler;
   className?: string;
 }
 
 export const BlogPostCard = ({
+  onTagPillClick,
   prismicDocument,
   className,
 }: BlogPostCardProps) => {
@@ -22,6 +26,14 @@ export const BlogPostCard = ({
   const link = getBlogPostUrl(uid);
   const date = useClientSideDate(datecreated);
   const typedTags = (tags as unknown as Array<Tag>) ?? [];
+
+  const handleTagPillClick = (
+    tag: Tag,
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  ) => {
+    event.preventDefault();
+    onTagPillClick(tag);
+  };
 
   return (
     <article className={classNames(styles.card, className)}>
@@ -33,9 +45,14 @@ export const BlogPostCard = ({
         <div className={styles.footer}>
           {typedTags.length > 0 && (
             <div className={styles.tagsContainer}>
-              {typedTags.map(({ name, url, key }) => (
-                <a key={key} href={url} className={styles.tag}>
-                  {name}
+              {typedTags.map((typedTag) => (
+                <a
+                  onClick={(event) => handleTagPillClick(typedTag, event)}
+                  key={typedTag.id}
+                  href={typedTag.url}
+                  className={styles.tag}
+                >
+                  {typedTag.name}
                 </a>
               ))}
             </div>
