@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 
@@ -35,6 +35,12 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "cookie-bar"
   );
 
+  const blogPostsTags: Array<Tag> = [
+    { id: "1", name: "angular", path: "angular", url: "blog?tag=angular" },
+    { id: "2", name: "react.js", path: "react.js", url: "blog?tag=react.js" },
+    { id: "3", name: "sass", path: "sass", url: "blog?tag=sass" },
+  ];
+
   return {
     props: {
       page,
@@ -42,6 +48,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
       header,
       footer,
       cookieBar,
+      blogPostsTags,
     },
   };
 };
@@ -52,7 +59,15 @@ const Blog: NextPage<{
   header: Content.HeaderDocument;
   footer: Content.FooterDocument;
   cookieBar: Content.CookiebarDocument;
-}> = ({ page, navigation, header: mainHeader, footer, cookieBar }) => {
+  blogPostsTags: Array<Tag>;
+}> = ({
+  page,
+  navigation,
+  header: mainHeader,
+  footer,
+  cookieBar,
+  blogPostsTags,
+}) => {
   const {
     data: { name, ...meta },
   } = page;
@@ -68,7 +83,7 @@ const Blog: NextPage<{
         mainClassName={styles.main}
       >
         <ClientSideContainer>
-          <Container />
+          {blogPostsTags && <Container blogPostsTags={blogPostsTags} />}
         </ClientSideContainer>
       </Layout>
     </>
@@ -129,36 +144,37 @@ const Tag = ({
   );
 };
 
-const Container = () => {
+interface ContainerProps {
+  blogPostsTags: Array<Tag>;
+}
+
+const Container = ({ blogPostsTags }: ContainerProps) => {
   const selectedTags: Array<string> = new URLSearchParams(
     window.location.search
   ).getAll("tag");
-  const availableTags: Array<Tag> = [
-    { id: "1", name: "angular", path: "angular", url: "blog?tag=angular" },
-    { id: "2", name: "react.js", path: "angular", url: "blog?tag=react.js" },
-    { id: "3", name: "sass", path: "angular", url: "blog?tag=sass" },
-  ];
   const [tags, setTags] = useState<Array<BlogPostsListTag>>(
-    markSelectedTags(availableTags, selectedTags)
+    markSelectedTags(blogPostsTags, selectedTags)
   );
 
-  const toggleTagSelected = (tag: BlogPostsListTag) => {
-    const selectedTagIndex = tags.findIndex((_tag) => _tag.name === tag.name);
+  const toggleTagSelected = useCallback((tag: BlogPostsListTag | Tag) => {
+    setTags((prev) => {
+      const selectedTagIndex = prev.findIndex((_tag) => _tag.id === tag.id);
 
-    if (selectedTagIndex !== -1) {
-      setTags((prev) => {
-        const selectedTag = prev[selectedTagIndex];
-        selectedTag.isSelected = !selectedTag.isSelected;
+      if (selectedTagIndex === -1) {
+        return prev;
+      }
 
-        return structuredClone(prev);
-      });
-    }
-  };
+      const selectedTag = prev[selectedTagIndex];
+      selectedTag.isSelected = !selectedTag.isSelected;
+
+      return structuredClone(prev);
+    });
+  }, []);
 
   const selectedTagsPaths = useMemo(() => {
     return tags.reduce((tagsPaths, tag) => {
       if (tag.isSelected) {
-        return [...tagsPaths, tag.url];
+        return [...tagsPaths, tag.path];
       }
 
       return tagsPaths;
@@ -172,6 +188,7 @@ const Container = () => {
       </section>
       <BlogPostsListContainer
         selectedTagsPaths={selectedTagsPaths}
+        onTagPillClick={toggleTagSelected}
         listClassName={styles.postsList}
         cardClassName={styles.postCard}
       />
