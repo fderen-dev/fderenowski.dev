@@ -16,9 +16,10 @@ function getTags(raw: string | null): Array<Tag> {
   }
 
   return raw!.split(";").map<Tag>((name, idx) => ({
+    id: `tag-${idx}`,
     name,
+    path: name,
     url: `blog?tag=${name}`,
-    key: `tag-${idx}`,
   }));
 }
 
