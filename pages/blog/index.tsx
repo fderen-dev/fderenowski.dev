@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
+import classNames from "classnames";
 
 import { BlogPostsListContainer } from "components/blog/BlogPostsListContainer/BlogPostsListContainer";
 import { Button } from "components/common/Button/Button";
@@ -112,11 +113,15 @@ export interface BlogPostsListTag extends Tag {
 interface TagListProps {
   tags: Array<BlogPostsListTag>;
   onTagClick: (tag: BlogPostsListTag) => void;
+  className?: string;
 }
 
-const TagsList = ({ tags, onTagClick }: TagListProps) => {
+const TagsList = ({ tags, onTagClick, className }: TagListProps) => {
   return (
-    <ul style={{ display: "flex" }}>
+    <ul
+      style={{ display: "flex" }}
+      className={classNames(styles.tagsList, className)}
+    >
       {tags.map((tag) => (
         <Tag key={tag.id} tag={tag} onClick={() => onTagClick(tag)} />
       ))}
@@ -183,9 +188,11 @@ const Container = ({ blogPostsTags }: ContainerProps) => {
 
   return (
     <>
-      <section className={styles.controlsContainer}>
-        <TagsList tags={tags} onTagClick={toggleTagSelected} />
-      </section>
+      <TagsList
+        tags={tags}
+        onTagClick={toggleTagSelected}
+        className={styles.tagsListWrapper}
+      />
       <BlogPostsListContainer
         selectedTagsPaths={selectedTagsPaths}
         onTagPillClick={toggleTagSelected}
