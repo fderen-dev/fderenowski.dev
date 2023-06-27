@@ -45,7 +45,7 @@
 
   /* stylelint-disable-next-line no-descending-specificity */
   &.primary {
-    border: none;
+    border: 2px solid vars.$c-button-primary;
     background-color: vars.$c-button-primary;
     color: vars.$c-pitch-black;
 

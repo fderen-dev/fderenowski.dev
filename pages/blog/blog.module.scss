@@ -5,12 +5,6 @@
   margin-block: vars.$spacing-mobile;
 }
 
-.controlsContainer {
-  grid-column: 1/-1;
-  grid-row: 1;
-  padding-block: 32px;
-}
-
 .postsList {
   display: grid;
   gap: vars.$spacing-large;
@@ -21,6 +15,21 @@
 .postCard {
   grid-column: 1/5;
   grid-column: auto;
+}
+
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: vars.$spacing-large;
+  grid-column: 1/-1;
+  grid-row: 1;
+}
+
+.tagsListWrapper {
+  margin-block-end: vars.$spacing-large;
+  margin-block-start: vars.$spacing-extra-large;
+  margin-inline: auto;
 }
 
 @include mixins.min-width("tablet") {
@@ -36,5 +45,9 @@
 
   .postsList {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tagsList {
+    max-width: 80%;
   }
 }
