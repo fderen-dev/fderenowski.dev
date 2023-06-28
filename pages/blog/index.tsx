@@ -11,6 +11,7 @@ import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { Tag } from "models/blog/Tag";
 import { ClientSideContainer } from "utils/components";
+import { TAGS } from "utils/constants";
 
 import { createClient } from "../../prismicio";
 
@@ -36,11 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ previewData }) => {
     "cookie-bar"
   );
 
-  const blogPostsTags: Array<Tag> = [
-    { id: "1", name: "angular", path: "angular", url: "blog?tag=angular" },
-    { id: "2", name: "react.js", path: "react.js", url: "blog?tag=react.js" },
-    { id: "3", name: "sass", path: "sass", url: "blog?tag=sass" },
-  ];
+  const blogPostsTags = Array.from(Object.values(TAGS));
 
   return {
     props: {
