@@ -6,6 +6,7 @@ import { createClient } from "prismicio";
 
 import { Posts } from "models/blog/Posts";
 import { Tag } from "models/blog/Tag";
+import { TAGS } from "utils/constants";
 import { TypeTools } from "utils/TypeTools";
 
 let posts: Posts | null = null;
@@ -15,12 +16,13 @@ function getTags(raw: string | null): Array<Tag> {
     return [];
   }
 
-  return raw!.split(";").map<Tag>((name, idx) => ({
-    id: `tag-${idx}`,
-    name,
-    path: name,
-    url: `blog?tag=${name}`,
-  }));
+  return raw!.split(";").reduce((tagsList, currentRawTagName) => {
+    if (TAGS[currentRawTagName]) {
+      tagsList.push(TAGS[currentRawTagName]);
+    }
+
+    return tagsList;
+  }, [] as Array<Tag>);
 }
 
 function filterPostsWithTags(
