@@ -1,0 +1,8 @@
+@use "styles/variables" as vars;
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: vars.$spacing-large;
+}
