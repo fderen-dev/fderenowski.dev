@@ -17,16 +17,9 @@
   grid-column: auto;
 }
 
-.tagsList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: vars.$spacing-large;
+.tagsListWrapper {
   grid-column: 1/-1;
   grid-row: 1;
-}
-
-.tagsListWrapper {
   margin-block-end: vars.$spacing-large;
   margin-block-start: vars.$spacing-extra-large;
   margin-inline: auto;
