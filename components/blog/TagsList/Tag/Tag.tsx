@@ -2,6 +2,8 @@ import { Button } from "components/common/Button/Button";
 
 import { BlogPostsListTag } from "../models";
 
+import styles from "./tag.module.scss";
+
 interface TagProps {
   tag: BlogPostsListTag;
   onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
@@ -13,7 +15,11 @@ export const Tag = ({ tag, onClick, className }: TagProps) => {
 
   return (
     <li className={className}>
-      <Button variant={isSelected ? "primary" : "secondary"} onClick={onClick}>
+      <Button
+        variant={isSelected ? "primary" : "secondary"}
+        onClick={onClick}
+        className={styles.tag}
+      >
         {name}
       </Button>
     </li>
