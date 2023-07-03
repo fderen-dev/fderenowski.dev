@@ -3,7 +3,7 @@ import { Content } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 import classNames from "classnames/bind";
 
-import { useIntersection } from "utils/useIntersection";
+import { useIntersection } from "utils/hooks/useIntersection";
 
 import { components as slices } from "../../slices";
 
@@ -16,7 +16,12 @@ interface HomePageArticleProps {
 }
 
 export const HomePageArticle = ({
-  prismicDocumentData: { header, placement, slices: slicesData, with_intersection },
+  prismicDocumentData: {
+    header,
+    placement,
+    slices: slicesData,
+    with_intersection,
+  },
 }: HomePageArticleProps) => {
   const wrapperRef = useRef(null);
   const isInViewport = useIntersection(wrapperRef, 1.0, with_intersection);
