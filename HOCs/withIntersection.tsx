@@ -1,6 +1,6 @@
 import { ElementType, useRef } from "react";
 
-import { useIntersection } from "utils/useIntersection";
+import { useIntersection } from "utils/hooks/useIntersection";
 
 interface IntersectionProps {
   isInViewport: boolean;

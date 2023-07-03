@@ -34,9 +34,7 @@ export const getStaticPaths = async () => {
 const BlogPost: NextPage<{
   page: Content.BlogpostDocument;
 }> = ({ page }) => {
-  const {
-    data: { name, header, datecreated, slices: slicesData },
-  } = page;
+  const { name, header, datecreated, slices: slicesData } = page?.data ?? {};
 
   const date = datecreated ? new Date(datecreated).toDateString() : null;
 
