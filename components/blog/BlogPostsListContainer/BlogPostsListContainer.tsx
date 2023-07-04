@@ -22,7 +22,7 @@ const _BlogPostsListContainer = ({
 
   return (
     <BlogPostsListWithFetchingData
-      data={posts}
+      data={posts?.data}
       onTagPillClick={onTagPillClick}
       isFetching={isFetching}
       error={error}

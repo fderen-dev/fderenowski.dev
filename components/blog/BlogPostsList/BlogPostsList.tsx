@@ -8,7 +8,7 @@ import {
 import { withFetchingData } from "HOCs/withFetchingData";
 
 interface BlogPostsListProps {
-  data: Posts | null;
+  data: Posts | undefined;
   onTagPillClick: TagPillClickHandler;
   listClassName?: string;
   cardClassName?: string;
@@ -34,5 +34,5 @@ const BlogPostsList = ({
 
 export const BlogPostsListWithFetchingData = withFetchingData<
   BlogPostsListProps,
-  Posts
+  Posts | undefined
 >(BlogPostsList);
