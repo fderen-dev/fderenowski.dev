@@ -1,6 +1,6 @@
 import { useMemo } from "react";
+import { PaginatedPosts } from "pages/api/posts";
 
-import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 import { FetchReturnType } from "models/misc";
 import { useFetch } from "hooks/useFetch";
 
@@ -15,13 +15,12 @@ const getPostsEndpointUrl = (tagsPaths: Array<string>) => {
 
 export const useFetchPosts = (
   tagsPaths: Array<string>
-): FetchReturnType<Array<BlogpostDocumentWithTags>> => {
+): FetchReturnType<PaginatedPosts> => {
   const url = useMemo(
     () => getPostsEndpointUrl(tagsPaths),
     [JSON.stringify(tagsPaths)]
   );
-  const { data, isFetching, error } =
-    useFetch<Array<BlogpostDocumentWithTags>>(url);
+  const { data, isFetching, error } = useFetch<PaginatedPosts>(url);
 
   return {
     data,
