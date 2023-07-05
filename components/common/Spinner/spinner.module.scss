@@ -1,4 +1,5 @@
 @use "styles/mixins.scss";
+@use "styles/variables.scss" as vars;
 
 .spinner {
   &.small {
@@ -9,7 +10,23 @@
     @include mixins.spinner(32px);
   }
 
-  &.large {
+  &.big {
     @include mixins.spinner(48px);
+  }
+
+  &.large {
+    @include mixins.spinner(64px);
+  }
+
+  &.black {
+    &::before {
+      border-color: vars.$c-pitch-black;
+    }
+  }
+
+  &.yellow {
+    &::before {
+      border-color: vars.$c-warm-yellow;
+    }
   }
 }

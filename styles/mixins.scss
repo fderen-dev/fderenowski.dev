@@ -60,6 +60,22 @@
   }
 }
 
+@mixin grid() {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include min-width("tablet") {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  @include min-width("desktop") {
+    margin: 0 vars.$spacing-gutters-desktop;
+    gap: vars.$spacing-grid-gap-desktop;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
 @mixin grid-layout() {
   display: grid;
   width: 100%;
