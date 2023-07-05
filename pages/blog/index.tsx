@@ -77,7 +77,7 @@ const Blog: NextPage<{
         Header={<Header prismicDocumentData={mainHeader.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
         CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
-        mainClassName={styles.main}
+        contentContainerClassName={styles.main}
       >
         <ClientSideContainer>
           <BlogContainer
