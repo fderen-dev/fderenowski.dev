@@ -74,7 +74,7 @@ const Home: NextPage<{
         Header={<Header prismicDocumentData={header.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
         CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
-        mainClassName={styles.layoutContent}
+        contentContainerClassName={styles.layoutContent}
       >
         {articles.sort(sortArticles).map((article) => (
           <HomePageArticle
