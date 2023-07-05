@@ -1,6 +1,7 @@
 import { useCallback, useMemo, useState } from "react";
 
 import { Tag } from "models/blog/Tag";
+import { TypeTools } from "utils/TypeTools";
 
 import { BlogPostsListTag } from "../TagsList/models";
 
@@ -8,6 +9,10 @@ function markSelectedTags(
   availableTags: Array<Tag>,
   selectedTags: Array<string>
 ): Array<BlogPostsListTag> {
+  if (!TypeTools.isNonEmptyArray(availableTags)) {
+    return [];
+  }
+
   return availableTags.map((tag) => ({
     ...tag,
     isSelected: Boolean(
@@ -31,7 +36,7 @@ interface ContainerProps {
 }
 
 export const BlogContainer = ({
-  blogPostsTags,
+  blogPostsTags = [],
   renderTagsList,
   renderBlogPostsListContainer,
 }: ContainerProps) => {

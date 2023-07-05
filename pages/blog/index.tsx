@@ -80,29 +80,29 @@ const Blog: NextPage<{
         mainClassName={styles.main}
       >
         <ClientSideContainer>
-          {blogPostsTags && (
-            <BlogContainer
-              blogPostsTags={blogPostsTags}
-              renderTagsList={(tags, toggleTagSelected) => (
+          <BlogContainer
+            blogPostsTags={blogPostsTags}
+            renderTagsList={(tags, toggleTagSelected) =>
+              tags && (
                 <TagsList
                   tags={tags}
                   onTagClick={toggleTagSelected}
                   className={styles.tagsListWrapper}
                 />
-              )}
-              renderBlogPostsListContainer={(
-                selectedTagsPaths,
-                toggleTagSelected
-              ) => (
-                <BlogPostsListContainer
-                  selectedTagsPaths={selectedTagsPaths}
-                  onTagPillClick={toggleTagSelected}
-                  listClassName={styles.postsList}
-                  cardClassName={styles.postCard}
-                />
-              )}
-            />
-          )}
+              )
+            }
+            renderBlogPostsListContainer={(
+              selectedTagsPaths,
+              toggleTagSelected
+            ) => (
+              <BlogPostsListContainer
+                selectedTagsPaths={selectedTagsPaths}
+                onTagPillClick={toggleTagSelected}
+                listClassName={styles.postsList}
+                cardClassName={styles.postCard}
+              />
+            )}
+          />
         </ClientSideContainer>
       </Layout>
     </>

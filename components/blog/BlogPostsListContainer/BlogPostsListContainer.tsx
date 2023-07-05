@@ -13,7 +13,7 @@ interface BlogPostListContainerProps {
 }
 
 const _BlogPostsListContainer = ({
-  selectedTagsPaths,
+  selectedTagsPaths = [],
   onTagPillClick,
   listClassName,
   cardClassName,
