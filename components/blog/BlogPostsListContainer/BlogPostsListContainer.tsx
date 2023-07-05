@@ -1,5 +1,7 @@
 import { memo } from "react";
 
+import { Spinner } from "components/common/Spinner/Spinner";
+
 import { useFetchPosts } from "hooks/blog/useFetchPosts";
 
 import { TagPillClickHandler } from "../BlogPostCard/BlogPostCard";
@@ -10,6 +12,7 @@ interface BlogPostListContainerProps {
   onTagPillClick: TagPillClickHandler;
   listClassName?: string;
   cardClassName?: string;
+  loaderClassName?: string;
 }
 
 const _BlogPostsListContainer = ({
@@ -17,6 +20,7 @@ const _BlogPostsListContainer = ({
   onTagPillClick,
   listClassName,
   cardClassName,
+  loaderClassName,
 }: BlogPostListContainerProps) => {
   const { data: posts, isFetching, error } = useFetchPosts(selectedTagsPaths);
 
@@ -26,6 +30,9 @@ const _BlogPostsListContainer = ({
       onTagPillClick={onTagPillClick}
       isFetching={isFetching}
       error={error}
+      Loader={
+        <Spinner size="large" color="yellow" className={loaderClassName} />
+      }
       cardClassName={cardClassName}
       listClassName={listClassName}
     />

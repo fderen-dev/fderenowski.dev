@@ -8,12 +8,17 @@ import { WithChildren } from "utils/types";
 import styles from "./layout.module.scss";
 
 interface MainProps extends WithChildren {
+  contentWrapperClassName?: string;
   contentContainerClassName?: string;
 }
 
-const Main = ({ children, contentContainerClassName }: MainProps) => (
+const Main = ({
+  children,
+  contentWrapperClassName,
+  contentContainerClassName,
+}: MainProps) => (
   <main className={styles.main}>
-    <div className={styles.contentWrapper}>
+    <div className={classNames(styles.contentWrapper, contentWrapperClassName)}>
       <div className={classNames(styles.content, contentContainerClassName)}>
         {children}
       </div>
@@ -26,6 +31,7 @@ interface LayoutProps extends WithChildren {
   Header?: ReactElement;
   Footer?: ReactElement;
   CookieBar?: ReactElement;
+  contentWrapperClassName?: string;
   contentContainerClassName?: string;
 }
 
@@ -35,6 +41,7 @@ export const Layout = ({
   Footer,
   CookieBar,
   children,
+  contentWrapperClassName,
   contentContainerClassName,
 }: LayoutProps) => {
   const layoutRef = useRef(null);
@@ -45,7 +52,10 @@ export const Layout = ({
       <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
         {Navbar}
         {Header}
-        <Main contentContainerClassName={contentContainerClassName}>
+        <Main
+          contentWrapperClassName={contentWrapperClassName}
+          contentContainerClassName={contentContainerClassName}
+        >
           {children}
         </Main>
         {Footer}
