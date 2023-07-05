@@ -77,7 +77,8 @@ const Blog: NextPage<{
         Header={<Header prismicDocumentData={mainHeader.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
         CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
-        contentContainerClassName={styles.main}
+        contentWrapperClassName={styles.layoutContentWrapper}
+        contentContainerClassName={styles.layoutContentContainer}
       >
         <ClientSideContainer>
           <BlogContainer
@@ -95,12 +96,15 @@ const Blog: NextPage<{
               selectedTagsPaths,
               toggleTagSelected
             ) => (
-              <BlogPostsListContainer
-                selectedTagsPaths={selectedTagsPaths}
-                onTagPillClick={toggleTagSelected}
-                listClassName={styles.postsList}
-                cardClassName={styles.postCard}
-              />
+              <section className={styles.postsListSection}>
+                <BlogPostsListContainer
+                  selectedTagsPaths={selectedTagsPaths}
+                  onTagPillClick={toggleTagSelected}
+                  loaderClassName={styles.loader}
+                  listClassName={styles.postsList}
+                  cardClassName={styles.postCard}
+                />
+              </section>
             )}
           />
         </ClientSideContainer>

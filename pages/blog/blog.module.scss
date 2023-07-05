@@ -1,8 +1,27 @@
 @use "styles/variables" as vars;
 @use "styles/mixins";
 
-.main {
+.layoutContentWrapper {
+  height: 100%;
+}
+
+.layoutContentContainer {
+  display: flex;
+  flex-direction: column;
   margin-block: vars.$spacing-mobile;
+}
+
+.postsListSection {
+  @include mixins.grid;
+
+  height: 100%;
+}
+
+.loader {
+  align-self: center;
+  margin-top: -10%;
+  grid-column: 1/-1;
+  justify-self: center;
 }
 
 .postsList {
@@ -32,7 +51,7 @@
 }
 
 @include mixins.min-width("desktop") {
-  .main {
+  .layoutContentContainer {
     margin-block: vars.$spacing-desktop;
   }
 
