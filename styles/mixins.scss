@@ -70,8 +70,6 @@
   }
 
   @include min-width("desktop") {
-    margin: 0 vars.$spacing-gutters-desktop;
-    gap: vars.$spacing-grid-gap-desktop;
     grid-template-columns: repeat(12, 1fr);
   }
 }

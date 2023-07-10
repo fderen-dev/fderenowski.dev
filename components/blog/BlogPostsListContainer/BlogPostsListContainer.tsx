@@ -10,17 +10,21 @@ import { BlogPostsListWithFetchingData } from "../BlogPostsList/BlogPostsList";
 interface BlogPostListContainerProps {
   selectedTagsPaths: Array<string>;
   onTagPillClick: TagPillClickHandler;
+  noResultsText: string;
   listClassName?: string;
   cardClassName?: string;
   loaderClassName?: string;
+  noResultsClassName?: string;
 }
 
 const _BlogPostsListContainer = ({
   selectedTagsPaths = [],
   onTagPillClick,
+  noResultsText,
   listClassName,
   cardClassName,
   loaderClassName,
+  noResultsClassName,
 }: BlogPostListContainerProps) => {
   const { data: posts, isFetching, error } = useFetchPosts(selectedTagsPaths);
 
@@ -31,8 +35,11 @@ const _BlogPostsListContainer = ({
       isFetching={isFetching}
       error={error}
       Loader={
-        <Spinner size="large" color="yellow" className={loaderClassName} />
+        <div className={loaderClassName}>
+          <Spinner size="large" color="yellow" />
+        </div>
       }
+      NoResults={<h2 className={noResultsClassName}>{noResultsText}</h2>}
       cardClassName={cardClassName}
       listClassName={listClassName}
     />
