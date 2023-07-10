@@ -14,21 +14,27 @@
 .postsListSection {
   @include mixins.grid;
 
+  position: relative;
   height: 100%;
+  grid-auto-rows: min-content;
 }
 
-.loader {
-  align-self: center;
-  margin-top: -10%;
-  grid-column: 1/-1;
-  justify-self: center;
+.loader,
+.noResults {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+}
+
+.noResults {
+  margin: 0;
 }
 
 .postsList {
   display: grid;
   gap: vars.$spacing-large;
   grid-column: 1/-1;
-  grid-row: 2;
 }
 
 .postCard {

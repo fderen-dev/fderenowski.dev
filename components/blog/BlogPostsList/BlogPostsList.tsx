@@ -1,3 +1,8 @@
+import { createRef } from "react";
+import { TransitionGroup } from "react-transition-group";
+
+import { Grow } from "components/transitions/Grow/Grow";
+
 import { Posts } from "models/blog/Posts";
 
 import {
@@ -20,16 +25,25 @@ const BlogPostsList = ({
   listClassName,
   cardClassName,
 }: BlogPostsListProps) => (
-  <ul className={listClassName}>
-    {data!.map((blogPost) => (
-      <BlogPostCard
-        onTagPillClick={onTagPillClick}
-        prismicDocument={blogPost}
-        className={cardClassName}
-        key={blogPost.id}
-      />
-    ))}
-  </ul>
+  <TransitionGroup enter appear component="ul" className={listClassName}>
+    {data!.map((blogPost, index) => {
+      const ref = createRef<HTMLLIElement>();
+
+      return (
+        <Grow timeout={100} nodeRef={ref} index={index} key={blogPost.id}>
+          {(delay) => (
+            <BlogPostCard
+              onTagPillClick={onTagPillClick}
+              prismicDocument={blogPost}
+              className={cardClassName}
+              style={{ transitionDelay: `${delay}ms` }}
+              ref={ref}
+            />
+          )}
+        </Grow>
+      );
+    })}
+  </TransitionGroup>
 );
 
 export const BlogPostsListWithFetchingData = withFetchingData<

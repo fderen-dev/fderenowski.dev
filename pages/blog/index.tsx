@@ -100,7 +100,9 @@ const Blog: NextPage<{
                 <BlogPostsListContainer
                   selectedTagsPaths={selectedTagsPaths}
                   onTagPillClick={toggleTagSelected}
+                  noResultsText="Nothing to see here"
                   loaderClassName={styles.loader}
+                  noResultsClassName={styles.noResults}
                   listClassName={styles.postsList}
                   cardClassName={styles.postCard}
                 />

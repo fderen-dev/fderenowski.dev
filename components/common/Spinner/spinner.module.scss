@@ -2,6 +2,8 @@
 @use "styles/variables.scss" as vars;
 
 .spinner {
+  display: inline-block;
+
   &.small {
     @include mixins.spinner(24px);
   }
