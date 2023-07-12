@@ -25,17 +25,20 @@ export class PaginatedPosts implements PaginatedResponse<Posts> {
   currentPage: number;
   totalPages: number;
   data: Posts;
+  hasMore: boolean;
 
   constructor(
     total?: number,
     currentPage?: number,
     totalPages?: number,
-    data?: Posts
+    data?: Posts,
+    hasMore?: boolean
   ) {
     this.total = total ?? 0;
     this.currentPage = currentPage ?? 0;
     this.totalPages = totalPages ?? 0;
     this.data = data ?? [];
+    this.hasMore = hasMore ?? false;
   }
 }
 
@@ -59,8 +62,9 @@ function getPaginatedPosts(
   const endIndex = _page * _limit;
   const totalPages = Math.ceil(posts.length / _limit);
   const postsSlice = posts.slice(startIndex, endIndex);
+  const hasMore = _page >= endIndex;
 
-  return new PaginatedPosts(totalPages, _page, totalPages, postsSlice);
+  return new PaginatedPosts(totalPages, _page, totalPages, postsSlice, hasMore);
 }
 
 function getTags(raw: string | null): Array<Tag> {
