@@ -1,4 +1,4 @@
-import { createRef } from "react";
+import { createRef, forwardRef } from "react";
 import { TransitionGroup } from "react-transition-group";
 
 import { Grow } from "components/transitions/Grow/Grow";
@@ -11,6 +11,7 @@ import {
 } from "../BlogPostCard/BlogPostCard";
 
 import { withFetchingData } from "HOCs/withFetchingData";
+import { withInfiniteScroll } from "HOCs/withInfiniteScroll";
 
 interface BlogPostsListProps {
   data: Posts | undefined;
@@ -19,34 +20,43 @@ interface BlogPostsListProps {
   cardClassName?: string;
 }
 
-const BlogPostsList = ({
-  data,
-  onTagPillClick,
-  listClassName,
-  cardClassName,
-}: BlogPostsListProps) => (
-  <TransitionGroup enter appear component="ul" className={listClassName}>
-    {data!.map((blogPost, index) => {
-      const ref = createRef<HTMLLIElement>();
+const BlogPostsList = forwardRef<HTMLUListElement, BlogPostsListProps>(
+  (props, ref) => {
+    const { data, onTagPillClick, listClassName, cardClassName } = props;
 
-      return (
-        <Grow timeout={100} nodeRef={ref} index={index} key={blogPost.id}>
-          {(delay) => (
-            <BlogPostCard
-              onTagPillClick={onTagPillClick}
-              prismicDocument={blogPost}
-              className={cardClassName}
-              style={{ transitionDelay: `${delay}ms` }}
-              ref={ref}
-            />
-          )}
-        </Grow>
-      );
-    })}
-  </TransitionGroup>
+    return (
+      <ul className={listClassName} ref={ref}>
+        <TransitionGroup enter appear component={null}>
+          {data!.map((blogPost, index) => {
+            const ref = createRef<HTMLLIElement>();
+
+            return (
+              <Grow timeout={100} nodeRef={ref} index={index} key={blogPost.id}>
+                {(delay) => (
+                  <BlogPostCard
+                    onTagPillClick={onTagPillClick}
+                    prismicDocument={blogPost}
+                    className={cardClassName}
+                    style={{ transitionDelay: `${delay}ms` }}
+                    ref={ref}
+                  />
+                )}
+              </Grow>
+            );
+          })}
+        </TransitionGroup>
+      </ul>
+    );
+  }
 );
 
 export const BlogPostsListWithFetchingData = withFetchingData<
+  BlogPostsListProps,
+  Posts | undefined
+>(BlogPostsList);
+
+export const BlogPostsListWithInfiniteScroll = withInfiniteScroll<
+  // @ts-ignore
   BlogPostsListProps,
   Posts | undefined
 >(BlogPostsList);
