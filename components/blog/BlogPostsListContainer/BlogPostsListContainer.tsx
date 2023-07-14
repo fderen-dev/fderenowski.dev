@@ -1,11 +1,12 @@
-import { memo } from "react";
+import { memo, useCallback, useState } from "react";
 
 import { Spinner } from "components/common/Spinner/Spinner";
 
 import { useFetchPosts } from "hooks/blog/useFetchPosts";
 
 import { TagPillClickHandler } from "../BlogPostCard/BlogPostCard";
-import { BlogPostsListWithFetchingData } from "../BlogPostsList/BlogPostsList";
+import { BlogPostsListWithInfiniteScroll } from "../BlogPostsList/BlogPostsList";
+import { TypeTools } from "utils/TypeTools";
 
 interface BlogPostListContainerProps {
   selectedTagsPaths: Array<string>;
@@ -26,11 +27,26 @@ const _BlogPostsListContainer = ({
   loaderClassName,
   noResultsClassName,
 }: BlogPostListContainerProps) => {
-  const { data: posts, isFetching, error } = useFetchPosts(selectedTagsPaths);
+  const [page, setPage] = useState(1);
+  const {
+    data: posts,
+    isFetching,
+    error,
+  } = useFetchPosts(selectedTagsPaths, page, 1);
+
+  const next = useCallback(() => {
+    setPage((prevPage) => prevPage + 1);
+  }, []);
+
+  if (TypeTools.isNullOrUndefined(posts)) {
+    return null;
+  }
 
   return (
-    <BlogPostsListWithFetchingData
-      data={posts?.data}
+    <BlogPostsListWithInfiniteScroll
+      data={posts!.data}
+      next={next}
+      hasMore={posts!.hasMore}
       onTagPillClick={onTagPillClick}
       isFetching={isFetching}
       error={error}
