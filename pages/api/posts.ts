@@ -6,7 +6,7 @@ import cloneDeep from "lodash/cloneDeep";
 import isEqual from "lodash/isEqual";
 import { createClient } from "prismicio";
 
-import { Posts } from "models/blog/Posts";
+import { Post, Posts } from "models/blog/Posts";
 import { Tag } from "models/blog/Tag";
 import { TAGS } from "utils/constants";
 import { TypeTools } from "utils/TypeTools";
@@ -17,21 +17,22 @@ export interface PaginatedResponse<Data> {
   total: number;
   currentPage: number;
   totalPages: number;
-  data: Data;
+  data: Array<Data>;
+  hasMore: boolean;
 }
 
-export class PaginatedPosts implements PaginatedResponse<Posts> {
+export class PaginatedPosts implements PaginatedResponse<Post> {
   total: number;
   currentPage: number;
   totalPages: number;
-  data: Posts;
+  data: Array<Post>;
   hasMore: boolean;
 
   constructor(
     total?: number,
     currentPage?: number,
     totalPages?: number,
-    data?: Posts,
+    data?: Array<Post>,
     hasMore?: boolean
   ) {
     this.total = total ?? 0;
@@ -52,7 +53,7 @@ function parsePaginationArg(
 }
 
 function getPaginatedPosts(
-  posts: Posts,
+  posts: Array<Post>,
   page: string | string[],
   limit: string | string[]
 ): PaginatedPosts {
@@ -82,7 +83,7 @@ function getTags(raw: string | null): Array<Tag> {
 }
 
 function filterPostsWithTags(
-  posts: Posts,
+  posts: Array<Post>,
   tags: string | Array<string>
 ): Posts {
   if (TypeTools.isString(tags)) {
