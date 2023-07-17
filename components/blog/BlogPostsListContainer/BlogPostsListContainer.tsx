@@ -3,10 +3,10 @@ import { memo, useCallback, useState } from "react";
 import { Spinner } from "components/common/Spinner/Spinner";
 
 import { useFetchPosts } from "hooks/blog/useFetchPosts";
+import { TypeTools } from "utils/TypeTools";
 
 import { TagPillClickHandler } from "../BlogPostCard/BlogPostCard";
 import { BlogPostsListWithInfiniteScroll } from "../BlogPostsList/BlogPostsList";
-import { TypeTools } from "utils/TypeTools";
 
 interface BlogPostListContainerProps {
   selectedTagsPaths: Array<string>;
@@ -18,7 +18,7 @@ interface BlogPostListContainerProps {
   noResultsClassName?: string;
 }
 
-const _BlogPostsListContainer = ({
+const Container = ({
   selectedTagsPaths = [],
   onTagPillClick,
   noResultsText,
@@ -62,4 +62,4 @@ const _BlogPostsListContainer = ({
   );
 };
 
-export const BlogPostsListContainer = memo(_BlogPostsListContainer);
+export const BlogPostsListContainer = memo(Container);

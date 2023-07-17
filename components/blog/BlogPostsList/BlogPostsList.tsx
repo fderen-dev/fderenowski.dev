@@ -21,7 +21,7 @@ interface BlogPostsListProps {
 }
 
 const BlogPostsList = forwardRef<HTMLUListElement, BlogPostsListProps>(
-  (props, ref) => {
+  function PostsList(props, ref) {
     const { data, onTagPillClick, listClassName, cardClassName } = props;
 
     return (

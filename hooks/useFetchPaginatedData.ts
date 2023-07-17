@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { PaginatedResponse } from "pages/api/posts";
 
 import { FetchReturnType } from "models/misc";
-import { PaginatedResponse } from "pages/api/posts";
 
 export const useFetchPaginatedData = <Data>(
   url: URL
