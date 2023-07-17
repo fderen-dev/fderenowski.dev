@@ -26,7 +26,7 @@ const BlogPostsList = forwardRef<HTMLUListElement, BlogPostsListProps>(
 
     return (
       <ul className={listClassName} ref={ref}>
-        <TransitionGroup enter appear component={null}>
+        <TransitionGroup enter appear exit component={null}>
           {data!.map((blogPost, index) => {
             const ref = createRef<HTMLLIElement>();
 
