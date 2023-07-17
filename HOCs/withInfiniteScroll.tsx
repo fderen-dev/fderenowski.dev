@@ -1,5 +1,6 @@
-import { FetchReturnType } from "models/misc";
 import { MutableRefObject, useEffect, useRef } from "react";
+
+import { FetchReturnType } from "models/misc";
 import { useIntersection } from "utils/hooks";
 
 interface ComponentProps {
@@ -30,7 +31,7 @@ export const withInfiniteScroll = <Props extends ComponentProps, Data>(
     const isInViewport = useIntersection(componentRef, 1.0, true);
 
     useEffect(() => {
-      if (hasMore && !isFetching && isInViewport) {
+      if (hasMore && isInViewport) {
         next();
       }
     }, [isInViewport, hasMore, next]);

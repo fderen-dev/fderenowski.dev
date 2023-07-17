@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { PaginatedPosts } from "pages/api/posts";
 
-import { FetchReturnType } from "models/misc";
-import { TypeTools } from "utils/TypeTools";
-import { useFetchPaginatedData } from "hooks/useFetchPaginatedData";
 import { Post } from "models/blog/Posts";
+import { FetchReturnType } from "models/misc";
+import { useFetchPaginatedData } from "hooks/useFetchPaginatedData";
+import { TypeTools } from "utils/TypeTools";
 
 const getPostsEndpointUrl = (
   tagsPaths: Array<string>,
