@@ -1,4 +1,4 @@
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 
 import { Spinner } from "components/common/Spinner/Spinner";
 
@@ -7,6 +7,8 @@ import { TypeTools } from "utils/TypeTools";
 
 import { TagPillClickHandler } from "../BlogPostCard/BlogPostCard";
 import { BlogPostsListWithInfiniteScroll } from "../BlogPostsList/BlogPostsList";
+
+const POSTS_LIMIT = 6;
 
 interface BlogPostListContainerProps {
   selectedTagsPaths: Array<string>;
@@ -32,11 +34,15 @@ const Container = ({
     data: posts,
     isFetching,
     error,
-  } = useFetchPosts(selectedTagsPaths, page, 1);
+  } = useFetchPosts(selectedTagsPaths, page, POSTS_LIMIT);
 
   const next = useCallback(() => {
     setPage((prevPage) => prevPage + 1);
   }, []);
+
+  useEffect(() => {
+    setPage(1);
+  }, [selectedTagsPaths]);
 
   if (TypeTools.isNullOrUndefined(posts)) {
     return null;
