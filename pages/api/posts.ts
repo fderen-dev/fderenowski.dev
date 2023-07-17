@@ -63,7 +63,7 @@ function getPaginatedPosts(
   const endIndex = _page * _limit;
   const totalPages = Math.ceil(posts.length / _limit);
   const postsSlice = posts.slice(startIndex, endIndex);
-  const hasMore = _page >= endIndex;
+  const hasMore = _page !== totalPages;
 
   return new PaginatedPosts(totalPages, _page, totalPages, postsSlice, hasMore);
 }
