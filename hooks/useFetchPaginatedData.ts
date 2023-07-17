@@ -37,7 +37,7 @@ export const useFetchPaginatedData = <Data>(
             return prev;
           }
 
-          if (!prev) {
+          if (!prev || result.currentPage === 1) {
             return result;
           }
 
