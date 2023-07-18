@@ -1,0 +1,22 @@
+@use "styles/variables" as vars;
+@use "styles/mixins";
+
+.layoutContentWrapper {
+  height: 100%;
+  margin-block-start: vars.$navbar-height;
+}
+
+.layoutContentContainer {
+  position: relative;
+  display: flex;
+  width: min(75ch, 100%);
+  flex-direction: column;
+  padding: 3em 2em;
+
+  ::before {
+    @include mixins.black-background($opacity: 0.5);
+
+    width: 100%;
+    height: calc(100% - vars.$navbar-height);
+  }
+}
