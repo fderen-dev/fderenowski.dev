@@ -1,11 +1,13 @@
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 import * as prismicH from "@prismicio/helpers";
-import { SliceZone } from "@prismicio/react";
+import { PrismicImage, SliceZone } from "@prismicio/react";
 import { components as slices } from "slices";
 
 import { Footer, Layout, Navbar } from "components/common/Layout";
 import { CookieBar } from "components/CookieBar/CookieBar";
+
+import { useClientSideDate } from "utils/hooks";
 
 import { createClient } from "../../prismicio";
 
@@ -54,9 +56,17 @@ const BlogPost: NextPage<{
   footer: Content.FooterDocument;
   cookieBar: Content.CookiebarDocument;
 }> = ({ page, navigation, footer, cookieBar }) => {
-  const { name, header, datecreated, slices: slicesData } = page?.data ?? {};
+  const {
+    name,
+    header,
+    datecreated,
+    slices: slicesData,
+    background,
+    tags,
+  } = page?.data ?? {};
+  const date = useClientSideDate(datecreated);
 
-  const date = datecreated ? new Date(datecreated).toDateString() : null;
+  const mappedTags = tags?.split(";") ?? null;
 
   return (
     <Layout
@@ -66,14 +76,23 @@ const BlogPost: NextPage<{
       contentWrapperClassName={styles.layoutContentWrapper}
       contentContainerClassName={styles.layoutContentContainer}
     >
-      <header style={{ display: "flex", alignItems: "start" }}>
-        <h1 style={{ flexGrow: 1 }}>{name}</h1>
-        {date && <time>{date}</time>}
+      <header className={styles.header}>
+        <PrismicImage field={background} className={styles.headerImage} />
+        <div className={styles.headerContent}>
+          <h1>{header}</h1>
+          {date && <time className={styles.headerDate}>{date}</time>}
+          {mappedTags && (
+            <ul className={styles.headerTagsList}>
+              {mappedTags.map((mappedTag) => (
+                <li key={mappedTag}>{mappedTag}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       </header>
-      <h2>{header}</h2>
-      <section>
+      <article>
         <SliceZone slices={slicesData} components={slices} />
-      </section>
+      </article>
     </Layout>
   );
 };
