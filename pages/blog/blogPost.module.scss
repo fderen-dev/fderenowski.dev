@@ -34,11 +34,15 @@ $content-margin-inline: 2rem;
 .headerImage {
   width: calc(100% + 2 * $content-margin-inline);
   max-width: unset;
-  max-height: 25dvh;
+  height: 30dvh;
   margin-block-start: calc(0px - $content-margin-block);
   margin-inline-start: calc(0px - $content-margin-inline);
   object-fit: cover;
   object-position: 0% 50%;
+}
+
+.title {
+  margin: 0;
 }
 
 .headerContent {
@@ -49,12 +53,13 @@ $content-margin-inline: 2rem;
   width: 100%;
   align-items: baseline;
   justify-content: space-between;
-  padding: 1em 3em;
+  padding: 1.5em 3em;
   grid-template-columns: 2fr 1fr;
   margin-block-end: 2em;
+  row-gap: 1em;
 
   &::before {
-    @include mixins.black-background($opacity: 0.7);
+    @include mixins.black-background($opacity: 0.5);
 
     width: 100%;
     height: 100%;
@@ -70,4 +75,17 @@ $content-margin-inline: 2rem;
   display: flex;
   column-gap: 1em;
   grid-column: span 2;
+}
+
+.article {
+  padding: 2em 3em;
+
+  p {
+    font-size: 2.25rem;
+    line-height: 2;
+
+    &:not(:first-child) {
+      margin-block-start: 3em;
+    }
+  }
 }

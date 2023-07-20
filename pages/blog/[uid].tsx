@@ -79,7 +79,7 @@ const BlogPost: NextPage<{
       <header className={styles.header}>
         <PrismicImage field={background} className={styles.headerImage} />
         <div className={styles.headerContent}>
-          <h1>{header}</h1>
+          <h1 className={styles.title}>{header}</h1>
           {date && <time className={styles.headerDate}>{date}</time>}
           {mappedTags && (
             <ul className={styles.headerTagsList}>
@@ -90,7 +90,7 @@ const BlogPost: NextPage<{
           )}
         </div>
       </header>
-      <article>
+      <article className={styles.article}>
         <SliceZone slices={slicesData} components={slices} />
       </article>
     </Layout>
