@@ -27,24 +27,16 @@ $fw-normal: 400;
 $fw-medium: 500;
 $fw-bold: 600;
 
-// size desktop
-$fs-desktop-body: 1.8rem;
-$fs-desktop-secondary: 1.6rem;
-$fs-desktop-input: 1.8rem;
-$fs-desktop-h1: 3.5rem;
-$fs-desktop-h2: 3rem;
-$fs-desktop-h3: 2.5rem;
-$fs-desktop-navigation-item: 1.7rem;
-$fs-desktop-cookie-bar-content: 2.1rem;
-
-// size mobile
-$fs-mobile-body: 1.6rem;
-$fs-mobile-secondary: 1.4rem;
-$fs-mobile-input: 1.6rem;
-$fs-mobile-h1: 2.1rem;
-$fs-mobile-h2: 1.8rem;
-$fs-mobile-h3: 1.6rem;
+// size
+$fs-caption: clamp(1.28rem, 0.14vw + 1.24rem, 1.5rem);
+$fs-text: clamp(1.6rem, 0.25vw + 1.52rem, 2rem);
+$fs-h3: clamp(2rem, 0.42vw + 1.87rem, 2.67rem);
+$fs-h2: clamp(2.5rem, 0.66vw + 2.29rem, 3.55rem);
+$fs-h1: clamp(3.13rem, 1.01vw + 2.8rem, 4.74rem);
 $fs-mobile-navigation-item: 2.5rem;
+$fs-desktop-navigation-item: 1.7rem;
+$fs-mobile-cookie-bar-content: 1.8rem;
+$fs-desktop-cookie-bar-content: 2.1rem;
 
 // colors
 $c-spider-gray: #222;

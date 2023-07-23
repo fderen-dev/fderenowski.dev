@@ -15,7 +15,7 @@ body {
   background-color: vars.$c-background-yellow;
   color: vars.$c-font;
   font-family: Mitr, sans-serif;
-  font-size: vars.$fs-mobile-body;
+  font-size: vars.$fs-text;
   overflow-x: hidden;
 }
 
@@ -37,16 +37,16 @@ h3 {
 }
 
 h1 {
-  font-size: vars.$fs-mobile-h1;
+  font-size: vars.$fs-h1;
 }
 
 h2 {
-  font-size: vars.$fs-mobile-h2;
-  font-weight: vars.$fw-normal;
+  font-size: vars.$fs-h2;
+  font-weight: vars.$fw-bold;
 }
 
 h3 {
-  font-size: vars.$fs-mobile-h3;
+  font-size: vars.$fs-h3;
   font-weight: vars.$fw-normal;
 }
 
@@ -55,26 +55,6 @@ li {
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-@include mixins.min-width("desktop") {
-  body {
-    font-size: vars.$fs-desktop-body;
-  }
-
-  h1 {
-    font-size: vars.$fs-desktop-h1;
-  }
-
-  h2 {
-    font-size: vars.$fs-desktop-h2;
-    font-weight: vars.$fw-bold;
-  }
-
-  h3 {
-    font-size: vars.$fs-desktop-h3;
-    font-weight: vars.$fw-bold;
-  }
 }
 
 a {
