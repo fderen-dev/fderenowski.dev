@@ -46,6 +46,14 @@
 								}
 							]
 						}
+					],
+					[
+						"imagecaption",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "peace",
+							"type": "Text"
+						}
 					]
 				]
 			}
