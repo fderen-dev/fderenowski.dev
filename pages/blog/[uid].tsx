@@ -77,7 +77,11 @@ const BlogPost: NextPage<{
       contentContainerClassName={styles.layoutContentContainer}
     >
       <header className={styles.header}>
-        <PrismicImage field={background} className={styles.headerImage} />
+        <PrismicImage
+          field={background}
+          className={styles.headerImage}
+          draggable={false}
+        />
         <div className={styles.headerContent}>
           <h1 className={styles.title}>{header}</h1>
           {date && <time className={styles.headerDate}>{date}</time>}
