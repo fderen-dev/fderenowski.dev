@@ -2,11 +2,14 @@ import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 import * as prismicH from "@prismicio/helpers";
 import { PrismicImage, SliceZone } from "@prismicio/react";
+import { getTags } from "pages/api/posts";
 import { components as slices } from "slices";
 
+import { Tag } from "components/blog/TagsList/Tag/Tag";
 import { Footer, Layout, Navbar } from "components/common/Layout";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
+import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 import { useClientSideDate } from "utils/hooks";
 
 import { createClient } from "../../prismicio";
@@ -21,6 +24,11 @@ export const getStaticProps: GetStaticProps = async ({
   const client = createClient({ previewData });
 
   const page = await client.getByUID("blogpost", params!.uid as string);
+
+  (page as unknown as BlogpostDocumentWithTags).data.tags = getTags(
+    page.data.tags
+  );
+
   const navigation = await client.getByUID<Content.NavigationDocument>(
     "navigation",
     "top-navigation"
@@ -51,7 +59,7 @@ export const getStaticPaths = async () => {
 };
 
 const BlogPost: NextPage<{
-  page: Content.BlogpostDocument;
+  page: BlogpostDocumentWithTags;
   navigation: Content.NavigationDocument;
   footer: Content.FooterDocument;
   cookieBar: Content.CookiebarDocument;
@@ -65,8 +73,6 @@ const BlogPost: NextPage<{
     tags,
   } = page?.data ?? {};
   const date = useClientSideDate(datecreated);
-
-  const mappedTags = tags?.split(";") ?? null;
 
   return (
     <Layout
@@ -85,10 +91,15 @@ const BlogPost: NextPage<{
         <div className={styles.headerContent}>
           <h1 className={styles.title}>{header}</h1>
           {date && <time className={styles.headerDate}>{date}</time>}
-          {mappedTags && (
+          {tags && (
             <ul className={styles.headerTagsList}>
-              {mappedTags.map((mappedTag) => (
-                <li key={mappedTag}>{mappedTag}</li>
+              {tags.map((tag) => (
+                <Tag
+                  isLink
+                  tag={tag}
+                  key={tag.id}
+                  buttonClassName={styles.headerTagButton}
+                />
               ))}
             </ul>
           )}
