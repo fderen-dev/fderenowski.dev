@@ -1,0 +1,17 @@
+@use "styles/variables.scss" as vars;
+
+.figcaption {
+  margin-top: vars.$spacing-extra-small;
+  font-size: vars.$fs-caption;
+  font-style: italic;
+}
+
+.figure {
+  &:not(:first-child) {
+    margin-block-start: vars.$blog-post-spacing;
+  }
+
+  &:not(:last-child) {
+    margin-block-end: vars.$blog-post-spacing;
+  }
+}
