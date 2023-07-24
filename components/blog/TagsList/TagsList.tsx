@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-import { Tag } from "./Tag/Tag";
+import { BlogPostListTag } from "./Tag/Tag";
 import { BlogPostsListTag } from "./models";
 
 import styles from "./tagsList.module.scss";
@@ -18,7 +18,11 @@ export const TagsList = ({ tags, onTagClick, className }: TagListProps) => {
       className={classNames(styles.list, className)}
     >
       {tags.map((tag) => (
-        <Tag key={tag.id} tag={tag} onClick={() => onTagClick(tag)} />
+        <BlogPostListTag
+          key={tag.id}
+          tag={tag}
+          onClick={() => onTagClick(tag)}
+        />
       ))}
     </ul>
   );

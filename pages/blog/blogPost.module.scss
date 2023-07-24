@@ -78,6 +78,11 @@ $content-margin-inline: 2rem;
   grid-column: span 2;
 }
 
+.headerTagButton {
+  padding: 4px 16px;
+  font-size: vars.$fs-caption;
+}
+
 .article {
   padding: 2em 3em;
 

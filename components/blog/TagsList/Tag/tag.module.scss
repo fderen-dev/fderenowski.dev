@@ -1,3 +1,26 @@
-.tag {
+@use "styles/variables.scss" as vars;
+
+.button,
+.linkButton {
   border-radius: 50px;
+}
+
+.linkButton {
+  transition: background-color ease-in 3ms;
+}
+
+.tag {
+  position: relative;
+
+  &:hover {
+    .linkButton {
+      background-color: vars.$c-button-primary-hover;
+    }
+  }
+}
+
+.link {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
 }

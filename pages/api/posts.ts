@@ -68,7 +68,7 @@ function getPaginatedPosts(
   return new PaginatedPosts(totalPages, _page, totalPages, postsSlice, hasMore);
 }
 
-function getTags(raw: string | null): Array<Tag> {
+export function getTags(raw: string | null): Array<Tag> {
   if (TypeTools.isNullOrUndefined(raw)) {
     return [];
   }
