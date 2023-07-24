@@ -8,6 +8,8 @@ import {
 } from "@prismicio/react";
 import { ImageField } from "@prismicio/types";
 
+import styles from "./blogPostContent.module.scss";
+
 interface BlogPostContentItemFigureProps {
   image: ImageField<never>;
   caption: string;
@@ -18,10 +20,14 @@ const BlogPostContentItemFigure = ({
   caption,
 }: BlogPostContentItemFigureProps) => {
   return (
-    <figure>
-      {/* @ts-ignore */}
-      <PrismicImage field={image} alt={image.alt ?? ""} draggable={false} />
-      <figcaption>{caption}</figcaption>
+    <figure className={styles.figure}>
+      <PrismicImage
+        field={image}
+        // @ts-ignore
+        alt={image.alt ?? ""}
+        draggable={false}
+      />
+      <figcaption className={styles.figcaption}>{caption}</figcaption>
     </figure>
   );
 };
@@ -38,10 +44,13 @@ const BlogPostConentItem = ({ item }: BlogPostContentItemProps) => {
       {image && imagecaption ? (
         <BlogPostContentItemFigure image={image} caption={imagecaption} />
       ) : (
-        <>
-          {/* @ts-ignore */}
-          <PrismicImage field={image} alt={image.alt ?? ""} draggable={false} />
-        </>
+        <PrismicImage
+          field={image}
+          // @ts-ignore
+          alt={image.alt ?? ""}
+          draggable={false}
+          className={styles.figure}
+        />
       )}
       <PrismicRichText field={content} />
     </>
