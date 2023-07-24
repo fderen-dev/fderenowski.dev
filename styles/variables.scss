@@ -96,16 +96,17 @@ $shadow-generic: 1px 1px 3px $c-pitch-black;
 $shadow-generic-75: 1px 1px 3px $c-pitch-black-75;
 
 // spacings
-$spacing-small: 8px;
-$spacing-medium: 16px;
-$spacing-large: 32px;
-$spacing-extra-large: 48px;
+$spacing-extra-small: 0.25rem; // 4px;
+$spacing-small: 0.5rem; // 8px
+$spacing-medium: 1rem; // 16px
+$spacing-large: 2rem; // 32px
+$spacing-extra-large: 3rem; // 48px
 $spacing-mobile: $spacing-medium;
 $spacing-desktop: $spacing-large;
 $spacing-gutters-desktop: $spacing-large;
 $spacing-gutters-mobile: $spacing-medium;
-$spacing-grid-gap-desktop: 20px;
-$spacing-grid-gap-mobile: 10px;
+$spacing-grid-gap-desktop: 1.25rem; // 20px
+$spacing-grid-gap-mobile: 0.625rem; // 10px
 $spacing-page: 10vh;
 
 // components
@@ -114,3 +115,6 @@ $navbar-height: 64px;
 // modal
 $modal-close-timeout-ms: 300;
 $border-radius: 4px;
+
+// blog post
+$blog-post-spacing: 2em;
