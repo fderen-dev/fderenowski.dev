@@ -11,6 +11,7 @@ import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
 import { useClientSideDate } from "utils/hooks";
+import { TypeTools } from "utils/TypeTools";
 
 import { createClient } from "../../prismicio";
 
@@ -22,8 +23,21 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const client = createClient({ previewData });
+  let page: Content.BlogpostDocument<string>;
 
-  const page = await client.getByUID("blogpost", params!.uid as string);
+  try {
+  page = await client.getByUID("blogpost", params!.uid as string);
+
+    if (TypeTools.isNullOrUndefined(page)) {
+      return {
+        notFound: true,
+      };
+    }
+  } catch {
+        return {
+          notFound: true,
+        };
+  }
 
   (page as unknown as BlogpostDocumentWithTags).data.tags = getTags(
     page.data.tags
@@ -54,7 +68,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: pages.map((page) => prismicH.asLink(page)),
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -65,7 +79,6 @@ const BlogPost: NextPage<{
   cookieBar: Content.CookiebarDocument;
 }> = ({ page, navigation, footer, cookieBar }) => {
   const {
-    name,
     header,
     datecreated,
     slices: slicesData,
