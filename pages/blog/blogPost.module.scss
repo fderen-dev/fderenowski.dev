@@ -34,7 +34,7 @@ $content-margin-inline: 2rem;
 .headerImage {
   width: calc(100% + 2 * $content-margin-inline);
   max-width: unset;
-  height: 30dvh;
+  height: max(250px, 40dvh);
   margin-block-start: calc(0px - $content-margin-block);
   margin-inline-start: calc(0px - $content-margin-inline);
   object-fit: cover;
@@ -84,7 +84,7 @@ $content-margin-inline: 2rem;
 }
 
 .article {
-  padding: 2em 3em;
+  padding: 4em 3em;
 
   p,
   pre {
