@@ -55,12 +55,13 @@ $content-margin-inline: 2rem;
   align-items: baseline;
   justify-content: space-between;
   padding: 1.5em 3em;
+  backdrop-filter: blur(3px);
   grid-template-columns: 2fr 1fr;
   margin-block-end: 2em;
   row-gap: 1em;
 
   &::before {
-    @include mixins.black-background($opacity: 0.5);
+    @include mixins.black-background($opacity: 0.6);
 
     width: 100%;
     height: 100%;
