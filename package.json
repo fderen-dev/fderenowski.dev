@@ -31,7 +31,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
-    "@prismicio/slice-simulator-react": "^0.2.3",
     "@slicemachine/adapter-next": "^0.3.9",
     "@svgr/webpack": "^8.0.1",
     "@types/lodash": "^4.14.196",
