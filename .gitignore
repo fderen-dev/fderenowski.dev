@@ -38,3 +38,7 @@ yarn-error.log*
 
 /public/sitemap*
 /public/robots.txt
+
+/.vscode/
+
+/.husky/
