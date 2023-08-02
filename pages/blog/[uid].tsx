@@ -86,6 +86,7 @@ const BlogPost: NextPage<{
     tags,
   } = page?.data ?? {};
   const date = useClientSideDate(datecreated);
+  const hasTags = Boolean(tags?.length);
 
   return (
     <Layout
@@ -104,7 +105,7 @@ const BlogPost: NextPage<{
         <div className={styles.headerContent}>
           <h1 className={styles.title}>{header}</h1>
           {date && <time className={styles.headerDate}>{date}</time>}
-          {tags && (
+          {hasTags && (
             <ul className={styles.headerTagsList}>
               {tags.map((tag) => (
                 <Tag

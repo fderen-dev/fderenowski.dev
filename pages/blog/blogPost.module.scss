@@ -44,6 +44,7 @@ $content-margin-inline: 2rem;
 
 .title {
   margin: 0;
+  line-height: 1.2;
 }
 
 .headerContent {
@@ -54,11 +55,11 @@ $content-margin-inline: 2rem;
   width: 100%;
   align-items: baseline;
   justify-content: space-between;
-  padding: 1.5em 3em;
+  padding: 3em 1.5em;
   backdrop-filter: blur(3px);
+  column-gap: 1em;
   grid-template-columns: 2fr 1fr;
   margin-block-end: 2em;
-  row-gap: 1em;
 
   &::before {
     @include mixins.black-background($opacity: 0.6);
@@ -77,6 +78,7 @@ $content-margin-inline: 2rem;
   display: flex;
   column-gap: 1em;
   grid-column: span 2;
+  margin-block-start: 1em;
 }
 
 .headerTagButton {
@@ -85,7 +87,7 @@ $content-margin-inline: 2rem;
 }
 
 .article {
-  padding: 4em 3em;
+  padding: 3em 1.5em;
 
   p,
   pre {
