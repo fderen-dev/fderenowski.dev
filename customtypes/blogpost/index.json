@@ -3,32 +3,56 @@
   "label": "BlogPost",
   "repeatable": true,
   "status": true,
+  "format": "custom",
   "json": {
     "Post Content": {
       "uid": {
         "type": "UID",
-        "config": { "label": "UUID", "placeholder": "" }
+        "config": {
+          "label": "UUID",
+          "placeholder": ""
+        }
       },
       "name": {
         "type": "Text",
-        "config": { "label": "Name", "placeholder": "" }
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
       },
       "header": {
         "type": "Text",
-        "config": { "label": "Header", "placeholder": "" }
+        "config": {
+          "label": "Header",
+          "placeholder": ""
+        }
       },
       "datecreated": {
         "type": "Timestamp",
-        "config": { "label": "DateCreated", "placeholder": "" }
+        "config": {
+          "label": "DateCreated",
+          "placeholder": ""
+        }
       },
       "background": {
         "type": "Image",
         "config": {
           "label": "Background",
-          "constraint": { "width": 720, "height": 480 },
+          "constraint": {
+            "width": 720,
+            "height": 480
+          },
           "thumbnails": [
-            { "name": "medium", "width": 1080, "height": 720 },
-            { "name": "large", "width": null, "height": 1080 }
+            {
+              "name": "medium",
+              "width": 1080,
+              "height": 720
+            },
+            {
+              "name": "large",
+              "width": null,
+              "height": 1080
+            }
           ]
         }
       },
@@ -36,7 +60,10 @@
         "type": "Image",
         "config": {
           "label": "Thumbnail",
-          "constraint": { "width": 800, "height": 200 },
+          "constraint": {
+            "width": 800,
+            "height": 200
+          },
           "thumbnails": []
         }
       },
@@ -51,30 +78,52 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": { "blog_post_content": { "type": "SharedSlice" } }
+          "choices": {
+            "blog_post_content": {
+              "type": "SharedSlice"
+            },
+            "code_block": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
     "SEO": {
       "meta_title": {
         "type": "Text",
-        "config": { "label": "Meta Title", "placeholder": "" }
+        "config": {
+          "label": "Meta Title",
+          "placeholder": ""
+        }
       },
       "meta_description": {
         "type": "Text",
-        "config": { "label": "Meta Description", "placeholder": "" }
+        "config": {
+          "label": "Meta Description",
+          "placeholder": ""
+        }
       },
       "meta_author": {
         "type": "Text",
-        "config": { "label": "Meta Author", "placeholder": "" }
+        "config": {
+          "label": "Meta Author",
+          "placeholder": ""
+        }
       },
       "meta_keywords": {
         "type": "Text",
-        "config": { "label": "Meta Keywords", "placeholder": "" }
+        "config": {
+          "label": "Meta Keywords",
+          "placeholder": ""
+        }
       },
       "meta_robots": {
         "type": "Text",
-        "config": { "label": "Meta Robots", "placeholder": "" }
+        "config": {
+          "label": "Meta Robots",
+          "placeholder": ""
+        }
       }
     }
   }

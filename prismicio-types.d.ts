@@ -2,10 +2,15 @@
 
 import type * as prismic from "@prismicio/client";
 
-type Simplify<T> = {
-  [KeyType in keyof T]: T[KeyType];
-};
-/** Content for About documents */
+type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
+
+type AboutDocumentDataSlicesSlice = never;
+
+type AboutDocumentDataSlices1Slice = FragmentSlice;
+
+/**
+ * Content for About documents
+ */
 interface AboutDocumentData {
   /**
    * Meta Title field in *About*
@@ -14,10 +19,10 @@ interface AboutDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: about.meta_title
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_title: prismic.KeyTextField;
+
   /**
    * Meta Description field in *About*
    *
@@ -25,10 +30,10 @@ interface AboutDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: about.meta_description
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Author field in *About*
    *
@@ -36,10 +41,10 @@ interface AboutDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: about.meta_author
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_author: prismic.KeyTextField;
+
   /**
    * Meta Keywords field in *About*
    *
@@ -47,10 +52,10 @@ interface AboutDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: about.meta_keywords
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_keywords: prismic.KeyTextField;
+
   /**
    * Meta Robots field in *About*
    *
@@ -58,10 +63,10 @@ interface AboutDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: about.meta_robots
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
+
   /**
    * Slice Zone field in *About*
    *
@@ -69,10 +74,9 @@ interface AboutDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: about.slices[]
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice>
   /**
    * Slice Zone field in *About*
    *
@@ -80,33 +84,26 @@ interface AboutDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: about.slices1[]
    * - **Tab**: Page Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */;
   slices1: prismic.SliceZone<AboutDocumentDataSlices1Slice>;
 }
-/**
- * Slice for *About → Slice Zone*
- *
- */
-type AboutDocumentDataSlicesSlice = never;
-/**
- * Slice for *About → Slice Zone*
- *
- */
-type AboutDocumentDataSlices1Slice = FragmentSlice;
+
 /**
  * About document from Prismic
  *
  * - **API ID**: `about`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
-/** Content for Blog documents */
+
+/**
+ * Content for Blog documents
+ */
 interface BlogDocumentData {
   /**
    * Name field in *Blog*
@@ -115,10 +112,9 @@ interface BlogDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.name
    * - **Tab**: Page Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  name: prismic.KeyTextField;
+  name: prismic.KeyTextField
   /**
    * Meta Title field in *Blog*
    *
@@ -126,10 +122,10 @@ interface BlogDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.meta_title
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
   meta_title: prismic.KeyTextField;
+
   /**
    * Meta Description field in *Blog*
    *
@@ -137,10 +133,10 @@ interface BlogDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.meta_description
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Author field in *Blog*
    *
@@ -148,10 +144,10 @@ interface BlogDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.meta_author
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_author: prismic.KeyTextField;
+
   /**
    * Meta Keywords field in *Blog*
    *
@@ -159,10 +155,10 @@ interface BlogDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.meta_keywords
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_keywords: prismic.KeyTextField;
+
   /**
    * Meta Robots field in *Blog*
    *
@@ -170,23 +166,28 @@ interface BlogDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blog.meta_robots
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
 }
+
 /**
  * Blog document from Prismic
  *
  * - **API ID**: `blog`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type BlogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
-/** Content for BlogPost documents */
+
+type BlogpostDocumentDataSlicesSlice = BlogPostContentSlice | CodeBlockSlice;
+
+/**
+ * Content for BlogPost documents
+ */
 interface BlogpostDocumentData {
   /**
    * Name field in *BlogPost*
@@ -195,10 +196,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.name
    * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * Header field in *BlogPost*
    *
@@ -206,10 +207,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.header
    * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   header: prismic.KeyTextField;
+
   /**
    * DateCreated field in *BlogPost*
    *
@@ -217,10 +218,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.datecreated
    * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/timestamp
-   *
+   * - **Documentation**: https://prismic.io/docs/field#timestamp
    */
   datecreated: prismic.TimestampField;
+
   /**
    * Background field in *BlogPost*
    *
@@ -228,10 +229,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.background
    * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   background: prismic.ImageField<"medium" | "large">;
+
   /**
    * Thumbnail field in *BlogPost*
    *
@@ -239,10 +240,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.thumbnail
    * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   thumbnail: prismic.ImageField<never>;
+
   /**
    * Tags field in *BlogPost*
    *
@@ -250,10 +251,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: Tags separated with semicolon
    * - **API ID Path**: blogpost.tags
    * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   tags: prismic.KeyTextField;
+
   /**
    * Slice Zone field in *BlogPost*
    *
@@ -261,10 +262,9 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.slices[]
    * - **Tab**: Post Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<BlogpostDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<BlogpostDocumentDataSlicesSlice>
   /**
    * Meta Title field in *BlogPost*
    *
@@ -272,10 +272,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.meta_title
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
   meta_title: prismic.KeyTextField;
+
   /**
    * Meta Description field in *BlogPost*
    *
@@ -283,10 +283,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.meta_description
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Author field in *BlogPost*
    *
@@ -294,10 +294,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.meta_author
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_author: prismic.KeyTextField;
+
   /**
    * Meta Keywords field in *BlogPost*
    *
@@ -305,10 +305,10 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.meta_keywords
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_keywords: prismic.KeyTextField;
+
   /**
    * Meta Robots field in *BlogPost*
    *
@@ -316,22 +316,17 @@ interface BlogpostDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: blogpost.meta_robots
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
 }
-/**
- * Slice for *BlogPost → Slice Zone*
- *
- */
-type BlogpostDocumentDataSlicesSlice = BlogPostContentSlice;
+
 /**
  * BlogPost document from Prismic
  *
  * - **API ID**: `blogpost`
  * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -341,7 +336,10 @@ export type BlogpostDocument<Lang extends string = string> =
     "blogpost",
     Lang
   >;
-/** Content for Contact documents */
+
+/**
+ * Content for Contact documents
+ */
 interface ContactDocumentData {
   /**
    * Header field in *Contact*
@@ -350,10 +348,10 @@ interface ContactDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: contact.header
    * - **Tab**: Page Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   header: prismic.KeyTextField;
+
   /**
    * Subheading field in *Contact*
    *
@@ -361,10 +359,9 @@ interface ContactDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: contact.subheading
    * - **Tab**: Page Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  subheading: prismic.KeyTextField;
+  subheading: prismic.KeyTextField
   /**
    * Meta Title field in *Contact*
    *
@@ -372,10 +369,10 @@ interface ContactDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: contact.meta_title
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
   meta_title: prismic.KeyTextField;
+
   /**
    * Meta Author field in *Contact*
    *
@@ -383,10 +380,10 @@ interface ContactDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: contact.meta_author
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_author: prismic.KeyTextField;
+
   /**
    * Meta Description field in *Contact*
    *
@@ -394,10 +391,10 @@ interface ContactDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: contact.meta_description
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Keywords field in *Contact*
    *
@@ -405,10 +402,10 @@ interface ContactDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: contact.meta_keywords
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_keywords: prismic.KeyTextField;
+
   /**
    * Meta Robots field in *Contact*
    *
@@ -416,17 +413,17 @@ interface ContactDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: contact.meta_robots
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
 }
+
 /**
  * Contact document from Prismic
  *
  * - **API ID**: `contact`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -436,7 +433,10 @@ export type ContactDocument<Lang extends string = string> =
     "contact",
     Lang
   >;
-/** Content for CookieBar documents */
+
+/**
+ * Content for CookieBar documents
+ */
 interface CookiebarDocumentData {
   /**
    * Name field in *CookieBar*
@@ -445,10 +445,10 @@ interface CookiebarDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: cookiebar.name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * DeclineButtonText field in *CookieBar*
    *
@@ -456,10 +456,10 @@ interface CookiebarDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: cookiebar.declinebuttontext
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   declinebuttontext: prismic.KeyTextField;
+
   /**
    * AcceptButtonText field in *CookieBar*
    *
@@ -467,10 +467,10 @@ interface CookiebarDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: cookiebar.acceptbuttontext
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   acceptbuttontext: prismic.KeyTextField;
+
   /**
    * Content field in *CookieBar*
    *
@@ -478,10 +478,10 @@ interface CookiebarDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: cookiebar.content
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   content: prismic.KeyTextField;
+
   /**
    * ExpirationTimeInDays field in *CookieBar*
    *
@@ -489,17 +489,17 @@ interface CookiebarDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: cookiebar.expirationtimeindays
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
   expirationtimeindays: prismic.NumberField;
 }
+
 /**
  * CookieBar document from Prismic
  *
  * - **API ID**: `cookiebar`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -509,7 +509,12 @@ export type CookiebarDocument<Lang extends string = string> =
     "cookiebar",
     Lang
   >;
-/** Content for Footer documents */
+
+type FooterDocumentDataSlicesSlice = LinkIconSlice;
+
+/**
+ * Content for Footer documents
+ */
 interface FooterDocumentData {
   /**
    * Copy field in *Footer*
@@ -518,10 +523,10 @@ interface FooterDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: footer.copy
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   copy: prismic.RichTextField;
+
   /**
    * logo field in *Footer*
    *
@@ -529,10 +534,10 @@ interface FooterDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: footer.logo
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   logo: prismic.ImageField<"desktop">;
+
   /**
    * Slice Zone field in *Footer*
    *
@@ -540,28 +545,28 @@ interface FooterDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: footer.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<FooterDocumentDataSlicesSlice>;
 }
-/**
- * Slice for *Footer → Slice Zone*
- *
- */
-type FooterDocumentDataSlicesSlice = LinkIconSlice;
+
 /**
  * Footer document from Prismic
  *
  * - **API ID**: `footer`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type FooterDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FooterDocumentData>, "footer", Lang>;
-/** Content for Form documents */
+
+type FormDocumentDataSlicesSlice = TextInputSlice;
+
+/**
+ * Content for Form documents
+ */
 interface FormDocumentData {
   /**
    * Name field in *Form*
@@ -570,10 +575,10 @@ interface FormDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: form.name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * SubmitLabel field in *Form*
    *
@@ -581,10 +586,10 @@ interface FormDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: form.submitlabel
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   submitlabel: prismic.KeyTextField;
+
   /**
    * Slice Zone field in *Form*
    *
@@ -592,28 +597,28 @@ interface FormDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: form.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<FormDocumentDataSlicesSlice>;
 }
-/**
- * Slice for *Form → Slice Zone*
- *
- */
-type FormDocumentDataSlicesSlice = TextInputSlice;
+
 /**
  * Form document from Prismic
  *
  * - **API ID**: `form`
  * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type FormDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<FormDocumentData>, "form", Lang>;
-/** Content for FormGroup documents */
+
+type FormgroupDocumentDataSlicesSlice = TextInputSlice;
+
+/**
+ * Content for FormGroup documents
+ */
 interface FormgroupDocumentData {
   /**
    * Name field in *FormGroup*
@@ -622,10 +627,10 @@ interface FormgroupDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: formgroup.name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * Slice Zone field in *FormGroup*
    *
@@ -633,22 +638,17 @@ interface FormgroupDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: formgroup.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<FormgroupDocumentDataSlicesSlice>;
 }
-/**
- * Slice for *FormGroup → Slice Zone*
- *
- */
-type FormgroupDocumentDataSlicesSlice = TextInputSlice;
+
 /**
  * FormGroup document from Prismic
  *
  * - **API ID**: `formgroup`
  * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -658,7 +658,10 @@ export type FormgroupDocument<Lang extends string = string> =
     "formgroup",
     Lang
   >;
-/** Content for Header documents */
+
+/**
+ * Content for Header documents
+ */
 interface HeaderDocumentData {
   /**
    * header field in *Header*
@@ -667,10 +670,10 @@ interface HeaderDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: header.header
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   header: prismic.KeyTextField;
+
   /**
    * subheader field in *Header*
    *
@@ -678,23 +681,30 @@ interface HeaderDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: header.subheader
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   subheader: prismic.KeyTextField;
 }
+
 /**
  * Header document from Prismic
  *
  * - **API ID**: `header`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
 export type HeaderDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<HeaderDocumentData>, "header", Lang>;
-/** Content for Home Page Article documents */
+
+type HomePageArticleDocumentDataSlicesSlice =
+  | PlaceableContentSlice
+  | LinkButtonSlice;
+
+/**
+ * Content for Home Page Article documents
+ */
 interface HomePageArticleDocumentData {
   /**
    * Name field in *Home Page Article*
@@ -703,10 +713,10 @@ interface HomePageArticleDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home_page_article.name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * Header field in *Home Page Article*
    *
@@ -714,10 +724,10 @@ interface HomePageArticleDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home_page_article.header
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   header: prismic.KeyTextField;
+
   /**
    * Placement field in *Home Page Article*
    *
@@ -725,10 +735,10 @@ interface HomePageArticleDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home_page_article.placement
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
   placement: prismic.SelectField<"start" | "center" | "end">;
+
   /**
    * With Intersection field in *Home Page Article*
    *
@@ -737,10 +747,10 @@ interface HomePageArticleDocumentData {
    * - **Default Value**: false
    * - **API ID Path**: home_page_article.with_intersection
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
+   * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   with_intersection: prismic.BooleanField;
+
   /**
    * Order field in *Home Page Article*
    *
@@ -748,10 +758,10 @@ interface HomePageArticleDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home_page_article.order
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
   order: prismic.NumberField;
+
   /**
    * Slice Zone field in *Home Page Article*
    *
@@ -759,24 +769,17 @@ interface HomePageArticleDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: home_page_article.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<HomePageArticleDocumentDataSlicesSlice>;
 }
-/**
- * Slice for *Home Page Article → Slice Zone*
- *
- */
-type HomePageArticleDocumentDataSlicesSlice =
-  | PlaceableContentSlice
-  | LinkButtonSlice;
+
 /**
  * Home Page Article document from Prismic
  *
  * - **API ID**: `home_page_article`
  * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -786,7 +789,12 @@ export type HomePageArticleDocument<Lang extends string = string> =
     "home_page_article",
     Lang
   >;
-/** Content for Homepage documents */
+
+type HomepageDocumentDataSlicesSlice = FragmentSlice;
+
+/**
+ * Content for Homepage documents
+ */
 interface HomepageDocumentData {
   /**
    * Slice Zone field in *Homepage*
@@ -795,10 +803,9 @@ interface HomepageDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage.slices[]
    * - **Tab**: Page Content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice>;
+  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice>
   /**
    * Meta Title field in *Homepage*
    *
@@ -806,10 +813,10 @@ interface HomepageDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage.meta_title
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
-   */
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
   meta_title: prismic.KeyTextField;
+
   /**
    * Meta Description field in *Homepage*
    *
@@ -817,10 +824,10 @@ interface HomepageDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage.meta_description
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
+
   /**
    * Meta Author field in *Homepage*
    *
@@ -828,10 +835,10 @@ interface HomepageDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage.meta_author
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_author: prismic.KeyTextField;
+
   /**
    * Meta Keywords field in *Homepage*
    *
@@ -839,10 +846,10 @@ interface HomepageDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage.meta_keywords
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_keywords: prismic.KeyTextField;
+
   /**
    * Meta Robots field in *Homepage*
    *
@@ -850,22 +857,17 @@ interface HomepageDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: homepage.meta_robots
    * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
 }
-/**
- * Slice for *Homepage → Slice Zone*
- *
- */
-type HomepageDocumentDataSlicesSlice = FragmentSlice;
+
 /**
  * Homepage document from Prismic
  *
  * - **API ID**: `homepage`
  * - **Repeatable**: `false`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -875,7 +877,12 @@ export type HomepageDocument<Lang extends string = string> =
     "homepage",
     Lang
   >;
-/** Content for Navigation documents */
+
+type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
+
+/**
+ * Content for Navigation documents
+ */
 interface NavigationDocumentData {
   /**
    * Name field in *Navigation*
@@ -884,10 +891,10 @@ interface NavigationDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: navigation.name
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   name: prismic.RichTextField;
+
   /**
    * homePageUrl field in *Navigation*
    *
@@ -895,10 +902,10 @@ interface NavigationDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: navigation.homepageurl
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   homepageurl: prismic.LinkField;
+
   /**
    * homePageIcon field in *Navigation*
    *
@@ -906,10 +913,10 @@ interface NavigationDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: navigation.homepageicon
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   homepageicon: prismic.ImageField<never>;
+
   /**
    * Slice Zone field in *Navigation*
    *
@@ -917,22 +924,17 @@ interface NavigationDocumentData {
    * - **Placeholder**: *None*
    * - **API ID Path**: navigation.slices[]
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
-   *
+   * - **Documentation**: https://prismic.io/docs/field#slices
    */
   slices: prismic.SliceZone<NavigationDocumentDataSlicesSlice>;
 }
-/**
- * Slice for *Navigation → Slice Zone*
- *
- */
-type NavigationDocumentDataSlicesSlice = NavigationItemSlice;
+
 /**
  * Navigation document from Prismic
  *
  * - **API ID**: `navigation`
  * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
@@ -942,6 +944,7 @@ export type NavigationDocument<Lang extends string = string> =
     "navigation",
     Lang
   >;
+
 export type AllDocumentTypes =
   | AboutDocument
   | BlogDocument
@@ -955,9 +958,9 @@ export type AllDocumentTypes =
   | HomePageArticleDocument
   | HomepageDocument
   | NavigationDocument;
+
 /**
- * Item in BlogPostContent → Items
- *
+ * Primary content in *BlogPostContent → Items*
  */
 export interface BlogPostContentSliceDefaultItem {
   /**
@@ -966,80 +969,135 @@ export interface BlogPostContentSliceDefaultItem {
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: blog_post_content.items[].content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
+
   /**
    * Image field in *BlogPostContent → Items*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
    * - **API ID Path**: blog_post_content.items[].image
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   image: prismic.ImageField<never>;
+
   /**
    * ImageCaption field in *BlogPostContent → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: blog_post_content.items[].imagecaption
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   imagecaption: prismic.KeyTextField;
 }
+
 /**
  * Default variation for BlogPostContent Slice
  *
  * - **API ID**: `default`
- * - **Description**: `BlogPostContent`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: BlogPostContent
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type BlogPostContentSliceDefault = prismic.SharedSliceVariation<
   "default",
   Record<string, never>,
   Simplify<BlogPostContentSliceDefaultItem>
 >;
+
 /**
  * Slice variation for *BlogPostContent*
- *
  */
 type BlogPostContentSliceVariation = BlogPostContentSliceDefault;
+
 /**
  * BlogPostContent Shared Slice
  *
  * - **API ID**: `blog_post_content`
- * - **Description**: `BlogPostContent`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: BlogPostContent
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type BlogPostContentSlice = prismic.SharedSlice<
   "blog_post_content",
   BlogPostContentSliceVariation
 >;
+
 /**
- * Primary content in Fragment → Primary
- *
+ * Primary content in *CodeBlock → Primary*
  */
-interface FragmentSliceDefaultPrimary {
+export interface CodeBlockSliceDefaultPrimary {
+  /**
+   * Language field in *CodeBlock → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: code_block.primary.language
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  language: prismic.SelectField<
+    "tsx" | "typescript" | "jsx" | "javascript" | "css" | "scss" | "bash"
+  >;
+
+  /**
+   * CodeString field in *CodeBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: code_block.primary.codestring
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  codestring: prismic.RichTextField;
+}
+
+/**
+ * Default variation for CodeBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<CodeBlockSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *CodeBlock*
+ */
+type CodeBlockSliceVariation = CodeBlockSliceDefault;
+
+/**
+ * CodeBlock Shared Slice
+ *
+ * - **API ID**: `code_block`
+ * - **Description**: CodeBlock
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type CodeBlockSlice = prismic.SharedSlice<
+  "code_block",
+  CodeBlockSliceVariation
+>;
+
+/**
+ * Primary content in *Fragment → Primary*
+ */
+export interface FragmentSliceDefaultPrimary {
   /**
    * Header field in *Fragment → Primary*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.primary.header
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   header: prismic.TitleField;
 }
+
 /**
- * Item in Fragment → Items
- *
+ * Primary content in *Fragment → Items*
  */
 export interface FragmentSliceDefaultItem {
   /**
@@ -1048,49 +1106,48 @@ export interface FragmentSliceDefaultItem {
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.items[].content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
 }
+
 /**
  * Default variation for Fragment Slice
  *
  * - **API ID**: `default`
- * - **Description**: `Fragment`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Fragment
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FragmentSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<FragmentSliceDefaultPrimary>,
   Simplify<FragmentSliceDefaultItem>
 >;
+
 /**
- * Primary content in Fragment → Primary
- *
+ * Primary content in *Fragment → Primary*
  */
-interface FragmentSliceHomepageFragmentPrimary {
+export interface FragmentSliceHomepageFragmentPrimary {
   /**
    * Header field in *Fragment → Primary*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.primary.header
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   header: prismic.TitleField;
+
   /**
    * Placement field in *Fragment → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.primary.placement
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
   placement: prismic.SelectField<"Left" | "Right">;
+
   /**
    * With Intersection field in *Fragment → Primary*
    *
@@ -1098,14 +1155,13 @@ interface FragmentSliceHomepageFragmentPrimary {
    * - **Placeholder**: *None*
    * - **Default Value**: true
    * - **API ID Path**: fragment.primary.with_intersection
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
+   * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   with_intersection: prismic.BooleanField;
 }
+
 /**
- * Item in Fragment → Items
- *
+ * Primary content in *Fragment → Items*
  */
 export interface FragmentSliceHomepageFragmentItem {
   /**
@@ -1114,63 +1170,61 @@ export interface FragmentSliceHomepageFragmentItem {
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.items[].content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
+
   /**
    * Button Link field in *Fragment → Items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.items[].button_link
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   button_link: prismic.LinkField;
 }
+
 /**
  * Homepage Fragment variation for Fragment Slice
  *
  * - **API ID**: `homepageFragment`
- * - **Description**: `Fragment`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Fragment
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FragmentSliceHomepageFragment = prismic.SharedSliceVariation<
   "homepageFragment",
   Simplify<FragmentSliceHomepageFragmentPrimary>,
   Simplify<FragmentSliceHomepageFragmentItem>
 >;
+
 /**
- * Primary content in Fragment → Primary
- *
+ * Primary content in *Fragment → Primary*
  */
-interface FragmentSliceAboutMeFragmentPrimary {
+export interface FragmentSliceAboutMeFragmentPrimary {
   /**
    * Header field in *Fragment → Primary*
    *
    * - **Field Type**: Title
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.primary.header
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   header: prismic.TitleField;
+
   /**
    * Portrait field in *Fragment → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.primary.portrait
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   portrait: prismic.ImageField<never>;
 }
+
 /**
- * Item in Fragment → Items
- *
+ * Primary content in *Fragment → Items*
  */
 export interface FragmentSliceAboutMeFragmentItem {
   /**
@@ -1179,79 +1233,78 @@ export interface FragmentSliceAboutMeFragmentItem {
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: fragment.items[].content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
 }
+
 /**
  * About Me Fragment variation for Fragment Slice
  *
  * - **API ID**: `aboutMeFragment`
- * - **Description**: `Fragment`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Fragment
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FragmentSliceAboutMeFragment = prismic.SharedSliceVariation<
   "aboutMeFragment",
   Simplify<FragmentSliceAboutMeFragmentPrimary>,
   Simplify<FragmentSliceAboutMeFragmentItem>
 >;
+
 /**
  * Slice variation for *Fragment*
- *
  */
 type FragmentSliceVariation =
   | FragmentSliceDefault
   | FragmentSliceHomepageFragment
   | FragmentSliceAboutMeFragment;
+
 /**
  * Fragment Shared Slice
  *
  * - **API ID**: `fragment`
- * - **Description**: `Fragment`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: Fragment
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type FragmentSlice = prismic.SharedSlice<
   "fragment",
   FragmentSliceVariation
 >;
+
 /**
- * Primary content in LinkButton → Primary
- *
+ * Primary content in *LinkButton → Primary*
  */
-interface LinkButtonSliceDefaultPrimary {
+export interface LinkButtonSliceDefaultPrimary {
   /**
    * Label field in *LinkButton → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: link_button.primary.label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
   /**
    * Href field in *LinkButton → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
    * - **API ID Path**: link_button.primary.href
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   href: prismic.LinkField;
+
   /**
    * Placement field in *LinkButton → Primary*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **API ID Path**: link_button.primary.placement
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
   placement: prismic.SelectField<"start" | "center" | "end">;
+
   /**
    * Disabled field in *LinkButton → Primary*
    *
@@ -1259,156 +1312,153 @@ interface LinkButtonSliceDefaultPrimary {
    * - **Placeholder**: *None*
    * - **Default Value**: false
    * - **API ID Path**: link_button.primary.disabled
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
+   * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   disabled: prismic.BooleanField;
 }
+
 /**
  * Default variation for LinkButton Slice
  *
  * - **API ID**: `default`
- * - **Description**: `LinkButton`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: LinkButton
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LinkButtonSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<LinkButtonSliceDefaultPrimary>,
   never
 >;
+
 /**
  * Slice variation for *LinkButton*
- *
  */
 type LinkButtonSliceVariation = LinkButtonSliceDefault;
+
 /**
  * LinkButton Shared Slice
  *
  * - **API ID**: `link_button`
- * - **Description**: `LinkButton`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: LinkButton
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LinkButtonSlice = prismic.SharedSlice<
   "link_button",
   LinkButtonSliceVariation
 >;
+
 /**
- * Primary content in LinkIcon → Primary
- *
+ * Primary content in *LinkIcon → Primary*
  */
-interface LinkIconSliceDefaultPrimary {
+export interface LinkIconSliceDefaultPrimary {
   /**
    * Href field in *LinkIcon → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
    * - **API ID Path**: link_icon.primary.href
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   href: prismic.LinkField;
+
   /**
    * Icon field in *LinkIcon → Primary*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
    * - **API ID Path**: link_icon.primary.icon
-   * - **Documentation**: https://prismic.io/docs/core-concepts/image
-   *
+   * - **Documentation**: https://prismic.io/docs/field#image
    */
   icon: prismic.ImageField<never>;
 }
+
 /**
  * Default variation for LinkIcon Slice
  *
  * - **API ID**: `default`
- * - **Description**: `LinkIcon`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: LinkIcon
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LinkIconSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<LinkIconSliceDefaultPrimary>,
   never
 >;
+
 /**
  * Slice variation for *LinkIcon*
- *
  */
 type LinkIconSliceVariation = LinkIconSliceDefault;
+
 /**
  * LinkIcon Shared Slice
  *
  * - **API ID**: `link_icon`
- * - **Description**: `LinkIcon`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: LinkIcon
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LinkIconSlice = prismic.SharedSlice<
   "link_icon",
   LinkIconSliceVariation
 >;
+
 /**
- * Primary content in NavigationItem → Primary
- *
+ * Primary content in *NavigationItem → Primary*
  */
-interface NavigationItemSliceDefaultPrimary {
+export interface NavigationItemSliceDefaultPrimary {
   /**
    * Name field in *NavigationItem → Primary*
    *
    * - **Field Type**: Rich Text
    * - **Placeholder**: This is where it all begins...
    * - **API ID Path**: navigation_item.primary.name
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   name: prismic.RichTextField;
+
   /**
    * Link field in *NavigationItem → Primary*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
    * - **API ID Path**: navigation_item.primary.link
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   link: prismic.LinkField;
 }
+
 /**
  * Default variation for NavigationItem Slice
  *
  * - **API ID**: `default`
- * - **Description**: `NavigationItem`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: NavigationItem
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type NavigationItemSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<NavigationItemSliceDefaultPrimary>,
   never
 >;
+
 /**
  * Slice variation for *NavigationItem*
- *
  */
 type NavigationItemSliceVariation = NavigationItemSliceDefault;
+
 /**
  * NavigationItem Shared Slice
  *
  * - **API ID**: `navigation_item`
- * - **Description**: `NavigationItem`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: NavigationItem
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type NavigationItemSlice = prismic.SharedSlice<
   "navigation_item",
   NavigationItemSliceVariation
 >;
+
 /**
- * Item in PlaceableContent → Items
- *
+ * Primary content in *PlaceableContent → Items*
  */
 export interface PlaceableContentSliceDefaultItem {
   /**
@@ -1417,116 +1467,115 @@ export interface PlaceableContentSliceDefaultItem {
    * - **Field Type**: Rich Text
    * - **Placeholder**: *None*
    * - **API ID Path**: placeable_content.items[].content
-   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
-   *
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   content: prismic.RichTextField;
+
   /**
    * Content Placement field in *PlaceableContent → Items*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **API ID Path**: placeable_content.items[].content_placement
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
   content_placement: prismic.SelectField<"start" | "center" | "end">;
+
   /**
    * Button Link Href field in *PlaceableContent → Items*
    *
    * - **Field Type**: Link
    * - **Placeholder**: *None*
    * - **API ID Path**: placeable_content.items[].button_link_href
-   * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
-   *
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   button_link_href: prismic.LinkField;
+
   /**
    * Button Link Label field in *PlaceableContent → Items*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: placeable_content.items[].button_link_label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   button_link_label: prismic.KeyTextField;
+
   /**
    * Button Link Placement field in *PlaceableContent → Items*
    *
    * - **Field Type**: Select
    * - **Placeholder**: *None*
    * - **API ID Path**: placeable_content.items[].button_link_placement
-   * - **Documentation**: https://prismic.io/docs/core-concepts/select
-   *
+   * - **Documentation**: https://prismic.io/docs/field#select
    */
   button_link_placement: prismic.SelectField<"start" | "center" | "end">;
 }
+
 /**
  * Default variation for PlaceableContent Slice
  *
  * - **API ID**: `default`
- * - **Description**: `PlaceableContent`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: PlaceableContent
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type PlaceableContentSliceDefault = prismic.SharedSliceVariation<
   "default",
   Record<string, never>,
   Simplify<PlaceableContentSliceDefaultItem>
 >;
+
 /**
  * Slice variation for *PlaceableContent*
- *
  */
 type PlaceableContentSliceVariation = PlaceableContentSliceDefault;
+
 /**
  * PlaceableContent Shared Slice
  *
  * - **API ID**: `placeable_content`
- * - **Description**: `PlaceableContent`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: PlaceableContent
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type PlaceableContentSlice = prismic.SharedSlice<
   "placeable_content",
   PlaceableContentSliceVariation
 >;
+
 /**
- * Primary content in Input → Primary
- *
+ * Primary content in *Input → Primary*
  */
-interface TextInputSliceDefaultPrimary {
+export interface TextInputSliceDefaultPrimary {
   /**
    * Name field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.name
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * Label field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
   /**
    * Placeholder field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.placeholder
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder: prismic.KeyTextField;
+
   /**
    * Required field in *Input → Primary*
    *
@@ -1534,109 +1583,108 @@ interface TextInputSliceDefaultPrimary {
    * - **Placeholder**: *None*
    * - **Default Value**: false
    * - **API ID Path**: text_input.primary.required
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
+   * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   required: prismic.BooleanField;
+
   /**
    * RequiredValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.requiredvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   requiredvalidationmessage: prismic.KeyTextField;
+
   /**
    * MinLength field in *Input → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.minlength
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
   minlength: prismic.NumberField;
+
   /**
    * MinLengthValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.minlengthvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   minlengthvalidationmessage: prismic.KeyTextField;
+
   /**
    * MaxLength field in *Input → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.maxlength
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
   maxlength: prismic.NumberField;
+
   /**
    * MaxLengthValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.maxlengthvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   maxlengthvalidationmessage: prismic.KeyTextField;
 }
+
 /**
  * Default variation for Input Slice
  *
  * - **API ID**: `default`
- * - **Description**: `TextInput`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: TextInput
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TextInputSliceDefault = prismic.SharedSliceVariation<
   "default",
   Simplify<TextInputSliceDefaultPrimary>,
   never
 >;
+
 /**
- * Primary content in Input → Primary
- *
+ * Primary content in *Input → Primary*
  */
-interface TextInputSliceTextAreaPrimary {
+export interface TextInputSliceTextAreaPrimary {
   /**
    * Name field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.name
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * Label field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
   /**
    * Placeholder field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.placeholder
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder: prismic.KeyTextField;
+
   /**
    * Required field in *Input → Primary*
    *
@@ -1644,109 +1692,108 @@ interface TextInputSliceTextAreaPrimary {
    * - **Placeholder**: *None*
    * - **Default Value**: false
    * - **API ID Path**: text_input.primary.required
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
+   * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   required: prismic.BooleanField;
+
   /**
    * RequiredValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.requiredvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   requiredvalidationmessage: prismic.KeyTextField;
+
   /**
    * MinLength field in *Input → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.minlength
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
   minlength: prismic.NumberField;
+
   /**
    * MinLengthValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.minlengthvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   minlengthvalidationmessage: prismic.KeyTextField;
+
   /**
    * MaxLength field in *Input → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.maxlength
-   * - **Documentation**: https://prismic.io/docs/core-concepts/number
-   *
+   * - **Documentation**: https://prismic.io/docs/field#number
    */
   maxlength: prismic.NumberField;
+
   /**
    * MaxLengthValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.maxlengthvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   maxlengthvalidationmessage: prismic.KeyTextField;
 }
+
 /**
  * TextArea variation for Input Slice
  *
  * - **API ID**: `textArea`
- * - **Description**: `TextInput`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: TextInput
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TextInputSliceTextArea = prismic.SharedSliceVariation<
   "textArea",
   Simplify<TextInputSliceTextAreaPrimary>,
   never
 >;
+
 /**
- * Primary content in Input → Primary
- *
+ * Primary content in *Input → Primary*
  */
-interface TextInputSliceEmailPrimary {
+export interface TextInputSliceEmailPrimary {
   /**
    * Name field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.name
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   name: prismic.KeyTextField;
+
   /**
    * Label field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.label
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   label: prismic.KeyTextField;
+
   /**
    * Placeholder field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.placeholder
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   placeholder: prismic.KeyTextField;
+
   /**
    * Required field in *Input → Primary*
    *
@@ -1754,64 +1801,64 @@ interface TextInputSliceEmailPrimary {
    * - **Placeholder**: *None*
    * - **Default Value**: false
    * - **API ID Path**: text_input.primary.required
-   * - **Documentation**: https://prismic.io/docs/core-concepts/boolean
-   *
+   * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   required: prismic.BooleanField;
+
   /**
    * RequiredValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.requiredvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   requiredvalidationmessage: prismic.KeyTextField;
+
   /**
    * EmailValidationMessage field in *Input → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: text_input.primary.emailvalidationmessage
-   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-   *
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   emailvalidationmessage: prismic.KeyTextField;
 }
+
 /**
  * Email variation for Input Slice
  *
  * - **API ID**: `email`
- * - **Description**: `TextInput`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: TextInput
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TextInputSliceEmail = prismic.SharedSliceVariation<
   "email",
   Simplify<TextInputSliceEmailPrimary>,
   never
 >;
+
 /**
  * Slice variation for *Input*
- *
  */
 type TextInputSliceVariation =
   | TextInputSliceDefault
   | TextInputSliceTextArea
   | TextInputSliceEmail;
+
 /**
  * Input Shared Slice
  *
  * - **API ID**: `text_input`
- * - **Description**: `TextInput`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
+ * - **Description**: TextInput
+ * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TextInputSlice = prismic.SharedSlice<
   "text_input",
   TextInputSliceVariation
 >;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1819,81 +1866,71 @@ declare module "@prismicio/client" {
       options?: prismic.ClientConfig
     ): prismic.Client<AllDocumentTypes>;
   }
+
   namespace Content {
     export type {
+      AboutDocument,
       AboutDocumentData,
       AboutDocumentDataSlicesSlice,
       AboutDocumentDataSlices1Slice,
-      AboutDocument,
-      BlogDocumentData,
       BlogDocument,
+      BlogDocumentData,
+      BlogpostDocument,
       BlogpostDocumentData,
       BlogpostDocumentDataSlicesSlice,
-      BlogpostDocument,
-      ContactDocumentData,
       ContactDocument,
-      CookiebarDocumentData,
+      ContactDocumentData,
       CookiebarDocument,
+      CookiebarDocumentData,
+      FooterDocument,
       FooterDocumentData,
       FooterDocumentDataSlicesSlice,
-      FooterDocument,
+      FormDocument,
       FormDocumentData,
       FormDocumentDataSlicesSlice,
-      FormDocument,
+      FormgroupDocument,
       FormgroupDocumentData,
       FormgroupDocumentDataSlicesSlice,
-      FormgroupDocument,
-      HeaderDocumentData,
       HeaderDocument,
+      HeaderDocumentData,
+      HomePageArticleDocument,
       HomePageArticleDocumentData,
       HomePageArticleDocumentDataSlicesSlice,
-      HomePageArticleDocument,
+      HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
-      HomepageDocument,
+      NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataSlicesSlice,
-      NavigationDocument,
       AllDocumentTypes,
-      BlogPostContentSliceDefaultItem,
-      BlogPostContentSliceDefault,
-      BlogPostContentSliceVariation,
       BlogPostContentSlice,
-      FragmentSliceDefaultPrimary,
-      FragmentSliceDefaultItem,
-      FragmentSliceDefault,
-      FragmentSliceHomepageFragmentPrimary,
-      FragmentSliceHomepageFragmentItem,
-      FragmentSliceHomepageFragment,
-      FragmentSliceAboutMeFragmentPrimary,
-      FragmentSliceAboutMeFragmentItem,
-      FragmentSliceAboutMeFragment,
-      FragmentSliceVariation,
+      BlogPostContentSliceVariation,
+      BlogPostContentSliceDefault,
+      CodeBlockSlice,
+      CodeBlockSliceVariation,
+      CodeBlockSliceDefault,
       FragmentSlice,
-      LinkButtonSliceDefaultPrimary,
-      LinkButtonSliceDefault,
-      LinkButtonSliceVariation,
+      FragmentSliceVariation,
+      FragmentSliceDefault,
+      FragmentSliceHomepageFragment,
+      FragmentSliceAboutMeFragment,
       LinkButtonSlice,
-      LinkIconSliceDefaultPrimary,
-      LinkIconSliceDefault,
-      LinkIconSliceVariation,
+      LinkButtonSliceVariation,
+      LinkButtonSliceDefault,
       LinkIconSlice,
-      NavigationItemSliceDefaultPrimary,
-      NavigationItemSliceDefault,
-      NavigationItemSliceVariation,
+      LinkIconSliceVariation,
+      LinkIconSliceDefault,
       NavigationItemSlice,
-      PlaceableContentSliceDefaultItem,
-      PlaceableContentSliceDefault,
-      PlaceableContentSliceVariation,
+      NavigationItemSliceVariation,
+      NavigationItemSliceDefault,
       PlaceableContentSlice,
-      TextInputSliceDefaultPrimary,
-      TextInputSliceDefault,
-      TextInputSliceTextAreaPrimary,
-      TextInputSliceTextArea,
-      TextInputSliceEmailPrimary,
-      TextInputSliceEmail,
-      TextInputSliceVariation,
+      PlaceableContentSliceVariation,
+      PlaceableContentSliceDefault,
       TextInputSlice,
+      TextInputSliceVariation,
+      TextInputSliceDefault,
+      TextInputSliceTextArea,
+      TextInputSliceEmail,
     };
   }
 }

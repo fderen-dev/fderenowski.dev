@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"language": {
+				"__TYPE__": "FieldContent",
+				"value": "javascript",
+				"type": "Select"
+			},
+			"codestring": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Reprehenderit dolore ut laboris commodo exercitation Lorem sint laborum esse amet dolore do sit adipisicing."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
