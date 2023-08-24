@@ -24,7 +24,8 @@
               "javascript",
               "css",
               "scss",
-              "bash"
+              "bash",
+              "json"
             ]
           }
         },
@@ -35,6 +36,24 @@
             "placeholder": "",
             "allowTargetBlank": false,
             "single": "preformatted"
+          }
+        },
+        "showlinenumbers": {
+          "type": "Boolean",
+          "config": {
+            "label": "ShowLineNumbers",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "wraplines": {
+          "type": "Boolean",
+          "config": {
+            "label": "WrapLines",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         }
       },

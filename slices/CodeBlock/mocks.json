@@ -5,7 +5,7 @@
 		"primary": {
 			"language": {
 				"__TYPE__": "FieldContent",
-				"value": "javascript",
+				"value": "jsx",
 				"type": "Select"
 			},
 			"codestring": {
@@ -18,6 +18,14 @@
 						}
 					}
 				]
+			},
+			"showlinenumbers": {
+				"__TYPE__": "BooleanContent",
+				"value": false
+			},
+			"wraplines": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []

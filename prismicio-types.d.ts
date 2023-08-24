@@ -1037,7 +1037,14 @@ export interface CodeBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   language: prismic.SelectField<
-    "tsx" | "typescript" | "jsx" | "javascript" | "css" | "scss" | "bash"
+    | "tsx"
+    | "typescript"
+    | "jsx"
+    | "javascript"
+    | "css"
+    | "scss"
+    | "bash"
+    | "json"
   >;
 
   /**
@@ -1049,6 +1056,28 @@ export interface CodeBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   codestring: prismic.RichTextField;
+
+  /**
+   * ShowLineNumbers field in *CodeBlock → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: code_block.primary.showlinenumbers
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  showlinenumbers: prismic.BooleanField;
+
+  /**
+   * WrapLines field in *CodeBlock → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: code_block.primary.wraplines
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  wraplines: prismic.BooleanField;
 }
 
 /**
