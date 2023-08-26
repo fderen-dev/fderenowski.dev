@@ -103,6 +103,6 @@ $content-margin-inline: 2rem;
   }
 
   a {
-    color: vars.$c-link;
+    @include mixins.inline-link;
   }
 }
