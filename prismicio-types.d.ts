@@ -1078,6 +1078,17 @@ export interface CodeBlockSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#boolean
    */
   wraplines: prismic.BooleanField;
+
+  /**
+   * ShowCopyButton field in *CodeBlock → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: code_block.primary.showcopybutton
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  showcopybutton: prismic.BooleanField;
 }
 
 /**

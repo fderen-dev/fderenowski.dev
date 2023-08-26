@@ -18,7 +18,7 @@ const CodeBlock = ({ slice }: CodeBlockProps): JSX.Element | null => {
   }
 
   return (
-    <SyntaxHiglighter codeString={helpers.asText(slice.primary.codestring)} language={slice.primary.language} showLineNumbers={slice.primary.showlinenumbers} wrapLines={slice.primary.wraplines}/>
+    <SyntaxHiglighter codeString={helpers.asText(slice.primary.codestring)} language={slice.primary.language} showLineNumbers={slice.primary.showlinenumbers} wrapLines={slice.primary.wraplines} showCopyButton={slice.primary.showcopybutton} />
   );
 };
 
