@@ -1,0 +1,25 @@
+@use "styles/mixins";
+@use "styles/variables" as vars;
+
+.container {
+  position: relative;
+}
+
+.copyButton {
+  @include mixins.reset-button;
+  @include mixins.transition(opacity);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: vars.$spacing-small;
+  opacity: 0.3;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.icon {
+  fill: vars.$c-font;
+}
