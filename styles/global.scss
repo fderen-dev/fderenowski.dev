@@ -62,7 +62,7 @@ a {
   color: inherit;
   font-weight: vars.$fw-medium;
   text-decoration: none;
-  @include mixins.link-transition;
+  @include mixins.transition;
 
   &:hover,
   &:focus {
