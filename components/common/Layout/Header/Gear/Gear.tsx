@@ -6,7 +6,7 @@ import { useScrollDetectionContext } from "context/ScrollDetection";
 import { useIsMounted } from "utils/hooks";
 import { ScrollDirection } from "utils/hooks/useScrollDetection";
 
-import GearImage from "public/gear.svg";
+import GearImage from "public/icons/gear.svg";
 
 import styles from "./gear.module.scss";
 
