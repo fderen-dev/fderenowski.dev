@@ -101,4 +101,8 @@ $content-margin-inline: 2rem;
       margin-block-start: vars.$blog-post-spacing;
     }
   }
+
+  a {
+    color: vars.$c-link;
+  }
 }
