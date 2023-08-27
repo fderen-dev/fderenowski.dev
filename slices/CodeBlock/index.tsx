@@ -1,5 +1,5 @@
 import { Content } from "@prismicio/client";
-import * as helpers from "@prismicio/helpers";
+import { asText } from "@prismicio/helpers";
 import { SliceComponentProps } from "@prismicio/react";
 
 import { SyntaxHiglighter } from "components/blog/SyntaxHighlighter/SyntaxHighlighter";
@@ -18,7 +18,13 @@ const CodeBlock = ({ slice }: CodeBlockProps): JSX.Element | null => {
   }
 
   return (
-    <SyntaxHiglighter codeString={helpers.asText(slice.primary.codestring)} language={slice.primary.language} showLineNumbers={slice.primary.showlinenumbers} wrapLines={slice.primary.wraplines} showCopyButton={slice.primary.showcopybutton} />
+    <SyntaxHiglighter
+      codeString={asText(slice.primary.codestring)}
+      language={slice.primary.language}
+      showLineNumbers={slice.primary.showlinenumbers}
+      wrapLines={slice.primary.wraplines}
+      showCopyButton={slice.primary.showcopybutton}
+    />
   );
 };
 

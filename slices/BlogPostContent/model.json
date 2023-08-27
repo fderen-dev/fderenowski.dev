@@ -23,11 +23,106 @@
         },
         "image": {
           "type": "Image",
-          "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
         },
         "imagecaption": {
           "type": "Text",
-          "config": { "label": "ImageCaption", "placeholder": "" }
+          "config": {
+            "label": "ImageCaption",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "withCodeBlock",
+      "name": "With CodeBlock",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "BlogPostContent",
+      "primary": {},
+      "items": {
+        "content": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Content",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,embed,list-item,o-list-item"
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "imagecaption": {
+          "type": "Text",
+          "config": {
+            "label": "ImageCaption",
+            "placeholder": ""
+          }
+        },
+        "language": {
+          "type": "Select",
+          "config": {
+            "label": "Language",
+            "placeholder": "",
+            "options": [
+              "bash",
+              "tsx",
+              "jsx",
+              "javascript",
+              "typescript",
+              "css",
+              "sass",
+              "json"
+            ]
+          }
+        },
+        "showlinenumbers": {
+          "type": "Boolean",
+          "config": {
+            "label": "ShowLineNumbers",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "wraplines": {
+          "type": "Boolean",
+          "config": {
+            "label": "WrapLines",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "showcopybutton": {
+          "type": "Boolean",
+          "config": {
+            "label": "ShowCopyButton",
+            "default_value": false,
+            "placeholder_true": "true",
+            "placeholder_false": "false"
+          }
+        },
+        "code": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Code",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "preformatted"
+          }
         }
       },
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
