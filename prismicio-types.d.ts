@@ -1008,9 +1008,121 @@ export type BlogPostContentSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *BlogPostContent → Items*
+ */
+export interface BlogPostContentSliceWithCodeBlockItem {
+  /**
+   * Content field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.items[].content
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Image field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.items[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * ImageCaption field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.items[].imagecaption
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  imagecaption: prismic.KeyTextField;
+
+  /**
+   * Language field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.items[].language
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  language: prismic.SelectField<
+    | "bash"
+    | "tsx"
+    | "jsx"
+    | "javascript"
+    | "typescript"
+    | "css"
+    | "sass"
+    | "json"
+  >;
+
+  /**
+   * ShowLineNumbers field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: blog_post_content.items[].showlinenumbers
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  showlinenumbers: prismic.BooleanField;
+
+  /**
+   * WrapLines field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: blog_post_content.items[].wraplines
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  wraplines: prismic.BooleanField;
+
+  /**
+   * ShowCopyButton field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: false
+   * - **API ID Path**: blog_post_content.items[].showcopybutton
+   * - **Documentation**: https://prismic.io/docs/field#boolean
+   */
+  showcopybutton: prismic.BooleanField;
+
+  /**
+   * Code field in *BlogPostContent → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog_post_content.items[].code
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  code: prismic.RichTextField;
+}
+
+/**
+ * With CodeBlock variation for BlogPostContent Slice
+ *
+ * - **API ID**: `withCodeBlock`
+ * - **Description**: BlogPostContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlogPostContentSliceWithCodeBlock = prismic.SharedSliceVariation<
+  "withCodeBlock",
+  Record<string, never>,
+  Simplify<BlogPostContentSliceWithCodeBlockItem>
+>;
+
+/**
  * Slice variation for *BlogPostContent*
  */
-type BlogPostContentSliceVariation = BlogPostContentSliceDefault;
+type BlogPostContentSliceVariation =
+  | BlogPostContentSliceDefault
+  | BlogPostContentSliceWithCodeBlock;
 
 /**
  * BlogPostContent Shared Slice
@@ -1946,6 +2058,7 @@ declare module "@prismicio/client" {
       BlogPostContentSlice,
       BlogPostContentSliceVariation,
       BlogPostContentSliceDefault,
+      BlogPostContentSliceWithCodeBlock,
       CodeBlockSlice,
       CodeBlockSliceVariation,
       CodeBlockSliceDefault,
