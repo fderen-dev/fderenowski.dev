@@ -89,6 +89,14 @@ $content-margin-inline: 2rem;
 .article {
   padding: 3em 1.5em;
 
+  h2,
+  h3,
+  h4 {
+    &:not(:first-child) {
+      margin-block-start: vars.$blog-post-spacing * 1.5;
+    }
+  }
+
   p,
   pre {
     font-size: clamp(2rem, 0.13vw + 1.96rem, 2.2rem);
