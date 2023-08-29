@@ -37,6 +37,8 @@ $fs-mobile-navigation-item: 2.5rem;
 $fs-desktop-navigation-item: 1.7rem;
 $fs-mobile-cookie-bar-content: 1.8rem;
 $fs-desktop-cookie-bar-content: 2.1rem;
+$fs-blog-content: clamp(2rem, 0.13vw + 1.96rem, 2.2rem);
+$fs-blog-code: clamp(1.4rem, 0.25vw + 1.32rem, 1.8rem);
 
 // colors
 $c-spider-gray: #222;

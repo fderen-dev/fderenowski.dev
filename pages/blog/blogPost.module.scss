@@ -99,7 +99,7 @@ $content-margin-inline: 2rem;
 
   p,
   pre {
-    font-size: clamp(2rem, 0.13vw + 1.96rem, 2.2rem);
+    font-size: vars.$fs-blog-content;
   }
 
   p {
