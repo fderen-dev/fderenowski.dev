@@ -40,8 +40,7 @@ export const HomePageArticle = ({
       {header && (
         <h2
           className={cx(styles.header, {
-            start: placement === "start",
-            center: placement === "center",
+            start: placement === "start" || "center",
             end: placement === "end",
           })}
         >
