@@ -36,6 +36,7 @@ const BlogPostContentItemFigure = ({
 };
 
 interface BlogPostContentItemProps {
+  // @ts-ignore
   item: Content.BlogPostContentSliceDefaultItem;
 }
 
@@ -61,6 +62,7 @@ const BlogPostContentDefaultItem = ({ item }: BlogPostContentItemProps) => {
 };
 
 interface BlogPostConentWithCodeBlockItemProps {
+  // @ts-ignore
   item: Content.BlogPostContentSliceWithCodeBlockItem;
 }
 

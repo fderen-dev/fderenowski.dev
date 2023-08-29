@@ -12,6 +12,7 @@ import { Button } from "components/common/Button/Button";
 import styles from "./placeableContent.module.scss";
 
 interface PlaceableContentItemProps {
+  // @ts-ignore
   data: Content.PlaceableContentSliceDefaultItem;
 }
 
