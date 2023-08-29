@@ -44,19 +44,30 @@ export const SyntaxHiglighter = ({
 }: SyntaxHiglighterProps) => {
   const { isCopied, isCopying, copyToClipboard } = useCopyToClipboard({ timeout: 500});
 
-  return(
-  <div className={styles.container}>
-    {showCopyButton && <button className={styles.copyButton} disabled={isCopying} onClick={() => copyToClipboard(codeString)}>
-      {isCopied ? <CheckMarkIcon aria-label="Copied" className={styles.icon} /> : <CopyIcon aria-label="Copy to clipboard" className={styles.icon} />}
-    </button>}
-    <SyntaxHighlighter
-      language={language}
-      style={vscDarkPlus}
-      showLineNumbers={showLineNumbers}
-      wrapLines={wrapLines}
-    >
-      {codeString}
-    </SyntaxHighlighter>
-  </div>
-);
+  return (
+    <div className={styles.container}>
+      {showCopyButton && (
+        <button
+          className={styles.copyButton}
+          disabled={isCopying}
+          onClick={() => copyToClipboard(codeString)}
+        >
+          {isCopied ? (
+            <CheckMarkIcon aria-label="Copied" className={styles.icon} />
+          ) : (
+            <CopyIcon aria-label="Copy to clipboard" className={styles.icon} />
+          )}
+        </button>
+      )}
+      <SyntaxHighlighter
+        language={language}
+        style={vscDarkPlus}
+        showLineNumbers={showLineNumbers}
+        wrapLines={wrapLines}
+        codeTagProps={{ className: styles.code }}
+      >
+        {codeString}
+      </SyntaxHighlighter>
+    </div>
+  );
   }
