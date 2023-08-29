@@ -37,6 +37,8 @@ $inner-spacing: 24px;
 }
 
 .contentWrapper {
+  display: flex;
+  flex-direction: column;
   padding: $inner-spacing vars.$spacing-medium;
 }
 
@@ -49,6 +51,7 @@ $inner-spacing: 24px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-top: auto;
 }
 
 .tagsContainer {
