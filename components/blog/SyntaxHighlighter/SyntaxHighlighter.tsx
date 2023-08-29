@@ -1,3 +1,4 @@
+import classNames from "classnames/bind";
 import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import bash from "react-syntax-highlighter/dist/cjs/languages/prism/bash";
 import css from "react-syntax-highlighter/dist/cjs/languages/prism/css";
@@ -65,6 +66,7 @@ export const SyntaxHiglighter = ({
         showLineNumbers={showLineNumbers}
         wrapLines={wrapLines}
         codeTagProps={{ className: styles.code }}
+        className={styles.codeContainer}
       >
         {codeString}
       </SyntaxHighlighter>
