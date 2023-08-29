@@ -62,6 +62,14 @@
     }
   }
 
+  &.center {
+    text-align: center;
+
+    &::before {
+      @include mixins.yellow-background;
+    }
+  }
+
   &.end {
     text-align: end;
 
