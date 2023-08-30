@@ -15,7 +15,7 @@ import { useCopyToClipboard } from "hooks/useCopyToClipboard";
 import CheckMarkIcon from "public/icons/checkmark.svg";
 import CopyIcon from "public/icons/copy.svg";
 
-import styles from "./SyntaxHighlighter.module.scss";
+import styles from "./syntaxHighlighter.module.scss";
 
 SyntaxHighlighter.registerLanguage("tsx", tsx);
 SyntaxHighlighter.registerLanguage("bash", bash);
