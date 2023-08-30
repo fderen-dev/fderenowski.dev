@@ -51,14 +51,9 @@ $content-margin-inline: 2rem;
   position: absolute;
   z-index: 1;
   bottom: 0;
-  display: grid;
   width: 100%;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 3em 1.5em;
+  padding: 3em 1.5em 1.5em;
   backdrop-filter: blur(3px);
-  column-gap: 1em;
-  grid-template-columns: 2fr 1fr;
   margin-block-end: 2em;
 
   &::before {
@@ -70,8 +65,9 @@ $content-margin-inline: 2rem;
 }
 
 .headerDate {
-  align-self: baseline;
-  justify-self: flex-end;
+  position: absolute;
+  top: 1em;
+  right: 1.5em;
 }
 
 .headerTagsList {
@@ -87,7 +83,7 @@ $content-margin-inline: 2rem;
 }
 
 .article {
-  padding: 3em 1.5em;
+  padding: 3em 0.5em;
 
   h2,
   h3,
