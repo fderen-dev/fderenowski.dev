@@ -8,6 +8,8 @@
 }
 
 .wrapper {
+  padding-inline: 1.5em;
+
   .buttonWrapper {
     &:not(:first-child) {
       margin-block-start: 20px;
