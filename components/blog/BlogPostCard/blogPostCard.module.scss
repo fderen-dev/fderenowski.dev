@@ -38,8 +38,9 @@ $inner-spacing: 24px;
 
 .contentWrapper {
   display: flex;
+  height: 100%;
   flex-direction: column;
-  padding: $inner-spacing vars.$spacing-medium;
+  padding: 1.5rem 2rem 2rem;
 }
 
 .header {
