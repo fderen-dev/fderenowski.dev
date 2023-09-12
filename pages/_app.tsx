@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 import Modal from "react-modal";
 
@@ -13,14 +14,12 @@ import "styles/global.scss";
 Modal.setAppElement("#__next");
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { asPath } = useRouter();
+
   return (
     <RootProvider>
-      <AnimatePresence
-        mode="sync"
-        initial={false}
-        onExitComplete={() => window.scrollTo(0, 0)}
-      >
-        <Component {...pageProps} />
+      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+        <Component {...pageProps} key={asPath} />
       </AnimatePresence>
       <Measurement />
       {isDevMode && <MediaQueries.CurrentBreakpoint />}
