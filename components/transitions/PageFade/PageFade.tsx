@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion"
 
@@ -12,22 +12,25 @@ const animation = {
   variants: {
     entering: {
       opacity: 0,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
     },
     animating: {
       opacity: 1,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
     },
     exitting: {
       opacity: 0,
+      clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 0)",
     },
   },
   transition: {
-    duration: 1.5
-  }
+    exitting: {
+      delay: 0.75
+    }
+  },
 };
 
 export const PageFade = forwardRef<HTMLDivElement, PageFadeProps>(function PageFade({ id, children, className }, ref) {
-  const { asPath: _asPath } = useRouter();
-  const [asPath] = useState<string>(_asPath);
 
   return (
     <motion.div
@@ -36,7 +39,6 @@ export const PageFade = forwardRef<HTMLDivElement, PageFadeProps>(function PageF
       exit="exitting"
       variants={animation.variants}
       transition={animation.transition}
-      key={asPath}
       id={id}
       className={className}
       ref={ref}
