@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <RootProvider>
-      <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
+      <AnimatePresence initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
         <Component {...pageProps} key={asPath} />
       </AnimatePresence>
       <Measurement />
