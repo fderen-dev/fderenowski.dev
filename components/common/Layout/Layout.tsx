@@ -1,7 +1,7 @@
 import { ReactElement, useRef } from "react";
 import classNames from "classnames";
 
-import { PageFade } from "components/transitions/PageFade/PageFade";
+import { PageFade } from "components/transitions/PageSlideDownAndUp/PageSlideDownAndUp";
 
 import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { useIsMounted } from "utils/hooks";
