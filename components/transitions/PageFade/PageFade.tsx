@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion"
 
 interface PageFadeProps { 
@@ -11,22 +10,21 @@ interface PageFadeProps {
 const animation = {
   variants: {
     entering: {
-      opacity: 0,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+      clipPath: "inset(100% 0 0 0)",
     },
     animating: {
-      opacity: 1,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+      clipPath: "inset(0)",
+      transition: {
+        delay: 0.5,
+        duration: 0.75,
+      },
     },
     exitting: {
-      opacity: 0,
-      clipPath: "polygon(0 100%, 100% 100%, 100% 0, 0 0)",
+      clipPath: "inset(100% 0 0 0)",
+      transition: {
+        duration: 0.5,
+      },
     },
-  },
-  transition: {
-    exitting: {
-      delay: 0.75
-    }
   },
 };
 
@@ -38,7 +36,6 @@ export const PageFade = forwardRef<HTMLDivElement, PageFadeProps>(function PageF
       animate="animating"
       exit="exitting"
       variants={animation.variants}
-      transition={animation.transition}
       id={id}
       className={className}
       ref={ref}
