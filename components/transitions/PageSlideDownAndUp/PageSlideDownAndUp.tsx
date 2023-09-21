@@ -15,14 +15,14 @@ const animation = {
     animating: {
       clipPath: "inset(0)",
       transition: {
-        delay: 0.5,
-        duration: 0.75,
+        delay: 0.35,
+        duration: 0.7,
       },
     },
     exitting: {
       clipPath: "inset(100% 0 0 0)",
       transition: {
-        duration: 0.5,
+        duration: 0.35,
       },
     },
   },
