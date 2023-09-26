@@ -1,8 +1,6 @@
 import { ReactElement, useRef } from "react";
 import classNames from "classnames";
 
-import { PageFade } from "components/transitions/PageSlideDownAndUp/PageSlideDownAndUp";
-
 import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { useIsMounted } from "utils/hooks";
 import { WithChildren } from "utils/types";
@@ -50,19 +48,20 @@ export const Layout = ({
   useIsMounted();
 
   return (
-    <PageFade id="layout" className={styles.root} ref={layoutRef}>
-        <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
-          {Navbar}
-          {Header}
-          <Main
-            contentWrapperClassName={contentWrapperClassName}
-            contentContainerClassName={contentContainerClassName}
-          >
-            {children}
-          </Main>
-          {Footer}
-        </ScrollDetectionProvider>
-        {CookieBar}
-    </PageFade>
+    // TODO: find workaround for framer motion exit animations + css modules dissapearing on exit
+    <div id="layout" className={styles.root} ref={layoutRef}>
+      <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
+        {Navbar}
+        {Header}
+        <Main
+          contentWrapperClassName={contentWrapperClassName}
+          contentContainerClassName={contentContainerClassName}
+        >
+          {children}
+        </Main>
+        {Footer}
+      </ScrollDetectionProvider>
+      {CookieBar}
+    </div>
   );
 };

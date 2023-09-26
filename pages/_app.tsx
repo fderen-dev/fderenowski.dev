@@ -1,6 +1,5 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
-import { AnimatePresence } from "framer-motion";
 import Modal from "react-modal";
 
 import { Measurement } from "components/Measurement/Measurement";
@@ -18,12 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <RootProvider>
-      <AnimatePresence
-        initial={false}
-        onExitComplete={() => window.scrollTo(0, 0)}
-      >
-        <Component {...pageProps} key={asPath} />
-      </AnimatePresence>
+      <Component {...pageProps} key={asPath} />
       <Measurement />
       {isDevMode && <MediaQueries.CurrentBreakpoint />}
     </RootProvider>
