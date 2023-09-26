@@ -119,7 +119,7 @@
 						"language",
 						{
 							"__TYPE__": "FieldContent",
-							"value": "tsx",
+							"value": "jsx",
 							"type": "Select"
 						}
 					],

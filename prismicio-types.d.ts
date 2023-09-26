@@ -1056,7 +1056,7 @@ export interface BlogPostContentSliceWithCodeBlockItem {
     | "javascript"
     | "typescript"
     | "css"
-    | "sass"
+    | "scss"
     | "json"
   >;
 

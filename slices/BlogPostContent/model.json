@@ -83,7 +83,7 @@
               "javascript",
               "typescript",
               "css",
-              "sass",
+              "scss",
               "json"
             ]
           }

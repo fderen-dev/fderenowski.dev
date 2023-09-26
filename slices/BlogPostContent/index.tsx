@@ -108,6 +108,7 @@ const BlogPostContent: SliceComponentType = (
     if (slice.variation === "default") {
      return <BlogPostContentDefaultItem item={item} key={idx} />
     } else if (slice.variation === "withCodeBlock") {
+      // @ts-ignore
       return <BlogPostConentWithCodeBlockItem item={item} key={idx} />
     }
   });
