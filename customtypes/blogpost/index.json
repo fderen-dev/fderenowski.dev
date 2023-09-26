@@ -39,19 +39,19 @@
         "config": {
           "label": "Background",
           "constraint": {
-            "width": 720,
-            "height": 480
+            "width": 4000,
+            "height": 2000
           },
           "thumbnails": [
             {
               "name": "medium",
-              "width": 1080,
-              "height": 720
+              "width": 2000,
+              "height": 1000
             },
             {
-              "name": "large",
-              "width": null,
-              "height": 1080
+              "name": "small",
+              "width": 1000,
+              "height": 500
             }
           ]
         }
