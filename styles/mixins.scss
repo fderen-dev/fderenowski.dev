@@ -183,6 +183,7 @@
 @mixin inline-link {
   color: vars.$c-link;
   text-decoration: none;
+  word-break: break-word;
 }
 
 @mixin reset-button {
