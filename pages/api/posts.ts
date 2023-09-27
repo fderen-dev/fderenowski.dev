@@ -105,6 +105,10 @@ async function fetchBlogPostsFromCMS(): Promise<void> {
   const client = createClient();
   const blogPosts = await client.dangerouslyGetAll<Content.BlogpostDocument>({
     filters: [prismic.filter.at("document.type", "blogpost")],
+    orderings: {
+      field: "document.first_publication_date",
+      direction: "desc",
+    },
   });
 
   posts =
