@@ -36,10 +36,15 @@ export const withInfiniteScroll = <Props extends ComponentProps, Data>(
       }
     }, [isInViewport, hasMore, next]);
 
+    if (isFetching) {
+      return Loader;
+    }
+
+    if(!data || (Array.isArray(data) && data.length === 0)) {
+      return NoResults
+    }
+
     return (
-      <>
-        <Component {...(props as Props)} data={data} ref={componentRef} />
-        {isFetching && Loader}
-      </>
+      <Component {...(props as Props)} data={data} ref={componentRef} />
     );
   };
