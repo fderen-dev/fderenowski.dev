@@ -48,16 +48,11 @@ export const Gear: FC<GearProps> = ({
 
   if (responsivePlacement) {
     const { desktop, mobiles } = responsivePlacement;
+
     if (isDesktop) {
-      top = desktop.top;
-      left = desktop.left;
-      right = desktop.right;
-      bottom = desktop.bottom;
+      placement = {...desktop};
     } else {
-      top = mobiles.top;
-      left = mobiles.left;
-      right = mobiles.right;
-      bottom = mobiles.bottom;
+      placement = {...mobiles};
     }
   }
 
