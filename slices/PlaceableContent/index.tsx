@@ -1,7 +1,7 @@
 import React from "react";
 import { Content } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import {
-  PrismicLink,
   PrismicRichText,
   SliceComponentProps,
   SliceComponentType,
@@ -41,11 +41,11 @@ const PlaceableContentItem = ({
           style={{ justifyContent: button_link_placement ?? "start" }}
         >
           {/*@ts-ignore*/}
-          <PrismicLink href={button_link_href.url} className={styles.link}>
+          <PrismicNextLink href={button_link_href.url} className={styles.link}>
             <Button variant="primary" className={styles.button}>
               <span className={styles.buttonText}>{button_link_label}</span>
             </Button>
-          </PrismicLink>
+          </PrismicNextLink>
         </div>
       )}
     </div>

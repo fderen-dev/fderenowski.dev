@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { PrismicImage } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
 import classNames from "classnames";
 
 import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
@@ -44,7 +44,7 @@ export const BlogPostCard = forwardRef<HTMLLIElement, BlogPostCardProps>(
         ref={ref}
       >
         {thumbnail && (
-          <PrismicImage className={styles.thumbnail} field={thumbnail} />
+          <PrismicNextImage className={styles.thumbnail} field={thumbnail} />
         )}
         <div className={styles.contentWrapper}>
           {header && <h2 className={styles.header}>{header}</h2>}

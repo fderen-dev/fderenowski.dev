@@ -1,7 +1,8 @@
 import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 import * as prismicH from "@prismicio/helpers";
-import { PrismicImage, SliceZone } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
+import { SliceZone } from "@prismicio/react";
 import { getTags } from "pages/api/posts";
 import { components as slices } from "slices";
 
@@ -97,7 +98,7 @@ const BlogPost: NextPage<{
       contentContainerClassName={styles.layoutContentContainer}
     >
       <header className={styles.header}>
-        <PrismicImage
+        <PrismicNextImage
           field={background}
           className={styles.headerImage}
           draggable={false}

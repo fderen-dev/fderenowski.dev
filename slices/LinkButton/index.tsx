@@ -1,7 +1,7 @@
 import React from "react";
 import { Content } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import {
-  PrismicLink,
   SliceComponentProps,
   SliceComponentType,
 } from "@prismicio/react";
@@ -17,11 +17,11 @@ const LinkButton: SliceComponentType = ({
     className={styles.wrapper}
     style={{ justifyContent: slice.primary.placement ?? "start" }}
   >
-    <PrismicLink field={slice.primary.href} className={styles.link}>
+    <PrismicNextLink field={slice.primary.href} className={styles.link}>
       <Button variant="primary" className={styles.button}>
         <span className={styles.buttonText}>{slice.primary.label}</span>
       </Button>
-    </PrismicLink>
+    </PrismicNextLink>
   </div>
 );
 

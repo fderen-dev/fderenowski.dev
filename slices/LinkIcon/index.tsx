@@ -1,8 +1,7 @@
 import React from "react";
 import { Content } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import {
-  PrismicLink,
   SliceComponentProps,
   SliceComponentType,
 } from "@prismicio/react";
@@ -12,7 +11,7 @@ import styles from "./linkIcon.module.scss";
 const LinkIcon: SliceComponentType = ({
   slice,
 }: SliceComponentProps<Content.LinkIconSlice>) => (
-  <PrismicLink
+  <PrismicNextLink
     rel="noreferrer noopener"
     target="_blank"
     field={slice.primary.href}
@@ -23,7 +22,7 @@ const LinkIcon: SliceComponentType = ({
       draggable={false}
       className={styles.icon}
     />
-  </PrismicLink>
+  </PrismicNextLink>
 );
 
 export default LinkIcon;

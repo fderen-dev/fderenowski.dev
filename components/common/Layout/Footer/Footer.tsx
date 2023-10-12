@@ -1,5 +1,6 @@
 import { Content } from "@prismicio/client";
-import { PrismicImage, PrismicRichText, SliceZone } from "@prismicio/react";
+import { PrismicNextImage } from "@prismicio/next";
+import { PrismicRichText, SliceZone } from "@prismicio/react";
 import { components as slices } from "slices";
 
 import { TypeTools } from "utils/TypeTools";
@@ -19,7 +20,7 @@ export const Footer = ({ prismicDocumentData }: FooterProps) => {
     <footer className={styles.container}>
       <div className={styles.footer}>
         {/* TODO: replace with actual logo */}
-        <PrismicImage
+        <PrismicNextImage
           field={prismicDocumentData.logo}
           className={styles.logo}
         />

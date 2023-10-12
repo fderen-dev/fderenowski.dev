@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Content } from "@prismicio/client";
-import { PrismicNextImage } from "@prismicio/next";
-import { PrismicLink, PrismicText } from "@prismicio/react";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicText } from "@prismicio/react";
 import type * as PrismicType from "@prismicio/types";
 import classNames from "classnames/bind";
 import ReactModal from "react-modal";
@@ -61,7 +61,7 @@ const NavigationItem = ({
   } else if (!TypeTools.isNullOrUndefined(field)) {
     return (
       <As className={cx(styles.navigationItem, containerClassName)}>
-        <PrismicLink
+        <PrismicNextLink
           field={field}
           className={cx(styles.navigationItemLink, linkClassName)}
         >
@@ -72,7 +72,7 @@ const NavigationItem = ({
           >
             {children}
           </div>
-        </PrismicLink>
+        </PrismicNextLink>
       </As>
     );
   }
@@ -112,7 +112,11 @@ const HomeRoute = ({ iconField, linkField }: HomeRouteProps) => (
     containerClassName={styles.homeRoute}
     aria-label="Navigate to homepage"
   >
-    <PrismicNextImage field={iconField} className={styles.logo} />
+    <PrismicNextImage
+      // @ts-ignore
+      field={iconField}
+      className={styles.logo}
+    />
   </NavigationItem>
 );
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { Content } from "@prismicio/client";
 import { asText } from "@prismicio/helpers";
+import { PrismicNextImage } from "@prismicio/next";
 import {
-  PrismicImage,
   PrismicRichText,
   SliceComponentProps,
   SliceComponentType,
@@ -24,7 +24,8 @@ const BlogPostContentItemFigure = ({
 }: BlogPostContentItemFigureProps) => {
   return (
     <figure className={styles.figure}>
-      <PrismicImage
+      <PrismicNextImage
+        // @ts-ignore
         field={image}
         // @ts-ignore
         alt={image.alt ?? ""}
@@ -48,7 +49,7 @@ const BlogPostContentDefaultItem = ({ item }: BlogPostContentItemProps) => {
       {image && imagecaption ? (
         <BlogPostContentItemFigure image={image} caption={imagecaption} />
       ) : (
-        <PrismicImage
+        <PrismicNextImage
           field={image}
           // @ts-ignore
           alt={image.alt ?? ""}
@@ -77,7 +78,7 @@ const BlogPostConentWithCodeBlockItem = ({
       {image && imagecaption ? (
         <BlogPostContentItemFigure image={image} caption={imagecaption} />
       ) : (
-        <PrismicImage
+        <PrismicNextImage
           field={image}
           // @ts-ignore
           alt={image.alt ?? ""}
