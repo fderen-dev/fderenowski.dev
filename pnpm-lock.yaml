@@ -38,6 +38,9 @@ dependencies:
   next:
     specifier: ^13.5.4
     version: 13.5.4(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.3)
+  overlayscrollbars-react:
+    specifier: ^0.5.2
+    version: 0.5.2(overlayscrollbars@2.3.2)(react@18.2.0)
   react:
     specifier: ^18.2.0
     version: 18.2.0
@@ -6620,6 +6623,20 @@ packages:
       type-check: 0.4.0
       word-wrap: 1.2.3
     dev: true
+
+  /overlayscrollbars-react@0.5.2(overlayscrollbars@2.3.2)(react@18.2.0):
+    resolution: {integrity: sha512-y3xIPY3to7hneF30MQ/tK9nI6UOcflgenAYktgyfi0GuwnsYEuAqgLfs2qDGiNhFA30Xcz3gaMxvqD7+hTvFRA==}
+    peerDependencies:
+      overlayscrollbars: ^2.0.0
+      react: '>=16.8.0'
+    dependencies:
+      overlayscrollbars: 2.3.2
+      react: 18.2.0
+    dev: false
+
+  /overlayscrollbars@2.3.2:
+    resolution: {integrity: sha512-K3Sau7NpFruKfXBauvchAQshAW+un1qD8EYNcozrPAB2kbif8C2rqa+1EWvMMWPKl88wgf2rX2QDMLgAfR0hHA==}
+    dev: false
 
   /p-limit@3.1.0:
     resolution: {integrity: sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==}

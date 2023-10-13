@@ -1,5 +1,6 @@
-import { ReactElement, useRef } from "react";
+import { ReactElement, useEffect, useRef } from "react";
 import classNames from "classnames";
+import { useOverlayScrollbars } from "overlayscrollbars-react";
 
 import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { useIsMounted } from "utils/hooks";
@@ -45,12 +46,24 @@ export const Layout = ({
   contentContainerClassName,
 }: LayoutProps) => {
   const layoutRef = useRef(null);
+  const scrollViewportRef = useRef<HTMLElement>(null);
+  const [initialize, instance] = useOverlayScrollbars();
+
+  useEffect(() => {
+    initialize(layoutRef.current!);
+    // @ts-ignore
+    scrollViewportRef.current = instance()?.elements().viewport!;
+  }, [initialize, instance]);
+
   useIsMounted();
 
   return (
     // TODO: find workaround for framer motion exit animations + css modules dissapearing on exit
     <div id="layout" className={styles.root} ref={layoutRef}>
-      <ScrollDetectionProvider treshold={100} element={layoutRef.current!}>
+      <ScrollDetectionProvider
+        treshold={100}
+        element={scrollViewportRef.current!}
+      >
         {Navbar}
         {Header}
         <Main
