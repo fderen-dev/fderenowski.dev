@@ -1,10 +1,9 @@
-import { ReactElement, useEffect, useRef } from "react";
+import { ReactElement } from "react";
 import classNames from "classnames";
-import { useOverlayScrollbars } from "overlayscrollbars-react";
 
-import { ScrollDetectionProvider } from "context/ScrollDetection";
-import { useIsMounted } from "utils/hooks";
 import { WithChildren } from "utils/types";
+
+import { ScrollContainer } from "./ScrollContainer/ScrollContainer";
 
 import styles from "./layout.module.scss";
 
@@ -45,36 +44,19 @@ export const Layout = ({
   contentWrapperClassName,
   contentContainerClassName,
 }: LayoutProps) => {
-  const layoutRef = useRef(null);
-  const scrollViewportRef = useRef<HTMLElement>(null);
-  const [initialize, instance] = useOverlayScrollbars();
-
-  useEffect(() => {
-    initialize(layoutRef.current!);
-    // @ts-ignore
-    scrollViewportRef.current = instance()?.elements().viewport!;
-  }, [initialize, instance]);
-
-  useIsMounted();
-
   return (
     // TODO: find workaround for framer motion exit animations + css modules dissapearing on exit
-    <div id="layout" className={styles.root} ref={layoutRef}>
-      <ScrollDetectionProvider
-        treshold={100}
-        element={scrollViewportRef.current!}
+    <ScrollContainer id="layout" className={styles.root}>
+      {Navbar}
+      {Header}
+      <Main
+        contentWrapperClassName={contentWrapperClassName}
+        contentContainerClassName={contentContainerClassName}
       >
-        {Navbar}
-        {Header}
-        <Main
-          contentWrapperClassName={contentWrapperClassName}
-          contentContainerClassName={contentContainerClassName}
-        >
-          {children}
-        </Main>
-        {Footer}
-      </ScrollDetectionProvider>
-      {CookieBar}
-    </div>
+        {children}
+      </Main>
+      {Footer}
+    {CookieBar}
+    </ScrollContainer>
   );
 };
