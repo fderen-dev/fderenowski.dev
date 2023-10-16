@@ -1,19 +1,16 @@
 import { useEffect, useRef } from "react";
 import { useOverlayScrollbars } from "overlayscrollbars-react";
 
+import { ElementProps, PolymorficContainer, ValidTags } from "components/common/PolymofricContainer/PolymorficContainer";
+
 import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { useIsMounted } from "utils/hooks";
 
-type ValidTags = React.ElementType;
-
-type PolymorficCointainerProps<C extends ValidTags> = {
-  as?: C;
-  children: React.ReactNode;
-} & React.ComponentPropsWithoutRef<C>;
-
 type ScrollContainerProps<Tag extends ValidTags> = {
+  as?: Tag;
   className?: string;
-} & PolymorficCointainerProps<Tag>;
+  children: React.ReactNode;
+} & ElementProps<Tag>; 
 
 export const ScrollContainer = <Tag extends ValidTags>({
   as,
@@ -21,7 +18,6 @@ export const ScrollContainer = <Tag extends ValidTags>({
   className,
   ...rest
 }: ScrollContainerProps<Tag>) => {
-  const Component = (as || "div") as React.ElementType;
   const containerRef = useRef(null);
   const scrollViewportRef = useRef<HTMLElement>(null);
   const [initialize, instance] = useOverlayScrollbars({
@@ -39,13 +35,13 @@ export const ScrollContainer = <Tag extends ValidTags>({
   }, [isMounted, initialize, instance]);
 
   return (
-    <Component {...rest} className={className} ref={containerRef}>
+    <PolymorficContainer {...rest} className={className} ref={containerRef}>
       <ScrollDetectionProvider
         treshold={100}
         element={scrollViewportRef.current!}
       >
         {children}
       </ScrollDetectionProvider>
-    </Component>
+    </PolymorficContainer>
   );
 };
