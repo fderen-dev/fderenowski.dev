@@ -6,6 +6,8 @@ import { ElementProps, PolymorficContainer, ValidTags } from "components/common/
 import { ScrollDetectionProvider } from "context/ScrollDetection";
 import { useIsMounted } from "utils/hooks";
 
+import styles from './scrollContainer.module.scss';
+
 type ScrollContainerProps<Tag extends ValidTags> = {
   as?: Tag;
   className?: string;
@@ -30,7 +32,7 @@ export const ScrollContainer = <Tag extends ValidTags>({
       initialize(containerRef.current!);
       // @ts-ignore
       scrollViewportRef.current = instance()?.elements().viewport!;
-      scrollViewportRef.current?.style.setProperty("height", "100%");
+      scrollViewportRef.current?.classList.add(styles.flexContainer);
     }
   }, [isMounted, initialize, instance]);
 

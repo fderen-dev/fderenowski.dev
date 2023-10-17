@@ -3,7 +3,7 @@
 @use "styles/animations.scss" as anims;
 
 .container {
-  height: calc(40vh - vars.$navbar-height);
+  min-height: calc(40vh - vars.$navbar-height);
   background-color: vars.$c-background-yellow;
   margin-block-start: vars.$navbar-height;
 }
