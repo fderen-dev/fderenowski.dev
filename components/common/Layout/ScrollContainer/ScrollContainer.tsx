@@ -26,7 +26,7 @@ export const ScrollContainer = <Tag extends ValidTags>({
     events: {
       initialized: () => setInitialized(true),
     },
-    options: { scrollbars: { autoHide: "scroll" } },
+    options: { scrollbars: { autoHide: "scroll" }, overflow: { x: 'hidden' } },
   });
 
   useEffect(() => {
