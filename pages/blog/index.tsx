@@ -111,6 +111,7 @@ const Blog: NextPage<{
           />
         </ClientSideContainer>
       </Layout>
+      <CookieBar prismicDocumentData={cookieBar.data} />
     </>
   );
 };

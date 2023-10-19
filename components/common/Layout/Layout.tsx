@@ -56,7 +56,7 @@ export const Layout = ({
         {children}
       </Main>
       {Footer}
-    {CookieBar}
+      {CookieBar}
     </ScrollContainer>
   );
 };

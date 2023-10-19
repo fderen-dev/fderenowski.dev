@@ -8,6 +8,7 @@
 
 html {
   font-size: 62.5%;
+  scrollbar-width: none;
 }
 
 body {
@@ -18,6 +19,8 @@ body {
   font-family: Mitr, sans-serif;
   font-size: vars.$fs-text;
   overflow-x: hidden;
+  // stylelint-disable
+  -ms-overflow-style: none;
 }
 
 #__next {
@@ -72,27 +75,10 @@ a {
   }
 }
 
-// // scrollbar
-// ::-webkit-scrollbar {
-//   width: 8px;
-
-//   &-track {
-//     background: vars.$c-warm-yellow;
-//   }
-
-//   &-thumb {
-//     width: 4px;
-//     border: 1px solid vars.$c-warm-yellow;
-//     background: vars.$c-snow-white-80;
-//   }
-// }
-
-// @supports (scrollbar-color: vars.$c-snow-white-80 vars.$c-warm-yellow) {
-//   * {
-//     scrollbar-color: vars.$c-snow-white-80 vars.$c-warm-yellow;
-//     scrollbar-width: thin;
-//   }
-// }
+// scrollbar
+::-webkit-scrollbar {
+  display: none;
+}
 
 /* stylelint-disable selector-class-pattern */
 .ReactModal__Body--open {
