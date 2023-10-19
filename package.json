@@ -7,6 +7,7 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
+    "build-and-serve": "next build && next start",
     "lint": "next lint",
     "lint:styles:fix": "stylelint --fix \"**/*+(.scss|.css)\"",
     "slicemachine": "start-slicemachine"
