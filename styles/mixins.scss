@@ -125,8 +125,7 @@
 }
 
 @mixin page-spacing() {
-  margin-block-end: vars.$spacing-page;
-  margin-block-start: vars.$spacing-page;
+  margin-block: vars.$spacing-page vars.$spacing-page;
 }
 
 @mixin spinner($size: 48px, $color: vars.$c-pitch-black) {
