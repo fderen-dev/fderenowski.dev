@@ -10,5 +10,6 @@ export const components = {
   link_icon: dynamic(() => import("./LinkIcon")),
   navigation_item: dynamic(() => import("./NavigationItem")),
   placeable_content: dynamic(() => import("./PlaceableContent")),
+  seo: dynamic(() => import("./Seo")),
   text_input: dynamic(() => import("./Input")),
 };

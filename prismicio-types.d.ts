@@ -792,6 +792,8 @@ export type HomePageArticleDocument<Lang extends string = string> =
 
 type HomepageDocumentDataSlicesSlice = FragmentSlice;
 
+type HomepageDocumentDataSlices1Slice = SeoSlice;
+
 /**
  * Content for Homepage documents
  */
@@ -860,6 +862,17 @@ interface HomepageDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Homepage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: homepage.slices1[]
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices1: prismic.SliceZone<HomepageDocumentDataSlices1Slice>;
 }
 
 /**
@@ -1695,6 +1708,149 @@ export type PlaceableContentSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Seo → Primary*
+ */
+export interface SeoSliceDefaultPrimary {
+  /**
+   * meta_title field in *Seo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * meta_description field in *Seo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * meta_author field in *Seo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_author
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_author: prismic.KeyTextField;
+
+  /**
+   * meta_keywords field in *Seo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_keywords
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_keywords: prismic.KeyTextField;
+
+  /**
+   * meta_robots field in *Seo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_robots
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_robots: prismic.KeyTextField;
+
+  /**
+   * meta_og_type field in *Seo → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: website
+   * - **API ID Path**: seo.primary.meta_og_type
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  meta_og_type: prismic.SelectField<"website" | "article", "filled">;
+
+  /**
+   * meta_og_title field in *Seo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_og_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_og_title: prismic.KeyTextField;
+
+  /**
+   * meta_og_image field in *Seo → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_og_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_og_image: prismic.ImageField<never>;
+
+  /**
+   * meta_og_url field in *Seo → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_og_url
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  meta_og_url: prismic.LinkField;
+
+  /**
+   * meta_og_site_name field in *Seo → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: fderenowski.dev
+   * - **API ID Path**: seo.primary.meta_og_site_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_og_site_name: prismic.KeyTextField;
+
+  /**
+   * meta_og_description field in *Seo → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: seo.primary.meta_og_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  meta_og_description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Seo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SeoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SeoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Seo*
+ */
+type SeoSliceVariation = SeoSliceDefault;
+
+/**
+ * Seo Shared Slice
+ *
+ * - **API ID**: `seo`
+ * - **Description**: Seo
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SeoSlice = prismic.SharedSlice<"seo", SeoSliceVariation>;
+
+/**
  * Primary content in *Input → Primary*
  */
 export interface TextInputSliceDefaultPrimary {
@@ -2051,6 +2207,7 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      HomepageDocumentDataSlices1Slice,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataSlicesSlice,
@@ -2092,6 +2249,10 @@ declare module "@prismicio/client" {
       PlaceableContentSliceDefaultItem,
       PlaceableContentSliceVariation,
       PlaceableContentSliceDefault,
+      SeoSlice,
+      SeoSliceDefaultPrimary,
+      SeoSliceVariation,
+      SeoSliceDefault,
       TextInputSlice,
       TextInputSliceDefaultPrimary,
       TextInputSliceTextAreaPrimary,

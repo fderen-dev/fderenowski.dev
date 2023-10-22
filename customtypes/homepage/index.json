@@ -3,6 +3,7 @@
   "label": "Homepage",
   "repeatable": false,
   "status": true,
+  "format": "custom",
   "json": {
     "Page Content": {
       "uid": {
@@ -58,6 +59,17 @@
         "config": {
           "label": "Meta Robots",
           "placeholder": ""
+        }
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "seo": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }
