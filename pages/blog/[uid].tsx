@@ -7,6 +7,7 @@ import { getTags } from "pages/api/posts";
 import { components as slices } from "slices";
 
 import { Tag } from "components/blog/TagsList/Tag/Tag";
+import { Head } from "components/common/Head/Head";
 import { Footer, Layout, Navbar } from "components/common/Layout";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
@@ -85,45 +86,51 @@ const BlogPost: NextPage<{
     slices: slicesData,
     background,
     tags,
+    name,
+    thumbnail,
+    ...meta
   } = page?.data ?? {};
   const date = useClientSideDate(datecreated);
   const hasTags = Boolean(tags?.length);
 
   return (
-    <Layout
-      Navbar={<Navbar prismicDocumentData={navigation.data} />}
-      Footer={<Footer prismicDocumentData={footer.data} />}
-      CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
-      contentWrapperClassName={styles.layoutContentWrapper}
-      contentContainerClassName={styles.layoutContentContainer}
-    >
-      <header className={styles.header}>
-        <PrismicNextImage
-          field={background}
-          className={styles.headerImage}
-          draggable={false}
-        />
-        <div className={styles.headerContent}>
-          <h1 className={styles.title}>{header}</h1>
-          {date && <time className={styles.headerDate}>{date}</time>}
-          {hasTags && (
-            <ul className={styles.headerTagsList}>
-              {tags.map((tag) => (
-                <Tag
-                  isLink
-                  tag={tag}
-                  key={tag.id}
-                  buttonClassName={styles.headerTagButton}
-                />
-              ))}
-            </ul>
-          )}
-        </div>
-      </header>
-      <article className={styles.article}>
-        <SliceZone slices={slicesData} components={slices} />
-      </article>
-    </Layout>
+    <>
+      <Head meta={meta} />
+      <Layout
+        Navbar={<Navbar prismicDocumentData={navigation.data} />}
+        Footer={<Footer prismicDocumentData={footer.data} />}
+        CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
+        contentWrapperClassName={styles.layoutContentWrapper}
+        contentContainerClassName={styles.layoutContentContainer}
+      >
+        <header className={styles.header}>
+          <PrismicNextImage
+            field={background}
+            className={styles.headerImage}
+            draggable={false}
+          />
+          <div className={styles.headerContent}>
+            <h1 className={styles.title}>{header}</h1>
+            {date && <time className={styles.headerDate}>{date}</time>}
+            {hasTags && (
+              <ul className={styles.headerTagsList}>
+                {tags.map((tag) => (
+                  <Tag
+                    isLink
+                    tag={tag}
+                    key={tag.id}
+                    buttonClassName={styles.headerTagButton}
+                  />
+                ))}
+              </ul>
+            )}
+          </div>
+        </header>
+        <article className={styles.article}>
+          <SliceZone slices={slicesData} components={slices} />
+        </article>
+      </Layout>
+    </>
   );
 };
 
