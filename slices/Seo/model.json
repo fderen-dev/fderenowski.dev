@@ -12,11 +12,11 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "title": {
+        "meta_title": {
           "type": "Text",
           "config": {
             "label": "meta_title",
-            "placeholder": ""
+            "placeholder": "fderenowski.dev"
           }
         },
         "meta_description": {
@@ -30,7 +30,7 @@
           "type": "Text",
           "config": {
             "label": "meta_author",
-            "placeholder": ""
+            "placeholder": "Filip Derenowski"
           }
         },
         "meta_keywords": {
@@ -63,7 +63,7 @@
           "type": "Text",
           "config": {
             "label": "meta_og_title",
-            "placeholder": ""
+            "placeholder": "fderenowski.dev"
           }
         },
         "meta_og_image": {

@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"title": {
-				"__TYPE__": "FieldContent",
-				"value": "classroom",
-				"type": "Text"
-			},
 			"meta_description": {
 				"__TYPE__": "FieldContent",
 				"value": "key",
@@ -15,7 +10,7 @@
 			},
 			"meta_author": {
 				"__TYPE__": "FieldContent",
-				"value": "pool",
+				"value": "audience",
 				"type": "Text"
 			},
 			"meta_keywords": {
@@ -35,11 +30,10 @@
 			},
 			"meta_og_title": {
 				"__TYPE__": "FieldContent",
-				"value": "roof",
+				"value": "enter",
 				"type": "Text"
 			},
 			"meta_og_image": {
-				"__TYPE__": "ImageContent",
 				"origin": {
 					"id": "main",
 					"url": "https://images.unsplash.com/photo-1587840171670-8b850147754e",
@@ -57,6 +51,9 @@
 					},
 					"background": "transparent"
 				},
+				"credits": null,
+				"alt": null,
+				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
 			"meta_og_url": {
@@ -81,6 +78,11 @@
 						}
 					}
 				]
+			},
+			"meta_title": {
+				"__TYPE__": "FieldContent",
+				"value": "wish",
+				"type": "Text"
 			}
 		},
 		"items": []
