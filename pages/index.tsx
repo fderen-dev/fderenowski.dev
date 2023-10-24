@@ -1,8 +1,9 @@
 import { GetStaticProps, NextPage } from "next";
 import type { Content } from "@prismicio/client";
+import { SliceZone } from "@prismicio/react";
 import { HomePageArticle } from "customtypes/home_page_article/HomePageArticle";
+import { metaComponents } from "slices/meta";
 
-import { Head } from "components/common/Head/Head";
 import { Footer, Header, Layout, Navbar } from "components/common/Layout";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
@@ -63,12 +64,13 @@ const Home: NextPage<{
   cookieBar: Content.CookiebarDocument;
 }> = ({ page, navigation, header, articles, footer, cookieBar }) => {
   const {
-    data: { slices: slicesData, ...meta },
+    // @ts-ignore
+    data: { slices1: slices },
   } = page;
 
   return (
     <>
-      <Head meta={meta} />
+      <SliceZone slices={slices} components={metaComponents} />
       <Layout
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={header.data} />}

@@ -790,9 +790,7 @@ export type HomePageArticleDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomepageDocumentDataSlicesSlice = FragmentSlice;
-
-type HomepageDocumentDataSlices1Slice = SeoSlice;
+type HomepageDocumentDataSlicesSlice = never;
 
 /**
  * Content for Homepage documents
@@ -807,72 +805,7 @@ interface HomepageDocumentData {
    * - **Tab**: Page Content
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice>
-  /**
-   * Meta Title field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.meta_title
-   * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.meta_description
-   * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Author field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.meta_author
-   * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_author: prismic.KeyTextField;
-
-  /**
-   * Meta Keywords field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.meta_keywords
-   * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_keywords: prismic.KeyTextField;
-
-  /**
-   * Meta Robots field in *Homepage*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.meta_robots
-   * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_robots: prismic.KeyTextField;
-
-  /**
-   * Slice Zone field in *Homepage*
-   *
-   * - **Field Type**: Slice Zone
-   * - **Placeholder**: *None*
-   * - **API ID Path**: homepage.slices1[]
-   * - **Tab**: SEO
-   * - **Documentation**: https://prismic.io/docs/field#slices
-   */
-  slices1: prismic.SliceZone<HomepageDocumentDataSlices1Slice>;
+  slices: prismic.SliceZone<HomepageDocumentDataSlicesSlice>;
 }
 
 /**
@@ -1715,11 +1648,11 @@ export interface SeoSliceDefaultPrimary {
    * meta_title field in *Seo → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: seo.primary.title
+   * - **Placeholder**: fderenowski.dev
+   * - **API ID Path**: seo.primary.meta_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  title: prismic.KeyTextField;
+  meta_title: prismic.KeyTextField;
 
   /**
    * meta_description field in *Seo → Primary*
@@ -1735,7 +1668,7 @@ export interface SeoSliceDefaultPrimary {
    * meta_author field in *Seo → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Filip Derenowski
    * - **API ID Path**: seo.primary.meta_author
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -1776,7 +1709,7 @@ export interface SeoSliceDefaultPrimary {
    * meta_og_title field in *Seo → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: fderenowski.dev
    * - **API ID Path**: seo.primary.meta_og_title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -2207,7 +2140,6 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
-      HomepageDocumentDataSlices1Slice,
       NavigationDocument,
       NavigationDocumentData,
       NavigationDocumentDataSlicesSlice,

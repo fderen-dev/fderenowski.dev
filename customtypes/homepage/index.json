@@ -18,54 +18,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "fragment": {
-              "type": "SharedSlice"
-            }
-          }
-        }
-      }
-    },
-    "SEO": {
-      "meta_title": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Title",
-          "placeholder": ""
-        }
-      },
-      "meta_description": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Description",
-          "placeholder": ""
-        }
-      },
-      "meta_author": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Author",
-          "placeholder": ""
-        }
-      },
-      "meta_keywords": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Keywords",
-          "placeholder": ""
-        }
-      },
-      "meta_robots": {
-        "type": "Text",
-        "config": {
-          "label": "Meta Robots",
-          "placeholder": ""
-        }
-      },
-      "slices1": {
-        "type": "Slices",
-        "fieldset": "Slice Zone",
-        "config": {
-          "choices": {
             "seo": {
               "type": "SharedSlice"
             }
