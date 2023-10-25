@@ -3,6 +3,7 @@
   "label": "About",
   "repeatable": false,
   "status": true,
+  "format": "custom",
   "json": {
     "SEO": {
       "meta_title": {
@@ -44,7 +45,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "seo": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
