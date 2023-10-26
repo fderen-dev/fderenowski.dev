@@ -58,7 +58,7 @@ export const Gear: FC<GearProps> = ({
 
   return isMounted ? (
     <GearImage
-      alt="Spinning gear"
+      alt=""
       className={cx(styles.gear, className, {
         paused: !isScrolling,
         running: isScrolling,
