@@ -124,6 +124,17 @@
           "label": "Meta Robots",
           "placeholder": ""
         }
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "seo": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     }
   }

@@ -76,8 +76,7 @@ interface AboutDocumentData {
    * - **Tab**: SEO
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<AboutDocumentDataSlicesSlice> /**
    * Slice Zone field in *About*
    *
    * - **Field Type**: Slice Zone
@@ -101,6 +100,8 @@ interface AboutDocumentData {
 export type AboutDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<AboutDocumentData>, "about", Lang>;
 
+type BlogDocumentDataSlices1Slice = SeoSlice;
+
 /**
  * Content for Blog documents
  */
@@ -114,8 +115,7 @@ interface BlogDocumentData {
    * - **Tab**: Page Content
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  name: prismic.KeyTextField
-  /**
+  name: prismic.KeyTextField /**
    * Meta Title field in *Blog*
    *
    * - **Field Type**: Text
@@ -169,6 +169,17 @@ interface BlogDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Blog*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blog.slices1[]
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices1: prismic.SliceZone<BlogDocumentDataSlices1Slice>;
 }
 
 /**
@@ -184,6 +195,8 @@ export type BlogDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<BlogDocumentData>, "blog", Lang>;
 
 type BlogpostDocumentDataSlicesSlice = BlogPostContentSlice | CodeBlockSlice;
+
+type BlogpostDocumentDataSlices1Slice = SeoSlice;
 
 /**
  * Content for BlogPost documents
@@ -264,8 +277,7 @@ interface BlogpostDocumentData {
    * - **Tab**: Post Content
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<BlogpostDocumentDataSlicesSlice>
-  /**
+  slices: prismic.SliceZone<BlogpostDocumentDataSlicesSlice> /**
    * Meta Title field in *BlogPost*
    *
    * - **Field Type**: Text
@@ -319,6 +331,17 @@ interface BlogpostDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *BlogPost*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.slices1[]
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices1: prismic.SliceZone<BlogpostDocumentDataSlices1Slice>;
 }
 
 /**
@@ -336,6 +359,8 @@ export type BlogpostDocument<Lang extends string = string> =
     "blogpost",
     Lang
   >;
+
+type ContactDocumentDataSlices1Slice = SeoSlice;
 
 /**
  * Content for Contact documents
@@ -361,8 +386,7 @@ interface ContactDocumentData {
    * - **Tab**: Page Content
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  subheading: prismic.KeyTextField
-  /**
+  subheading: prismic.KeyTextField /**
    * Meta Title field in *Contact*
    *
    * - **Field Type**: Text
@@ -416,6 +440,17 @@ interface ContactDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_robots: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Contact*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.slices1[]
+   * - **Tab**: SEO
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices1: prismic.SliceZone<ContactDocumentDataSlices1Slice>;
 }
 
 /**
@@ -2104,7 +2139,7 @@ declare module "@prismicio/client" {
   interface CreateClient {
     (
       repositoryNameOrEndpoint: string,
-      options?: prismic.ClientConfig
+      options?: prismic.ClientConfig,
     ): prismic.Client<AllDocumentTypes>;
   }
 
@@ -2116,11 +2151,14 @@ declare module "@prismicio/client" {
       AboutDocumentDataSlices1Slice,
       BlogDocument,
       BlogDocumentData,
+      BlogDocumentDataSlices1Slice,
       BlogpostDocument,
       BlogpostDocumentData,
       BlogpostDocumentDataSlicesSlice,
+      BlogpostDocumentDataSlices1Slice,
       ContactDocument,
       ContactDocumentData,
+      ContactDocumentDataSlices1Slice,
       CookiebarDocument,
       CookiebarDocumentData,
       FooterDocument,
