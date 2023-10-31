@@ -1713,7 +1713,7 @@ export interface SeoSliceDefaultPrimary {
    * meta_keywords field in *Seo → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: *None*
+   * - **Placeholder**: Filip Derenowski, personal website, frontend developer
    * - **API ID Path**: seo.primary.meta_keywords
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */

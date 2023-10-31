@@ -37,7 +37,7 @@
           "type": "Text",
           "config": {
             "label": "meta_keywords",
-            "placeholder": ""
+            "placeholder": "Filip Derenowski, personal website, frontend developer"
           }
         },
         "meta_robots": {
