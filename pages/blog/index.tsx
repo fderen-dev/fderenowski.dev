@@ -4,8 +4,8 @@ import { Content } from "@prismicio/client";
 import { BlogContainer } from "components/blog/BlogContainer/BlogContainer";
 import { BlogPostsListContainer } from "components/blog/BlogPostsListContainer/BlogPostsListContainer";
 import { TagsList } from "components/blog/TagsList/TagsList";
-import { Head } from "components/common/Head/Head";
 import { Footer, Header, Layout, Navbar } from "components/common/Layout";
+import { MetaSliceZone } from "components/common/MetaSliceZone/MetaSliceZone";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { Tag } from "models/blog/Tag";
@@ -66,12 +66,12 @@ const Blog: NextPage<{
   blogPostsTags,
 }) => {
   const {
-    data: { name, ...meta },
+    data: { slices1: meta },
   } = page;
 
   return (
     <>
-      <Head meta={meta} />
+      <MetaSliceZone slices={meta} />
       <Layout
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={mainHeader.data} />}
