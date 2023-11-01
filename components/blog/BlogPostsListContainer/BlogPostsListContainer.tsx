@@ -54,7 +54,7 @@ const Container = ({
       next={next}
       hasMore={posts!.hasMore}
       onTagPillClick={onTagPillClick}
-      isFetching={isFetching}
+      isFetching={isFetching || posts === null}
       error={error}
       Loader={
         <div className={loaderClassName}>

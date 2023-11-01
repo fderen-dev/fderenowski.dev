@@ -44,7 +44,8 @@ export const BlogPostCard = forwardRef<HTMLLIElement, BlogPostCardProps>(
         ref={ref}
       >
         {thumbnail && (
-          <PrismicNextImage className={styles.thumbnail} field={thumbnail} />
+          // @ts-ignore
+          <PrismicNextImage className={styles.thumbnail} field={thumbnail} alt={thumbnail.alt ?? ""} />
         )}
         <div className={styles.contentWrapper}>
           {header && <h2 className={styles.header}>{header}</h2>}
