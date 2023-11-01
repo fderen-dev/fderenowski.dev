@@ -1,0 +1,108 @@
+{
+  "id": "seo",
+  "type": "SharedSlice",
+  "name": "Seo",
+  "description": "Seo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "meta_title": {
+          "type": "Text",
+          "config": {
+            "label": "meta_title",
+            "placeholder": "fderenowski.dev"
+          }
+        },
+        "meta_description": {
+          "type": "Text",
+          "config": {
+            "label": "meta_description",
+            "placeholder": ""
+          }
+        },
+        "meta_author": {
+          "type": "Text",
+          "config": {
+            "label": "meta_author",
+            "placeholder": "Filip Derenowski"
+          }
+        },
+        "meta_keywords": {
+          "type": "Text",
+          "config": {
+            "label": "meta_keywords",
+            "placeholder": "Filip Derenowski, personal website, frontend developer"
+          }
+        },
+        "meta_robots": {
+          "type": "Text",
+          "config": {
+            "label": "meta_robots",
+            "placeholder": ""
+          }
+        },
+        "meta_og_type": {
+          "type": "Select",
+          "config": {
+            "label": "meta_og_type",
+            "placeholder": "",
+            "options": [
+              "website",
+              "article"
+            ],
+            "default_value": "website"
+          }
+        },
+        "meta_og_title": {
+          "type": "Text",
+          "config": {
+            "label": "meta_og_title",
+            "placeholder": "fderenowski.dev"
+          }
+        },
+        "meta_og_image": {
+          "type": "Image",
+          "config": {
+            "label": "meta_og_image",
+            "constraint": {
+              "width": 1200,
+              "height": 630
+            },
+            "thumbnails": []
+          }
+        },
+        "meta_og_url": {
+          "type": "Link",
+          "config": {
+            "label": "meta_og_url",
+            "placeholder": "",
+            "select": null
+          }
+        },
+        "meta_og_site_name": {
+          "type": "Text",
+          "config": {
+            "label": "meta_og_site_name",
+            "placeholder": "fderenowski.dev"
+          }
+        },
+        "meta_og_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "meta_og_description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "single": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

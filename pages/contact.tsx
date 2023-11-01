@@ -2,8 +2,8 @@ import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 
 import { FormProvider } from "components/common/Forms/FormProvider";
-import { Head } from "components/common/Head/Head";
 import { Footer, Header, Layout, Navbar } from "components/common/Layout";
+import { MetaSliceZone } from "components/common/MetaSliceZone/MetaSliceZone";
 import { ContactForm } from "components/ContactForm/ContactForm";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
@@ -74,7 +74,7 @@ const Contact: NextPage<{
   cookieBar,
 }) => {
   const {
-    data: { header, subheading, ...meta },
+    data: { header, subheading, slices1: meta },
   } = contact;
   const conctactFormPrismicDocumentData = {
     form: form.data,
@@ -83,7 +83,7 @@ const Contact: NextPage<{
 
   return (
     <>
-      <Head meta={meta} />
+      <MetaSliceZone slices={meta} />
       <Layout
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={mainHeader.data} />}

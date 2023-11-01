@@ -2,12 +2,12 @@ import { GetStaticProps, NextPage } from "next";
 import { Content } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
-import { Head } from "components/common/Head/Head";
 import { Footer, Header, Layout, Navbar } from "components/common/Layout";
+import { MetaSliceZone } from "components/common/MetaSliceZone/MetaSliceZone";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { createClient } from "../prismicio";
-import { components as slices } from "../slices";
+import { components } from "../slices";
 
 export const getStaticProps: GetStaticProps = async ({ previewData }) => {
   const client = createClient({ previewData });
@@ -52,19 +52,21 @@ const About: NextPage<{
   cookieBar: Content.CookiebarDocument;
 }> = ({ page, navigation, header, footer, cookieBar }) => {
   const {
-    data: { slices1: slicesData, ...meta },
+    data: { slices: meta, slices1: fragments },
   } = page;
+
+  console.log(page);
 
   return (
     <>
-      <Head meta={meta} />
+      <MetaSliceZone slices={meta} />
       <Layout
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Header={<Header prismicDocumentData={header.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
         CookieBar={<CookieBar prismicDocumentData={cookieBar.data} />}
       >
-        <SliceZone slices={slicesData} components={slices} />
+        <SliceZone slices={fragments} components={components} />
       </Layout>
     </>
   );

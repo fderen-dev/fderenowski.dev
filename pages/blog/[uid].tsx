@@ -7,8 +7,8 @@ import { getTags } from "pages/api/posts";
 import { components as slices } from "slices";
 
 import { Tag } from "components/blog/TagsList/Tag/Tag";
-import { Head } from "components/common/Head/Head";
 import { Footer, Layout, Navbar } from "components/common/Layout";
+import { MetaSliceZone } from "components/common/MetaSliceZone/MetaSliceZone";
 import { CookieBar } from "components/CookieBar/CookieBar";
 
 import { BlogpostDocumentWithTags } from "models/blog/BlogpostDocumentWithTags";
@@ -88,14 +88,14 @@ const BlogPost: NextPage<{
     tags,
     name,
     thumbnail,
-    ...meta
+    slices1: meta
   } = page?.data ?? {};
   const date = useClientSideDate(datecreated);
   const hasTags = Boolean(tags?.length);
 
   return (
     <>
-      <Head meta={meta} />
+      <MetaSliceZone slices={meta} />
       <Layout
         Navbar={<Navbar prismicDocumentData={navigation.data} />}
         Footer={<Footer prismicDocumentData={footer.data} />}
