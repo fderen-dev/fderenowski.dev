@@ -20,9 +20,6 @@ dependencies:
   '@prismicio/types':
     specifier: ^0.2.8
     version: 0.2.8
-  '@types/react-transition-group':
-    specifier: ^4.4.9
-    version: 4.4.9
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -91,6 +88,9 @@ devDependencies:
   '@types/react-syntax-highlighter':
     specifier: ^15.5.10
     version: 15.5.10
+  '@types/react-transition-group':
+    specifier: ^4.4.9
+    version: 4.4.9
   dotenv-load:
     specifier: ^2.0.1
     version: 2.0.1
@@ -2505,7 +2505,7 @@ packages:
     resolution: {integrity: sha512-ZVNmWumUIh5NhH8aMD9CR2hdW0fNuYInlocZHaZ+dgk/1K49j1w/HoAuK1ki+pgscQrOFRTlXeoURtuzEkV3dg==}
     dependencies:
       '@types/react': 18.2.14
-    dev: false
+    dev: true
 
   /@types/react@18.2.14:
     resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
