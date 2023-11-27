@@ -75,11 +75,6 @@ a {
   }
 }
 
-// scrollbar
-::-webkit-scrollbar {
-  display: none;
-}
-
 /* stylelint-disable selector-class-pattern */
 .ReactModal__Body--open {
   overflow: hidden;
