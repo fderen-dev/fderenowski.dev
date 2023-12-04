@@ -98,7 +98,7 @@
   width: 100%;
   max-width: map.get(vars.$media, "max");
   margin: 0 vars.$spacing-gutters-mobile;
-  gap: vars.$spacing-grid-gap-mobile;
+  gap: 2em;
   grid-template-columns: repeat(4, 1fr);
 
   @include min-width("tablet") {
@@ -107,8 +107,7 @@
 
   @include min-width("desktop") {
     margin: 0 vars.$spacing-gutters-desktop;
-    gap: 3rem;
-    grid-template-columns: repeat(auto-fit, minmax(33%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   }
 }
 
