@@ -1,15 +1,12 @@
-$gap: 200px;
+@use "styles/mixins.scss";
 
 .layoutContent {
-  margin-block: $gap;
-  row-gap: $gap;
+  margin-block: 2em !important;
+  @include mixins.mansory-layout;
 }
 
 .section {
-  min-height: calc(50vh - $gap);
-
-  > :not(h2)::before {
-    max-height: calc(100% + ($gap / 2));
+> :not(h2)::before {
     opacity: 0.25;
   }
 }

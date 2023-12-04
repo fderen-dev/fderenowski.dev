@@ -18,7 +18,6 @@ interface HomePageArticleProps {
 export const HomePageArticle = ({
   prismicDocumentData: {
     header,
-    placement,
     slices: slicesData,
     with_intersection,
   },
@@ -30,19 +29,13 @@ export const HomePageArticle = ({
     <article
       ref={wrapperRef}
       className={cx(styles.article, {
-        start: placement === "start",
-        center: placement === "center",
-        end: placement === "end",
         inViewport: isInViewport,
         outOfViewport: !isInViewport,
       })}
     >
       {header && (
         <h2
-          className={cx(styles.header, {
-            start: placement === "start" || "center",
-            end: placement === "end",
-          })}
+          className={cx(styles.header)}
         >
           <span className={styles.headerText}>{header}</span>
         </h2>

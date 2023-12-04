@@ -93,6 +93,24 @@
   }
 }
 
+@mixin mansory-layout() {
+  display: grid;
+  width: 100%;
+  max-width: map.get(vars.$media, "max");
+  margin: 0 vars.$spacing-gutters-mobile;
+  gap: 2em;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include min-width("tablet") {
+    grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+  }
+
+  @include min-width("desktop") {
+    margin: 0 vars.$spacing-gutters-desktop;
+    grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  }
+}
+
 @mixin yellow-background(
   $background: vars.$g-yellow-subheader,
   $xPosition: -5%,
