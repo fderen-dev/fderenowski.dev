@@ -55,8 +55,6 @@ const About: NextPage<{
     data: { slices: meta, slices1: fragments },
   } = page;
 
-  console.log(page);
-
   return (
     <>
       <MetaSliceZone slices={meta} />
