@@ -1,5 +1,7 @@
+@use 'sass:list';
+
 /* stylelint-disable selector-class-pattern */
-@if index($hamburger-types, spin) {
+@if list.index($hamburger-types, spin) {
   /*
    * Spin
    */
